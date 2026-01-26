@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pöppel Workwear Management - Wir beenden den Verwaltungs-Irrsinn. Digitale Effizienz trifft auf 100 Jahre textile Erfahrung.">
+    <title>Pöppel Workwear Management | Digitale Beschaffung mit System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">PÖPPEL</a>
+            <ul class="nav-links">
+                <li><a href="#problem">Das Problem</a></li>
+                <li><a href="#loesung">Die Lösung</a></li>
+                <li><a href="#prozess">Prozess</a></li>
+                <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" aria-label="Menü öffnen">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ========================================
+             SEKTION 1: HERO
+        ======================================== -->
+        <section id="hero" class="hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Systempartner 4.0
+                </div>
+                <h1 class="hero-headline">
+                    Workwear Management<br>
+                    <span class="hero-highlight">mit System.</span>
+                </h1>
+                <p class="hero-subline">
+                    "Wir beenden den Verwaltungs-Irrsinn."
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#kontakt" class="btn btn-primary">Beratung starten</a>
+                    <a href="#video" class="btn btn-ghost">
+                        <i data-lucide="play"></i>
+                        Film ansehen
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <i data-lucide="chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 2: VIDEOPLAYER
+        ======================================== -->
+        <section id="video" class="video-section">
+            <div class="container">
+                <div class="video-wrapper">
+                    <div class="video-player">
+                        <video
+                            id="elevatorPitch"
+                            poster="images/video-poster.jpg"
+                            playsinline
+                        >
+                            <source src="videos/elevator-pitch.mp4" type="video/mp4">
+                        </video>
+                        <button class="video-play-btn" aria-label="Video abspielen">
+                            <i data-lucide="play"></i>
+                        </button>
+                    </div>
+                    <p class="video-caption">Elevator Pitch – In 90 Sekunden zur Lösung</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 3: PROBLEM - Die 12 Herausforderungen
+             (3 Sticky Stacking Cards)
+        ======================================== -->
+        <section id="problem" class="problem-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">
+                        Die Kaskade der<br>
+                        <span class="highlight-italic">Ineffizienz</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Warum traditionelle Beschaffung Sie mehr kostet, als auf der Rechnung steht.
+                    </p>
+                </header>
+            </div>
+
+            <div class="sticky-cards-container">
+                <!-- Card 1: Kosten & Systeme -->
+                <div class="sticky-card sticky-card-1" data-card="1">
+                    <div class="sticky-card-inner card-dark">
+                        <h3 class="sticky-card-title">Kosten & Systeme</h3>
+                        <div class="sticky-card-grid">
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="package"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Lieferzeiten & Reklamationen</h4>
+                                    <p>Verzögerungen und Fehler führen zu Unzufriedenheit und Mehrkosten.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="dollar-sign"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Kostenüberschreitungen</h4>
+                                    <p>Hohe Ausgaben durch Fehlbestellungen und fehlende Prozessüberwachung.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="database"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Integration</h4>
+                                    <p>Probleme bei der Anbindung an bestehende ERP- und Personalsysteme.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="layers"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Mangelnde Flexibilität</h4>
+                                    <p>Jede Änderung erfordert eine aufwendige Anpassung und häufige Rücksprachen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Prozesse & Personal -->
+                <div class="sticky-card sticky-card-2" data-card="2">
+                    <div class="sticky-card-inner card-light">
+                        <h3 class="sticky-card-title">Prozesse & Personal</h3>
+                        <div class="sticky-card-grid">
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="users"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Mitarbeiterwechsel</h4>
+                                    <p>Ständige Anpassung von Budgets und Bestellungen.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="eye-off"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Intransparenz</h4>
+                                    <p>Schwierigkeiten, Bestände, Verbräuche und Budgets zu überblicken.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="clipboard-list"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Manuelle Prozesse</h4>
+                                    <p>Unübersichtliche Bestell- und Budgetprozesse führen zu Fehlern.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="settings"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Anforderungen</h4>
+                                    <p>Unterschiedliche Bedürfnisse für verschiedene Tätigkeiten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Compliance & Risiken -->
+                <div class="sticky-card sticky-card-3" data-card="3">
+                    <div class="sticky-card-inner card-light">
+                        <h3 class="sticky-card-title">Compliance & Risiken</h3>
+                        <div class="sticky-card-grid">
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="file-text"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Dokumentation</h4>
+                                    <p>Einhaltung und Nachweis von Dokumentationspflichten ist aufwendig.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="alert-triangle"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Keine Standards</h4>
+                                    <p>Ineffiziente Abläufe durch unterschiedliche Prozesse in Abteilungen.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="zap"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Sonderanforderungen</h4>
+                                    <p>Individuelle Anpassungen und deren Dokumentation.</p>
+                                </div>
+                            </div>
+                            <div class="sticky-card-item">
+                                <div class="sticky-card-icon"><i data-lucide="shield-alert"></i></div>
+                                <div class="sticky-card-content">
+                                    <h4>Sicherheitsrisiken</h4>
+                                    <p>Falsche oder nicht rechtzeitig gelieferte PSA können zu Unfällen führen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 4: POTENTIALE - Horizontal Scroll
+        ======================================== -->
+        <section id="potentiale" class="potentiale-section">
+            <div class="potentiale-header">
+                <div class="container">
+                    <span class="section-badge">Der Pöppel Kreislauf</span>
+                    <h2 class="section-title light">Vom Chaos zum System.</h2>
+                    <p class="section-subtitle light">Scrollen Sie, um die Potentiale zu entdecken.</p>
+                </div>
+            </div>
+
+            <div class="horizontal-scroll-container">
+                <div class="horizontal-track">
+                    <div class="potential-card" data-number="01">
+                        <div class="potential-card-content">
+                            <span class="potential-number">01</span>
+                            <h3>Prozesse optimieren</h3>
+                            <p>Steigern Sie die Effizienz entlang der gesamten Wertschöpfungskette.</p>
+                        </div>
+                        <div class="potential-card-image">
+                            <div class="potential-image-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <div class="potential-card" data-number="02">
+                        <div class="potential-card-content">
+                            <span class="potential-number">02</span>
+                            <h3>Kosten reduzieren</h3>
+                            <p>Bilanzwirksame Optimierungen nutzen um Kosten zu reduzieren.</p>
+                        </div>
+                        <div class="potential-card-image">
+                            <div class="potential-image-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <div class="potential-card" data-number="03">
+                        <div class="potential-card-content">
+                            <span class="potential-number">03</span>
+                            <h3>Transparenz schaffen</h3>
+                            <p>Unterschiedliche Bedürfnisse für Arbeitskleidung und PSA je nach Job.</p>
+                        </div>
+                        <div class="potential-card-image">
+                            <div class="potential-image-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <div class="potential-card" data-number="04">
+                        <div class="potential-card-content">
+                            <span class="potential-number">04</span>
+                            <h3>Skalierbarkeit ermöglichen</h3>
+                            <p>Digitales Beschaffungsmanagement ermöglicht Ihnen Flexibilität und problemloses Wachstum.</p>
+                        </div>
+                        <div class="potential-card-image">
+                            <div class="potential-image-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="horizontal-progress">
+                <div class="horizontal-progress-bar"></div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 5: CTA 1 - Whitepaper
+        ======================================== -->
+        <section id="cta-whitepaper" class="cta-section cta-light">
+            <div class="container">
+                <div class="cta-content">
+                    <i data-lucide="file-down" class="cta-icon"></i>
+                    <h2>Digitalisierung von Workwear-Management</h2>
+                    <p>Die neue Art Beschaffungswesen effizient und praxistauglich umzusetzen</p>
+                    <a href="#" class="btn btn-primary">
+                        <i data-lucide="download"></i>
+                        Whitepaper herunterladen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 6: LÖSUNGSWEG - 3 Schritte
+        ======================================== -->
+        <section id="loesung" class="loesung-section">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-badge">Der Lösungsweg</span>
+                    <h2 class="section-title">In 3 Schritten zum Ziel</h2>
+                </header>
+
+                <div class="steps-container">
+                    <div class="steps-line"></div>
+
+                    <div class="step" data-step="1">
+                        <div class="step-marker">
+                            <span>1</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Analyse</h3>
+                            <p>Wir starten mit der Potenzialanalyse Ihrer aktuellen Prozesse. Dabei identifizieren wir Engpässe, decken versteckte Kosten auf und entwickeln ein klares SOLL-Konzept zur Optimierung.</p>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="2">
+                        <div class="step-marker">
+                            <span>2</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Standardisierung</h3>
+                            <p>Aufgrund Ihrer Anforderungen entwickeln wir ein durchdachtes Kernsortiment und legen Standards für Produkte und Prozesse fest. Diese Basis dient uns als Fundament für einen glatten und digitalen Beschaffungsprozess.</p>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <div class="step" data-step="3">
+                        <div class="step-marker">
+                            <span>3</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Digitalisierung</h3>
+                            <p>Wir digitalisieren Ihren Standardprozess: Sie erhalten einen internen Online-Shop mit hinterlegten Kostenstellen und Budgets – transparent, übersichtlich und mit einem vollständig automatisierten Bestellablauf.</p>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 7: TESTIMONIALS - Laufband
+        ======================================== -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Was unsere Partner sagen</h2>
+                </header>
+            </div>
+
+            <div class="testimonials-track-wrapper">
+                <div class="testimonials-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-placeholder"></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <blockquote>
+                                "Seit wir das System nutzen, hat sich unser Verwaltungsaufwand halbiert. Die Mitarbeiter sind begeistert von der einfachen Bestellung."
+                            </blockquote>
+                            <cite>
+                                <strong>Michael Weber</strong>
+                                <span>Einkaufsleiter, Bauunternehmung Weber GmbH</span>
+                            </cite>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-placeholder"></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <blockquote>
+                                "Die Anprobetage waren ein Gamechanger. Endlich passt alles und wir haben keine Retouren mehr."
+                            </blockquote>
+                            <cite>
+                                <strong>Julia Schmidt</strong>
+                                <span>HR Managerin, Metallbau Schmidt AG</span>
+                            </cite>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-placeholder"></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <blockquote>
+                                "Die digitale Lösung hat unsere Beschaffungsprozesse revolutioniert. Alles ist transparent und nachvollziehbar."
+                            </blockquote>
+                            <cite>
+                                <strong>Thomas Müller</strong>
+                                <span>Geschäftsführer, Handwerksbetrieb Müller</span>
+                            </cite>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <div class="testimonial-image-placeholder"></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <blockquote>
+                                "Endlich haben wir die Kosten im Griff. Das Budget-System funktioniert perfekt für unsere 200 Mitarbeiter."
+                            </blockquote>
+                            <cite>
+                                <strong>Sandra Klein</strong>
+                                <span>Controlling, Industrieservice Klein GmbH</span>
+                            </cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEKTION 8: CTA 2 - Beratungstermin
+        ======================================== -->
+        <section id="cta-beratung" class="cta-section cta-dark">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Bereit für den nächsten Schritt?</h2>
+                    <p>Lassen Sie uns gemeinsam Ihre Workwear-Prozesse optimieren.</p>
+                    <a href="#kontakt" class="btn btn-primary btn-large">
+                        Jetzt kostenlosen Beratungstermin vereinbaren
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weitere Sektionen folgen... -->
+        <!-- Sektion 9: Modularer Ansatz -->
+        <!-- Sektion 10: USPs -->
+        <!-- Sektion 11: CTA 3 -->
+        <!-- Sektion 12: Onboarding -->
+        <!-- Sektion 13: Gewinn -->
+        <!-- Sektion 14: CTA 4 -->
+        <!-- Sektion 15: FAQ -->
+        <!-- Sektion 16: CTA 5 -->
+
+    </main>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">PÖPPEL</span>
+                    <p>Workwear Management mit System.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">Kontakt</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 R. Pöppel GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+# Chat-Protokoll: Pöppel Workwear Landingpage NEU
+
+Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und Fortschritte.
+
+---
+
+## Projekt-Start: 26. Januar 2026
+
+### Ausgangssituation
+- Vorheriges Next.js Projekt hatte technische Probleme (Build, Deployment, Sticky Cards funktionierten nicht)
+- Entscheidung: Neustart mit reinem HTML/CSS/JS (wie JOBS Landingpage)
+- Referenz: Intralogistik-Seite funktioniert einwandfrei
+
+### Tech-Stack (NEU)
+- **HTML5** - Struktur
+- **CSS3** - Styling (ggf. Tailwind via CDN)
+- **JavaScript** - Interaktivität
+- **GSAP + ScrollTrigger** - Animationen (via CDN)
+- **Deployment**: GitHub Pages
+
+---
+
+## Seitenstruktur (aus CSV-Briefing)
+
+### Reihenfolge der Sektionen:
+
+| Nr | Sektion | Beschreibung | Design/UI |
+|----|---------|--------------|-----------|
+| 1 | Hero | "Workwear Management mit System" - "Wir beenden den Verwaltungs-Irrsinn." | Status-Hebung |
+| 2 | Videoplayer | Elevator Pitch | Freigestellter Videoplayer wie Intralogistik-Seite |
+| 3 | Problem | Die 12 Herausforderungen | 3 Kacheln mit je 4 Sektionen, schieben sich übereinander |
+| 4 | Potentiale | 4 Vorteile | Horizontal scrollende Kacheln |
+| 5 | CTA 1 | Whitepaper Download | |
+| 6 | Lösungsweg | 3 Schritte | Kacheln fliegen von unten ein, mit Linie verbunden (wie Intralogistik) |
+| 7 | Testimonials | Social Proof | Laufband von rechts nach links |
+| 8 | CTA 2 | Beratungstermin | |
+| 9 | Modularer Ansatz | Für jeden die passende Lösung | 2 interaktive Kacheln (expandierbar) |
+| 10 | USPs | 8 Vorteile | 3D-Rondell |
+| 11 | CTA 3 | Potentialanalyse | |
+| 12 | Onboarding | Wie geht es weiter? | Treppen-Animation (bereits fertig!) |
+| 13 | Gewinn | Ihr Gewinn | 3 Kacheln |
+| 14 | CTA 4 | Beratungsgespräch | |
+| 15 | FAQ | Häufige Fragen | Accordion |
+| 16 | CTA 5 | Mehr erfahren | |
+
+---
+
+## Detaillierte Inhalte
+
+### Sektion 3: Problem (Die 12 Herausforderungen)
+
+**Kachel 1: Kosten & Systeme**
+- Lieferzeiten & Reklamationen: Verzögerungen und Fehler führen zu Unzufriedenheit und Mehrkosten.
+- Kostenüberschreitungen: Hohe Ausgaben durch Fehlbestellungen und fehlende Prozessüberwachung.
+- Integration: Probleme bei der Anbindung an bestehende ERP- und Personalsysteme.
+- Mangelnde Flexibilität: Jede Änderung erfordert eine aufwendige Anpassung und häufige Rücksprachen.
+
+**Kachel 2: Prozesse & Personal**
+- Mitarbeiterwechsel: Ständige Anpassung von Budgets und Bestellungen.
+- Intransparenz: Schwierigkeiten, Bestände, Verbräuche und Budgets zu überblicken.
+- Manuelle Prozesse: Unübersichtliche Bestell- und Budgetprozesse führen zu Fehlern.
+- Anforderungen: Unterschiedliche Bedürfnisse für verschiedene Tätigkeiten.
+
+**Kachel 3: Compliance & Risiken**
+- Dokumentation: Einhaltung und Nachweis von Dokumentationspflichten ist aufwendig.
+- Keine Standards: Ineffiziente Abläufe durch unterschiedliche Prozesse in Abteilungen.
+- Sonderanforderungen: Individuelle Anpassungen und deren Dokumentation.
+- Sicherheitsrisiken: Falsche oder nicht rechtzeitig gelieferte PSA können zu Unfällen führen.
+
+### Sektion 4: Potentiale
+- Prozesse optimieren: Steigern Sie die Effizienz entlang der gesamten Wertschöpfungskette.
+- Kosten reduzieren: Bilanzwirksame Optimierungen nutzen um Kosten zu reduzieren.
+- Transparenz schaffen: Unterschiedliche Bedürfnisse für Arbeitskleidung und PSA je nach Job.
+- Skalierbarkeit ermöglichen: Digitales Beschaffungsmanagement ermöglicht Ihnen Flexibilität in beide Richtungen und problemloses Wachstum.
+
+### Sektion 6: Lösungsweg (3 Schritte)
+1. **Analyse**: Wir starten mit der Potenzialanalyse Ihrer aktuellen Prozesse. Dabei identifizieren wir Engpässe, decken versteckte Kosten auf und entwickeln ein klares SOLL-Konzept zur Optimierung.
+2. **Standardisierung**: Aufgrund Ihrer Anforderungen entwickeln wir ein durchdachtes Kernsortiment und legen Standards für Produkte und Prozesse fest. Diese Basis dient uns als Fundament für einen glatten und digitalen Beschaffungsprozess.
+3. **Digitalisierung**: Wir digitalisieren Ihren Standardprozess: Sie erhalten einen internen Online-Shop mit hinterlegten Kostenstellen und Budgets – transparent, übersichtlich und mit einem vollständig automatisierten Bestellablauf.
+
+### Sektion 10: USPs
+1. Prozessoptimierung: Dauerhaft kostenreduzierte Prozesse und Reduzierung manueller Tätigkeiten. 24/7 Verfügbarkeit
+2. Kostenstellen-Verwaltung: Transparente Budgetverwaltung und Genehmigungsprozesse.
+3. Skalierbarkeit: Digitales Beschaffungsmanagement ermöglicht problemloses Wachstum.
+4. OCI Punchout / Integration: Nahtlose Integration der Bestellprozesse in Ihre Systemlandschaft.
+5. Individuelle API-Anbindung: Echte funktionierende Maßanbindung statt beschränkter Generallösungen.
+6. Kurze Lieferzeiten: Durch durchdachte Prozesse und eigene Veredelung können wir schnell liefern.
+7. Alles aus einer Hand: Wir stellen den gesamten Wertschöpfungsprozess sicher und betreuen Sie persönlich.
+8. Kostensparende Vorkommissionierung: Wir erleichtern Ihnen die zeitraubende Überprüfung und Zuteilung an Ihre Mitarbeiter.
+
+### Sektion 12: Onboarding (4 Schritte)
+1. **Kickoff & Analyse**: Wir analysieren Ihre Tragegewohnheiten, Budgets und bestehende Prozesse vor Ort.
+   - Bedarfsanalyse direkt bei Ihren Teams
+   - Budget-Mapping und Kostentransparenz
+   - Prozess-Dokumentation
+
+2. **Konzept & Budget**: Gemeinsam entwickeln wir das passende Sortiment und definieren klare Budget-Rahmen.
+   - Sortiments-Vorschläge basierend auf Analyse
+   - Rollenbasierte Budget-Verteilung
+   - Transparente Kalkulation
+
+3. **Anprobe Event**: Unser Team kommt zu Ihnen. Zero-Retouren-Strategie durch Anprobe vor Ort.
+   - Mobile Anprobe direkt bei Ihnen
+   - Größenerfassung für digitales System
+   - Sofort-Feedback zu Passform
+
+4. **Go-Live System**: Mitarbeiter bestellen eigenständig über das rollenbasierte Bestellsystem.
+   - Digitale Plattform für Selbstbestellung
+   - Automatische Budget-Kontrolle
+   - 24/7 Verfügbarkeit
+
+### Sektion 13: Ihr Gewinn
+- Sie bekommen eine Lösung, die genau zu Ihnen passt und dauerhaft bilanzwirksam gebundene Ressourcen freisetzt.
+- Durch unsere Technologie und unseren Service können Sie Ihre Potentiale voll ausschöpfen.
+- Ein individuell abgestimmtes Portfolio sorgt für Preisstabilität und ermöglicht Ihnen Planbarkeit, die Sie brauchen, ohne dabei auf Flexibilität verzichten zu müssen.
+
+---
+
+## Fortschritts-Log
+
+### 26.01.2026 - Projektstart
+- [x] CSV mit Inhaltsplan gelesen
+- [x] Projektstruktur angelegt
+- [x] Chat-Protokoll erstellt
+- [ ] GitHub Repository erstellen
+- [ ] Basis HTML/CSS/JS anlegen
+- [ ] Sektionen implementieren
+
+---
+
+## Referenz-Links
+- Intralogistik-Seite: https://svenn8n-a11y.github.io/intralogistik-landingpage/
+- Onboarding-Treppe (standalone): https://svenn8n-a11y.github.io/onboarding-treppe-standalone/
+- JOBS Landingpage: (lokales Projekt)
+
+---
+
+## Notizen
+- Treppen-Animation für Onboarding bereits fertig extrahiert
+- Sticky Stacking Cards: Reines CSS mit position:sticky (kein GSAP nötig)
+- Horizontal Scroll: GSAP ScrollTrigger
