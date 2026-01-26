@@ -521,11 +521,12 @@ function initModularCards() {
 }
 
 // ========================================
-// USPs CAROUSEL (Section 10)
+// USPs CAROUSEL (Section 10) - 3D Rondell with Auto-Scroll
 // ========================================
 function initUSPsCarousel() {
+    const section = document.querySelector('.usps-section');
     const container = document.querySelector('.usps-carousel-container');
-    if (!container) return;
+    if (!container || !section) return;
 
     const carousel = container.querySelector('.usps-carousel');
     const cards = carousel.querySelectorAll('.usp-card');
@@ -534,13 +535,12 @@ function initUSPsCarousel() {
     const dotsContainer = document.getElementById('uspsDots');
 
     let currentIndex = 0;
-    const cardWidth = 340;
-    const gap = 24;
-    const visibleCards = Math.floor(container.offsetWidth / (cardWidth + gap)) || 3;
-    const maxIndex = Math.max(0, cards.length - visibleCards);
+    const totalCards = cards.length;
+    const cardWidth = 320;
+    const gap = 32;
 
-    // Create dots
-    for (let i = 0; i <= maxIndex; i++) {
+    // Create dots for all 8 cards
+    for (let i = 0; i < totalCards; i++) {
         const dot = document.createElement('div');
         dot.className = 'usps-dot' + (i === 0 ? ' active' : '');
         dot.addEventListener('click', () => goToSlide(i));
@@ -549,15 +549,34 @@ function initUSPsCarousel() {
 
     const dots = dotsContainer.querySelectorAll('.usps-dot');
 
+    function updateCardStyles() {
+        cards.forEach((card, i) => {
+            card.classList.remove('active', 'adjacent');
+
+            if (i === currentIndex) {
+                card.classList.add('active');
+            } else if (i === currentIndex - 1 || i === currentIndex + 1) {
+                card.classList.add('adjacent');
+            }
+        });
+    }
+
     function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        const offset = currentIndex * (cardWidth + gap);
+        currentIndex = Math.max(0, Math.min(index, totalCards - 1));
+
+        // Center the current card
+        const containerWidth = container.offsetWidth;
+        const centerOffset = (containerWidth - cardWidth) / 2;
+        const offset = currentIndex * (cardWidth + gap) - centerOffset + cardWidth / 2;
 
         gsap.to(carousel, {
-            x: -offset,
-            duration: 0.5,
+            x: -Math.max(0, offset),
+            duration: 0.6,
             ease: 'power2.out'
         });
+
+        // Update card styles
+        updateCardStyles();
 
         // Update dots
         dots.forEach((dot, i) => {
@@ -565,13 +584,17 @@ function initUSPsCarousel() {
         });
     }
 
+    // Initialize first card as active
+    updateCardStyles();
+    goToSlide(0);
+
     prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
     nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
 
     // Animate section header
     gsap.from('.usps-section .section-header', {
         scrollTrigger: {
-            trigger: '.usps-section',
+            trigger: section,
             start: 'top 80%',
             toggleActions: 'play none none reverse'
         },
@@ -580,17 +603,19 @@ function initUSPsCarousel() {
         duration: 1
     });
 
-    // Animate cards on scroll
-    gsap.from('.usp-card', {
-        scrollTrigger: {
-            trigger: '.usps-carousel',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.6
+    // Auto-scroll carousel on page scroll (rotate through all 8 cards)
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top 60%',
+        end: 'bottom 40%',
+        scrub: 1,
+        onUpdate: (self) => {
+            // Progress from 0 to 1 maps to cards 0 to 7
+            const targetIndex = Math.round(self.progress * (totalCards - 1));
+            if (targetIndex !== currentIndex) {
+                goToSlide(targetIndex);
+            }
+        }
     });
 }
 
