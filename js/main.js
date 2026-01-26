@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialsScroll();
     initCTAAnimations();
     initScrollProgress();
+    initModularCards();
+    initUSPsCarousel();
+    initOnboardingTreppe();
+    initFAQAccordion();
+    initGewinnCards();
 });
 
 // ========================================
@@ -479,6 +484,265 @@ function initScrollProgress() {
             end: 'bottom bottom',
             scrub: 0.3
         }
+    });
+}
+
+// ========================================
+// MODULAR CARDS (Section 9)
+// ========================================
+function initModularCards() {
+    const cards = document.querySelectorAll('.modular-card');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        const header = card.querySelector('.modular-card-header');
+
+        header.addEventListener('click', () => {
+            const isExpanded = card.dataset.expanded === 'true';
+
+            // Close all other cards
+            cards.forEach(c => {
+                if (c !== card) {
+                    c.dataset.expanded = 'false';
+                }
+            });
+
+            // Toggle current card
+            card.dataset.expanded = isExpanded ? 'false' : 'true';
+        });
+    });
+
+    // Animate section on scroll
+    gsap.from('.modular-section .section-header', {
+        scrollTrigger: {
+            trigger: '.modular-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
+
+    gsap.from('.modular-card', {
+        scrollTrigger: {
+            trigger: '.modular-cards',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        duration: 0.8
+    });
+}
+
+// ========================================
+// USPs CAROUSEL (Section 10)
+// ========================================
+function initUSPsCarousel() {
+    const container = document.querySelector('.usps-carousel-container');
+    if (!container) return;
+
+    const carousel = container.querySelector('.usps-carousel');
+    const cards = carousel.querySelectorAll('.usp-card');
+    const prevBtn = document.querySelector('.usps-prev');
+    const nextBtn = document.querySelector('.usps-next');
+    const dotsContainer = document.getElementById('uspsDots');
+
+    let currentIndex = 0;
+    const cardWidth = 340;
+    const gap = 24;
+    const visibleCards = Math.floor(container.offsetWidth / (cardWidth + gap)) || 3;
+    const maxIndex = Math.max(0, cards.length - visibleCards);
+
+    // Create dots
+    for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'usps-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.querySelectorAll('.usps-dot');
+
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        const offset = currentIndex * (cardWidth + gap);
+
+        gsap.to(carousel, {
+            x: -offset,
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // Animate section header
+    gsap.from('.usps-section .section-header', {
+        scrollTrigger: {
+            trigger: '.usps-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
+
+    // Animate cards on scroll
+    gsap.from('.usp-card', {
+        scrollTrigger: {
+            trigger: '.usps-carousel',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 40,
+        stagger: 0.1,
+        duration: 0.6
+    });
+}
+
+// ========================================
+// ONBOARDING TREPPE (Section 12)
+// ========================================
+function initOnboardingTreppe() {
+    const section = document.querySelector('.onboarding-section');
+    if (!section) return;
+
+    const viewport = section.querySelector('.onboarding-viewport');
+    const wrapper = document.getElementById('onboardingWrapper');
+    const progressFill = document.getElementById('onboardingProgress');
+    const bgGrid = section.querySelector('.onboarding-bg-grid');
+
+    if (!wrapper) return;
+
+    // Main Timeline for Diagonal Staircase Movement
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=300%',
+            scrub: 1,
+            pin: viewport,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+                if (progressFill) {
+                    progressFill.style.width = (self.progress * 100) + '%';
+                }
+            }
+        }
+    });
+
+    // Diagonal staircase animation: x → y → x
+    tl.to(wrapper, { x: '-100vw', duration: 1, ease: 'power2.inOut' })
+      .to(wrapper, { y: '-100vh', duration: 1, ease: 'power2.inOut' })
+      .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' });
+
+    // Background Grid Animation
+    if (bgGrid) {
+        gsap.to(bgGrid, {
+            scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: '+=300%',
+                scrub: 1
+            },
+            x: -300,
+            y: -300
+        });
+    }
+}
+
+// ========================================
+// FAQ ACCORDION (Section 15)
+// ========================================
+function initFAQAccordion() {
+    const items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            const isExpanded = item.dataset.expanded === 'true';
+
+            // Close all other items
+            items.forEach(i => {
+                if (i !== item) {
+                    i.dataset.expanded = 'false';
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle current item
+            item.dataset.expanded = isExpanded ? 'false' : 'true';
+            question.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        });
+    });
+
+    // Animate section
+    gsap.from('.faq-section .section-header', {
+        scrollTrigger: {
+            trigger: '.faq-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
+
+    gsap.from('.faq-item', {
+        scrollTrigger: {
+            trigger: '.faq-accordion',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 30,
+        stagger: 0.1,
+        duration: 0.6
+    });
+}
+
+// ========================================
+// GEWINN CARDS (Section 13)
+// ========================================
+function initGewinnCards() {
+    const section = document.querySelector('.gewinn-section');
+    if (!section) return;
+
+    gsap.from('.gewinn-section .section-header', {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
+
+    gsap.from('.gewinn-card', {
+        scrollTrigger: {
+            trigger: '.gewinn-cards',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 60,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: 'power2.out'
     });
 }
 

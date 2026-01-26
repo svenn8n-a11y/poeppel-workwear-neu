@@ -999,3 +999,615 @@ button {
         z-index: 1001;
     }
 }
+
+/* =============================================
+   SEKTION 9: MODULARER ANSATZ
+   ============================================= */
+.modular-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-light);
+}
+
+.modular-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.modular-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-light);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.modular-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.modular-card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 32px;
+    cursor: pointer;
+}
+
+.modular-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(249, 115, 22, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.modular-card-icon i {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+}
+
+.modular-card-title {
+    flex: 1;
+}
+
+.modular-card-title h3 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.modular-card-title span {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+}
+
+.modular-card-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.modular-card-toggle i {
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray);
+    transition: transform var(--transition-normal);
+}
+
+.modular-card[data-expanded="true"] .modular-card-toggle i {
+    transform: rotate(180deg);
+}
+
+.modular-card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+}
+
+.modular-card[data-expanded="true"] .modular-card-content {
+    max-height: 400px;
+}
+
+.modular-card-content ul {
+    list-style: none;
+    padding: 0 32px 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .modular-card-content ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.modular-card-content li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9375rem;
+    color: var(--color-gray);
+}
+
+.modular-card-content li i {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* =============================================
+   SEKTION 10: USPs CAROUSEL
+   ============================================= */
+.usps-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-dark);
+    overflow: hidden;
+}
+
+.section-header.center {
+    text-align: center;
+}
+
+.usps-carousel-container {
+    margin-top: 64px;
+    padding: 0 var(--container-padding);
+    overflow: hidden;
+}
+
+.usps-carousel {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s ease;
+}
+
+.usp-card {
+    flex-shrink: 0;
+    width: 340px;
+    padding: 40px;
+    background: var(--color-dark-light);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.usp-card:hover {
+    border-color: rgba(249, 115, 22, 0.3);
+    transform: translateY(-4px);
+}
+
+.usp-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: rgba(249, 115, 22, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usp-icon i {
+    width: 32px;
+    height: 32px;
+    color: var(--color-primary);
+}
+
+.usp-card h3 {
+    font-size: 1.25rem;
+    color: var(--color-white);
+    margin-bottom: 12px;
+}
+
+.usp-card p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.usps-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.usps-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.usps-nav-btn:hover {
+    background: var(--color-primary);
+}
+
+.usps-nav-btn i {
+    width: 24px;
+    height: 24px;
+    color: var(--color-white);
+}
+
+.usps-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.usps-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.usps-dot.active {
+    background: var(--color-primary);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* =============================================
+   CTA ACCENT VARIANT
+   ============================================= */
+.cta-accent {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+.cta-accent .cta-content h2 {
+    color: var(--color-white);
+}
+
+.cta-accent .cta-content p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-accent .btn-primary {
+    background: var(--color-white);
+    color: var(--color-primary);
+}
+
+.cta-accent .btn-primary:hover {
+    background: var(--color-light);
+}
+
+/* =============================================
+   SEKTION 12: ONBOARDING TREPPE
+   ============================================= */
+.onboarding-section {
+    position: relative;
+    height: 400vh;
+    background: var(--color-dark);
+}
+
+.onboarding-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.onboarding-bg-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image:
+        linear-gradient(to right, #ffffff 1px, transparent 1px),
+        linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+    background-size: 80px 80px;
+}
+
+.onboarding-header {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 50;
+}
+
+.onboarding-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: 12px;
+}
+
+.onboarding-hint {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.onboarding-diagonal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300vw;
+    height: 300vh;
+    display: grid;
+    grid-template-columns: repeat(3, 100vw);
+    grid-template-rows: repeat(3, 100vh);
+}
+
+.onboarding-step-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+}
+
+.onboarding-step-cell[data-step="1"] { grid-column: 1; grid-row: 1; }
+.onboarding-step-cell[data-step="2"] { grid-column: 2; grid-row: 1; }
+.onboarding-step-cell[data-step="3"] { grid-column: 2; grid-row: 2; }
+.onboarding-step-cell[data-step="4"] { grid-column: 3; grid-row: 2; }
+
+.onboarding-step-content {
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .onboarding-step-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.onboarding-step-image {
+    position: relative;
+    height: 320px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-2xl);
+}
+
+.onboarding-step-number {
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.onboarding-step-label {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.onboarding-step-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.onboarding-step-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(249, 115, 22, 0.2);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    border-radius: var(--radius-full);
+    width: fit-content;
+}
+
+.onboarding-step-badge span {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.onboarding-step-text h3 {
+    font-size: 2.25rem;
+    color: var(--color-white);
+}
+
+.onboarding-step-text p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.onboarding-step-text ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.onboarding-step-text ul li {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    padding-left: 20px;
+    position: relative;
+}
+
+.onboarding-step-text ul li::before {
+    content: "•";
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+}
+
+.onboarding-progress {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 50;
+}
+
+.onboarding-progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    width: 0%;
+}
+
+/* =============================================
+   SEKTION 13: GEWINN
+   ============================================= */
+.gewinn-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-white);
+}
+
+.gewinn-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 968px) {
+    .gewinn-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gewinn-card {
+    padding: 48px;
+    background: var(--color-light);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-light);
+    transition: all var(--transition-normal);
+}
+
+.gewinn-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+}
+
+.gewinn-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(249, 115, 22, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.gewinn-card-icon i {
+    width: 32px;
+    height: 32px;
+    color: var(--color-primary);
+}
+
+.gewinn-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.gewinn-card p {
+    color: var(--color-gray);
+    line-height: 1.7;
+}
+
+/* =============================================
+   SEKTION 15: FAQ ACCORDION
+   ============================================= */
+.faq-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-light);
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-light);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: left;
+    color: var(--color-dark);
+}
+
+.faq-question i {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+    transition: transform var(--transition-normal);
+}
+
+.faq-item[data-expanded="true"] .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+}
+
+.faq-item[data-expanded="true"] .faq-answer {
+    max-height: 300px;
+}
+
+.faq-answer p {
+    padding: 0 32px 24px;
+    color: var(--color-gray);
+    line-height: 1.7;
+}
+
+/* =============================================
+   SEKTION 16: CTA FINAL
+   ============================================= */
+.cta-final {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
+    padding: 160px 0;
+}
+
+.cta-final-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-final-content h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-white);
+    margin-bottom: 24px;
+}
+
+.cta-final-content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 48px;
+}
+
+.cta-final-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
