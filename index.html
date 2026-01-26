@@ -234,77 +234,107 @@
             <div class="potentiale-header">
                 <div class="container">
                     <span class="section-badge">Der Pöppel Kreislauf</span>
-                    <h2 class="section-title light">Vom Chaos zum System.</h2>
-                    <p class="section-subtitle light">Scrollen Sie, um die Potentiale zu entdecken.</p>
+                    <h2 class="section-title">Vom Chaos zum System.</h2>
+                    <p class="section-subtitle">Entdecken Sie die Potentiale für Ihr Unternehmen.</p>
                 </div>
             </div>
 
-            <div class="horizontal-scroll-container">
-                <div class="horizontal-track">
-                    <div class="potential-card" data-number="01">
-                        <div class="potential-card-content">
-                            <span class="potential-number">01</span>
-                            <h3>Prozesse optimieren</h3>
-                            <p>Steigern Sie die Effizienz entlang der gesamten Wertschöpfungskette.</p>
+            <div class="container">
+                <div class="horizontal-scroll-container" id="potentialeScroll">
+                    <div class="horizontal-track">
+                        <div class="potential-card" data-number="01">
+                            <div class="potential-card-image">
+                                <div class="potential-image-placeholder"></div>
+                                <span class="potential-number">01</span>
+                            </div>
+                            <div class="potential-card-content">
+                                <h3>Prozesse optimieren</h3>
+                                <p>Steigern Sie die Effizienz entlang der gesamten Wertschöpfungskette durch digitale Prozesse und automatisierte Abläufe.</p>
+                            </div>
                         </div>
-                        <div class="potential-card-image">
-                            <div class="potential-image-placeholder"></div>
-                        </div>
-                    </div>
 
-                    <div class="potential-card" data-number="02">
-                        <div class="potential-card-content">
-                            <span class="potential-number">02</span>
-                            <h3>Kosten reduzieren</h3>
-                            <p>Bilanzwirksame Optimierungen nutzen um Kosten zu reduzieren.</p>
+                        <div class="potential-card" data-number="02">
+                            <div class="potential-card-image">
+                                <div class="potential-image-placeholder"></div>
+                                <span class="potential-number">02</span>
+                            </div>
+                            <div class="potential-card-content">
+                                <h3>Kosten reduzieren</h3>
+                                <p>Bilanzwirksame Optimierungen nutzen um Kosten nachhaltig zu reduzieren und Budgets transparent zu verwalten.</p>
+                            </div>
                         </div>
-                        <div class="potential-card-image">
-                            <div class="potential-image-placeholder"></div>
-                        </div>
-                    </div>
 
-                    <div class="potential-card" data-number="03">
-                        <div class="potential-card-content">
-                            <span class="potential-number">03</span>
-                            <h3>Transparenz schaffen</h3>
-                            <p>Unterschiedliche Bedürfnisse für Arbeitskleidung und PSA je nach Job.</p>
+                        <div class="potential-card" data-number="03">
+                            <div class="potential-card-image">
+                                <div class="potential-image-placeholder"></div>
+                                <span class="potential-number">03</span>
+                            </div>
+                            <div class="potential-card-content">
+                                <h3>Transparenz schaffen</h3>
+                                <p>Unterschiedliche Bedürfnisse für Arbeitskleidung und PSA je nach Job – alles übersichtlich in einem System.</p>
+                            </div>
                         </div>
-                        <div class="potential-card-image">
-                            <div class="potential-image-placeholder"></div>
-                        </div>
-                    </div>
 
-                    <div class="potential-card" data-number="04">
-                        <div class="potential-card-content">
-                            <span class="potential-number">04</span>
-                            <h3>Skalierbarkeit ermöglichen</h3>
-                            <p>Digitales Beschaffungsmanagement ermöglicht Ihnen Flexibilität und problemloses Wachstum.</p>
-                        </div>
-                        <div class="potential-card-image">
-                            <div class="potential-image-placeholder"></div>
+                        <div class="potential-card" data-number="04">
+                            <div class="potential-card-image">
+                                <div class="potential-image-placeholder"></div>
+                                <span class="potential-number">04</span>
+                            </div>
+                            <div class="potential-card-content">
+                                <h3>Skalierbarkeit ermöglichen</h3>
+                                <p>Digitales Beschaffungsmanagement ermöglicht Ihnen Flexibilität in beide Richtungen und problemloses Wachstum.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="horizontal-progress">
-                <div class="horizontal-progress-bar"></div>
+                <div class="horizontal-progress">
+                    <div class="horizontal-progress-bar" id="potentialeProgressBar"></div>
+                </div>
+
+                <div class="scroll-hint-potentiale">
+                    <span>Horizontal scrollen</span>
+                    <i data-lucide="arrow-right"></i>
+                </div>
             </div>
         </section>
 
         <!-- ========================================
              SEKTION 5: CTA 1 - Whitepaper
         ======================================== -->
-        <section id="cta-whitepaper" class="cta-section cta-light">
+        <section id="cta-whitepaper" class="cta-whitepaper-section">
             <div class="container">
-                <div class="cta-content">
-                    <i data-lucide="file-down" class="cta-icon"></i>
-                    <h2>Digitalisierung von Workwear-Management</h2>
-                    <p>Die neue Art Beschaffungswesen effizient und praxistauglich umzusetzen</p>
-                    <a href="#" class="btn btn-primary">
-                        <i data-lucide="download"></i>
-                        Whitepaper herunterladen
-                    </a>
+                <div class="cta-whitepaper-grid">
+                    <!-- Image Card (Left) -->
+                    <div class="cta-whitepaper-image-card">
+                        <div class="cta-whitepaper-image">
+                            <img src="images/whitepaper/whitepaper-cover.jpg" alt="Whitepaper Cover" onerror="this.style.display='none'">
+                            <div class="cta-whitepaper-image-placeholder">
+                                <i data-lucide="file-text"></i>
+                                <span>Whitepaper</span>
+                            </div>
+                        </div>
+                        <div class="cta-whitepaper-badge">
+                            <i data-lucide="download"></i>
+                            <span>PDF Download</span>
+                        </div>
+                    </div>
+
+                    <!-- Content (Right) -->
+                    <div class="cta-whitepaper-content">
+                        <span class="section-badge">Kostenloses Whitepaper</span>
+                        <h2>Digitalisierung von Workwear-Management</h2>
+                        <p>Die neue Art Beschaffungswesen effizient und praxistauglich umzusetzen. Erfahren Sie, wie Sie mit digitalem Workwear-Management Zeit und Kosten sparen.</p>
+                        <ul class="cta-whitepaper-benefits">
+                            <li><i data-lucide="check-circle"></i> Best Practices aus der Praxis</li>
+                            <li><i data-lucide="check-circle"></i> Checklisten für die Implementierung</li>
+                            <li><i data-lucide="check-circle"></i> ROI-Berechnung und Fallstudien</li>
+                        </ul>
+                        <a href="downloads/whitepaper-workwear-management.pdf" class="btn btn-primary btn-large" download>
+                            <i data-lucide="download"></i>
+                            Jetzt kostenlos herunterladen
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

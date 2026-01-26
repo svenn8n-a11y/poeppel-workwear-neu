@@ -250,14 +250,11 @@ function initHorizontalScroll() {
     const section = document.querySelector('.potentiale-section');
     if (!section) return;
 
-    const track = section.querySelector('.horizontal-track');
-    const cards = track.querySelectorAll('.potential-card');
-    const progressBar = section.querySelector('.horizontal-progress-bar');
+    const scrollContainer = document.getElementById('potentialeScroll');
+    const progressBar = document.getElementById('potentialeProgressBar');
+    const cards = section.querySelectorAll('.potential-card');
 
-    // Calculate scroll distance
-    const getScrollAmount = () => {
-        return track.scrollWidth - window.innerWidth + 100;
-    };
+    if (!scrollContainer) return;
 
     // Header animation
     gsap.from('.potentiale-header', {
@@ -271,53 +268,39 @@ function initHorizontalScroll() {
         duration: 1
     });
 
-    // Horizontal scroll animation
-    const scrollTween = gsap.to(track, {
-        x: () => -getScrollAmount(),
-        ease: 'none',
+    // Cards stagger animation on scroll into view
+    gsap.from(cards, {
         scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => `+=${getScrollAmount()}`,
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-                // Update progress bar
-                if (progressBar) {
-                    gsap.set(progressBar, { scaleX: self.progress });
-                }
-            }
+            trigger: scrollContainer,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 60,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: 'power2.out'
+    });
+
+    // Update progress bar on horizontal scroll
+    scrollContainer.addEventListener('scroll', () => {
+        if (progressBar) {
+            const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            const scrollPercent = scrollContainer.scrollLeft / scrollWidth;
+            progressBar.style.width = `${Math.max(25, scrollPercent * 100)}%`;
         }
     });
 
-    // Individual card animations within horizontal scroll
-    cards.forEach((card, i) => {
-        const content = card.querySelector('.potential-card-content');
-        const image = card.querySelector('.potential-card-image');
-
-        // Fade in cards as they enter viewport during horizontal scroll
-        gsap.from(card, {
-            opacity: 0,
-            x: 100,
-            scrollTrigger: {
-                trigger: card,
-                containerAnimation: scrollTween,
-                start: 'left 80%',
-                end: 'left 20%',
-                scrub: 1
-            }
-        });
-    });
-
-    // Refresh ScrollTrigger on resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 250);
+    // Parallax effect on section background
+    gsap.to(section, {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+        },
+        '--parallax-offset': '50px',
+        ease: 'none'
     });
 }
 

@@ -1,0 +1,98 @@
+BILDER-ORDNERSTRUKTUR
+=====================
+
+Hier die Übersicht, welche Bilder in welchen Ordner gehören:
+
+
+/hero/
+------
+- hero-bg.jpg (Hintergrundbild für Hero-Sektion, ca. 1920x1080px)
+
+
+/video/
+-------
+- video-poster.jpg (Thumbnail für Videoplayer, ca. 1280x720px)
+
+
+/problem/
+---------
+- problem-karte-1.jpg (Bild für Sticky Card 1: Kosten & Systeme)
+- problem-karte-2.jpg (Bild für Sticky Card 2: Prozesse & Personal)
+- problem-karte-3.jpg (Bild für Sticky Card 3: Compliance & Risiken)
+
+
+/potentiale/
+------------
+- potential-01.jpg (Prozesse optimieren)
+- potential-02.jpg (Kosten reduzieren)
+- potential-03.jpg (Transparenz schaffen)
+- potential-04.jpg (Skalierbarkeit)
+Empfohlene Größe: 400x250px
+
+
+/whitepaper/
+------------
+- whitepaper-cover.jpg (Cover des Whitepapers, Hochformat ca. 400x500px)
+
+
+/loesung/
+---------
+- schritt-1.jpg (Analyse)
+- schritt-2.jpg (Standardisierung)
+- schritt-3.jpg (Digitalisierung)
+Empfohlene Größe: 600x400px
+
+
+/testimonials/
+--------------
+- testimonial-1.jpg (Portrait Michael Weber)
+- testimonial-2.jpg (Portrait Julia Schmidt)
+- testimonial-3.jpg (Portrait Thomas Müller)
+- testimonial-4.jpg (Portrait Sandra Klein)
+Empfohlene Größe: 100x100px (quadratisch, für runde Darstellung)
+
+
+/modular/
+---------
+- modul-klein.jpg (Bild für kleine Unternehmen)
+- modul-mittel.jpg (Bild für Mittelstand)
+- modul-gross.jpg (Bild für große Unternehmen)
+
+
+/usps/
+------
+- Icons werden automatisch von Lucide geladen
+- Optional: Hintergrundbilder für USP-Karten
+
+
+/onboarding/
+------------
+- onboarding-01.jpg (Kickoff & Analyse)
+- onboarding-02.jpg (Konzept & Budget)
+- onboarding-03.jpg (Anprobe Event)
+- onboarding-04.jpg (Go-Live System)
+Empfohlene Größe: 600x400px
+
+
+/gewinn/
+--------
+- gewinn-1.jpg (Maßgeschneiderte Lösung)
+- gewinn-2.jpg (Volle Potentialausschöpfung)
+- gewinn-3.jpg (Planbarkeit & Flexibilität)
+
+
+/allgemein/
+-----------
+- logo.svg (Pöppel Logo)
+- favicon.ico (Browser-Icon)
+- og-image.jpg (Social Media Preview, 1200x630px)
+
+
+BILDFORMATE
+===========
+- JPG: Für Fotos (komprimiert, gute Qualität)
+- PNG: Für Grafiken mit Transparenz
+- SVG: Für Logos und Icons (skalierbar)
+- WebP: Für optimierte Webdarstellung (optional)
+
+TIPP: Bilder vor dem Upload komprimieren (z.B. mit TinyPNG oder Squoosh)
