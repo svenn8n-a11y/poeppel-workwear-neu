@@ -244,19 +244,46 @@ function initStickyCards() {
 }
 
 // ========================================
-// HORIZONTAL SCROLL (Potentiale Section)
+// HORIZONTAL SCROLL (Potentiale Section) - Pinned with GSAP
 // ========================================
 function initHorizontalScroll() {
     const section = document.querySelector('.potentiale-section');
     if (!section) return;
 
-    const scrollContainer = document.getElementById('potentialeScroll');
+    const track = document.getElementById('potentialeTrack');
     const progressBar = document.getElementById('potentialeProgressBar');
     const cards = section.querySelectorAll('.potential-card');
 
-    if (!scrollContainer) return;
+    if (!track) return;
 
-    // Header animation
+    // Calculate how far we need to scroll horizontally
+    const getScrollAmount = () => {
+        const trackWidth = track.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        return -(trackWidth - viewportWidth + 100); // Extra padding at end
+    };
+
+    // Main horizontal scroll animation
+    gsap.to(track, {
+        x: getScrollAmount,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${track.scrollWidth - window.innerWidth + 100}`,
+            pin: '.potentiale-viewport',
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+                // Update progress bar
+                if (progressBar) {
+                    progressBar.style.width = `${self.progress * 100}%`;
+                }
+            }
+        }
+    });
+
+    // Header animation on enter
     gsap.from('.potentiale-header', {
         scrollTrigger: {
             trigger: section,
@@ -268,39 +295,18 @@ function initHorizontalScroll() {
         duration: 1
     });
 
-    // Cards stagger animation on scroll into view
+    // Cards stagger animation
     gsap.from(cards, {
         scrollTrigger: {
-            trigger: scrollContainer,
-            start: 'top 80%',
+            trigger: section,
+            start: 'top 60%',
             toggleActions: 'play none none reverse'
         },
         opacity: 0,
-        y: 60,
-        stagger: 0.15,
+        x: 100,
+        stagger: 0.1,
         duration: 0.8,
         ease: 'power2.out'
-    });
-
-    // Update progress bar on horizontal scroll
-    scrollContainer.addEventListener('scroll', () => {
-        if (progressBar) {
-            const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const scrollPercent = scrollContainer.scrollLeft / scrollWidth;
-            progressBar.style.width = `${Math.max(25, scrollPercent * 100)}%`;
-        }
-    });
-
-    // Parallax effect on section background
-    gsap.to(section, {
-        scrollTrigger: {
-            trigger: section,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1
-        },
-        '--parallax-offset': '50px',
-        ease: 'none'
     });
 }
 
