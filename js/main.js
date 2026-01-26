@@ -250,36 +250,44 @@ function initHorizontalScroll() {
     const section = document.querySelector('.potentiale-section');
     if (!section) return;
 
+    const viewport = section.querySelector('.potentiale-viewport');
     const track = document.getElementById('potentialeTrack');
     const progressBar = document.getElementById('potentialeProgressBar');
     const cards = section.querySelectorAll('.potential-card');
 
-    if (!track) return;
+    if (!track || !viewport) return;
 
-    // Calculate how far we need to scroll horizontally
-    const getScrollAmount = () => {
-        const trackWidth = track.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        return -(trackWidth - viewportWidth + 100); // Extra padding at end
+    // Calculate scroll distance
+    const getScrollDistance = () => {
+        return track.scrollWidth - window.innerWidth + 100;
     };
+
+    // Set section height dynamically based on content
+    const updateSectionHeight = () => {
+        const scrollDistance = getScrollDistance();
+        section.style.height = `${scrollDistance + window.innerHeight}px`;
+    };
+
+    updateSectionHeight();
+    window.addEventListener('resize', debounce(updateSectionHeight, 100));
 
     // Main horizontal scroll animation
     gsap.to(track, {
-        x: getScrollAmount,
+        x: () => -getScrollDistance(),
         ease: 'none',
         scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${track.scrollWidth - window.innerWidth + 100}`,
-            pin: '.potentiale-viewport',
+            end: () => `+=${getScrollDistance()}`,
+            pin: viewport,
             scrub: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
-                // Update progress bar
                 if (progressBar) {
                     progressBar.style.width = `${self.progress * 100}%`;
                 }
-            }
+            },
+            onRefresh: updateSectionHeight
         }
     });
 
@@ -303,9 +311,9 @@ function initHorizontalScroll() {
             toggleActions: 'play none none reverse'
         },
         opacity: 0,
-        x: 100,
-        stagger: 0.1,
-        duration: 0.8,
+        x: 80,
+        stagger: 0.08,
+        duration: 0.6,
         ease: 'power2.out'
     });
 }

@@ -544,9 +544,9 @@ button {
    ============================================= */
 .potentiale-section {
     position: relative;
-    height: 300vh;
     background: var(--color-dark);
     overflow: hidden;
+    /* Height is controlled by JS ScrollTrigger */
 }
 
 .potentiale-viewport {
@@ -583,17 +583,19 @@ button {
 .horizontal-track {
     display: flex;
     gap: 32px;
-    padding: 0 var(--container-padding);
+    padding: 0 var(--container-padding) 0 80px; /* More padding on left for first card */
     will-change: transform;
 }
 
 .potential-card {
     flex-shrink: 0;
-    width: 450px;
+    width: 420px;
     background: var(--color-dark-light);
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.4),
+        0 0 60px rgba(249, 115, 22, 0.1);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
@@ -614,8 +616,10 @@ button {
 
 .potential-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(249, 115, 22, 0.4);
-    box-shadow: 0 20px 60px rgba(249, 115, 22, 0.2);
+    border-color: rgba(249, 115, 22, 0.5);
+    box-shadow:
+        0 20px 60px rgba(249, 115, 22, 0.25),
+        0 0 80px rgba(249, 115, 22, 0.15);
 }
 
 .potential-card:hover::before {
@@ -660,12 +664,12 @@ button {
 
 .potential-card-content h3 {
     font-size: 1.5rem;
-    color: var(--color-white);
+    color: var(--color-primary);
     transition: color var(--transition-normal);
 }
 
 .potential-card:hover h3 {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .potential-card-content p {
@@ -691,6 +695,61 @@ button {
     border-radius: 2px;
     width: 0%;
     transition: width 0.1s linear;
+}
+
+/* CTA Card (Orange) */
+.potential-card-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+}
+
+.potential-card-cta:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 25px 80px rgba(249, 115, 22, 0.4),
+        0 0 100px rgba(249, 115, 22, 0.3);
+}
+
+.potential-cta-content {
+    padding: 48px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.potential-cta-content h3 {
+    font-size: 3rem;
+    color: var(--color-white);
+    font-weight: 800;
+}
+
+.potential-cta-content p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 280px;
+}
+
+.btn-potential-cta {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-normal);
+    margin-top: 12px;
+}
+
+.btn-potential-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Hide scroll hint on dark version */
@@ -972,12 +1031,32 @@ button {
     height: 250px;
     border-radius: var(--radius-xl);
     overflow: hidden;
+    position: relative;
+}
+
+.step-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fade-out gradient overlay to the right */
+.step-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, var(--color-light) 100%);
+    pointer-events: none;
 }
 
 .step-image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-gray-light) 0%, var(--color-white) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, var(--color-gray-light) 100%);
+    opacity: 0.3;
 }
 
 @media (max-width: 968px) {
