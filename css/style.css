@@ -1481,14 +1481,14 @@ button {
 .honeycomb-scroll-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     margin-top: 48px;
 }
 
 .honeycomb-track {
     display: flex;
     align-items: center;
-    padding: 80px var(--container-padding) 80px calc(50vw - 134px);
+    padding: 120px var(--container-padding) 120px calc(50vw - 134px);
     will-change: transform;
 }
 
@@ -1498,9 +1498,9 @@ button {
     width: 268px;
     height: 240px;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: var(--color-dark-light);
+    background: rgba(249, 115, 22, 0.45);
     position: relative;
-    transition: filter 0.4s ease;
+    transition: filter 0.4s ease, background 0.4s ease;
     /* Negative margin: Waben überlappen an den Kanten */
     margin-left: -34px;
 }
@@ -1518,24 +1518,27 @@ button {
     transform: translateY(60px);
 }
 
-/* Glow-Effekt: drop-shadow funktioniert mit clip-path */
+/* Hover: Orange Glow + hellerer Rand */
 .honeycomb-cell:hover {
+    background: rgba(249, 115, 22, 0.8);
     filter:
-        drop-shadow(0 0 12px rgba(249, 115, 22, 0.6))
-        drop-shadow(0 0 30px rgba(249, 115, 22, 0.3));
+        drop-shadow(0 0 15px rgba(249, 115, 22, 0.7))
+        drop-shadow(0 0 35px rgba(249, 115, 22, 0.4));
     z-index: 10;
 }
 
+/* Inner: leicht eingerückt → orange Rand sichtbar */
 .honeycomb-inner {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 3px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background: var(--color-dark-light);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 24px 40px;
-    position: relative;
     z-index: 1;
 }
 
@@ -1552,13 +1555,19 @@ button {
 }
 
 .honeycomb-cell:hover .honeycomb-icon {
-    background: rgba(249, 115, 22, 0.4);
+    background: rgba(249, 115, 22, 0.6);
 }
 
 .honeycomb-icon i {
     width: 24px;
     height: 24px;
     color: var(--color-primary);
+    transition: color 0.3s ease, filter 0.3s ease;
+}
+
+.honeycomb-cell:hover .honeycomb-icon i {
+    color: #f97316;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
 
 .honeycomb-cell h3 {
