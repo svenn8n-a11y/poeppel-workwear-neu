@@ -839,6 +839,8 @@ button {
 }
 
 .cta-whitepaper-image img {
+    position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1530,6 +1532,15 @@ button {
     z-index: 10;
 }
 
+.honeycomb-cell-active {
+    background: rgba(249, 115, 22, 0.9) !important;
+    filter:
+        drop-shadow(0 0 20px rgba(249, 115, 22, 0.8))
+        drop-shadow(0 0 40px rgba(139, 92, 246, 0.5))
+        drop-shadow(0 0 60px rgba(249, 115, 22, 0.3)) !important;
+    z-index: 10 !important;
+}
+
 /* Inner: leicht eingerückt → orange Rand sichtbar */
 .honeycomb-inner {
     position: absolute;
@@ -1692,9 +1703,9 @@ button {
     top: 0;
     left: 0;
     width: 300vw;
-    height: 200vh;
+    height: 300vh;
     pointer-events: none;
-    z-index: 5;
+    z-index: 1;
     opacity: 0.6;
 }
 
@@ -1728,18 +1739,37 @@ button {
 .onboarding-step-image {
     position: relative;
     height: 320px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     border-radius: var(--radius-xl);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+    border: 2px solid var(--color-primary);
+}
+
+.onboarding-step-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.onboarding-step-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(234, 88, 13, 0.6);
+    z-index: 1;
 }
 
 .onboarding-step-number {
+    position: relative;
+    z-index: 2;
     font-size: 8rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .onboarding-step-label {
@@ -1751,7 +1781,8 @@ button {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
 }
 
 .onboarding-step-text {

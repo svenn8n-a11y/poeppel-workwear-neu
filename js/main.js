@@ -569,7 +569,16 @@ function initUSPsHoneycomb() {
             end: () => `+=${getScrollDistance()}`,
             pin: viewport,
             scrub: 1,
-            invalidateOnRefresh: true
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+                const activeIndex = Math.min(
+                    Math.floor(self.progress * cells.length),
+                    cells.length - 1
+                );
+                cells.forEach((cell, i) => {
+                    cell.classList.toggle('honeycomb-cell-active', i === activeIndex);
+                });
+            }
         }
     });
 

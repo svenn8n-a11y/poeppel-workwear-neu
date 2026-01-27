@@ -312,11 +312,11 @@
                     <!-- Image Card (Left) -->
                     <div class="cta-whitepaper-image-card">
                         <div class="cta-whitepaper-image">
-                            <img src="images/whitepaper/Whitepaper_cover.jpg" alt="Whitepaper Cover" onerror="this.style.display='none'">
                             <div class="cta-whitepaper-image-placeholder">
                                 <i data-lucide="file-text"></i>
                                 <span>Whitepaper</span>
                             </div>
+                            <img src="images/whitepaper/Whitepaper_cover.jpg" alt="Whitepaper Cover" onerror="this.style.display='none'">
                         </div>
                         <div class="cta-whitepaper-badge">
                             <i data-lucide="download"></i>
@@ -747,25 +747,27 @@
 
                 <div class="onboarding-diagonal-wrapper" id="onboardingWrapper">
                     <!-- Animated connecting path -->
-                    <svg class="onboarding-path-svg" viewBox="0 0 300 200" preserveAspectRatio="none">
+                    <svg class="onboarding-path-svg" viewBox="0 0 300 300" preserveAspectRatio="none">
                         <defs>
-                            <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#ea580d" />
+                            <marker id="pathDot" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                                <circle cx="2.5" cy="2.5" r="2.5" fill="#ea580d" />
                             </marker>
                         </defs>
                         <path id="onboardingPath"
-                              d="M 50 50 L 150 50 L 150 150 L 250 150"
+                              d="M 50 55 L 145 55 L 145 155 L 250 155"
                               stroke="#ea580d"
                               stroke-width="0.4"
                               fill="none"
                               stroke-linecap="round"
                               stroke-linejoin="round"
-                              marker-end="url(#arrowhead)" />
+                              marker-end="url(#pathDot)" />
                     </svg>
                     <!-- Step 1 -->
                     <div class="onboarding-step-cell" data-step="1">
                         <div class="onboarding-step-content">
                             <div class="onboarding-step-image">
+                                <img src="images/onboarding/Kick_off.png" alt="Kickoff Meeting" class="onboarding-step-bg">
+                                <div class="onboarding-step-overlay"></div>
                                 <div class="onboarding-step-number">01</div>
                                 <div class="onboarding-step-label">Team Meeting</div>
                             </div>
@@ -786,6 +788,8 @@
                     <div class="onboarding-step-cell" data-step="2">
                         <div class="onboarding-step-content">
                             <div class="onboarding-step-image">
+                                <img src="images/onboarding/Onboarding-Background.png" alt="Konzept & Budget" class="onboarding-step-bg">
+                                <div class="onboarding-step-overlay"></div>
                                 <div class="onboarding-step-number">02</div>
                                 <div class="onboarding-step-label">Planning Session</div>
                             </div>
@@ -806,6 +810,8 @@
                     <div class="onboarding-step-cell" data-step="3">
                         <div class="onboarding-step-content">
                             <div class="onboarding-step-image">
+                                <img src="images/onboarding/Onboarding-Background.png" alt="Anprobe Event" class="onboarding-step-bg">
+                                <div class="onboarding-step-overlay"></div>
                                 <div class="onboarding-step-number">03</div>
                                 <div class="onboarding-step-label">Fitting Event</div>
                             </div>
@@ -826,6 +832,8 @@
                     <div class="onboarding-step-cell" data-step="4">
                         <div class="onboarding-step-content">
                             <div class="onboarding-step-image">
+                                <img src="images/onboarding/Onboarding-Background.png" alt="Go-Live System" class="onboarding-step-bg">
+                                <div class="onboarding-step-overlay"></div>
                                 <div class="onboarding-step-number">04</div>
                                 <div class="onboarding-step-label">Digital Platform</div>
                             </div>
