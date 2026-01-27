@@ -166,6 +166,16 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 | Expert | 50-500 Mitarbeiter | + Kostenstellenverwaltung, 10 Rollen, OCI Punchout, Popup-Stores, Fitness Days, Multi-Standort |
 | Enterprise | 500+ Mitarbeiter | + Volle ERP Integration, API-Anbindung, Premium Support, Vollautomatisierung |
 
+### 27.01.2026 - Bilder, Logos & Animationen
+- [x] Firmenlogo in Navigation (40px) und Footer (32px) eingebettet
+- [x] Whitepaper-Bild (Sektion 5): z-index Fix, Bild über Placeholder sichtbar
+- [x] SVG-Linie in Onboarding (Sektion 12): Animierte Linie mit Pfeil zwischen Steps
+- [x] Sektion 10: Honeycomb Scroll-Highlight mit orange/violettem Glow beim Scrollen
+- [x] Sektion 12: SVG-Linie zwischen Überschrift/Text, hinter Kästen, orange Punkt als Spitze
+- [x] Sektion 12: Hintergrundbilder (Kick_off.png, Onboarding-Background.png) mit 60% orange Overlay
+- [x] Sektion 12: Orangefarbener Rahmen um Step-Cards
+- [x] Alle Bilder auf GitHub hochgeladen (Loesung, Onboarding, Hero, Allgemein)
+
 ### Status: KOMPLETT
 
 ---
