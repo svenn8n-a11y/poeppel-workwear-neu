@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroAnimations();
     initVideoPlayer();
     initStickyCards();
-    initHorizontalScroll();
+    // Defer horizontal scroll init to ensure layout is ready
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            initHorizontalScroll();
+            ScrollTrigger.refresh();
+        });
+    });
     initStepAnimations();
     initTestimonialsScroll();
     initCTAAnimations();
@@ -257,21 +263,21 @@ function initHorizontalScroll() {
 
     if (!track || !viewport) return;
 
-    // Calculate scroll distance based on total card widths
+    // Ensure all cards are visible immediately (no animation hiding)
+    cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.visibility = 'visible';
+    });
+
+    // Calculate scroll distance - always use explicit calculation for reliability
     const getScrollDistance = () => {
-        const trackWidth = track.scrollWidth;
-        const viewportWidth = viewport.offsetWidth || window.innerWidth;
-        // Ensure we have a valid positive scroll distance
-        const distance = trackWidth - viewportWidth;
-        if (distance > 0) {
-            return distance + 100;
-        }
-        // Fallback: calculate from card count if layout not ready
+        const viewportWidth = window.innerWidth;
         const cardCount = cards.length;
         const cardWidth = 420;
         const gap = 32;
         const leftPad = Math.max(viewportWidth / 2 - 210, 80);
-        return (cardCount * cardWidth) + ((cardCount - 1) * gap) + leftPad - viewportWidth + 100;
+        const totalTrackWidth = (cardCount * cardWidth) + ((cardCount - 1) * gap) + leftPad;
+        return totalTrackWidth - viewportWidth + 100;
     };
 
     // GSAP ScrollTrigger handles all pinning and height
@@ -303,20 +309,6 @@ function initHorizontalScroll() {
         opacity: 0,
         y: 50,
         duration: 1
-    });
-
-    // Cards stagger animation
-    gsap.from(cards, {
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 60%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        x: 80,
-        stagger: 0.08,
-        duration: 0.6,
-        ease: 'power2.out'
     });
 }
 

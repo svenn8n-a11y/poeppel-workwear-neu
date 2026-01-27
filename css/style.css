@@ -605,6 +605,8 @@ button {
     background: var(--color-dark-light);
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 1 !important;
+    visibility: visible !important;
     box-shadow:
         0 8px 30px rgba(0,0,0,0.4),
         0 0 60px rgba(249, 115, 22, 0.1);
