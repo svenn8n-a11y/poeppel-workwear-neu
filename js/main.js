@@ -261,15 +261,17 @@ function initHorizontalScroll() {
     const getScrollDistance = () => {
         const trackWidth = track.scrollWidth;
         const viewportWidth = viewport.offsetWidth || window.innerWidth;
-        // Fallback: calculate from card count if scrollWidth is 0
-        if (trackWidth <= viewportWidth) {
-            const cardCount = cards.length;
-            const cardWidth = 420;
-            const gap = 32;
-            const padding = 80;
-            return (cardCount * cardWidth) + ((cardCount - 1) * gap) + padding - viewportWidth + 100;
+        // Ensure we have a valid positive scroll distance
+        const distance = trackWidth - viewportWidth;
+        if (distance > 0) {
+            return distance + 100;
         }
-        return trackWidth - viewportWidth + 100;
+        // Fallback: calculate from card count if layout not ready
+        const cardCount = cards.length;
+        const cardWidth = 420;
+        const gap = 32;
+        const leftPad = Math.max(viewportWidth / 2 - 210, 80);
+        return (cardCount * cardWidth) + ((cardCount - 1) * gap) + leftPad - viewportWidth + 100;
     };
 
     // GSAP ScrollTrigger handles all pinning and height
