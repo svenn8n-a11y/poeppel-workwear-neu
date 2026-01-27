@@ -257,21 +257,22 @@ function initHorizontalScroll() {
 
     if (!track || !viewport) return;
 
-    // Calculate scroll distance
+    // Calculate scroll distance based on total card widths
     const getScrollDistance = () => {
-        return track.scrollWidth - window.innerWidth + 100;
+        const trackWidth = track.scrollWidth;
+        const viewportWidth = viewport.offsetWidth || window.innerWidth;
+        // Fallback: calculate from card count if scrollWidth is 0
+        if (trackWidth <= viewportWidth) {
+            const cardCount = cards.length;
+            const cardWidth = 420;
+            const gap = 32;
+            const padding = 80;
+            return (cardCount * cardWidth) + ((cardCount - 1) * gap) + padding - viewportWidth + 100;
+        }
+        return trackWidth - viewportWidth + 100;
     };
 
-    // Set section height dynamically based on content
-    const updateSectionHeight = () => {
-        const scrollDistance = getScrollDistance();
-        section.style.height = `${scrollDistance + window.innerHeight}px`;
-    };
-
-    updateSectionHeight();
-    window.addEventListener('resize', debounce(updateSectionHeight, 100));
-
-    // Main horizontal scroll animation
+    // GSAP ScrollTrigger handles all pinning and height
     gsap.to(track, {
         x: () => -getScrollDistance(),
         ease: 'none',
@@ -286,8 +287,7 @@ function initHorizontalScroll() {
                 if (progressBar) {
                     progressBar.style.width = `${self.progress * 100}%`;
                 }
-            },
-            onRefresh: updateSectionHeight
+            }
         }
     });
 
@@ -789,5 +789,8 @@ function debounce(func, wait) {
 // REFRESH SCROLL TRIGGER ON LOAD
 // ========================================
 window.addEventListener('load', () => {
+    // Refresh after full load to recalculate all pin spacings
     ScrollTrigger.refresh();
+    // Second refresh after short delay for any late-loading assets
+    setTimeout(() => ScrollTrigger.refresh(), 500);
 });

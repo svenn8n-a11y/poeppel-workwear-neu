@@ -545,13 +545,11 @@ button {
 .potentiale-section {
     position: relative;
     background: var(--color-dark);
-    overflow: hidden;
-    /* Height is controlled by JS ScrollTrigger */
+    /* No overflow:hidden – GSAP pin uses position:fixed which needs unclipped parent */
 }
 
 .potentiale-viewport {
-    position: sticky;
-    top: 0;
+    /* No position:sticky here – GSAP ScrollTrigger pin handles positioning */
     height: 100vh;
     display: flex;
     flex-direction: column;
