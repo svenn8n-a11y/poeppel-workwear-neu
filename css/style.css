@@ -1458,64 +1458,72 @@ button {
 }
 
 /* =============================================
-   SEKTION 10: USPs HONEYCOMB (Wabenstruktur)
+   SEKTION 10: USPs HONEYCOMB (Bienenwaben-Zickzack + Horizontal Scroll)
    ============================================= */
 .usps-section {
-    padding: var(--section-padding) 0;
+    position: relative;
     background: var(--color-dark);
-    overflow: hidden;
+    /* No overflow:hidden – GSAP pin needs unclipped parent */
 }
 
 .section-header.center {
     text-align: center;
 }
 
-.usps-honeycomb {
-    margin-top: 64px;
+.usps-viewport {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 0 var(--container-padding);
-}
-
-.honeycomb-row {
-    display: flex;
     justify-content: center;
-    gap: 12px;
+    overflow: hidden;
 }
 
-/* Zweite Reihe versetzt um halbe Wabenbreite */
-.honeycomb-row-offset {
-    margin-left: 140px;
+.honeycomb-scroll-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 48px;
 }
 
+.honeycomb-track {
+    display: flex;
+    align-items: center;
+    padding: 80px var(--container-padding) 80px calc(50vw - 134px);
+    will-change: transform;
+}
+
+/* Hexagon-Waben: Zickzack-Kette, an Kanten verbunden */
 .honeycomb-cell {
+    flex-shrink: 0;
     width: 268px;
     height: 240px;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background: var(--color-dark-light);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
+    transition: filter 0.4s ease;
+    /* Negative margin: Waben überlappen an den Kanten */
+    margin-left: -34px;
 }
 
-.honeycomb-cell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+.honeycomb-cell:first-child {
+    margin-left: 0;
 }
 
+/* Zickzack: ungerade oben, gerade unten */
+.honeycomb-cell:nth-child(odd) {
+    transform: translateY(-60px);
+}
+
+.honeycomb-cell:nth-child(even) {
+    transform: translateY(60px);
+}
+
+/* Glow-Effekt: drop-shadow funktioniert mit clip-path */
 .honeycomb-cell:hover {
-    transform: scale(1.08);
+    filter:
+        drop-shadow(0 0 12px rgba(249, 115, 22, 0.6))
+        drop-shadow(0 0 30px rgba(249, 115, 22, 0.3));
     z-index: 10;
-}
-
-.honeycomb-cell:hover::before {
-    opacity: 1;
 }
 
 .honeycomb-inner {
@@ -1526,7 +1534,7 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 24px 36px;
+    padding: 24px 40px;
     position: relative;
     z-index: 1;
 }
@@ -1540,6 +1548,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.honeycomb-cell:hover .honeycomb-icon {
+    background: rgba(249, 115, 22, 0.4);
 }
 
 .honeycomb-icon i {
@@ -1561,47 +1574,24 @@ button {
     line-height: 1.5;
 }
 
-/* Responsive: Auf Mobile 2x4 statt 4+4 */
-@media (max-width: 1100px) {
-    .honeycomb-row-offset {
-        margin-left: 0;
-    }
-    .honeycomb-row {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .honeycomb-cell {
-        width: 200px;
-        height: 180px;
-    }
-    .honeycomb-inner {
-        padding: 16px 28px;
-    }
+/* Honeycomb Progress Bar */
+.honeycomb-progress {
+    position: absolute;
+    bottom: 40px;
+    left: var(--container-padding);
+    right: var(--container-padding);
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    z-index: 20;
 }
 
-@media (max-width: 520px) {
-    .honeycomb-cell {
-        width: 160px;
-        height: 150px;
-    }
-    .honeycomb-inner {
-        padding: 12px 20px;
-    }
-    .honeycomb-cell h3 {
-        font-size: 0.875rem;
-    }
-    .honeycomb-cell p {
-        font-size: 0.75rem;
-    }
-    .honeycomb-icon {
-        width: 36px;
-        height: 36px;
-        margin-bottom: 8px;
-    }
-    .honeycomb-icon i {
-        width: 18px;
-        height: 18px;
-    }
+.honeycomb-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
 }
 
 /* =============================================

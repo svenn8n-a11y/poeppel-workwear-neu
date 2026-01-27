@@ -530,15 +530,50 @@ function initModularCards() {
 }
 
 // ========================================
-// USPs HONEYCOMB (Section 10) - Wabenstruktur
+// USPs HONEYCOMB (Section 10) - Bienenwaben mit Horizontal Scroll
 // ========================================
 function initUSPsHoneycomb() {
     const section = document.querySelector('.usps-section');
     if (!section) return;
 
+    const viewport = section.querySelector('.usps-viewport');
+    const track = document.getElementById('honeycombTrack');
     const cells = section.querySelectorAll('.honeycomb-cell');
 
-    // Animate section header
+    if (!track || !viewport) return;
+
+    // Ensure cells are visible
+    cells.forEach(cell => {
+        cell.style.opacity = '1';
+        cell.style.visibility = 'visible';
+    });
+
+    // Calculate scroll distance
+    const getScrollDistance = () => {
+        const viewportWidth = window.innerWidth;
+        const cellCount = cells.length;
+        const cellWidth = 268;
+        const overlap = 34; // negative margin overlap
+        const leftPad = Math.max(viewportWidth / 2 - 134, 80);
+        const totalTrackWidth = (cellCount * cellWidth) - ((cellCount - 1) * overlap) + leftPad;
+        return totalTrackWidth - viewportWidth + 100;
+    };
+
+    // GSAP horizontal scroll with pin (same pattern as Sektion 4)
+    gsap.to(track, {
+        x: () => -getScrollDistance(),
+        ease: 'none',
+        scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${getScrollDistance()}`,
+            pin: viewport,
+            scrub: 1,
+            invalidateOnRefresh: true
+        }
+    });
+
+    // Header animation on enter
     gsap.from('.usps-section .section-header', {
         scrollTrigger: {
             trigger: section,
@@ -548,20 +583,6 @@ function initUSPsHoneycomb() {
         opacity: 0,
         y: 50,
         duration: 1
-    });
-
-    // Stagger fade-in for honeycomb cells
-    gsap.from(cells, {
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 60%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        scale: 0.7,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'back.out(1.4)'
     });
 }
 
