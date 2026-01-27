@@ -578,13 +578,15 @@ function initUSPsCarousel() {
     function goToSlide(index) {
         currentIndex = Math.max(0, Math.min(index, totalCards - 1));
 
-        // Center the current card
+        // Center the current card in the viewport
         const containerWidth = container.offsetWidth;
         const centerOffset = (containerWidth - cardWidth) / 2;
-        const offset = currentIndex * (cardWidth + gap) - centerOffset + cardWidth / 2;
+        // Calculate position of current card's left edge, then subtract centerOffset to center it
+        const cardPosition = currentIndex * (cardWidth + gap);
+        const offset = cardPosition - centerOffset;
 
         gsap.to(carousel, {
-            x: -Math.max(0, offset),
+            x: -offset,
             duration: 0.6,
             ease: 'power2.out'
         });

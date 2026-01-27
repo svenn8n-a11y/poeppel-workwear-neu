@@ -146,6 +146,26 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] Sektion 15: FAQ Accordion
 - [x] Sektion 16: Finale CTA mit Kontakt
 
+### 27.01.2026 - Design-Verfeinerung & Bugfixes
+- [x] Sektion 4: 6 Potentiale-Karten + orange CTA-Karte "Bereit?"
+- [x] Sektion 4: Orange Überschriften, leuchtender Schatten, dynamische Höhe
+- [x] Sektion 6: Bilder mit Transparenz-Overlay vorbereitet
+- [x] Sektion 7: Dark Design, Mobile Fix mit Touch-Scrolling
+- [x] Sektion 9: 3 Pakete (Professional, Expert, Enterprise) mit aktualisierten Inhalten
+- [x] Sektion 9: Transparenz-Bug gefixt (opacity: 1 !important)
+- [x] Sektion 9: Badge geändert zu "modular | flexibel | skalierbar"
+- [x] Sektion 10: USPs-Karussell Zentrierung korrigiert
+- [x] Sektion 13: Gewinn-Karten Transparenz-Bug gefixt, Schatten hinzugefügt
+- [x] Sektion 15: FAQ Accordion Transparenz-Bug gefixt
+- [x] README.md erstellt
+
+### Sektion 9: Modularer Ansatz - Pakete
+| Paket | Zielgruppe | Leistungen |
+|-------|-----------|------------|
+| Professional | 10-50 Mitarbeiter | Onlineshop, Kernsortiment, Probetragen, Freigabeprozesse, Kostenübersicht, Vorkommissionierung |
+| Expert | 50-500 Mitarbeiter | + Kostenstellenverwaltung, 10 Rollen, OCI Punchout, Popup-Stores, Fitness Days, Multi-Standort |
+| Enterprise | 500+ Mitarbeiter | + Volle ERP Integration, API-Anbindung, Premium Support, Vollautomatisierung |
+
 ### Status: KOMPLETT
 
 ---
