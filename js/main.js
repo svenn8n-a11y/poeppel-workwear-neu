@@ -622,6 +622,21 @@ function initOnboardingTreppe() {
       .to(wrapper, { y: '-100vh', duration: 1, ease: 'power2.inOut' })
       .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' });
 
+    // Animated SVG path (draws along with scroll)
+    const path = document.getElementById('onboardingPath');
+    if (path) {
+        const pathLength = path.getTotalLength();
+        gsap.set(path, {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength
+        });
+        tl.to(path, {
+            strokeDashoffset: 0,
+            duration: 3,
+            ease: 'none'
+        }, 0); // start at time 0, synced with full timeline
+    }
+
     // Background Grid Animation
     if (bgGrid) {
         gsap.to(bgGrid, {

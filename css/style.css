@@ -209,10 +209,13 @@ button {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--color-white);
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: auto;
 }
 
 .nav-links {
@@ -1200,8 +1203,8 @@ button {
 }
 
 .footer-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
+    height: 32px;
+    width: auto;
 }
 
 .footer-brand p {
@@ -1682,6 +1685,17 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 100vw);
     grid-template-rows: repeat(3, 100vh);
+}
+
+.onboarding-path-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300vw;
+    height: 200vh;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.6;
 }
 
 .onboarding-step-cell {

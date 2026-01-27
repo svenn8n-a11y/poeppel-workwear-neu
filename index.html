@@ -27,7 +27,7 @@
     ======================================== -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">PÖPPEL</a>
+            <a href="#" class="nav-logo"><img src="images/allgemein/Poeppel_Workwear Logo.png" alt="Pöppel Workwear"></a>
             <ul class="nav-links">
                 <li><a href="#problem">Das Problem</a></li>
                 <li><a href="#loesung">Die Lösung</a></li>
@@ -746,6 +746,22 @@
                 </div>
 
                 <div class="onboarding-diagonal-wrapper" id="onboardingWrapper">
+                    <!-- Animated connecting path -->
+                    <svg class="onboarding-path-svg" viewBox="0 0 300 200" preserveAspectRatio="none">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#ea580d" />
+                            </marker>
+                        </defs>
+                        <path id="onboardingPath"
+                              d="M 50 50 L 150 50 L 150 150 L 250 150"
+                              stroke="#ea580d"
+                              stroke-width="0.4"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              marker-end="url(#arrowhead)" />
+                    </svg>
                     <!-- Step 1 -->
                     <div class="onboarding-step-cell" data-step="1">
                         <div class="onboarding-step-content">
@@ -980,7 +996,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="footer-logo">PÖPPEL</span>
+                    <img src="images/allgemein/Poeppel_Workwear Logo.png" alt="Pöppel Workwear" class="footer-logo">
                     <p>Workwear Management mit System.</p>
                 </div>
                 <div class="footer-links">
