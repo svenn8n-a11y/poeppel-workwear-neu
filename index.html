@@ -652,59 +652,69 @@
                 </header>
             </div>
 
-            <div class="usps-carousel-container">
-                <div class="usps-carousel" id="uspsCarousel">
-                    <div class="usp-card" data-usp="1">
-                        <div class="usp-icon"><i data-lucide="workflow"></i></div>
-                        <h3>Prozessoptimierung</h3>
-                        <p>Dauerhaft kostenreduzierte Prozesse und Reduzierung manueller Tätigkeiten.</p>
+            <div class="usps-honeycomb">
+                <!-- Reihe 1: 4 Waben -->
+                <div class="honeycomb-row">
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="workflow"></i></div>
+                            <h3>Prozessoptimierung</h3>
+                            <p>Dauerhaft kostenreduzierte Prozesse und Reduzierung manueller Tätigkeiten.</p>
+                        </div>
                     </div>
-                    <div class="usp-card" data-usp="2">
-                        <div class="usp-icon"><i data-lucide="wallet"></i></div>
-                        <h3>Kostenstellen-Verwaltung</h3>
-                        <p>Transparente Budgetverwaltung und Genehmigungsprozesse.</p>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="wallet"></i></div>
+                            <h3>Kostenstellen-Verwaltung</h3>
+                            <p>Transparente Budgetverwaltung und Genehmigungsprozesse.</p>
+                        </div>
                     </div>
-                    <div class="usp-card" data-usp="3">
-                        <div class="usp-icon"><i data-lucide="trending-up"></i></div>
-                        <h3>Skalierbarkeit</h3>
-                        <p>Digitales Beschaffungsmanagement ermöglicht problemloses Wachstum.</p>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="trending-up"></i></div>
+                            <h3>Skalierbarkeit</h3>
+                            <p>Digitales Beschaffungsmanagement ermöglicht problemloses Wachstum.</p>
+                        </div>
                     </div>
-                    <div class="usp-card" data-usp="4">
-                        <div class="usp-icon"><i data-lucide="plug"></i></div>
-                        <h3>OCI Punchout</h3>
-                        <p>Nahtlose Integration der Bestellprozesse in Ihre Systemlandschaft.</p>
-                    </div>
-                    <div class="usp-card" data-usp="5">
-                        <div class="usp-icon"><i data-lucide="code"></i></div>
-                        <h3>Individuelle API</h3>
-                        <p>Echte funktionierende Maßanbindung statt beschränkter Generallösungen.</p>
-                    </div>
-                    <div class="usp-card" data-usp="6">
-                        <div class="usp-icon"><i data-lucide="clock"></i></div>
-                        <h3>Kurze Lieferzeiten</h3>
-                        <p>Durch durchdachte Prozesse und eigene Veredelung können wir schnell liefern.</p>
-                    </div>
-                    <div class="usp-card" data-usp="7">
-                        <div class="usp-icon"><i data-lucide="handshake"></i></div>
-                        <h3>Alles aus einer Hand</h3>
-                        <p>Wir stellen den gesamten Wertschöpfungsprozess sicher.</p>
-                    </div>
-                    <div class="usp-card" data-usp="8">
-                        <div class="usp-icon"><i data-lucide="package-check"></i></div>
-                        <h3>Vorkommissionierung</h3>
-                        <p>Wir erleichtern Ihnen die zeitraubende Überprüfung und Zuteilung.</p>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="plug"></i></div>
+                            <h3>OCI Punchout</h3>
+                            <p>Nahtlose Integration der Bestellprozesse in Ihre Systemlandschaft.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="usps-nav">
-                <button class="usps-nav-btn usps-prev" aria-label="Vorheriger">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-                <div class="usps-dots" id="uspsDots"></div>
-                <button class="usps-nav-btn usps-next" aria-label="Nächster">
-                    <i data-lucide="chevron-right"></i>
-                </button>
+                <!-- Reihe 2: 4 Waben (versetzt) -->
+                <div class="honeycomb-row honeycomb-row-offset">
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="code"></i></div>
+                            <h3>Individuelle API</h3>
+                            <p>Echte funktionierende Maßanbindung statt beschränkter Generallösungen.</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="clock"></i></div>
+                            <h3>Kurze Lieferzeiten</h3>
+                            <p>Durch durchdachte Prozesse und eigene Veredelung können wir schnell liefern.</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="handshake"></i></div>
+                            <h3>Alles aus einer Hand</h3>
+                            <p>Wir stellen den gesamten Wertschöpfungsprozess sicher.</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-cell">
+                        <div class="honeycomb-inner">
+                            <div class="honeycomb-icon"><i data-lucide="package-check"></i></div>
+                            <h3>Vorkommissionierung</h3>
+                            <p>Wir erleichtern Ihnen die zeitraubende Überprüfung und Zuteilung.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

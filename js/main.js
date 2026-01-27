@@ -15,27 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize all modules
+    // Non-ScrollTrigger inits (sofort)
     initNavigation();
-    initHeroAnimations();
     initVideoPlayer();
-    initStickyCards();
-    // Defer horizontal scroll init to ensure layout is ready
+    initModularCards();
+    initFAQAccordion();
+
+    // ALL ScrollTrigger inits nach Layout-Ready (deferred)
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            initHorizontalScroll();
+            initHeroAnimations();
+            initStickyCards();
+            initHorizontalScroll();    // Sektion 4 (pin)
+            initStepAnimations();      // Sektion 6
+            initTestimonialsScroll();  // Sektion 7
+            initCTAAnimations();
+            initScrollProgress();
+            initUSPsHoneycomb();       // Sektion 10 (Wabenstruktur)
+            initOnboardingTreppe();    // Sektion 12 (pin)
+            initGewinnCards();
             ScrollTrigger.refresh();
         });
     });
-    initStepAnimations();
-    initTestimonialsScroll();
-    initCTAAnimations();
-    initScrollProgress();
-    initModularCards();
-    initUSPsCarousel();
-    initOnboardingTreppe();
-    initFAQAccordion();
-    initGewinnCards();
 });
 
 // ========================================
@@ -529,77 +530,13 @@ function initModularCards() {
 }
 
 // ========================================
-// USPs CAROUSEL (Section 10) - 3D Rondell with Auto-Scroll
+// USPs HONEYCOMB (Section 10) - Wabenstruktur
 // ========================================
-function initUSPsCarousel() {
+function initUSPsHoneycomb() {
     const section = document.querySelector('.usps-section');
-    const container = document.querySelector('.usps-carousel-container');
-    if (!container || !section) return;
+    if (!section) return;
 
-    const carousel = container.querySelector('.usps-carousel');
-    const cards = carousel.querySelectorAll('.usp-card');
-    const prevBtn = document.querySelector('.usps-prev');
-    const nextBtn = document.querySelector('.usps-next');
-    const dotsContainer = document.getElementById('uspsDots');
-
-    let currentIndex = 0;
-    const totalCards = cards.length;
-    const cardWidth = 320;
-    const gap = 32;
-
-    // Create dots for all 8 cards
-    for (let i = 0; i < totalCards; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'usps-dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.querySelectorAll('.usps-dot');
-
-    function updateCardStyles() {
-        cards.forEach((card, i) => {
-            card.classList.remove('active', 'adjacent');
-
-            if (i === currentIndex) {
-                card.classList.add('active');
-            } else if (i === currentIndex - 1 || i === currentIndex + 1) {
-                card.classList.add('adjacent');
-            }
-        });
-    }
-
-    function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, totalCards - 1));
-
-        // Center the current card in the viewport
-        const containerWidth = container.offsetWidth;
-        const centerOffset = (containerWidth - cardWidth) / 2;
-        // Calculate position of current card's left edge, then subtract centerOffset to center it
-        const cardPosition = currentIndex * (cardWidth + gap);
-        const offset = cardPosition - centerOffset;
-
-        gsap.to(carousel, {
-            x: -offset,
-            duration: 0.6,
-            ease: 'power2.out'
-        });
-
-        // Update card styles
-        updateCardStyles();
-
-        // Update dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
-    }
-
-    // Initialize first card as active
-    updateCardStyles();
-    goToSlide(0);
-
-    prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
-    nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+    const cells = section.querySelectorAll('.honeycomb-cell');
 
     // Animate section header
     gsap.from('.usps-section .section-header', {
@@ -613,19 +550,18 @@ function initUSPsCarousel() {
         duration: 1
     });
 
-    // Auto-scroll carousel on page scroll (rotate through all 8 cards)
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top 60%',
-        end: 'bottom 40%',
-        scrub: 1,
-        onUpdate: (self) => {
-            // Progress from 0 to 1 maps to cards 0 to 7
-            const targetIndex = Math.round(self.progress * (totalCards - 1));
-            if (targetIndex !== currentIndex) {
-                goToSlide(targetIndex);
-            }
-        }
+    // Stagger fade-in for honeycomb cells
+    gsap.from(cells, {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 60%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        scale: 0.7,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'back.out(1.4)'
     });
 }
 
