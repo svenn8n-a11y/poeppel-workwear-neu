@@ -280,7 +280,7 @@ button {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../images/hero/Hero_Hintergrund.png') center center / cover no-repeat;
+    background: url('../images/hero/Hero_Hintergrund.jpg') center center / cover no-repeat;
 }
 
 .hero-background::after {
