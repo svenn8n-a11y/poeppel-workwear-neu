@@ -1757,6 +1757,8 @@ button {
     align-items: center;
     justify-content: center;
     padding: 80px;
+    position: relative;
+    z-index: 3;
 }
 
 .onboarding-step-cell[data-step="1"] { grid-column: 1; grid-row: 1; }
