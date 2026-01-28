@@ -176,6 +176,19 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] Sektion 12: Orangefarbener Rahmen um Step-Cards
 - [x] Alle Bilder auf GitHub hochgeladen (Loesung, Onboarding, Hero, Allgemein)
 
+### 28.01.2026 - Bilder, Overlays & Feinschliff
+- [x] Sektion 4: Bilder in Potentiale-Kacheln eingebettet (Prozesse, Kosten, Transparenz, Skalierbarkeit)
+- [x] Sektion 4: Orange Overlay (60% Transparenz) über Bilder, Zahlen 01-04 voll sichtbar
+- [x] Sektion 4: Hover-Animation (Bild-Scale + Placeholder-Animation) entfernt
+- [x] Sektion 5: Whitepaper-Bild nach oben ausgerichtet (object-position: center top)
+- [x] Sektion 10: Honeycomb Glow-Effekt gefixt (Wrapper-Ansatz: drop-shadow außerhalb clip-path)
+- [x] Sektion 10: JS-Selector und CSS-Hover auf .honeycomb-cell-wrap aktualisiert
+- [x] Sektion 12: Hintergrundbild als Sektions-Background (fixed attachment)
+- [x] Sektion 12: Dunkelblaues Overlay (82% Deckkraft) über Hintergrundbild
+- [x] Sektion 12: SVG-Punkt als separates HTML-Element (rund, immer sichtbar, mit Glow)
+- [x] Sektion 12: SVG-Linie am Ende nach unten verlängert (L 250 255)
+- [x] Sektion 12: Bilder für Steps 2-4 eingebettet (Konzept_Budget, Anproben, Golive)
+
 ### Status: KOMPLETT
 
 ---
