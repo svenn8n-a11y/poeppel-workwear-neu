@@ -538,7 +538,7 @@ function initUSPsHoneycomb() {
 
     const viewport = section.querySelector('.usps-viewport');
     const track = document.getElementById('honeycombTrack');
-    const cells = section.querySelectorAll('.honeycomb-cell');
+    const cells = section.querySelectorAll('.honeycomb-cell-wrap');
 
     if (!track || !viewport) return;
 
@@ -633,6 +633,7 @@ function initOnboardingTreppe() {
 
     // Animated SVG path (draws along with scroll)
     const path = document.getElementById('onboardingPath');
+    const dot = document.getElementById('onboardingPathDot');
     if (path) {
         const pathLength = path.getTotalLength();
         gsap.set(path, {
@@ -644,6 +645,32 @@ function initOnboardingTreppe() {
             duration: 3,
             ease: 'none'
         }, 0); // start at time 0, synced with full timeline
+
+        // Animate the dot along the path
+        if (dot) {
+            // SVG viewBox is 300x300, wrapper is 300vw x 300vh
+            // Convert SVG coordinates to percentage of wrapper
+            const svgViewBoxW = 300;
+            const svgViewBoxH = 300;
+
+            // Set initial position at path start
+            const startPoint = path.getPointAtLength(0);
+            dot.style.left = (startPoint.x / svgViewBoxW * 100) + '%';
+            dot.style.top = (startPoint.y / svgViewBoxH * 100) + '%';
+
+            // Animate dot position along path synced with scroll
+            tl.to({progress: 0}, {
+                progress: 1,
+                duration: 3,
+                ease: 'none',
+                onUpdate: function() {
+                    const p = this.targets()[0].progress;
+                    const point = path.getPointAtLength(p * pathLength);
+                    dot.style.left = (point.x / svgViewBoxW * 100) + '%';
+                    dot.style.top = (point.y / svgViewBoxH * 100) + '%';
+                }
+            }, 0);
+        }
     }
 
     // Background Grid Animation

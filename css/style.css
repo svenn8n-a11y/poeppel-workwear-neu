@@ -649,6 +649,20 @@ button {
     overflow: hidden;
 }
 
+.potential-card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.potential-card:hover .potential-card-img {
+    transform: scale(1.05);
+}
+
 .potential-image-placeholder {
     position: absolute;
     inset: 0;
@@ -844,6 +858,7 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     transition: transform 0.5s ease;
 }
 
@@ -1497,48 +1512,62 @@ button {
     will-change: transform;
 }
 
-/* Hexagon-Waben: Zickzack-Kette, an Kanten verbunden */
-.honeycomb-cell {
+/* Wrapper: Zickzack + Glow (kein clip-path, damit drop-shadow sichtbar) */
+.honeycomb-cell-wrap {
     flex-shrink: 0;
     width: 268px;
     height: 240px;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: rgba(249, 115, 22, 0.45);
     position: relative;
-    transition: filter 0.4s ease, background 0.4s ease;
-    /* Negative margin: Waben überlappen an den Kanten */
     margin-left: -34px;
+    transition: filter 0.4s ease;
 }
 
-.honeycomb-cell:first-child {
+.honeycomb-cell-wrap:first-child {
     margin-left: 0;
 }
 
 /* Zickzack: ungerade oben, gerade unten */
-.honeycomb-cell:nth-child(odd) {
+.honeycomb-cell-wrap:nth-child(odd) {
     transform: translateY(-60px);
 }
 
-.honeycomb-cell:nth-child(even) {
+.honeycomb-cell-wrap:nth-child(even) {
     transform: translateY(60px);
 }
 
-/* Hover: Orange Glow + hellerer Rand */
-.honeycomb-cell:hover {
-    background: rgba(249, 115, 22, 0.8);
+/* Hover Glow auf Wrapper (außerhalb clip-path) */
+.honeycomb-cell-wrap:hover {
     filter:
         drop-shadow(0 0 15px rgba(249, 115, 22, 0.7))
         drop-shadow(0 0 35px rgba(249, 115, 22, 0.4));
     z-index: 10;
 }
 
-.honeycomb-cell-active {
-    background: rgba(249, 115, 22, 0.9) !important;
+.honeycomb-cell-wrap:hover .honeycomb-cell {
+    background: rgba(249, 115, 22, 0.8);
+}
+
+/* Active Glow beim Scrollen */
+.honeycomb-cell-wrap.honeycomb-cell-active {
     filter:
         drop-shadow(0 0 20px rgba(249, 115, 22, 0.8))
         drop-shadow(0 0 40px rgba(139, 92, 246, 0.5))
-        drop-shadow(0 0 60px rgba(249, 115, 22, 0.3)) !important;
-    z-index: 10 !important;
+        drop-shadow(0 0 60px rgba(249, 115, 22, 0.3));
+    z-index: 10;
+}
+
+.honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-cell {
+    background: rgba(249, 115, 22, 0.9);
+}
+
+/* Hexagon-Waben: clip-path nur auf der inneren Zelle */
+.honeycomb-cell {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background: rgba(249, 115, 22, 0.45);
+    position: relative;
+    transition: background 0.4s ease;
 }
 
 /* Inner: leicht eingerückt → orange Rand sichtbar */
@@ -1568,7 +1597,7 @@ button {
     transition: background 0.3s ease;
 }
 
-.honeycomb-cell:hover .honeycomb-icon {
+.honeycomb-cell-wrap:hover .honeycomb-icon {
     background: rgba(249, 115, 22, 0.6);
 }
 
@@ -1579,7 +1608,7 @@ button {
     transition: color 0.3s ease, filter 0.3s ease;
 }
 
-.honeycomb-cell:hover .honeycomb-icon i {
+.honeycomb-cell-wrap:hover .honeycomb-icon i {
     color: #f97316;
     filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
@@ -1650,11 +1679,22 @@ button {
     background: var(--color-dark) url('../images/onboarding/Onboarding-Background.png') center center / cover no-repeat fixed;
 }
 
+/* Dark blue overlay with 33% transparency over background image */
+.onboarding-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.67);
+    z-index: 0;
+    pointer-events: none;
+}
+
 .onboarding-viewport {
     position: sticky;
     top: 0;
     height: 100vh;
     overflow: hidden;
+    z-index: 1;
 }
 
 .onboarding-bg-grid {
@@ -1707,6 +1747,18 @@ button {
     pointer-events: none;
     z-index: 1;
     opacity: 0.6;
+}
+
+.onboarding-path-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ea580d;
+    box-shadow: 0 0 12px rgba(234, 88, 13, 0.8), 0 0 24px rgba(234, 88, 13, 0.4);
+    z-index: 2;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
 }
 
 .onboarding-step-cell {
