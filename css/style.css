@@ -1661,6 +1661,16 @@ button {
     filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
 
+/* Active state: Icon auch aufleuchten lassen */
+.honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon {
+    background: rgba(249, 115, 22, 0.6);
+}
+
+.honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon i {
+    color: #f97316;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
+}
+
 .honeycomb-cell h3 {
     font-size: 1.25rem;
     /* war 1rem (16px), jetzt 20px */
