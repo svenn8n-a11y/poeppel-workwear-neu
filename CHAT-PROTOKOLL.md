@@ -189,7 +189,35 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] Sektion 12: SVG-Linie am Ende nach unten verlängert (L 250 255)
 - [x] Sektion 12: Bilder für Steps 2-4 eingebettet (Konzept_Budget, Anproben, Golive)
 
-### Status: KOMPLETT
+### 28.01.2026 - Bildoptimierung & Dokumentation
+- [x] CSV-Datei mit allen Bildcontainer-Abmessungen erstellt: `images/Bildcontainer-Abmessungen.csv`
+- [x] Retina (2x) Auflösungen für alle Sektionen dokumentiert
+- [x] Mobile-Dimensionen und Breakpoints erfasst
+- [x] Empfohlene Formate (JPG 80-85%, PNG transparent) festgelegt
+- [x] Strategie: Desktop-Bilder zuerst in Retina-Auflösung, Mobile später via `<picture>` srcset
+- [ ] Optimierte JPG-Bilder werden vorbereitet (User)
+
+### Bildcontainer-Übersicht (aus CSV)
+
+| Sektion | Element | Desktop | Retina 2x | Format |
+|---------|---------|---------|-----------|--------|
+| Nav/Footer | Logo | auto × 40/32px | auto × 80/64px | PNG |
+| 1 - Hero | Hintergrund | 1920×1080 | 2560×1440 | JPG 80% |
+| 2 - Video | Poster | 900×506 | 1800×1012 | JPG 80% |
+| 4 - Potentiale | Karten-Bilder | 420×180 | 840×360 | JPG 85% |
+| 5 - Whitepaper | Cover | ~480×600 | 960×1200 | JPG 85% |
+| 6 - Lösungsweg | Step Visuals | ~560×250 | 1120×500 | JPG 80% |
+| 7 - Testimonials | Profilbilder | 80×80 | 160×160 | JPG/WebP |
+| 12 - Onboarding | Hintergrund | 1920×1080 | 2560×1440 | JPG 80% |
+| 12 - Onboarding | Step-Bilder | ~480×320 | 960×640 | JPG 85% |
+
+### Status: KOMPLETT (Bilder in Vorbereitung)
+
+### 29.01.2026 - Whitepaper Download Integration
+- [x] Whitepaper-PDF im downloads-Ordner identifiziert: `Whitepaper - Workwearmanagement 4.0 .pdf`
+- [x] Download-Link in Sektion 5 korrigiert (href aktualisiert)
+- [x] PDF-Datei auf GitHub hochgeladen
+- [x] Chat-Protokoll aktualisiert
 
 ---
 
