@@ -2127,18 +2127,22 @@ button {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: rgba(249, 115, 22, 0.1);
+    background: var(--color-white);
+    /* Weißer Hintergrund */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Leichter Schatten */
 }
 
 .gewinn-card-icon i {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    /* Größer: 32px → 40px */
+    height: 40px;
     color: #fa7315;
-    /* Leuchtendes Orange wie USP-Icons */
+    /* Orangefarbenes Icon */
 }
 
 .gewinn-card h3 {
