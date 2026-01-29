@@ -552,9 +552,9 @@ function initUSPsHoneycomb() {
     const getScrollDistance = () => {
         const viewportWidth = window.innerWidth;
         const cellCount = cells.length;
-        const cellWidth = 268;
-        const overlap = 34; // negative margin overlap
-        const leftPad = Math.max(viewportWidth / 2 - 134, 80);
+        const cellWidth = 335;  // war 268, +25%
+        const overlap = 42;  // war 34, +25% (negative margin overlap)
+        const leftPad = Math.max(viewportWidth / 2 - 167, 100);  // angepasst für neue Breite
         const totalTrackWidth = (cellCount * cellWidth) - ((cellCount - 1) * overlap) + leftPad;
         return totalTrackWidth - viewportWidth + 100;
     };
