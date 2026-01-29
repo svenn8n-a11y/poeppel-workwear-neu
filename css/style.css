@@ -1746,12 +1746,13 @@ button {
     background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background1.jpg') center center / cover no-repeat fixed;
 }
 
-/* Dark blue overlay with 33% transparency over background image */
+/* Dark blue overlay with 77% opacity over background image */
 .onboarding-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.82);
+    background: rgba(15, 23, 42, 0.77);
+    /* 77% Deckkraft statt 82% */
     z-index: 0;
     pointer-events: none;
 }
