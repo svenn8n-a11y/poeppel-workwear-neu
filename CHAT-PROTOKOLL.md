@@ -238,6 +238,19 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] Whitepaper-Cover hinzugefügt: `images/05_whitepaper/Whitepaper_cover_optimized.jpg`
 - [x] Auf GitHub gepusht (147.62 KiB)
 
+### 29.01.2026 - Sektion 12 (Onboarding): Mobile Optimierung
+- [x] **Bildcontainer**: Quadratisch (320x320px) statt rechteckig für Mobile
+- [x] **Abstand zur Überschrift**: Padding-top hinzugefügt (40px)
+- [x] **Badge-Nummerierung**: Auf Mobile ausgeblendet (Nummerierung bleibt im Bild)
+- [x] **Layout**: Vertikales Flexbox-Layout statt diagonales Grid
+- [x] **SVG-Linie**: Separate mobile Version mit Treppenform
+  - Läuft zwischen Bildrand und Überschrift
+  - Korrekte Abstände zu allen 4 Steps
+  - Vermeidet Überlappung mit Text
+- [x] **Vollständige Sichtbarkeit**: Alle Elemente im Viewport sichtbar
+- [x] **CSV aktualisiert**: Mobile Bildgrößen 320x320px dokumentiert
+- [x] **Responsive Controls**: Desktop/Mobile SVG-Pfade per Media Query gesteuert
+
 ---
 
 ## Referenz-Links

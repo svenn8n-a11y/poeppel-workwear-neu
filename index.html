@@ -813,11 +813,21 @@
                 </div>
 
                 <div class="onboarding-diagonal-wrapper" id="onboardingWrapper">
-                    <!-- Animated connecting path -->
-                    <svg class="onboarding-path-svg" viewBox="0 0 300 300" preserveAspectRatio="none">
+                    <!-- Animated connecting path - Desktop -->
+                    <svg class="onboarding-path-svg onboarding-path-desktop" viewBox="0 0 300 300"
+                        preserveAspectRatio="none">
                         <path id="onboardingPath" d="M 50 55 L 145 55 L 145 155 L 250 155 L 250 255" stroke="#ea580d"
                             stroke-width="0.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
+
+                    <!-- Animated connecting path - Mobile (Treppenform vertikal) -->
+                    <svg class="onboarding-path-svg onboarding-path-mobile" viewBox="0 0 100 1600"
+                        preserveAspectRatio="none">
+                        <path id="onboardingPathMobile"
+                            d="M 50 340 L 50 380 L 50 720 L 50 760 L 50 1100 L 50 1140 L 50 1480" stroke="#ea580d"
+                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
                     <!-- Separate dot element (not distorted by preserveAspectRatio="none") -->
                     <div class="onboarding-path-dot" id="onboardingPathDot"></div>
                     <!-- Step 1 -->

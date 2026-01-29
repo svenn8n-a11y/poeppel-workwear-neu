@@ -7,13 +7,19 @@
    ============================================= */
 :root {
     /* Colors */
-    --color-primary: #f97316;       /* Orange */
+    --color-primary: #f97316;
+    /* Orange */
     --color-primary-dark: #ea580c;
-    --color-dark: #0f172a;          /* Slate 950 */
-    --color-dark-light: #1e293b;    /* Slate 800 */
-    --color-light: #f8fafc;         /* Slate 50 */
-    --color-gray: #64748b;          /* Slate 500 */
-    --color-gray-light: #e2e8f0;    /* Slate 200 */
+    --color-dark: #0f172a;
+    /* Slate 950 */
+    --color-dark-light: #1e293b;
+    /* Slate 800 */
+    --color-light: #f8fafc;
+    /* Slate 50 */
+    --color-gray: #64748b;
+    /* Slate 500 */
+    --color-gray-light: #e2e8f0;
+    /* Slate 200 */
     --color-white: #ffffff;
 
     /* Typography */
@@ -49,7 +55,9 @@
 /* =============================================
    RESET & BASE
    ============================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -68,7 +76,12 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     line-height: 1.2;
 }
@@ -261,6 +274,7 @@ button {
     .nav-links {
         display: none;
     }
+
     .nav-mobile-toggle {
         display: block;
     }
@@ -283,19 +297,17 @@ button {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../images/hero/Hero_Hintergrund.jpg') center center / cover no-repeat;
+    background: url('../images/01_hero/Hero_Hintergrund.jpg') center center / cover no-repeat;
 }
 
 .hero-background::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(10, 20, 45, 0.85) 0%,
-        rgba(10, 20, 45, 0.75) 50%,
-        rgba(10, 20, 45, 0.9) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(10, 20, 45, 0.85) 0%,
+            rgba(10, 20, 45, 0.75) 50%,
+            rgba(10, 20, 45, 0.9) 100%);
 }
 
 .hero-gradient {
@@ -337,8 +349,15 @@ button {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .hero-headline {
@@ -384,8 +403,15 @@ button {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
 }
 
 /* =============================================
@@ -472,9 +498,20 @@ button {
     max-width: 100%;
 }
 
-.sticky-card-1 { top: 120px; z-index: 10; }
-.sticky-card-2 { top: 160px; z-index: 20; }
-.sticky-card-3 { top: 200px; z-index: 30; }
+.sticky-card-1 {
+    top: 120px;
+    z-index: 10;
+}
+
+.sticky-card-2 {
+    top: 160px;
+    z-index: 20;
+}
+
+.sticky-card-3 {
+    top: 200px;
+    z-index: 30;
+}
 
 .sticky-card-inner {
     border-radius: var(--radius-2xl);
@@ -598,7 +635,8 @@ button {
 .horizontal-track {
     display: flex;
     gap: 32px;
-    padding: 0 var(--container-padding) 0 calc(50vw - 210px); /* Start first card centered */
+    padding: 0 var(--container-padding) 0 calc(50vw - 210px);
+    /* Start first card centered */
     will-change: transform;
 }
 
@@ -611,7 +649,7 @@ button {
     opacity: 1 !important;
     visibility: visible !important;
     box-shadow:
-        0 8px 30px rgba(0,0,0,0.4),
+        0 8px 30px rgba(0, 0, 0, 0.4),
         0 0 60px rgba(249, 115, 22, 0.1);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -807,8 +845,8 @@ button {
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow:
-        0 8px 30px rgba(0,0,0,0.12),
-        0 4px 10px rgba(0,0,0,0.08);
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -830,7 +868,7 @@ button {
     transform: translateY(-8px);
     box-shadow:
         0 20px 60px rgba(249, 115, 22, 0.2),
-        0 8px 25px rgba(0,0,0,0.1);
+        0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .cta-whitepaper-image-card:hover::before {
@@ -917,7 +955,7 @@ button {
     line-height: 1.2;
 }
 
-.cta-whitepaper-content > p {
+.cta-whitepaper-content>p {
     font-size: 1.125rem;
     color: var(--color-gray);
     line-height: 1.7;
@@ -1088,12 +1126,15 @@ button {
     .step {
         grid-template-columns: 60px 1fr;
     }
+
     .step-visual {
         display: none;
     }
+
     .steps-line {
         left: 30px;
     }
+
     .step-marker {
         width: 60px;
         height: 60px;
@@ -1123,8 +1164,13 @@ button {
 }
 
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .testimonial-card {
@@ -1181,10 +1227,12 @@ button {
         -webkit-overflow-scrolling: touch;
         padding-bottom: 20px;
     }
+
     .testimonials-track {
         animation: none;
         padding: 0 24px;
     }
+
     .testimonial-card {
         width: 320px;
         flex-direction: column;
@@ -1529,8 +1577,7 @@ button {
 /* Hover Glow auf Wrapper (außerhalb clip-path) */
 .honeycomb-cell-wrap:hover {
     filter:
-        drop-shadow(0 0 15px rgba(249, 115, 22, 0.7))
-        drop-shadow(0 0 35px rgba(249, 115, 22, 0.4));
+        drop-shadow(0 0 15px rgba(249, 115, 22, 0.7)) drop-shadow(0 0 35px rgba(249, 115, 22, 0.4));
     z-index: 10;
 }
 
@@ -1541,9 +1588,7 @@ button {
 /* Active Glow beim Scrollen */
 .honeycomb-cell-wrap.honeycomb-cell-active {
     filter:
-        drop-shadow(0 0 20px rgba(249, 115, 22, 0.8))
-        drop-shadow(0 0 40px rgba(139, 92, 246, 0.5))
-        drop-shadow(0 0 60px rgba(249, 115, 22, 0.3));
+        drop-shadow(0 0 20px rgba(249, 115, 22, 0.8)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 60px rgba(249, 115, 22, 0.3));
     z-index: 10;
 }
 
@@ -1667,7 +1712,7 @@ button {
 .onboarding-section {
     position: relative;
     height: 400vh;
-    background: var(--color-dark) url('../images/onboarding/Onboarding-Background.png') center center / cover no-repeat fixed;
+    background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background.png') center center / cover no-repeat fixed;
 }
 
 /* Dark blue overlay with 33% transparency over background image */
@@ -1752,6 +1797,15 @@ button {
     transform: translate(-50%, -50%);
 }
 
+/* Desktop/Mobile SVG Path Control */
+.onboarding-path-mobile {
+    display: none;
+}
+
+.onboarding-path-desktop {
+    display: block;
+}
+
 .onboarding-step-cell {
     display: flex;
     align-items: center;
@@ -1761,10 +1815,25 @@ button {
     z-index: 3;
 }
 
-.onboarding-step-cell[data-step="1"] { grid-column: 1; grid-row: 1; }
-.onboarding-step-cell[data-step="2"] { grid-column: 2; grid-row: 1; }
-.onboarding-step-cell[data-step="3"] { grid-column: 2; grid-row: 2; }
-.onboarding-step-cell[data-step="4"] { grid-column: 3; grid-row: 2; }
+.onboarding-step-cell[data-step="1"] {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.onboarding-step-cell[data-step="2"] {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.onboarding-step-cell[data-step="3"] {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.onboarding-step-cell[data-step="4"] {
+    grid-column: 3;
+    grid-row: 2;
+}
 
 .onboarding-step-content {
     max-width: 800px;
@@ -1898,6 +1967,130 @@ button {
     height: 100%;
     background: var(--color-primary);
     width: 0%;
+}
+
+/* Mobile Onboarding Optimizations */
+@media (max-width: 768px) {
+    .onboarding-section {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .onboarding-viewport {
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .onboarding-header {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 40px 20px 20px;
+        text-align: center;
+    }
+
+    .onboarding-header h2 {
+        font-size: 1.75rem;
+        margin-bottom: 8px;
+    }
+
+    .onboarding-hint {
+        font-size: 0.6875rem;
+    }
+
+    /* Diagonal wrapper wird zu vertikalem Container */
+    .onboarding-diagonal-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        padding-top: 40px;
+    }
+
+    /* Step Cells: Vertikales Layout */
+    .onboarding-step-cell {
+        grid-column: unset !important;
+        grid-row: unset !important;
+        padding: 30px 20px;
+        width: 100%;
+        display: block;
+    }
+
+    /* Step Content: Single Column */
+    .onboarding-step-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 100%;
+    }
+
+    /* Bildcontainer: Quadratisch für Mobile */
+    .onboarding-step-image {
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+        margin: 0 auto;
+    }
+
+    /* Badge-Nummerierung ausblenden (Nummerierung im Bild bleibt) */
+    .onboarding-step-badge {
+        display: none;
+    }
+
+    /* Text-Anpassungen für bessere Lesbarkeit */
+    .onboarding-step-text h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .onboarding-step-text p {
+        font-size: 0.9375rem;
+        text-align: center;
+    }
+
+    .onboarding-step-text ul {
+        text-align: left;
+    }
+
+    /* SVG-Linie: Treppenform für Mobile anpassen */
+    .onboarding-path-svg {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+
+    /* Neue Koordinaten für mobile Treppenform */
+    .onboarding-path-svg path {
+        stroke-width: 2;
+    }
+
+    /* Desktop SVG ausblenden, Mobile SVG anzeigen */
+    .onboarding-path-desktop {
+        display: none !important;
+    }
+
+    .onboarding-path-mobile {
+        display: block !important;
+    }
+
+    /* Dot anpassen */
+    .onboarding-path-dot {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Progress Bar */
+    .onboarding-progress {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+    }
 }
 
 /* =============================================
