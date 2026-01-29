@@ -297,7 +297,7 @@ button {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../images/00_allgemein/Coverbild.png') center center / cover no-repeat;
+    background: url('../images/00_allgemein/Coverbild.jpg') center center / cover no-repeat;
 }
 
 .hero-background::after {
@@ -1667,14 +1667,14 @@ button {
 
 /* Active state: Icon auch aufleuchten lassen */
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon {
-    background: rgba(234, 88, 12, 0.6);
-    /* Sattes Button-Orange */
+    background: rgba(250, 115, 21, 0.6);
+    /* #fa7315 mit Transparenz */
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon i {
-    color: #ea580c;
-    /* Sattes Button-Orange */
-    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
+    color: #fa7315;
+    /* Leuchtendes Orange */
+    filter: drop-shadow(0 0 6px rgba(250, 115, 21, 0.8));
 }
 
 .honeycomb-cell h3 {
