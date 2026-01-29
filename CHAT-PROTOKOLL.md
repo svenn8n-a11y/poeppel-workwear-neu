@@ -252,6 +252,16 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] **GSAP-Timeline**: Diagonal-Scroll bleibt erhalten (x → y → x)
 - [x] **CSV**: Mobile Bildgrößen 320x320px dokumentiert
 
+### 29.01.2026 - Sektion 12: Neue optimierte Bilder integriert
+- [x] **12 neue Bilder** in 3 Größen hinzugefügt:
+  - 300x300px (Mobile/Standard) - 4 Bilder
+  - 480x320px (Desktop 1x) - 4 Bilder
+  - 960x640px (Retina 2x) - 4 Bilder
+- [x] **Responsive Picture-Elemente** für alle 4 Steps implementiert
+- [x] **Bilder**: Kickoff, Konzept, Anprobe, Go-Live
+- [x] **Media Queries**: Mobile (< 768px) und Desktop (≥ 768px)
+- [x] **Auf GitHub gepusht**: 1.65 MiB (13 Dateien)
+
 ---
 
 ## Referenz-Links
