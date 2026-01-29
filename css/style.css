@@ -1593,15 +1593,16 @@ button {
     background: rgba(249, 115, 22, 0.8);
 }
 
-/* Active Glow beim Scrollen */
+/* Active Glow beim Scrollen - Sattes Orange ohne Grauschleier */
 .honeycomb-cell-wrap.honeycomb-cell-active {
     filter:
-        drop-shadow(0 0 20px rgba(249, 115, 22, 0.8)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 60px rgba(249, 115, 22, 0.3));
+        drop-shadow(0 0 20px rgba(234, 88, 12, 0.9)) drop-shadow(0 0 40px rgba(234, 88, 12, 0.6)) drop-shadow(0 0 60px rgba(234, 88, 12, 0.4));
     z-index: 10;
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-cell {
-    background: rgba(249, 115, 22, 0.9);
+    background: rgba(234, 88, 12, 0.95);
+    /* Sattes Button-Orange */
 }
 
 /* Hexagon-Waben: clip-path nur auf der inneren Zelle */
@@ -2135,7 +2136,8 @@ button {
 .gewinn-card-icon i {
     width: 32px;
     height: 32px;
-    color: var(--color-primary);
+    color: #ea580c;
+    /* Sattes Button-Orange */
 }
 
 .gewinn-card h3 {
