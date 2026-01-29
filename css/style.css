@@ -297,7 +297,7 @@ button {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../images/01_hero/Hero_Hintergrund.jpg') center center / cover no-repeat;
+    background: url('../images/00_allgemein/Coverbild.png') center center / cover no-repeat;
 }
 
 .hero-background::after {
