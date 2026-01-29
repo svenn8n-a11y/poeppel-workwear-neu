@@ -219,6 +219,16 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] PDF-Datei auf GitHub hochgeladen
 - [x] Chat-Protokoll aktualisiert
 
+### 29.01.2026 - Sektion 4: Optimierte Bilder integriert
+- [x] Neue optimierte Bilder in `images/04_potentiale` analysiert
+- [x] Responsive `<picture>`-Elemente mit srcset implementiert
+- [x] Alle 4 Potentiale-Karten aktualisiert:
+  - Prozesse optimieren (420x180px / 840x360px Retina)
+  - Kosten reduzieren (420x180px / 840x360px Retina)
+  - Transparenz schaffen (420x180px / 840x360px Retina)
+  - Skalierbarkeit ermöglichen (420x180px / 840x360px Retina)
+- [x] Bildgrößen deutlich reduziert (von ~50KB auf ~15-18KB pro Bild)
+
 ---
 
 ## Referenz-Links
