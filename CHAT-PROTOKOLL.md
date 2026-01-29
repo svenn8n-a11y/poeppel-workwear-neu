@@ -281,6 +281,17 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
   - Overlap: -34px → -42px
 - [x] **JavaScript**: Scroll-Berechnung aktualisiert (cellWidth, overlap, leftPad)
 
+### 29.01.2026 - Sektion 12: Neues Hintergrundbild
+- [x] **Hintergrundbild**: `Onboarding-Background1.jpg` eingebaut
+- [x] **Ersetzt**: `Onboarding-Background.png`
+
+### 29.01.2026 - Sektion 6: Neue Bilder integriert
+- [x] **3 neue Bilder** für Lösungsweg-Steps:
+  - Step 1 (Analyse): `Analyse1.png`
+  - Step 2 (Standardisierung): `Standardisierung1.png`
+  - Step 3 (Digitalisierung): `Digitalisierung1.png`
+- [x] **Platzhalter entfernt**: `.step-image-placeholder` durch `<img>` ersetzt
+
 ---
 
 ## Referenz-Links
