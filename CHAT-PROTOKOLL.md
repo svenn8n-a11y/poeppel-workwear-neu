@@ -232,6 +232,12 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
   - **Retina** (≥ 768px, 2x): 840x360px (~34-51KB)
 - [x] Optimale Performance durch automatische Bildauswahl je nach Gerät
 
+### 29.01.2026 - Logo und Whitepaper-Bild auf GitHub hochgeladen
+- [x] Fehlende Bilder identifiziert (waren nicht auf GitHub)
+- [x] Logo hinzugefügt: `images/00_allgemein/Poeppel_Workwear Logo.png`
+- [x] Whitepaper-Cover hinzugefügt: `images/05_whitepaper/Whitepaper_cover_optimized.jpg`
+- [x] Auf GitHub gepusht (147.62 KiB)
+
 ---
 
 ## Referenz-Links
