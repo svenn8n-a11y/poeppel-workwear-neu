@@ -1666,12 +1666,14 @@ button {
 
 /* Active state: Icon auch aufleuchten lassen */
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon {
-    background: rgba(249, 115, 22, 0.6);
+    background: rgba(234, 88, 12, 0.6);
+    /* Sattes Button-Orange */
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon i {
-    color: #f97316;
-    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
+    color: #ea580c;
+    /* Sattes Button-Orange */
+    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
 }
 
 .honeycomb-cell h3 {
