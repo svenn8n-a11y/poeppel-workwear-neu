@@ -262,6 +262,25 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] **Media Queries**: Mobile (< 768px) und Desktop (≥ 768px)
 - [x] **Auf GitHub gepusht**: 1.65 MiB (13 Dateien)
 
+### 29.01.2026 - Overlays und Nummern entfernt (in Bildern integriert)
+- [x] **Sektion 12 (Onboarding)**: Overlay und Nummern-Elemente entfernt
+  - `.onboarding-step-overlay` entfernt
+  - `.onboarding-step-number` entfernt
+- [x] **Sektion 4 (Potentiale)**: Nummern-Overlays entfernt
+  - `.potential-number` Spans entfernt (01-04)
+- [x] **Grund**: Overlays und Nummern jetzt direkt in Bildern integriert
+
+### 29.01.2026 - Sektion 10: Waben vergrößert
+- [x] **Waben-Größe**: 268x240px → 335x300px (+25%)
+- [x] **Proportionale Anpassungen**:
+  - Icons: 48px → 60px
+  - Überschrift: 1rem (16px) → 1.25rem (20px)
+  - Text: 0.8125rem (13px) → 1rem (16px)
+  - Padding: 24px/40px → 30px/50px
+  - Zickzack-Versatz: ±60px → ±75px
+  - Overlap: -34px → -42px
+- [x] **JavaScript**: Scroll-Berechnung aktualisiert (cellWidth, overlap, leftPad)
+
 ---
 
 ## Referenz-Links
