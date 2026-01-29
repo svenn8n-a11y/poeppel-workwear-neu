@@ -1554,10 +1554,13 @@ button {
 /* Wrapper: Zickzack + Glow (kein clip-path, damit drop-shadow sichtbar) */
 .honeycomb-cell-wrap {
     flex-shrink: 0;
-    width: 268px;
-    height: 240px;
+    width: 335px;
+    /* war 268px, +25% */
+    height: 300px;
+    /* war 240px, +25% */
     position: relative;
-    margin-left: -34px;
+    margin-left: -42px;
+    /* war -34px, +25% */
     transition: filter 0.4s ease;
 }
 
@@ -1567,11 +1570,13 @@ button {
 
 /* Zickzack: ungerade oben, gerade unten */
 .honeycomb-cell-wrap:nth-child(odd) {
-    transform: translateY(-60px);
+    transform: translateY(-75px);
+    /* war -60px, +25% */
 }
 
 .honeycomb-cell-wrap:nth-child(even) {
-    transform: translateY(60px);
+    transform: translateY(75px);
+    /* war 60px, +25% */
 }
 
 /* Hover Glow auf Wrapper (außerhalb clip-path) */
@@ -1609,7 +1614,8 @@ button {
 /* Inner: leicht eingerückt → orange Rand sichtbar */
 .honeycomb-inner {
     position: absolute;
-    inset: 3px;
+    inset: 4px;
+    /* war 3px, +33% */
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background: var(--color-dark-light);
     display: flex;
@@ -1617,14 +1623,18 @@ button {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 24px 40px;
+    padding: 30px 50px;
+    /* war 24px 40px, +25% */
     z-index: 1;
 }
 
 .honeycomb-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 12px;
+    width: 60px;
+    /* war 48px, +25% */
+    height: 60px;
+    /* war 48px, +25% */
+    margin-bottom: 15px;
+    /* war 12px, +25% */
     border-radius: 50%;
     background: rgba(249, 115, 22, 0.2);
     display: flex;
@@ -1638,8 +1648,10 @@ button {
 }
 
 .honeycomb-icon i {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    /* war 24px, +25% */
+    height: 30px;
+    /* war 24px, +25% */
     color: var(--color-primary);
     transition: color 0.3s ease, filter 0.3s ease;
 }
@@ -1650,14 +1662,17 @@ button {
 }
 
 .honeycomb-cell h3 {
-    font-size: 1rem;
+    font-size: 1.25rem;
+    /* war 1rem (16px), jetzt 20px */
     color: var(--color-white);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    /* war 6px, +33% */
     font-weight: 700;
 }
 
 .honeycomb-cell p {
-    font-size: 0.8125rem;
+    font-size: 1rem;
+    /* war 0.8125rem (13px), jetzt 16px */
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.5;
 }
