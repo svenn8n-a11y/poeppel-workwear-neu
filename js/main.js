@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Non-ScrollTrigger inits (sofort)
     initNavigation();
+    initScrollToTop();
     initVideoPlayer();
     initModularCards();
     initFAQAccordion();
@@ -56,9 +57,18 @@ function initNavigation() {
 
     // Mobile menu toggle
     if (mobileToggle && navLinks) {
-        mobileToggle.addEventListener('click', () => {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('nav-links-open');
             mobileToggle.classList.toggle('nav-toggle-active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navLinks.classList.contains('nav-links-open')) {
+                navLinks.classList.remove('nav-links-open');
+                mobileToggle.classList.remove('nav-toggle-active');
+            }
         });
     }
 
@@ -66,12 +76,15 @@ function initNavigation() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== '#') {
+            if (href !== '#' && href.length > 1) {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
                     // Close mobile menu if open
-                    if (navLinks) navLinks.classList.remove('nav-links-open');
+                    if (navLinks) {
+                        navLinks.classList.remove('nav-links-open');
+                        if (mobileToggle) mobileToggle.classList.remove('nav-toggle-active');
+                    }
 
                     gsap.to(window, {
                         duration: 1,
@@ -80,6 +93,36 @@ function initNavigation() {
                     });
                 }
             }
+        });
+    });
+}
+
+// ========================================
+// SCROLL TO TOP BUTTON
+// ========================================
+function initScrollToTop() {
+    const button = document.getElementById('scrollToTop');
+    if (!button) return;
+
+    // Show/hide button based on scroll position
+    ScrollTrigger.create({
+        start: 'top -200',
+        end: 99999,
+        onUpdate: (self) => {
+            if (self.direction === 1 && window.scrollY > 200) {
+                button.classList.add('visible');
+            } else if (window.scrollY <= 200) {
+                button.classList.remove('visible');
+            }
+        }
+    });
+
+    // Smooth scroll to top on click
+    button.addEventListener('click', () => {
+        gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: 0 },
+            ease: 'power2.inOut'
         });
     });
 }
@@ -615,7 +658,7 @@ function initOnboardingTreppe() {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: 'top top',
+            start: 'top+=80 top',  // 80px Offset für Navbar - verhindert abgeschnittene Überschrift
             end: '+=300%',
             scrub: 1,
             pin: viewport,

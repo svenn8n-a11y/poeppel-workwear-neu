@@ -1656,25 +1656,26 @@ button {
     /* war 24px, +25% */
     height: 30px;
     /* war 24px, +25% */
-    color: var(--color-primary);
+    color: #ea580c;
+    /* Einheitliches Orange wie CTA-Buttons */
     transition: color 0.3s ease, filter 0.3s ease;
 }
 
 .honeycomb-cell-wrap:hover .honeycomb-icon i {
-    color: #f97316;
-    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
+    color: #ea580c;
+    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
 }
 
 /* Active state: Icon auch aufleuchten lassen */
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon {
-    background: rgba(250, 115, 21, 0.6);
-    /* #fa7315 mit Transparenz */
+    background: rgba(234, 88, 12, 0.6);
+    /* #ea580c mit Transparenz */
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon i {
-    color: #fa7315;
+    color: #ea580c;
     /* Leuchtendes Orange */
-    filter: drop-shadow(0 0 6px rgba(250, 115, 21, 0.8));
+    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
 }
 
 .honeycomb-cell h3 {
@@ -2141,8 +2142,8 @@ button {
     width: 40px;
     /* Größer: 32px → 40px */
     height: 40px;
-    color: #fa7315;
-    /* Orangefarbenes Icon */
+    color: #ea580c;
+    /* Orangefarbenes Icon - einheitlich mit CTA-Buttons */
 }
 
 .gewinn-card h3 {
@@ -2153,6 +2154,37 @@ button {
 .gewinn-card p {
     color: var(--color-gray);
     line-height: 1.7;
+}
+
+/* Mobile Optimierung für Gewinn-Karten */
+@media (max-width: 768px) {
+    .gewinn-cards {
+        gap: 24px;
+    }
+
+    .gewinn-card {
+        padding: 32px 24px;
+    }
+
+    .gewinn-card-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 20px;
+    }
+
+    .gewinn-card-icon i {
+        width: 32px;
+        height: 32px;
+    }
+
+    .gewinn-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    .gewinn-card p {
+        font-size: 0.9375rem;
+    }
 }
 
 /* =============================================
