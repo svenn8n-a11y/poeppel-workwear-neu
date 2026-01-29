@@ -278,7 +278,9 @@ function initHorizontalScroll() {
         const gap = 32;
         const leftPad = Math.max(viewportWidth / 2 - 210, 80);
         const totalTrackWidth = (cardCount * cardWidth) + ((cardCount - 1) * gap) + leftPad;
-        return totalTrackWidth - viewportWidth + 100;
+        // Mobile: weniger Excess, damit 5. Karte vollständig sichtbar ist
+        const excess = viewportWidth <= 768 ? 0 : 100;
+        return totalTrackWidth - viewportWidth + excess;
     };
 
     // GSAP ScrollTrigger handles all pinning and height

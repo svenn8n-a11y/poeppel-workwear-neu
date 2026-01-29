@@ -2137,8 +2137,8 @@ button {
 .gewinn-card-icon i {
     width: 32px;
     height: 32px;
-    color: #ea580c;
-    /* Sattes Button-Orange */
+    color: #fa7315;
+    /* Leuchtendes Orange wie USP-Icons */
 }
 
 .gewinn-card h3 {
