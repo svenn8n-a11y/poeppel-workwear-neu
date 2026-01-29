@@ -1727,7 +1727,7 @@ button {
 .onboarding-section {
     position: relative;
     height: 400vh;
-    background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background.png') center center / cover no-repeat fixed;
+    background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background1.jpg') center center / cover no-repeat fixed;
 }
 
 /* Dark blue overlay with 33% transparency over background image */
