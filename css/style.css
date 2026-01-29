@@ -1969,108 +1969,63 @@ button {
     width: 0%;
 }
 
-/* Mobile Onboarding Optimizations */
+/* Mobile Onboarding Optimizations - KORRIGIERT */
 @media (max-width: 768px) {
-    .onboarding-section {
-        height: auto;
-        min-height: 100vh;
-    }
 
-    .onboarding-viewport {
-        position: relative;
-        height: auto;
-        min-height: 100vh;
-    }
-
+    /* Header-Anpassungen */
     .onboarding-header {
-        position: relative;
-        top: 0;
-        left: 0;
-        padding: 40px 20px 20px;
+        padding: 20px;
         text-align: center;
     }
 
     .onboarding-header h2 {
-        font-size: 1.75rem;
-        margin-bottom: 8px;
+        font-size: 1.5rem;
     }
 
     .onboarding-hint {
         font-size: 0.6875rem;
     }
 
-    /* Diagonal wrapper wird zu vertikalem Container */
-    .onboarding-diagonal-wrapper {
-        position: relative;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        grid-template-columns: none;
-        grid-template-rows: none;
-        padding-top: 40px;
-    }
+    /* WICHTIG: Grid-Layout NICHT ändern - benötigt für GSAP! */
+    /* .onboarding-diagonal-wrapper bleibt unverändert */
 
-    /* Step Cells: Vertikales Layout */
+    /* Step Cells: Nur Padding anpassen */
     .onboarding-step-cell {
-        grid-column: unset !important;
-        grid-row: unset !important;
-        padding: 30px 20px;
-        width: 100%;
-        display: block;
+        padding: 40px 20px;
     }
 
-    /* Step Content: Single Column */
+    /* Step Content: Kleinere Gaps */
     .onboarding-step-content {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 100%;
+        gap: 24px;
+        max-width: 90vw;
     }
 
-    /* Bildcontainer: Quadratisch für Mobile */
+    /* Bildcontainer: QUADRATISCH für Mobile */
     .onboarding-step-image {
-        width: 100%;
-        max-width: 320px;
+        width: 320px;
         height: 320px;
-        margin: 0 auto;
+        /* Quadratisch statt 320px hoch */
     }
 
-    /* Badge-Nummerierung ausblenden (Nummerierung im Bild bleibt) */
+    /* Badge-Nummerierung ausblenden */
     .onboarding-step-badge {
         display: none;
     }
 
-    /* Text-Anpassungen für bessere Lesbarkeit */
+    /* Text-Größen anpassen */
     .onboarding-step-text h3 {
         font-size: 1.5rem;
-        text-align: center;
     }
 
     .onboarding-step-text p {
         font-size: 0.9375rem;
-        text-align: center;
     }
 
-    .onboarding-step-text ul {
-        text-align: left;
+    .onboarding-step-text ul li {
+        font-size: 0.8125rem;
     }
 
-    /* SVG-Linie: Treppenform für Mobile anpassen */
-    .onboarding-path-svg {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
-    }
-
-    /* Neue Koordinaten für mobile Treppenform */
-    .onboarding-path-svg path {
-        stroke-width: 2;
-    }
-
-    /* Desktop SVG ausblenden, Mobile SVG anzeigen */
+    /* SVG-Pfad: Mobile Version anzeigen */
     .onboarding-path-desktop {
         display: none !important;
     }
@@ -2079,10 +2034,10 @@ button {
         display: block !important;
     }
 
-    /* Dot anpassen */
+    /* Dot kleiner */
     .onboarding-path-dot {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
     }
 
     /* Progress Bar */

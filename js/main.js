@@ -94,10 +94,10 @@ function initHeroAnimations() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     tl.from('.hero-badge', { opacity: 0, y: 30, duration: 0.8 })
-      .from('.hero-headline', { opacity: 0, y: 50, duration: 1 }, '-=0.4')
-      .from('.hero-subline', { opacity: 0, y: 30, duration: 0.8 }, '-=0.5')
-      .from('.hero-cta-group', { opacity: 0, y: 30, duration: 0.8 }, '-=0.4')
-      .from('.hero-scroll-indicator', { opacity: 0, duration: 0.6 }, '-=0.2');
+        .from('.hero-headline', { opacity: 0, y: 50, duration: 1 }, '-=0.4')
+        .from('.hero-subline', { opacity: 0, y: 30, duration: 0.8 }, '-=0.5')
+        .from('.hero-cta-group', { opacity: 0, y: 30, duration: 0.8 }, '-=0.4')
+        .from('.hero-scroll-indicator', { opacity: 0, duration: 0.6 }, '-=0.2');
 
     // Parallax effect on hero background
     gsap.to('.hero-gradient', {
@@ -368,18 +368,18 @@ function initStepAnimations() {
             duration: 0.5,
             ease: 'back.out(1.7)'
         })
-        .from(content, {
-            opacity: 0,
-            x: -50,
-            duration: 0.6,
-            ease: 'power2.out'
-        }, '-=0.2')
-        .from(visual, {
-            opacity: 0,
-            x: 50,
-            duration: 0.6,
-            ease: 'power2.out'
-        }, '-=0.4');
+            .from(content, {
+                opacity: 0,
+                x: -50,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, '-=0.2')
+            .from(visual, {
+                opacity: 0,
+                x: 50,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, '-=0.4');
     });
 }
 
@@ -628,12 +628,16 @@ function initOnboardingTreppe() {
 
     // Diagonal staircase animation: x → y → x
     tl.to(wrapper, { x: '-100vw', duration: 1, ease: 'power2.inOut' })
-      .to(wrapper, { y: '-100vh', duration: 1, ease: 'power2.inOut' })
-      .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' });
+        .to(wrapper, { y: '-100vh', duration: 1, ease: 'power2.inOut' })
+        .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' });
 
-    // Animated SVG path (draws along with scroll)
-    const path = document.getElementById('onboardingPath');
+
+    // Animated SVG path (draws along with scroll) - Desktop ODER Mobile
+    const isMobile = window.innerWidth <= 768;
+    const pathId = isMobile ? 'onboardingPathMobile' : 'onboardingPath';
+    const path = document.getElementById(pathId);
     const dot = document.getElementById('onboardingPathDot');
+
     if (path) {
         const pathLength = path.getTotalLength();
         gsap.set(path, {
@@ -659,11 +663,11 @@ function initOnboardingTreppe() {
             dot.style.top = (startPoint.y / svgViewBoxH * 100) + '%';
 
             // Animate dot position along path synced with scroll
-            tl.to({progress: 0}, {
+            tl.to({ progress: 0 }, {
                 progress: 1,
                 duration: 3,
                 ease: 'none',
-                onUpdate: function() {
+                onUpdate: function () {
                     const p = this.targets()[0].progress;
                     const point = path.getPointAtLength(p * pathLength);
                     dot.style.left = (point.x / svgViewBoxW * 100) + '%';
