@@ -658,7 +658,7 @@ function initOnboardingTreppe() {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: 'top+=80 top',  // 80px Offset für Navbar - verhindert abgeschnittene Überschrift
+            start: 'top top',  // Start when section top meets viewport top - ensures heading is fully visible
             end: '+=300%',
             scrub: 1,
             pin: viewport,

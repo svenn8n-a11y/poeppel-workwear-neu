@@ -272,11 +272,80 @@ button {
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Start off-screen */
+        height: 100vh;
+        width: 280px;
+        background: var(--color-dark);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        padding: 100px 32px 32px;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    .nav-links-open {
+        right: 0;
+        /* Slide in */
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 1rem;
+        text-transform: none;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-cta {
+        margin-top: 16px;
+        text-align: center;
+        border-bottom: none !important;
     }
 
     .nav-mobile-toggle {
         display: block;
+        z-index: 1000;
+        position: relative;
+    }
+
+    .nav-toggle-active i {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+    }
+
+    /* Mobile menu overlay */
+    .nav-links-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 280px;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 }
 
@@ -1656,14 +1725,14 @@ button {
     /* war 24px, +25% */
     height: 30px;
     /* war 24px, +25% */
-    color: #ea580c;
-    /* Einheitliches Orange wie CTA-Buttons */
+    color: #f97316;
+    /* Matches CTA button primary orange exactly */
     transition: color 0.3s ease, filter 0.3s ease;
 }
 
 .honeycomb-cell-wrap:hover .honeycomb-icon i {
-    color: #ea580c;
-    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
+    color: #f97316;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
 
 /* Active state: Icon auch aufleuchten lassen */
@@ -1673,9 +1742,9 @@ button {
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-icon i {
-    color: #ea580c;
-    /* Leuchtendes Orange */
-    filter: drop-shadow(0 0 6px rgba(234, 88, 12, 0.8));
+    color: #f97316;
+    /* Glowing orange matching CTA buttons */
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
 
 .honeycomb-cell h3 {
@@ -2142,8 +2211,8 @@ button {
     width: 40px;
     /* Größer: 32px → 40px */
     height: 40px;
-    color: #ea580c;
-    /* Orangefarbenes Icon - einheitlich mit CTA-Buttons */
+    color: #ea580c !important;
+    /* Orange icon matching CTA buttons - !important ensures no overrides */
 }
 
 .gewinn-card h3 {
@@ -2159,26 +2228,32 @@ button {
 /* Mobile Optimierung für Gewinn-Karten */
 @media (max-width: 768px) {
     .gewinn-cards {
-        gap: 24px;
+        gap: 20px;
+        /* Reduced from 24px */
     }
 
     .gewinn-card {
-        padding: 32px 24px;
+        padding: 24px 20px;
+        /* Reduced from 32px 24px for more compact mobile layout */
     }
 
     .gewinn-card-icon {
-        width: 56px;
-        height: 56px;
-        margin-bottom: 20px;
+        width: 48px;
+        /* Reduced from 56px */
+        height: 48px;
+        margin-bottom: 16px;
+        /* Reduced from 20px */
     }
 
     .gewinn-card-icon i {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        /* Reduced from 32px */
+        height: 28px;
     }
 
     .gewinn-card h3 {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
+        /* Reduced from 1.25rem */
         margin-bottom: 12px;
     }
 
@@ -2288,4 +2363,61 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
+}/* =============================================
+   SCROLL TO TOP BUTTON
+   ============================================= */
+.scroll-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(249, 115, 22, 0.5);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.scroll-to-top i {
+    width: 24px;
+    height: 24px;
+    color: var(--color-white);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .scroll-to-top i {
+        width: 20px;
+        height: 20px;
+    }
 }
