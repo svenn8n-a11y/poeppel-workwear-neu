@@ -467,11 +467,106 @@ function initPartnerSection() {
 }
 
 // ========================================
-// TESTIMONIALS GRID ANIMATION
+// TESTIMONIALS FEATURED QUOTE SLIDER
 // ========================================
 function initTestimonialsScroll() {
     const section = document.querySelector('.testimonials-section');
     if (!section) return;
+
+    const quotes = section.querySelectorAll('.featured-quote');
+    const dots = section.querySelectorAll('.quote-dot');
+    const progressBar = section.querySelector('.quote-progress-bar');
+
+    if (quotes.length === 0) return;
+
+    let currentIndex = 0;
+    let autoplayInterval;
+    let progressInterval;
+    const autoplayDelay = 6000; // 6 Sekunden pro Zitat
+    const progressStep = 50; // Update alle 50ms
+
+    // Switch to specific quote
+    function goToQuote(index) {
+        // Update quotes
+        quotes.forEach((quote, i) => {
+            quote.classList.toggle('active', i === index);
+        });
+
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+
+        currentIndex = index;
+        resetProgress();
+    }
+
+    // Next quote
+    function nextQuote() {
+        const next = (currentIndex + 1) % quotes.length;
+        goToQuote(next);
+    }
+
+    // Progress bar animation
+    function resetProgress() {
+        if (progressBar) {
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+
+            // Force reflow
+            progressBar.offsetHeight;
+
+            progressBar.style.transition = `width ${autoplayDelay}ms linear`;
+            progressBar.style.width = '100%';
+        }
+    }
+
+    // Start autoplay
+    function startAutoplay() {
+        stopAutoplay();
+        resetProgress();
+        autoplayInterval = setInterval(nextQuote, autoplayDelay);
+    }
+
+    // Stop autoplay
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
+    }
+
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToQuote(index);
+            startAutoplay(); // Restart autoplay from new position
+        });
+    });
+
+    // Pause on hover
+    const slider = section.querySelector('.featured-quote-slider');
+    if (slider) {
+        slider.addEventListener('mouseenter', () => {
+            stopAutoplay();
+            if (progressBar) {
+                const computed = getComputedStyle(progressBar);
+                progressBar.style.width = computed.width;
+                progressBar.style.transition = 'none';
+            }
+        });
+
+        slider.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // Start autoplay when section comes into view
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top 80%',
+        onEnter: startAutoplay,
+        onLeave: stopAutoplay,
+        onEnterBack: startAutoplay,
+        onLeaveBack: stopAutoplay
+    });
 
     // Animate section header
     gsap.from('.testimonials-section .section-header', {
@@ -486,17 +581,44 @@ function initTestimonialsScroll() {
         ease: 'power2.out'
     });
 
-    // Animate testimonial cards with stagger
-    gsap.from('.testimonials-grid .testimonial-card', {
+    // Animate featured quote icon
+    gsap.from('.featured-quote-icon', {
         scrollTrigger: {
-            trigger: '.testimonials-grid',
+            trigger: '.featured-quote-slider',
             start: 'top 85%',
             toggleActions: 'play none none reverse'
         },
         opacity: 0,
-        y: 60,
+        scale: 0.5,
         duration: 0.8,
-        stagger: 0.15,
+        ease: 'back.out(1.7)'
+    });
+
+    // Animate quote container
+    gsap.from('.quote-container', {
+        scrollTrigger: {
+            trigger: '.featured-quote-slider',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power2.out'
+    });
+
+    // Animate navigation dots
+    gsap.from('.quote-navigation', {
+        scrollTrigger: {
+            trigger: '.featured-quote-slider',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.4,
         ease: 'power2.out'
     });
 }

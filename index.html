@@ -542,90 +542,90 @@
             </div>
         </section>
 
-        <!-- Wave Divider -->
-        <div class="section-divider wave-divider">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28c70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"/>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05c51.41,39.25,117.76,47.85,180.31,33.16c30.29-7.15,57.88-21.31,89.88-27.87c50.82-10.42,104.77-1.58,152.12,19.27c38.65,17,74.73,40.74,116.89,49.84c68.18,14.73,140.61-2.23,203.47-32.5c34.48-16.61,65.58-39.7,101.65-52.63c59.38-21.29,124.71-15.7,186.89-2.09c38.89,8.5,75.91,22.44,115.1,28.34V0Z" opacity=".5" fill="currentColor"/>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46c59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"/>
-            </svg>
-        </div>
-
         <!-- ========================================
-             SEKTION 8: TESTIMONIALS - Grid
+             SEKTION 8: TESTIMONIALS - Featured Quote Slider
         ======================================== -->
-        <section id="testimonials" class="testimonials-section testimonials-grid-layout">
+        <section id="testimonials" class="testimonials-section featured-quote-section">
             <div class="container">
                 <header class="section-header">
+                    <span class="section-badge">Kundenstimmen</span>
                     <h2 class="section-title light">Was unsere Partner sagen</h2>
                 </header>
 
-                <div class="testimonials-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">
-                            <i data-lucide="quote"></i>
-                        </div>
-                        <div class="testimonial-content">
+                <div class="featured-quote-slider">
+                    <!-- Large Quote Icon -->
+                    <div class="featured-quote-icon">
+                        <i data-lucide="quote"></i>
+                    </div>
+
+                    <!-- Quote Container -->
+                    <div class="quote-container">
+                        <!-- Quote 1 -->
+                        <div class="featured-quote active" data-quote="0">
                             <blockquote>
-                                "Seit wir das System nutzen, hat sich unser Verwaltungsaufwand halbiert. Die Mitarbeiter
-                                sind begeistert von der einfachen Bestellung."
+                                "Seit wir das System nutzen, hat sich unser Verwaltungsaufwand halbiert. Die Mitarbeiter sind begeistert von der einfachen Bestellung."
                             </blockquote>
                             <cite>
-                                <strong>Michael Weber</strong>
-                                <span>Einkaufsleiter, Bauunternehmung Weber GmbH</span>
+                                <div class="cite-avatar">
+                                    <i data-lucide="user"></i>
+                                </div>
+                                <div class="cite-info">
+                                    <strong>Michael Weber</strong>
+                                    <span>Einkaufsleiter, Bauunternehmung Weber GmbH</span>
+                                </div>
+                            </cite>
+                        </div>
+
+                        <!-- Quote 2 -->
+                        <div class="featured-quote" data-quote="1">
+                            <blockquote>
+                                "Die Anprobetage waren ein Gamechanger. Endlich passt alles und wir haben keine Retouren mehr."
+                            </blockquote>
+                            <cite>
+                                <div class="cite-avatar">
+                                    <i data-lucide="user"></i>
+                                </div>
+                                <div class="cite-info">
+                                    <strong>Julia Schmidt</strong>
+                                    <span>HR Managerin, Metallbau Schmidt AG</span>
+                                </div>
+                            </cite>
+                        </div>
+
+                        <!-- Quote 3 -->
+                        <div class="featured-quote" data-quote="2">
+                            <blockquote>
+                                "Die digitale Lösung hat unsere Beschaffungsprozesse revolutioniert. Alles ist transparent und nachvollziehbar."
+                            </blockquote>
+                            <cite>
+                                <div class="cite-avatar">
+                                    <i data-lucide="user"></i>
+                                </div>
+                                <div class="cite-info">
+                                    <strong>Thomas Müller</strong>
+                                    <span>Geschäftsführer, Handwerksbetrieb Müller</span>
+                                </div>
                             </cite>
                         </div>
                     </div>
 
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">
-                            <i data-lucide="quote"></i>
-                        </div>
-                        <div class="testimonial-content">
-                            <blockquote>
-                                "Die Anprobetage waren ein Gamechanger. Endlich passt alles und wir haben keine Retouren
-                                mehr."
-                            </blockquote>
-                            <cite>
-                                <strong>Julia Schmidt</strong>
-                                <span>HR Managerin, Metallbau Schmidt AG</span>
-                            </cite>
-                        </div>
+                    <!-- Navigation Dots -->
+                    <div class="quote-navigation">
+                        <button class="quote-dot active" data-index="0" aria-label="Zitat 1"></button>
+                        <button class="quote-dot" data-index="1" aria-label="Zitat 2"></button>
+                        <button class="quote-dot" data-index="2" aria-label="Zitat 3"></button>
                     </div>
 
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">
-                            <i data-lucide="quote"></i>
-                        </div>
-                        <div class="testimonial-content">
-                            <blockquote>
-                                "Die digitale Lösung hat unsere Beschaffungsprozesse revolutioniert. Alles ist
-                                transparent und nachvollziehbar."
-                            </blockquote>
-                            <cite>
-                                <strong>Thomas Müller</strong>
-                                <span>Geschäftsführer, Handwerksbetrieb Müller</span>
-                            </cite>
-                        </div>
+                    <!-- Progress Bar -->
+                    <div class="quote-progress">
+                        <div class="quote-progress-bar"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Wave Divider 2 -->
-        <div class="section-divider wave-divider wave-divider-bottom">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28c70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"/>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05c51.41,39.25,117.76,47.85,180.31,33.16c30.29-7.15,57.88-21.31,89.88-27.87c50.82-10.42,104.77-1.58,152.12,19.27c38.65,17,74.73,40.74,116.89,49.84c68.18,14.73,140.61-2.23,203.47-32.5c34.48-16.61,65.58-39.7,101.65-52.63c59.38-21.29,124.71-15.7,186.89-2.09c38.89,8.5,75.91,22.44,115.1,28.34V0Z" opacity=".5" fill="currentColor"/>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46c59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"/>
-            </svg>
-        </div>
-
         <!-- ========================================
-             SEKTION 8: CTA 2 - Beratungstermin
+             SEKTION 9: CTA 2 - Beratungstermin
         ======================================== -->
         <section id="cta-beratung" class="cta-section cta-dark">
             <div class="container">
