@@ -245,7 +245,7 @@ function initStickyCards() {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 90%',
+                start: 'top 75%',  // Früher triggern (war 90%)
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
@@ -574,9 +574,9 @@ function initTestimonialsScroll() {
         gsap.to(cornerWipeBg, {
             scrollTrigger: {
                 trigger: section,
-                start: 'top 95%',
-                end: 'top 50%',
-                scrub: 0.5
+                start: 'top 100%',  // Früher starten (Section unten am Viewport)
+                end: 'top 20%',     // Später enden (mehr Scroll-Range = 80%)
+                scrub: 1            // Smootherer scrub
             },
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
             ease: 'none'
