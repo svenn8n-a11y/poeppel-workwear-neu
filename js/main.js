@@ -568,21 +568,6 @@ function initTestimonialsScroll() {
         onLeaveBack: stopAutoplay
     });
 
-    // Corner Wipe Animation - Diagonal reveal von unten links
-    const cornerWipeBg = section.querySelector('.corner-wipe-bg');
-    if (cornerWipeBg) {
-        gsap.to(cornerWipeBg, {
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 100%',  // Früher starten (Section unten am Viewport)
-                end: 'top 20%',     // Später enden (mehr Scroll-Range = 80%)
-                scrub: 1            // Smootherer scrub
-            },
-            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-            ease: 'none'
-        });
-    }
-
     // Animate section header
     gsap.from('.testimonials-section .section-header', {
         scrollTrigger: {

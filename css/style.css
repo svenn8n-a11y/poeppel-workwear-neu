@@ -1489,8 +1489,9 @@ button {
    ============================================= */
 .testimonials-section {
     padding: var(--section-padding) 0;
-    background: transparent;
-    /* Background kommt vom corner-wipe-bg */
+    background: linear-gradient(180deg, #1e293b 0%, var(--color-dark) 100%);
+    position: relative;
+    z-index: 10;
 }
 
 .featured-quote-section {
@@ -1724,28 +1725,22 @@ button {
 }
 
 /* =============================================
-   CORNER WIPE EFFECT
+   DIAGONAL SECTION DIVIDER (zwischen Logo-Band und Testimonials)
    ============================================= */
-.corner-wipe-section {
-    position: relative;
-    z-index: 10;
-    overflow: hidden;  /* WICHTIG für clip-path */
-}
-
-.corner-wipe-bg {
+.testimonials-section::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, #1e293b 0%, var(--color-dark) 100%);
-    z-index: 1;  /* Positiv, unter Container */
-    will-change: clip-path;  /* Performance-Optimierung */
-    /* Initial: Diagonal von unten links - 0% sichtbar (4 Punkte für GSAP Animation) */
-    clip-path: polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%);
-}
-
-/* Animation wird per GSAP gesteuert */
-.corner-wipe-section .container {
-    position: relative;
-    z-index: 5;  /* Über dem Wipe-Bg */
+    top: -80px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(
+        to bottom right,
+        transparent 49.5%,
+        #1e293b 50%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* =============================================
