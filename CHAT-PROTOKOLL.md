@@ -342,3 +342,9 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - Treppen-Animation für Onboarding bereits fertig extrahiert
 - Sticky Stacking Cards: Reines CSS mit position:sticky (kein GSAP nötig)
 - Horizontal Scroll: GSAP ScrollTrigger
+
+### 02.02.2026 - Hersteller-Daten & Visuals
+- [x] Extraction gestoppt (User-Request)
+- [x] Gefundene Partner gesichert: Precitool, HoBaTool, E/D/E, Mafell, Walter
+- [x] "Blue Shimmer" (Agent Glow) implementiert (.screen-glow)
+- [x] Style.css und Index.html aktualisiert

@@ -1409,6 +1409,7 @@ button {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -1453,13 +1454,15 @@ button {
         margin-left: -24px;
         margin-right: -24px;
         width: calc(100% + 48px);
-        margin-top: 64px;  /* Reduziert von 96px */
+        margin-top: 64px;
+        /* Reduziert von 96px */
     }
 }
 
 @media (max-width: 768px) {
     .logo-band {
-        margin-top: 48px;  /* Weiter reduziert */
+        margin-top: 48px;
+        /* Weiter reduziert */
     }
 
     .partner-card-content {
@@ -1484,7 +1487,8 @@ button {
    ============================================= */
 .testimonials-section {
     padding: var(--section-padding) 0;
-    background: linear-gradient(180deg, #1e293b 0%, var(--color-dark) 100%);
+    background: transparent;
+    /* Background kommt vom corner-wipe-bg */
 }
 
 .featured-quote-section {
@@ -1662,17 +1666,19 @@ button {
 
 @media (max-width: 768px) {
     .testimonials-section {
-        padding: 60px 0;  /* Reduziert von 120px */
+        padding: 40px 0;
+        /* Weiter reduziert */
     }
 
     .featured-quote-slider {
-        margin-top: 24px;  /* Reduziert von 48px */
+        margin-top: 16px;
+        /* Weiter reduziert */
     }
 
     .featured-quote-icon {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 32px;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 24px;
     }
 
     .featured-quote-icon i,
@@ -1729,8 +1735,8 @@ button {
     inset: 0;
     background: linear-gradient(180deg, #1e293b 0%, var(--color-dark) 100%);
     z-index: -1;
-    /* Initial: Diagonal von unten links - 0% sichtbar */
-    clip-path: polygon(0 100%, 0 100%, 0 100%);
+    /* Initial: Diagonal von unten links - 0% sichtbar (4 Punkte für GSAP Animation) */
+    clip-path: polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%);
 }
 
 /* Animation wird per GSAP gesteuert */
@@ -2822,4 +2828,15 @@ button {
         width: 20px;
         height: 20px;
     }
+}
+
+/* =============================================
+   SCREEN GLOW (Agent Effect)
+   ============================================= */
+.screen-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(59, 130, 246, 0.5), inset 0 0 30px rgba(59, 130, 246, 0.3);
 }
