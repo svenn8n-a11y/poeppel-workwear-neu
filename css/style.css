@@ -104,6 +104,13 @@ button {
     background: none;
 }
 
+/* Accessibility: Custom Focus Ring */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
 /* =============================================
    UTILITIES
    ============================================= */
@@ -167,6 +174,10 @@ button {
     transition: all var(--transition-normal);
 }
 
+.btn:active {
+    transform: scale(0.96) translateY(0);
+}
+
 .btn i {
     width: 20px;
     height: 20px;
@@ -175,6 +186,27 @@ button {
 .btn-primary {
     background: var(--color-primary);
     color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer/Pulse Effect for Hero CTA */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+    }
+}
+
+.hero-cta-group .btn-primary {
+    animation: pulse-glow 3s infinite;
 }
 
 .btn-primary:hover {
@@ -559,13 +591,14 @@ button {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 128px;
+    gap: 64px;
 }
 
 .sticky-card {
     position: sticky;
     max-width: 100%;
 }
+
 
 .sticky-card-1 {
     top: 120px;
@@ -586,11 +619,15 @@ button {
     border-radius: var(--radius-2xl);
     padding: 48px;
     box-shadow: var(--shadow-2xl);
-    transition: transform var(--transition-slow);
+    border: 1px solid transparent;
+    /* Prevent layout shift */
+    transition: all var(--transition-normal);
 }
 
 .sticky-card-inner:hover {
-    transform: scale(1.01);
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
 }
 
 .sticky-card-inner.card-dark {
@@ -766,11 +803,10 @@ button {
 }
 
 .potential-image-placeholder {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    opacity: 0.6;
-    z-index: 2;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none;
 }
 
 .potential-card-content {
@@ -780,16 +816,7 @@ button {
     gap: 16px;
 }
 
-.potential-number {
-    font-size: 4rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1;
-    position: absolute;
-    top: 16px;
-    z-index: 3;
-    right: 20px;
-}
+/* .potential-number removed as numbers are integrated in images */
 
 .potential-card-content h3 {
     font-size: 1.5rem;
@@ -1199,6 +1226,11 @@ button {
         grid-template-columns: 60px 1fr;
     }
 
+    .steps-container {
+        gap: 80px;
+        /* More breathing room on mobile */
+    }
+
     .step-visual {
         display: none;
     }
@@ -1211,6 +1243,138 @@ button {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
+    }
+}
+
+/* =============================================
+   PARTNER SECTION - "Partner statt Plattform"
+   ============================================= */
+.partner-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-dark);
+}
+
+.partner-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.125rem;
+    margin-top: 16px;
+}
+
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+}
+
+.partner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.partner-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.partner-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.partner-card:hover .partner-card-image img {
+    transform: scale(1.05);
+}
+
+.partner-card-content {
+    padding: 32px;
+    text-align: center;
+}
+
+.partner-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(249, 115, 22, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.partner-icon i,
+.partner-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+    stroke: var(--color-primary);
+}
+
+.partner-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.partner-number-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+.partner-card h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 12px;
+}
+
+.partner-card p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+}
+
+/* Partner Section - Responsive */
+@media (max-width: 1024px) {
+    .partner-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .partner-card-content {
+        padding: 24px;
+    }
+
+    .partner-number {
+        font-size: 2.5rem;
+    }
+
+    .partner-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .partner-card p {
+        font-size: 0.875rem;
     }
 }
 
@@ -1410,40 +1574,10 @@ button {
 /* =============================================
    MOBILE NAVIGATION
    ============================================= */
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--color-dark);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-        opacity: 0;
-        visibility: hidden;
-        transition: all var(--transition-normal);
-    }
-
-    .nav-links-open {
-        display: flex;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-links a {
-        font-size: 1.5rem;
-    }
-
-    .nav-toggle-active {
-        position: fixed;
-        top: 24px;
-        right: var(--container-padding);
-        z-index: 1001;
-    }
-}
+/* =============================================
+   MOBILE NAVIGATION (Handled in Navigation Section above)
+   ============================================= */
+/* Duplicate media query removed to prevent conflicts */
 
 /* =============================================
    SEKTION 9: MODULARER ANSATZ
@@ -1471,7 +1605,9 @@ button {
 }
 
 .modular-card:hover {
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xl);
 }
 
 /* Package Tier Label Styling */
@@ -1732,6 +1868,7 @@ button {
 
 .honeycomb-cell-wrap:hover .honeycomb-icon i {
     color: #f97316;
+    transform: scale(1.2);
     filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
 }
 
@@ -1847,7 +1984,7 @@ button {
 
 .onboarding-header {
     position: absolute;
-    top: 40px;
+    top: 120px;
     left: 40px;
     z-index: 50;
 }
@@ -2078,6 +2215,7 @@ button {
     .onboarding-header {
         padding: 20px;
         text-align: center;
+        top: 100px;
     }
 
     .onboarding-header h2 {
@@ -2209,9 +2347,8 @@ button {
 
 .gewinn-card-icon i {
     width: 40px;
-    /* Größer: 32px → 40px */
     height: 40px;
-    color: #ea580c !important;
+    color: var(--color-primary) !important;
     /* Orange icon matching CTA buttons - !important ensures no overrides */
 }
 
@@ -2363,7 +2500,9 @@ button {
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
-}/* =============================================
+}
+
+/* =============================================
    SCROLL TO TOP BUTTON
    ============================================= */
 .scroll-to-top {

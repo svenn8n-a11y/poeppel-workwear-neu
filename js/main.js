@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initStickyCards();
             initHorizontalScroll();    // Sektion 4 (pin)
             initStepAnimations();      // Sektion 6
-            initTestimonialsScroll();  // Sektion 7
+            initPartnerSection();      // Sektion 7 (Partner)
+            initTestimonialsScroll();  // Sektion 8 (Testimonials)
             initCTAAnimations();
             initScrollProgress();
             initUSPsHoneycomb();       // Sektion 10 (Wabenstruktur)
@@ -213,7 +214,8 @@ function initStickyCards() {
 
     const cards = gsap.utils.toArray('.sticky-card');
 
-    // Animate section header
+    // Animate section header - REMOVED for better stability
+    /*
     gsap.from('#problem .section-header', {
         scrollTrigger: {
             trigger: '#problem',
@@ -224,6 +226,7 @@ function initStickyCards() {
         y: 50,
         duration: 1
     });
+    */
 
     // Card stacking animations
     cards.forEach((card, i) => {
@@ -238,16 +241,16 @@ function initStickyCards() {
             });
         }
 
-        // Animate card into view
+        // Animate card into view - OPTIMIZED
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
+                start: 'top 90%',
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            y: 100,
-            duration: 0.8,
+            // y: 50, REMOVED to prevent conflict with sticky positioning
+            duration: 0.6, // Slightly faster
             ease: 'power2.out'
         });
 
@@ -281,11 +284,11 @@ function initStickyCards() {
         gsap.from(items, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 70%',
+                start: 'top 80%', // Previously 70%
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            y: 30,
+            y: 20, // Reduced from 30
             stagger: 0.1,
             duration: 0.6,
             ease: 'power2.out'
@@ -425,6 +428,41 @@ function initStepAnimations() {
                 duration: 0.6,
                 ease: 'power2.out'
             }, '-=0.4');
+    });
+}
+
+// ========================================
+// PARTNER SECTION ANIMATION
+// ========================================
+function initPartnerSection() {
+    const section = document.querySelector('.partner-section');
+    if (!section) return;
+
+    // Animate section header
+    gsap.from('.partner-section .section-header', {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: 'power2.out'
+    });
+
+    // Animate cards with stagger
+    gsap.from('.partner-card', {
+        scrollTrigger: {
+            trigger: '.partner-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 60,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out'
     });
 }
 

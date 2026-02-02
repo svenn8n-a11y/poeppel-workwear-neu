@@ -32,16 +32,17 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 | 4 | Potentiale | 4 Vorteile | Horizontal scrollende Kacheln |
 | 5 | CTA 1 | Whitepaper Download | |
 | 6 | Lösungsweg | 3 Schritte | Kacheln fliegen von unten ein, mit Linie verbunden (wie Intralogistik) |
-| 7 | Testimonials | Social Proof | Laufband von rechts nach links |
-| 8 | CTA 2 | Beratungstermin | |
-| 9 | Modularer Ansatz | Für jeden die passende Lösung | 2 interaktive Kacheln (expandierbar) |
-| 10 | USPs | 8 Vorteile | 3D-Rondell |
-| 11 | CTA 3 | Potentialanalyse | |
-| 12 | Onboarding | Wie geht es weiter? | Treppen-Animation (bereits fertig!) |
-| 13 | Gewinn | Ihr Gewinn | 3 Kacheln |
-| 14 | CTA 4 | Beratungsgespräch | |
-| 15 | FAQ | Häufige Fragen | Accordion |
-| 16 | CTA 5 | Mehr erfahren | |
+| **7** | **Partner** | **"Partner statt Plattform"** | **3 Karten mit Eye-Catcher-Zahlen, Bilder + Icons** |
+| 8 | Testimonials | Social Proof | Laufband von rechts nach links |
+| 9 | CTA 2 | Beratungstermin | |
+| 10 | Modularer Ansatz | Für jeden die passende Lösung | 2 interaktive Kacheln (expandierbar) |
+| 11 | USPs | 8 Vorteile | 3D-Rondell |
+| 12 | CTA 3 | Potentialanalyse | |
+| 13 | Onboarding | Wie geht es weiter? | Treppen-Animation (bereits fertig!) |
+| 14 | Gewinn | Ihr Gewinn | 3 Kacheln |
+| 15 | CTA 4 | Beratungsgespräch | |
+| 16 | FAQ | Häufige Fragen | Accordion |
+| 17 | CTA 5 | Mehr erfahren | |
 
 ---
 
@@ -291,6 +292,42 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
   - Step 2 (Standardisierung): `Standardisierung1.png`
   - Step 3 (Digitalisierung): `Digitalisierung1.png`
 - [x] **Platzhalter entfernt**: `.step-image-placeholder` durch `<img>` ersetzt
+
+### 29.01.2026 - UX & Design Optimierungen
+- [x] **Icon-Farben vereinheitlicht**:
+  - Sektion 10 (USPs): Icons von #f97316 → #ea580c
+  - Sektion 13 (Gewinn): Icons von #fa7315 → #ea580c
+  - Alle Icons jetzt einheitlich wie CTA-Buttons
+- [x] **Sektion 13 Mobile-Optimierung**:
+  - Kacheln verkleinert (Padding: 48px → 32px)
+  - Icons verkleinert (64px → 56px)
+  - Font-Größen angepasst (1.5rem → 1.25rem)
+- [x] **Scroll-to-Top Button hinzugefügt**:
+  - Floating Button rechts unten
+  - Erscheint ab 200px Scroll-Position
+  - Smooth Scroll nach oben
+  - Mobile-optimiert (56px → 48px)
+- [x] **Navigation verbessert**:
+  - Auto-Close beim Klick außerhalb
+  - Bessere Anchor-Link-Validierung
+  - Mobile-Menü schließt bei Navigation
+- [x] **Onboarding Scroll-Timing optimiert**:
+  - 80px Offset für Navbar hinzugefügt
+  - Überschrift wird nicht mehr abgeschnitten
+  - Scroll startet wenn vorherige Sektion Navbar berührt
+
+### 02.02.2026 - Neue Sektion 7: "Partner statt Plattform"
+- [x] **Neue Sektion eingefügt** zwischen Lösungsweg (6) und Testimonials (8)
+- [x] **Positionierung**: Pöppel als Systemlieferant für Industrie & Handwerk (nicht nur Workwear)
+- [x] **Headline**: "Partner statt Plattform"
+- [x] **3 Karten mit Eye-Catcher-Zahlen**:
+  - Karte 1: "Jahrzehnte" - Branchenverständnis (Werkzeuge, Maschinen, Betriebsausstattung)
+  - Karte 2: "300.000+" Artikel - Starkes Lieferantennetzwerk (500+ Partner)
+  - Karte 3: "1" Ansprechpartner - Persönlicher Service
+- [x] **Design**: Dunkler Hintergrund, Bilder + Icons, Hover-Effekte
+- [x] **Bilder**: Stock-Fotos von Unsplash (industrie.jpg, netzwerk.jpg, beratung.jpg)
+- [x] **Animation**: GSAP ScrollTrigger mit Stagger-Effekt
+- [x] **Sektionsnummern aktualisiert**: 7→8, 8→9, etc.
 
 ---
 
