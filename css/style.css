@@ -1453,10 +1453,15 @@ button {
         margin-left: -24px;
         margin-right: -24px;
         width: calc(100% + 48px);
+        margin-top: 64px;  /* Reduziert von 96px */
     }
 }
 
 @media (max-width: 768px) {
+    .logo-band {
+        margin-top: 48px;  /* Weiter reduziert */
+    }
+
     .partner-card-content {
         padding: 24px;
     }
@@ -1656,6 +1661,14 @@ button {
 }
 
 @media (max-width: 768px) {
+    .testimonials-section {
+        padding: 60px 0;  /* Reduziert von 120px */
+    }
+
+    .featured-quote-slider {
+        margin-top: 24px;  /* Reduziert von 48px */
+    }
+
     .featured-quote-icon {
         width: 64px;
         height: 64px;
@@ -1700,6 +1713,30 @@ button {
     .quote-navigation {
         margin-top: 32px;
     }
+}
+
+/* =============================================
+   CORNER WIPE EFFECT
+   ============================================= */
+.corner-wipe-section {
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+}
+
+.corner-wipe-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #1e293b 0%, var(--color-dark) 100%);
+    z-index: -1;
+    /* Initial: Diagonal von unten links - 0% sichtbar */
+    clip-path: polygon(0 100%, 0 100%, 0 100%);
+}
+
+/* Animation wird per GSAP gesteuert */
+.corner-wipe-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* =============================================
