@@ -467,39 +467,11 @@ function initPartnerSection() {
 }
 
 // ========================================
-// TESTIMONIALS AUTO-SCROLL
+// TESTIMONIALS GRID ANIMATION
 // ========================================
 function initTestimonialsScroll() {
     const section = document.querySelector('.testimonials-section');
     if (!section) return;
-
-    const track = section.querySelector('.testimonials-track');
-    if (!track) return;
-
-    // Clone testimonials for seamless loop
-    const cards = track.querySelectorAll('.testimonial-card');
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        track.appendChild(clone);
-    });
-
-    // Calculate total width
-    const totalWidth = () => track.scrollWidth / 2;
-
-    // Infinite scroll animation
-    const scrollAnim = gsap.to(track, {
-        x: () => -totalWidth(),
-        duration: 30,
-        ease: 'none',
-        repeat: -1,
-        modifiers: {
-            x: gsap.utils.unitize(x => parseFloat(x) % totalWidth())
-        }
-    });
-
-    // Pause on hover
-    track.addEventListener('mouseenter', () => scrollAnim.pause());
-    track.addEventListener('mouseleave', () => scrollAnim.play());
 
     // Animate section header
     gsap.from('.testimonials-section .section-header', {
@@ -510,7 +482,22 @@ function initTestimonialsScroll() {
         },
         opacity: 0,
         y: 50,
-        duration: 1
+        duration: 0.8,
+        ease: 'power2.out'
+    });
+
+    // Animate testimonial cards with stagger
+    gsap.from('.testimonials-grid .testimonial-card', {
+        scrollTrigger: {
+            trigger: '.testimonials-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 60,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power2.out'
     });
 }
 
