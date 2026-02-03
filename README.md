@@ -27,7 +27,7 @@ Die Landingpage ist live unter:
 
 ## Features / Sections
 
-Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Customer Journey fuehren:
+Die Landingpage besteht aus **21 Sektionen**, die den Besucher durch die Customer Journey fuehren:
 
 | Nr. | Sektion | Beschreibung |
 |-----|---------|--------------|
@@ -35,21 +35,23 @@ Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Custome
 | 2 | **Videoplayer** | Elevator Pitch Video |
 | 3 | **Problem** | 12 Herausforderungen dargestellt als 3 Sticky Stacking Cards |
 | 4 | **Potentiale** | Horizontal Scroll Animation (GSAP pinned) |
-| 5 | **CTA Whitepaper** | Download Call-to-Action |
-| 6 | **Loesungsweg** | 3 Steps mit verbindender Linie |
-| 7 | **Partner** | "Partner statt Plattform" - 3 Cards mit Eye-Catcher-Zahlen |
-| 8 | **Unsere Marken** | Marquee-Carousel mit Markenlogos |
-| 9 | **Testimonials** | Auto-scrolling Carousel (Dark Theme) |
-| 10 | **CTA Beratungstermin** | Terminvereinbarung |
-| 11 | **Modularer Ansatz** | 3 expandierbare Cards (Professional, Expert, Enterprise) |
-| 12 | **USPs** | 8 Benefits Carousel mit Auto-Scroll beim Scrollen |
-| 13 | **CTA Potentialanalyse** | Analyse-Anfrage |
-| 14 | **Onboarding** | Diagonale Treppen-Animation |
-| 15 | **Gewinn** | 3 Benefit Cards |
-| 16 | **Team** | "Ihr Expertenteam" - Ansprechpartner mit Kontakt |
-| 17 | **CTA Beratungsgespraech** | Finale Beratungs-CTA |
-| 18 | **FAQ** | Accordion mit haeufigen Fragen |
-| 19 | **Finale CTA** | Abschliessender Call-to-Action mit Kontaktdaten |
+| 5 | **Die wahren Kosten** | Visuelles Eisberg-Modell (95% versteckte Kosten) |
+| 6 | **ROI Calculator** | Interaktiver Spar-Rechner (Slider & Ergebnis) |
+| 7 | **CTA Whitepaper** | Download Call-to-Action |
+| 8 | **Loesungsweg** | 3 Steps mit verbindender Linie |
+| 9 | **Partner** | "Partner statt Plattform" - 3 Cards mit Eye-Catcher-Zahlen |
+| 10 | **Unsere Marken** | Marquee-Carousel mit Markenlogos |
+| 11 | **Testimonials** | Auto-scrolling Carousel (Dark Theme) |
+| 12 | **CTA Beratungstermin** | Terminvereinbarung |
+| 13 | **Modularer Ansatz** | 3 expandierbare Cards (Professional, Expert, Enterprise) |
+| 14 | **USPs** | 8 Benefits Carousel mit Auto-Scroll beim Scrollen |
+| 15 | **CTA Potentialanalyse** | Analyse-Anfrage |
+| 16 | **Onboarding** | Diagonale Treppen-Animation |
+| 17 | **Gewinn** | 3 Benefit Cards |
+| 18 | **Team** | "Ihr Expertenteam" - Ansprechpartner mit Kontakt |
+| 19 | **CTA Beratungsgespraech** | Finale Beratungs-CTA |
+| 20 | **FAQ** | Accordion mit haeufigen Fragen |
+| 21 | **Finale CTA** | Abschliessender Call-to-Action mit Kontaktdaten |
 
 ## Project Structure
 
@@ -128,3 +130,8 @@ CSS verwendet **Custom Properties** fuer konsistentes Theming:
 ---
 
 *Poeppel Workwear Management - Arbeitskleidung mit System*
+
+## Recent Updates (03.02.2026)
+- **Calculator Redesign**: Helles Karten-Design auf dunkelblauem Hintergrund, animierter "Kostenreduktion"-Balken (80%), neuer "Schließen"-Button.
+- **Iceberg Section**: Neues Layout (Text links, Bild `Eisberg Bild.jpg` rechts), verbesserte Typografie und Abstände.
+- **Problem Section**: Header optimiert mit Bild (`Kaskade_trichter.jpg`) neben der Überschrift.

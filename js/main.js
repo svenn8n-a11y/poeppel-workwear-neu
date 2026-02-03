@@ -992,3 +992,151 @@ window.addEventListener('load', () => {
     // Second refresh after short delay for any late-loading assets
     setTimeout(() => ScrollTrigger.refresh(), 500);
 });
+
+/* =========================================
+   ICEBERG ANIMATION
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const icebergModule = document.getElementById('icebergModule');
+
+    if (icebergModule) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    icebergModule.classList.add('animate-in');
+                    // Add floating class after initial slide-in
+                    setTimeout(() => {
+                        icebergModule.querySelector('.iceberg-container').classList.add('floating');
+                    }, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(icebergModule);
+    }
+});
+
+/* =========================================
+   ROI CALCULATOR LOGIC
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const rangeEmp = document.getElementById('range-emp');
+    const rangeHours = document.getElementById('range-hours');
+
+    if (rangeEmp && rangeHours) {
+        const dispEmp = document.getElementById('disp-emp');
+        const dispHours = document.getElementById('disp-hours');
+
+        const resCurrent = document.getElementById('res-current');
+        const resPoeppel = document.getElementById('res-poeppel');
+        const resSavings = document.getElementById('res-savings');
+
+        // Konstanten
+        const HOURLY_RATE = 50; // Interner Verrechnungssatz
+        const WEEKS_PER_YEAR = 52;
+        const EFFICIENCY_FACTOR = 0.20; // Pöppel reduziert Kosten auf 20% (80% Ersparnis)
+
+        // Formatierungsfunktion für Euro
+        function formatEuro(num) {
+            return num.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+        }
+
+        // Die Rechenfunktion
+        function calculate() {
+            // Werte holen
+            const employees = parseInt(rangeEmp.value);
+            const hours = parseFloat(rangeHours.value);
+
+            // Anzeigen aktualisieren
+            dispEmp.innerText = employees;
+            dispHours.innerText = hours.toFixed(1) + " h";
+
+            // Logik:
+            // Aktuelle Kosten = Stunden * 52 Wochen * 50€
+            const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
+            const poeppelCost = currentCost * EFFICIENCY_FACTOR;
+            const savings = currentCost - poeppelCost;
+
+            // Ergebnisse ins DOM schreiben
+            resCurrent.innerText = formatEuro(currentCost);
+            resPoeppel.innerText = formatEuro(poeppelCost);
+            resSavings.innerText = formatEuro(savings);
+        }
+
+        // Event Listener hinzufügen
+        rangeEmp.addEventListener('input', calculate);
+        rangeHours.addEventListener('input', calculate);
+
+        // Initial einmal berechnen beim Laden
+        calculate();
+    }
+});
+
+/* =========================================
+   CALCULATOR REVEAL & CLOSE LOGIC
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const revealBtn = document.getElementById('revealCalculatorBtn');
+    const closeBtn = document.getElementById('closeCalculatorBtn');
+    const calculatorSection = document.getElementById('calculator');
+    const triggerContainer = document.querySelector('.calculator-reveal-trigger');
+
+    // Reveal Calculator
+    if (revealBtn && calculatorSection) {
+        revealBtn.addEventListener('click', () => {
+            calculatorSection.classList.remove('hidden-calculator');
+            calculatorSection.classList.add('visible-calculator');
+
+            // ANIMATION FIX: Bar width
+            const barFill = document.querySelector('.bar-fill');
+            if (barFill) {
+                barFill.style.width = '0%';
+                setTimeout(() => { barFill.style.width = '80%'; }, 200);
+            }
+
+            // Hide trigger button
+            if (triggerContainer) {
+                triggerContainer.style.opacity = '0';
+                setTimeout(() => {
+                    triggerContainer.style.display = 'none';
+                }, 500);
+            }
+
+            // Scroll to calculator
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: { y: calculatorSection, offsetY: 20 },
+                ease: 'power2.out'
+            });
+        });
+    }
+
+    // Close Calculator
+    if (closeBtn && calculatorSection) {
+        closeBtn.addEventListener('click', () => {
+            calculatorSection.classList.remove('visible-calculator');
+            calculatorSection.classList.add('hidden-calculator');
+
+            // RESET BAR
+            const barFill = document.querySelector('.bar-fill');
+            if (barFill) barFill.style.width = '0%';
+
+            // Show trigger button again
+            if (triggerContainer) {
+                triggerContainer.style.display = 'block';
+                // Small delay to allow display:block to apply before opacity fade-in
+                setTimeout(() => {
+                    triggerContainer.style.opacity = '1';
+                }, 50);
+            }
+
+            // Scroll back up to Iceberg
+            gsap.to(window, {
+                duration: 0.8,
+                scrollTo: { y: "#eisberg", offsetY: 50 },
+                ease: 'power2.out'
+            });
+        });
+    }
+});

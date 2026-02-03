@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pöppel Prozesskosten-Rechner</title>
+<style>
+  /* --- PÖPPEL STYLE & LAYOUT --- */
+  :root {
+    --poeppel-orange: #FF6600;
+    --poeppel-blue: #001f3f;
+    --text-dark: #333;
+    --bg-light: #f4f7f6;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #eef2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: var(--text-dark);
+  }
+
+  /* Der Hauptcontainer */
+  .calculator-card {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,31,63, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .calc-header {
+    background: var(--poeppel-blue);
+    padding: 30px;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .calc-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .calc-header p {
+    margin: 0;
+    opacity: 0.8;
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  /* Body (Split Screen) */
+  .calc-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Linke Spalte: Eingaben */
+  .calc-inputs {
+    flex: 1;
+    min-width: 320px;
+    padding: 40px;
+    background: #fff;
+    border-right: 1px solid #eee;
+  }
+
+  /* Rechte Spalte: Ergebnisse */
+  .calc-results {
+    flex: 1;
+    min-width: 320px;
+    padding: 40px;
+    background: #f8fafd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Slider Styling */
+  .input-group { margin-bottom: 40px; }
+  
+  .label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  .label-text {
+    font-weight: 700;
+    color: var(--poeppel-blue);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .input-display {
+    color: var(--poeppel-orange);
+    font-weight: 800;
+    font-size: 18px;
+    background: rgba(255, 102, 0, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  /* Range Slider Customization */
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+  }
+  
+  input[type=range]:focus { outline: none; }
+
+  /* Track */
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #e2e8f0;
+    border-radius: 3px;
+  }
+  
+  /* Thumb (Griff) */
+  input[type=range]::-webkit-slider-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--poeppel-orange);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -9px;
+    box-shadow: 0 2px 6px rgba(255, 102, 0, 0.4);
+    border: 3px solid white;
+    transition: transform 0.1s;
+  }
+  
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+  /* Ergebnis Texte */
+  .result-item { margin-bottom: 25px; text-align: center; }
+  
+  .res-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #8899aa;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  
+  .res-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  
+  .res-value.highlight {
+    color: var(--poeppel-orange);
+    font-size: 42px;
+    font-weight: 800;
+  }
+  
+  .savings-badge {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-top: 5px;
+  }
+
+  /* Vergleichsbalken */
+  .chart-container {
+    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+  }
+  
+  .bar-wrapper {
+    position: relative;
+    height: 24px;
+    background: #cbd5e0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .bar-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--poeppel-orange);
+    width: 20%; /* Pöppel Ziel: 20% */
+    transition: width 0.5s ease;
+    border-radius: 12px;
+  }
+  
+  .chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive Mobile */
+  @media (max-width: 700px) {
+    .calc-body { flex-direction: column; }
+    .calc-inputs, .calc-results { border: none; padding: 30px 20px; }
+    .calc-results { background: #f1f5f9; }
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator-card">
+  <div class="calc-header">
+    <h2>Ihr Sparpotenzial</h2>
+    <p>Was manuelle Prozesse Sie wirklich kosten.</p>
+  </div>
+
+  <div class="calc-body">
+    
+    <!-- EINGABE -->
+    <div class="calc-inputs">
+      
+      <!-- Slider 1: Mitarbeiter -->
+      <div class="input-group">
+        <div class="label-row">
+          <span class="label-text">Anzahl Mitarbeiter</span>
+          <span class="input-display" id="disp-emp">50</span>
+        </div>
+        <input type="range" id="range-emp" min="10" max="500" value="50" step="10">
+      </div>
+
+      <!-- Slider 2: Stunden -->
+      <div class="input-group">
+        <div class="label-row">
+          <span class="label-text">Admin-Aufwand (Std./Woche)</span>
+          <span class="input-display" id="disp-hours">3.0 h</span>
+        </div>
+        <input type="range" id="range-hours" min="1" max="40" value="3" step="0.5">
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 10px; line-height: 1.4;">
+          Beinhaltet: Bedarfsermittlung, Katalogsuche, Bestellung, Verteilung, Retourenabwicklung und Rechnungsprüfung.
+        </div>
+      </div>
+
+      <div style="font-size: 10px; color: #cbd5e0; margin-top: 40px;">
+        Berechnungsgrundlage: Interner Verrechnungssatz von 50,00 € / Std. (inkl. Lohnnebenkosten).
+      </div>
+    </div>
+
+    <!-- ERGEBNIS -->
+    <div class="calc-results">
+      
+      <div class="result-item">
+        <div class="res-label">Status Quo (Jährliche Kosten)</div>
+        <div class="res-value" id="res-current">7.800 €</div>
+      </div>
+
+      <div class="result-item">
+        <div class="res-label">Mit Pöppel System</div>
+        <div class="res-value highlight" id="res-poeppel">1.560 €</div>
+        <div class="savings-badge">Sie sparen <span id="res-savings">6.240 €</span> pro Jahr</div>
+      </div>
+
+      <!-- Balken Diagramm -->
+      <div class="chart-container">
+        <div class="chart-labels">
+          <span>Kostenreduktion</span>
+          <span>-80%</span>
+        </div>
+        <div class="bar-wrapper">
+          <div class="bar-fill"></div>
+        </div>
+        <div style="text-align: right; font-size: 10px; color: #94a3b8; margin-top: 5px;">
+          Effizienzsteigerung durch digitale Prozesse
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Elemente auswählen
+  const rangeEmp = document.getElementById('range-emp');
+  const rangeHours = document.getElementById('range-hours');
+  
+  const dispEmp = document.getElementById('disp-emp');
+  const dispHours = document.getElementById('disp-hours');
+  
+  const resCurrent = document.getElementById('res-current');
+  const resPoeppel = document.getElementById('res-poeppel');
+  const resSavings = document.getElementById('res-savings');
+
+  // Konstanten
+  const HOURLY_RATE = 50; // Interner Verrechnungssatz
+  const WEEKS_PER_YEAR = 52;
+  const EFFICIENCY_FACTOR = 0.20; // Pöppel reduziert Kosten auf 20% (80% Ersparnis)
+
+  // Formatierungsfunktion für Euro
+  function formatEuro(num) {
+    return num.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  }
+
+  // Die Rechenfunktion
+  function calculate() {
+    // Werte holen
+    const employees = parseInt(rangeEmp.value);
+    const hours = parseFloat(rangeHours.value);
+
+    // Anzeigen aktualisieren
+    dispEmp.innerText = employees;
+    dispHours.innerText = hours.toFixed(1) + " h";
+
+    // Logik:
+    // Aktuelle Kosten = Stunden * 52 Wochen * 50€
+    const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
+    const poeppelCost = currentCost * EFFICIENCY_FACTOR;
+    const savings = currentCost - poeppelCost;
+
+    // Ergebnisse ins DOM schreiben
+    resCurrent.innerText = formatEuro(currentCost);
+    resPoeppel.innerText = formatEuro(poeppelCost);
+    resSavings.innerText = formatEuro(savings);
+  }
+
+  // Event Listener hinzufügen
+  rangeEmp.addEventListener('input', calculate);
+  rangeHours.addEventListener('input', calculate);
+
+  // Initial einmal berechnen beim Laden
+  calculate();
+</script>
+
+</body>
+</html>

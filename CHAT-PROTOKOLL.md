@@ -355,3 +355,62 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
   - "Unsere Marken" (Marquee) direkt danach platziert (Sektion 8).
   - "Team / Mitarbeiter" dafür nach unten verschoben (Sektion 16, nach "Ihr Gewinn").
   - Hintergrund: Logischer Flow: Partner -> Vetted Brands -> ... -> Team als Abschluss.
+
+### 03.02.2026 - Feature Erweiterung: Problem-Awareness
+- [x] **Neue Sektion eingebaut: Eisberg-Modell**
+  - Position: Nach Sektion 3 (Problem)
+  - Zweck: Visualisierung versteckter Prozesskosten (95% vs. 5%)
+  - Technik: SVG-Animation mit Intersection Observer
+
+- [x] **Neue Sektion eingebaut: ROI-Kalkulator**
+  - Position: Nach Eisberg-Sektion
+  - Zweck: Interaktive Berechnung der Einsparpotentiale
+  - Features: Slider für Mitarbeiteranzahl und Stundenaufwand, Live-Berechnung, Vergleichsbalken.
+
+### 03.02.2026 - Verfeinerung Sektion 3.5 & 3.6
+- [x] **Eisberg-Copywriting**: Headline "Der Preis ist nur die Spitze des Eisbergs" + Intro-Text.
+- [x] **Interaction Design**: ROI-Kalkulator standardmäßig versteckt ().
+- [x] **Reveal-Mechanik**: "Jetzt Sparpotenzial berechnen" Button implementiert, der den Rechner sanft ausfährt und hinscrollt.
+
+### 03.02.2026 - Verfeinerung Sektion 3.5 & 3.6
+- [x] **Eisberg-Copywriting**: Headline "Der Preis ist nur die Spitze des Eisbergs" + Intro-Text.
+- [x] **Interaction Design**: ROI-Kalkulator standardmäßig versteckt (`.hidden-calculator`).
+- [x] **Reveal-Mechanik**: "Jetzt Sparpotenzial berechnen" Button implementiert, der den Rechner sanft ausfährt und hinscrollt.
+
+### 03.02.2026 - Finale Copy & Design Korrektur
+- [x] **Copy Update**: Eisberg-Intro mit spezifischen Daten der BMWK-Studie (Schutzbrille 10€ vs. 165€ Prozesskosten).
+- [x] **Copy Update**: Kalkulator-Intro mit BME-Fakten (100€-300€ pro Vorgang).
+- [x] **Design**: "Sparpotenzial berechnen" Button jetzt Hellblau () für besseren Kontrast und als klarer Call-to-Action.
+
+### 03.02.2026 - Finale Copy & Design Korrektur
+- [x] **Copy Update**: Eisberg-Intro mit spezifischen Daten der BMWK-Studie (Schutzbrille 10€ vs. 165€ Prozesskosten).
+- [x] **Copy Update**: Kalkulator-Intro mit BME-Fakten (100€-300€ pro Vorgang).
+- [x] **Design**: "Sparpotenzial berechnen" Button jetzt Hellblau (`.btn-blue`) für besseren Kontrast und als klarer Call-to-Action.
+
+### 03.02.2026 - Struktur-Anpassung
+- [x] **Relocation**: Eisberg- und Kalkulator-Sektion wurden **hinter** die Sektion "Potentiale" verschoben (von Position 3.5/3.6 auf Position 5/6).
+- [x] **Renumbering**: Alle nachfolgenden Sektionen wurden entsprechend umnummeriert (Whitepaper jetzt Sektion 7, etc.).
+
+### 03.02.2026 - Design Refinement (Orange Theme & Layout)
+- [x] **Farbschema**: Alles auf Orange-Brand (`#f97316`) umgestellt (Buttons, Slider, Charts). "Workwear-Blau" entfernt.
+- [x] **Eisberg Sektion**:
+    - Layout geändert: Text links / Bild rechts (`Eisberg 1.svg`).
+    - Überschrift angepasst: "Einkaufspreis vs. Prozesskosten".
+    - Badge: "Versteckte Kosten".
+    - Responsive Grid implementiert (Mobil: Stacked, Desktop: 2-Spalten).
+- [x] **Typografie**:
+    - Schriftgrößen vereinheitlicht.
+    - Sektion 4 Headline: "System" als Highlight (`.highlight-italic`) markiert.
+- [x] **Calculator**: Slider und Badge-Farben an Orange-Schema angepasst.
+
+### 03.02.2026 - Calculator Fixes (Bar & Redesign)
+- [x] **Bugfix**: "Kostenreduktion"-Balken füllte sich nicht. JS-Logik ergänzt (setzt Width auf 80%).
+- [x] **Redesign**:
+    - Rechner-Hintergrund auf Dunkelblau (`#0f172a`) geändert.
+    - Inputs/Results an Dark Mode angepasst.
+    - "Schließen"-Button komplett neu gestaltet: Großes graues X im Kreis, Text "Schließen" davor, unten rechts positioniert.
+
+### 03.02.2026 - Finalizing Calculator
+- [x] **Design**: Rechner-Karte wieder hell (`#fff`), Sektions-Hintergrund bleibt Dunkelblau (`#0f172a`).
+- [x] **Animation**: "Kostenreduktion"-Balken animiert jetzt beim Öffnen (0% -> 80%).
+- [x] **Close-Button**: Design (Graues X) passt zum neuen hellen Karten-Hintergrund.

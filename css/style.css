@@ -22,6 +22,8 @@
     /* Slate 200 */
     --color-white: #ffffff;
 
+    /* Removed Blue - Back to Orange Brand */
+
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -30,6 +32,8 @@
     --section-padding: 120px;
     --container-max: 1280px;
     --container-padding: 24px;
+    --section-spacing-large: 160px;
+    /* Added for extra spacing between 4 and 5 */
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -66,6 +70,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-padding-top: 100px;
+    /* Better scroll target */
 }
 
 body {
@@ -122,10 +128,11 @@ button {
 
 .section-badge {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
+    /* Increased slightly */
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     color: var(--color-primary);
     margin-bottom: 16px;
 }
@@ -134,9 +141,18 @@ button {
     margin-bottom: 64px;
 }
 
+.section-header.center {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 16px;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    /* Standardized */
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
 }
 
 .section-title.light {
@@ -229,6 +245,17 @@ button {
 .btn-large {
     padding: 20px 48px;
     font-size: 1.125rem;
+}
+
+.btn-blue {
+    background: var(--color-blue);
+    color: var(--color-white);
+}
+
+.btn-blue:hover {
+    background: var(--color-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 /* =============================================
@@ -3005,4 +3032,842 @@ button {
 .team-contact-details a:hover {
     opacity: 1;
     color: white;
+}
+
+/* =========================================
+   ICEBERG MODULE STYLES
+   ========================================= */
+.iceberg-module-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    background: radial-gradient(circle at center, #0f3057 0%, #001f3f 100%);
+    margin: 60px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.water-surface {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    z-index: 10;
+    transform: translateX(100%);
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.iceberg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    transform: translateX(-100%);
+    transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.iceberg-container.floating {
+    animation: floatIceberg 6s ease-in-out infinite;
+}
+
+@keyframes floatIceberg {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+.iceberg-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.iceberg-text-content {
+    position: absolute;
+    top: 240px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 200px;
+}
+
+.iceberg-text-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.iceberg-text-content li {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.info-box {
+    position: absolute;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.box-content {
+    background: rgba(14, 29, 53, 0.9);
+    border-left: 4px solid #aaa;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.iceberg-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ccc;
+    margin-bottom: 2px;
+}
+
+.iceberg-price {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+}
+
+.iceberg-subtext {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.top-box {
+    top: 50px;
+    right: 10%;
+}
+
+.top-box .connector-line {
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    width: 60px;
+    height: 1px;
+    background: white;
+}
+
+.top-box .connector-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+}
+
+.bottom-box {
+    bottom: 80px;
+    right: 10%;
+}
+
+.bottom-box .box-content.highlight {
+    background: #FF6600;
+    border-left: 4px solid white;
+}
+
+.bottom-box .iceberg-label,
+.bottom-box .iceberg-subtext {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bottom-box .connector-line {
+    position: absolute;
+    top: 50%;
+    left: -80px;
+    width: 80px;
+    height: 1px;
+    background: #FF6600;
+}
+
+.bottom-box .connector-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    background: #FF6600;
+    border-radius: 50%;
+}
+
+.source-citation {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Iceberg Animation States */
+.animate-in .water-surface {
+    transform: translateX(0);
+}
+
+.animate-in .iceberg-container {
+    transform: translateX(0);
+}
+
+.animate-in .top-box {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.5s;
+}
+
+.animate-in .bottom-box {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 2.2s;
+}
+
+/* Responsive Iceberg */
+@media (max-width: 768px) {
+    .iceberg-module-wrapper {
+        height: 400px;
+    }
+
+    .top-box {
+        top: 20px;
+        right: 5%;
+    }
+
+    .bottom-box {
+        bottom: 40px;
+        right: 5%;
+    }
+
+    .iceberg-price {
+        font-size: 24px;
+    }
+
+    .iceberg-text-content {
+        top: 200px;
+    }
+}
+
+/* =========================================
+   ROI CALCULATOR STYLES
+   ========================================= */
+.calculator-section {
+    padding: 80px 0;
+    background-color: #eef2f5;
+}
+
+.calculator-card {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 31, 63, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-header {
+    background: var(--primary-color);
+    padding: 30px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.calc-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.calc-header p {
+    margin: 0;
+    opacity: 0.8;
+    font-weight: 300;
+    font-size: 14px;
+    color: white;
+}
+
+.calc-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calc-inputs {
+    flex: 1;
+    min-width: 320px;
+    padding: 40px;
+    background: #fff;
+    border-right: 1px solid #eee;
+}
+
+.calc-results {
+    flex: 1;
+    min-width: 320px;
+    padding: 40px;
+    background: #f8fafd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.input-group {
+    margin-bottom: 40px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.label-text {
+    font-weight: 700;
+    color: var(--color-primary);
+    /* Orange */
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-display {
+    color: var(--color-primary);
+    /* Orange */
+    font-weight: 800;
+    font-size: 18px;
+    background: rgba(249, 115, 22, 0.1);
+    /* Orange Light */
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* Range Slider */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* Standard property */
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #e2e8f0;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    /* Orange */
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -9px;
+    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.4);
+    /* Orange Shadow */
+    border: 3px solid white;
+    transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Results */
+.result-item {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.res-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #8899aa;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.res-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.res-value.highlight {
+    color: var(--accent-color);
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.savings-badge {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.chart-container {
+    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+}
+
+.bar-wrapper {
+    position: relative;
+    height: 24px;
+    background: #cbd5e0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--accent-color);
+    width: 20%;
+    transition: width 0.5s ease;
+    border-radius: 12px;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .calc-body {
+        flex-direction: column;
+    }
+
+    .calc-inputs,
+    .calc-results {
+        border: none;
+        padding: 30px 20px;
+    }
+
+    .calc-results {
+        background: #f1f5f9;
+    }
+}
+
+/* =========================================
+   CALCULATOR REVEAL LOGIC
+   ========================================= */
+.calculator-reveal-trigger {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.calculator-reveal-trigger p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.hidden-calculator {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-20px);
+}
+
+.visible-calculator {
+    max-height: 1200px;
+    /* Genug Platz für den Inhalt */
+    opacity: 1;
+    padding: 80px 0;
+    transform: translateY(0);
+}
+/* =============================================
+   ICEBERG SECTION (New Layout)
+   ============================================= */
+.iceberg-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.iceberg-content-left {
+    text-align: left;
+}
+
+.iceberg-content-left .section-subtitle {
+    margin-bottom: 24px;
+}
+
+.iceberg-image-right img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+@media (min-width: 992px) {
+    .iceberg-grid-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+    }
+}
+
+@media (max-width: 991px) {
+    .iceberg-content-left {
+         text-align: center;
+    }
+    .iceberg-content-left .section-header {
+        text-align: center !important;
+    }
+}
+
+/* Calculator Orange Theme Overrides */
+.calc-header {
+    background: var(--color-primary);
+    color: white;
+    padding: 30px;
+    border-radius: 12px 12px 0 0;
+}
+
+.res-value.highlight {
+    color: var(--color-primary);
+}
+
+.savings-badge {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--color-dark);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.savings-badge span {
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    width: 0%;
+    transition: width 1s ease-out;
+    border-radius: 10px;
+}
+
+/* Specific Iceberg Text Styles */
+.source-citation {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    border-left: 3px solid var(--color-gray-light);
+    padding-left: 16px;
+    margin-top: 24px;
+}
+
+.introduction-text {
+    color: var(--color-gray);
+    font-size: 1.125rem;
+    margin-bottom: 40px;
+}
+
+/* Ensure inline images in Iceberg grid are responsive */
+.iceberg-image-right img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Added separation spacing as requested */
+#eisberg {
+    margin-top: 100px; /* Restore distance to previous section */
+}
+
+/* Fix for Calculator Bar Visibility & Color */
+.bar-fill {
+    background-color: #0ea5e9 !important; /* Workwear Blue / Shimmer Color */
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5); /* Add faint glow */
+}
+
+/* Ensure bar wrapper has height */
+.bar-wrapper {
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* Close Calculator Button - Dark Blue */
+.btn-dark-blue {
+    background-color: #0f172a; /* Dark Blue / Slate 950 */
+    color: white;
+}
+.btn-dark-blue:hover {
+    background-color: #1e293b; /* Slightly lighter on hover */
+}
+
+/* =========================================
+   CALCULATOR RE-DESIGN (Dark Blue & Close Button)
+   ========================================= */
+
+/* Dark Blue Background for Calculator Section */
+#calculator {
+    background-color: #0f172a; /* Slate 950 */
+    color: white;
+}
+
+.calculator-card {
+    background: transparent; /* Remove white card bg to show dark section */
+    box-shadow: none;
+}
+
+/* Make inputs and results blend in or stand out correctly on dark bg */
+.calc-inputs {
+    background: #1e293b; /* Slate 800 */
+    color: white;
+    border-right: 1px solid #334155;
+    border-radius: 12px 0 0 12px;
+}
+
+.calc-results {
+    background: #0f172a; /* Slate 950 */
+    color: white;
+    border-radius: 0 12px 12px 0;
+    border: 1px solid #334155; /* Subtle border */
+}
+
+/* Update text colors for dark mode */
+.label-text {
+    color: #94a3b8; /* Slate 400 */
+}
+
+.input-display {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f97316; /* Orange */
+}
+
+.res-label {
+    color: #94a3b8;
+}
+
+.res-value {
+    color: white;
+}
+
+.res-value.highlight {
+    color: #f97316; /* Orange */
+}
+
+.savings-badge {
+    background: rgba(249, 115, 22, 0.2);
+    color: #ffd700; /* Gold/Yellow for visibility */
+}
+
+.savings-badge span {
+    color: #f97316;
+}
+
+/* Specific Close Button Style (Gray X, Bottom Right) */
+.calculator-close-container {
+    display: flex;
+    justify-content: flex-end; /* Align right */
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+}
+
+.btn-close-calc {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-close-calc:hover {
+    transform: scale(1.05);
+}
+
+.btn-close-text {
+    color: #94a3b8; /* Gray text */
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-close-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #475569; /* Gray background for X */
+    border-radius: 50%; /* Circle */
+    color: white;
+}
+
+.btn-close-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .calc-inputs {
+        border-radius: 12px 12px 0 0;
+        border-right: none;
+    }
+    .calc-results {
+        border-radius: 0 0 12px 12px;
+    }
+}
+
+/* =========================================
+   PROBLEM SECTION HEADER (Image Right)
+   ========================================= */
+.problem-header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-text-content {
+    flex: 1;
+}
+
+.header-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.kaskade-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Limit height to not overpower text */
+    border-radius: var(--radius-md);
+    /* mix-blend-mode: multiply; Optional if white bg needs blending */
+}
+
+@media (max-width: 768px) {
+    .problem-header-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-text-content .section-title,
+    .header-text-content .section-subtitle {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* =========================================
+   CALCULATOR REVERT - Light Card on Dark Background
+   ========================================= */
+
+/* Calculator Card - Light Theme */
+.calculator-card {
+    background: #fff; /* White background */
+    border-radius: 12px;
+    overflow: hidden; /* Contain children */
+}
+
+/* Inputs Side */
+.calc-inputs {
+    background: #fff; /* White */
+    color: var(--color-dark); /* Dark Text */
+    border-right: 1px solid #e2e8f0;
+}
+
+/* Results Side */
+.calc-results {
+    background: #f8fafc; /* Slate 50 */
+    color: var(--color-dark);
+    border: none;
+}
+
+/* Restore Text Colors */
+.label-text {
+    color: var(--color-primary); /* Orange */
+}
+
+.input-display {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--color-primary);
+}
+
+.res-label {
+    color: var(--color-gray);
+}
+
+.res-value {
+    color: var(--color-dark);
+}
+
+.res-value.highlight {
+    color: var(--color-primary);
+}
+
+/* Fix "Cost Reduction" Bar Container in Light Mode */
+.chart-container {
+    border-top: 1px solid #e2e8f0;
 }
