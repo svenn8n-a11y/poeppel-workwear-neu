@@ -1999,6 +1999,244 @@ button {
     flex-shrink: 0;
 }
 
+/* Package Builder (Option C) */
+.package-builder {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.package-builder-header {
+    background: linear-gradient(135deg, var(--color-dark) 0%, #1e293b 100%);
+    color: var(--color-white);
+    padding: 32px;
+    text-align: center;
+}
+
+.package-builder-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.package-builder-header p {
+    opacity: 0.8;
+    font-size: 0.9375rem;
+}
+
+.package-modules {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.package-module {
+    background: var(--color-light);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+}
+
+.package-module:not(.base):hover {
+    border-color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+.package-module.base {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+    border-color: rgba(34, 197, 94, 0.3);
+    cursor: default;
+}
+
+.package-module.active:not(.base) {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+.module-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.package-module.base .module-icon {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+.package-module.base .module-icon i {
+    color: #22c55e;
+}
+
+.package-module.active:not(.base) .module-icon {
+    background: rgba(249, 115, 22, 0.2);
+}
+
+.module-icon i {
+    width: 24px;
+    height: 24px;
+    color: var(--color-gray);
+}
+
+.package-module.active .module-icon i {
+    color: var(--color-primary);
+}
+
+.module-text {
+    flex: 1;
+}
+
+.module-text h4 {
+    font-size: 1.125rem;
+    margin-bottom: 4px;
+    color: var(--color-dark);
+}
+
+.module-text p {
+    font-size: 0.8125rem;
+    color: var(--color-gray);
+    line-height: 1.4;
+}
+
+.module-status {
+    flex-shrink: 0;
+}
+
+.included-badge {
+    background: #22c55e;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.module-status .add-icon,
+.module-status .check-icon {
+    width: 28px;
+    height: 28px;
+    transition: all var(--transition-normal);
+}
+
+.module-status .add-icon {
+    color: var(--color-gray);
+}
+
+.module-status .check-icon {
+    display: none;
+    color: var(--color-primary);
+}
+
+.package-module.active .module-status .add-icon {
+    display: none;
+}
+
+.package-module.active .module-status .check-icon {
+    display: block;
+}
+
+/* Module Progress Bar */
+.module-bar {
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.module-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #fb923c 100%);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.package-module.base .module-bar-fill {
+    background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+}
+
+.package-module.active .module-bar-fill {
+    width: 100%;
+}
+
+/* Total Progress */
+.package-total {
+    padding: 24px;
+    border-top: 1px solid var(--color-gray-light);
+}
+
+.total-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.total-percent {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+.total-bar {
+    height: 12px;
+    background: var(--color-light);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.total-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e 0%, var(--color-primary) 50%, #fb923c 100%);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+/* Package CTA */
+.package-cta {
+    padding: 24px;
+    text-align: center;
+    background: var(--color-light);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .package-builder {
+        margin: 0 -16px;
+        border-radius: 0;
+    }
+
+    .module-info {
+        flex-wrap: wrap;
+    }
+
+    .module-text {
+        flex-basis: calc(100% - 64px);
+    }
+
+    .module-status {
+        margin-left: auto;
+    }
+}
+
 /* =============================================
    SEKTION 10: USPs HONEYCOMB (Bienenwaben-Zickzack + Horizontal Scroll)
    ============================================= */

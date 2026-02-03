@@ -873,138 +873,134 @@
                         <span class="highlight-italic">passende Lösung</span>
                     </h2>
                     <p class="section-subtitle">
-                        Maßgeschneiderte Lösungen die sich in Ihre bestehende System- und Prozesslandschaft integrieren.
+                        Stellen Sie sich Ihr individuelles Paket zusammen – unabhängig von Ihrer Unternehmensgröße.
                     </p>
                 </header>
 
-                <div class="modular-cards">
-                    <!-- Card: Kleine Unternehmen -->
-                    <div class="modular-card" data-expanded="false">
-                        <div class="modular-card-header">
-                            <div class="modular-card-icon">
-                                <i data-lucide="building"></i>
+                <!-- Package Builder -->
+                <div class="package-builder">
+                    <div class="package-builder-header">
+                        <h3>Ihr individuelles Paket</h3>
+                        <p>Klicken Sie auf die Module, um sie hinzuzufügen</p>
+                    </div>
+
+                    <div class="package-modules">
+                        <!-- Basis-Setup (immer aktiv) -->
+                        <div class="package-module base active" data-value="20">
+                            <div class="module-info">
+                                <div class="module-icon">
+                                    <i data-lucide="package"></i>
+                                </div>
+                                <div class="module-text">
+                                    <h4>Basis-Setup</h4>
+                                    <p>Onlineshop, Kernsortiment, Ansprechpartner, Freigaben, Kostenübersicht</p>
+                                </div>
+                                <div class="module-status">
+                                    <span class="included-badge">Inklusive</span>
+                                </div>
                             </div>
-                            <div class="modular-card-title">
-                                <h3>Kleine Unternehmen</h3>
-                                <span class="package-tier">professional</span>
-                                <span>10-50 Mitarbeiter</span>
+                            <div class="module-bar">
+                                <div class="module-bar-fill" style="width: 100%;"></div>
                             </div>
-                            <button class="modular-card-toggle" aria-label="Erweitern">
-                                <i data-lucide="chevron-down"></i>
-                            </button>
                         </div>
-                        <div class="modular-card-content">
-                            <ul>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Eigener Onlineshop zum Selbstbestellen
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Individuelles Kernsortiment
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Probetragen der Arbeitsbekleidung
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Zentrale Freigabeprozesse
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Transparente Kostenübersicht
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Vorkommissionierung der Ware
-                                </li>
-                            </ul>
+
+                        <!-- Modul: Kostenkontrolle -->
+                        <div class="package-module" data-value="20">
+                            <div class="module-info">
+                                <div class="module-icon">
+                                    <i data-lucide="pie-chart"></i>
+                                </div>
+                                <div class="module-text">
+                                    <h4>Kostenkontrolle</h4>
+                                    <p>Kostenstellenverwaltung, Budget-Limits, automatische Reports</p>
+                                </div>
+                                <div class="module-status">
+                                    <i data-lucide="plus-circle" class="add-icon"></i>
+                                    <i data-lucide="check-circle" class="check-icon"></i>
+                                </div>
+                            </div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Modul: Systemintegration -->
+                        <div class="package-module" data-value="20">
+                            <div class="module-info">
+                                <div class="module-icon">
+                                    <i data-lucide="plug"></i>
+                                </div>
+                                <div class="module-text">
+                                    <h4>Systemintegration</h4>
+                                    <p>OCI Punchout, ERP-Anbindung, API-Zugang</p>
+                                </div>
+                                <div class="module-status">
+                                    <i data-lucide="plus-circle" class="add-icon"></i>
+                                    <i data-lucide="check-circle" class="check-icon"></i>
+                                </div>
+                            </div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Modul: Multi-Standort -->
+                        <div class="package-module" data-value="20">
+                            <div class="module-info">
+                                <div class="module-icon">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div class="module-text">
+                                    <h4>Multi-Standort</h4>
+                                    <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
+                                </div>
+                                <div class="module-status">
+                                    <i data-lucide="plus-circle" class="add-icon"></i>
+                                    <i data-lucide="check-circle" class="check-icon"></i>
+                                </div>
+                            </div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Modul: Service Plus -->
+                        <div class="package-module" data-value="20">
+                            <div class="module-info">
+                                <div class="module-icon">
+                                    <i data-lucide="star"></i>
+                                </div>
+                                <div class="module-text">
+                                    <h4>Service Plus</h4>
+                                    <p>Popup-Stores, Fitness Days, Premium Support, Vollautomatisierung</p>
+                                </div>
+                                <div class="module-status">
+                                    <i data-lucide="plus-circle" class="add-icon"></i>
+                                    <i data-lucide="check-circle" class="check-icon"></i>
+                                </div>
+                            </div>
+                            <div class="module-bar">
+                                <div class="module-bar-fill"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Card: Mittelstand -->
-                    <div class="modular-card" data-expanded="false">
-                        <div class="modular-card-header">
-                            <div class="modular-card-icon">
-                                <i data-lucide="building-2"></i>
-                            </div>
-                            <div class="modular-card-title">
-                                <h3>Mittelständische Unternehmen</h3>
-                                <span class="package-tier">Expert</span>
-                                <span>50-500 Mitarbeiter</span>
-                            </div>
-                            <button class="modular-card-toggle" aria-label="Erweitern">
-                                <i data-lucide="chevron-down"></i>
-                            </button>
+                    <!-- Gesamtfortschritt -->
+                    <div class="package-total">
+                        <div class="total-label">
+                            <span>Ihr Leistungsumfang</span>
+                            <span class="total-percent">20%</span>
                         </div>
-                        <div class="modular-card-content">
-                            <p class="package-intro">Alle Leistungen des Pro-Pakets. Zusätzlich:</p>
-                            <ul>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Kostenstellenverwaltung
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Bis zu 10 verschiedene Rollen
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    OCI Punchout Integration
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Popup-Stores für Anproben vor Ort
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Fitness Days für die Gesundheit der Mitarbeiter
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Multi-Standort Management
-                                </li>
-                            </ul>
+                        <div class="total-bar">
+                            <div class="total-bar-fill" style="width: 20%;"></div>
                         </div>
                     </div>
 
-                    <!-- Card: Große Unternehmen / Enterprise -->
-                    <div class="modular-card" data-expanded="false">
-                        <div class="modular-card-header">
-                            <div class="modular-card-icon">
-                                <i data-lucide="factory"></i>
-                            </div>
-                            <div class="modular-card-title">
-                                <h3>Große Unternehmen / Enterprise</h3>
-                                <span class="package-tier">Enterprise</span>
-                                <span>500+ Mitarbeiter – Vollautomatisierung</span>
-                            </div>
-                            <button class="modular-card-toggle" aria-label="Erweitern">
-                                <i data-lucide="chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="modular-card-content">
-                            <p class="package-intro">Alle Leistungen des Expert-Pakets. Zusätzlich:</p>
-                            <ul>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Volle ERP Integration
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Maßgeschneiderte API-Anbindung
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Premium Support
-                                </li>
-                                <li>
-                                    <i data-lucide="check"></i>
-                                    Vollautomatisierung aller Prozesse
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- CTA -->
+                    <div class="package-cta">
+                        <a href="#kontakt" class="btn btn-primary btn-large">
+                            Individuelles Paket anfragen
+                        </a>
                     </div>
                 </div>
             </div>

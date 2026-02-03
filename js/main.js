@@ -672,27 +672,57 @@ function initScrollProgress() {
 }
 
 // ========================================
-// MODULAR CARDS (Section 9)
+// PACKAGE BUILDER (Section 13) - Interaktiver Paket-Konfigurator
 // ========================================
 function initModularCards() {
-    const cards = document.querySelectorAll('.modular-card');
-    if (!cards.length) return;
+    const builder = document.querySelector('.package-builder');
+    if (!builder) return;
 
-    cards.forEach(card => {
-        const header = card.querySelector('.modular-card-header');
+    const modules = builder.querySelectorAll('.package-module:not(.base)');
+    const totalBarFill = builder.querySelector('.total-bar-fill');
+    const totalPercent = builder.querySelector('.total-percent');
 
-        header.addEventListener('click', () => {
-            const isExpanded = card.dataset.expanded === 'true';
+    // Calculate and update total progress
+    function updateTotal() {
+        const activeModules = builder.querySelectorAll('.package-module.active');
+        let total = 0;
+        activeModules.forEach(m => {
+            total += parseInt(m.dataset.value) || 0;
+        });
 
-            // Close all other cards
-            cards.forEach(c => {
-                if (c !== card) {
-                    c.dataset.expanded = 'false';
-                }
-            });
+        // Animate total bar
+        gsap.to(totalBarFill, {
+            width: total + '%',
+            duration: 0.5,
+            ease: 'power2.out'
+        });
 
-            // Toggle current card
-            card.dataset.expanded = isExpanded ? 'false' : 'true';
+        // Update percentage text
+        totalPercent.textContent = total + '%';
+    }
+
+    // Click handler for modules
+    modules.forEach(module => {
+        module.addEventListener('click', () => {
+            module.classList.toggle('active');
+
+            // Animate the module bar
+            const barFill = module.querySelector('.module-bar-fill');
+            if (module.classList.contains('active')) {
+                gsap.to(barFill, {
+                    width: '100%',
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            } else {
+                gsap.to(barFill, {
+                    width: '0%',
+                    duration: 0.3,
+                    ease: 'power2.in'
+                });
+            }
+
+            updateTotal();
         });
     });
 
@@ -708,16 +738,27 @@ function initModularCards() {
         duration: 1
     });
 
-    gsap.from('.modular-card', {
+    gsap.from('.package-builder', {
         scrollTrigger: {
-            trigger: '.modular-cards',
+            trigger: '.package-builder',
             start: 'top 80%',
             toggleActions: 'play none none reverse'
         },
         opacity: 0,
         y: 40,
-        stagger: 0.15,
         duration: 0.8
+    });
+
+    gsap.from('.package-module', {
+        scrollTrigger: {
+            trigger: '.package-modules',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        x: -30,
+        stagger: 0.1,
+        duration: 0.6
     });
 }
 
