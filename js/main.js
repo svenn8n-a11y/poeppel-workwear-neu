@@ -245,7 +245,7 @@ function initStickyCards() {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 75%',  // Früher triggern (war 90%)
+                start: 'top 95%',  // Sehr früh triggern - flüssiger Scroll
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
@@ -284,8 +284,8 @@ function initStickyCards() {
         gsap.from(items, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 80%', // Previously 70%
-                toggleActions: 'play none none reverse'
+                start: 'top 90%', // Früher für flüssigeren Scroll
+                toggleActions: 'play none none none'
             },
             opacity: 0,
             y: 20, // Reduced from 30

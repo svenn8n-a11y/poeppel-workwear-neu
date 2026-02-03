@@ -2519,7 +2519,7 @@ button {
     width: 100%;
     height: 100%;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    background: rgba(249, 115, 22, 0.45);
+    background: rgba(255, 255, 255, 0.12);
     position: relative;
     transition: background 0.4s ease;
 }
@@ -2622,6 +2622,17 @@ button {
     border-radius: 2px;
     width: 0%;
     transition: width 0.1s linear;
+}
+
+/* Honeycomb Mobile Styles */
+@media (max-width: 768px) {
+    .honeycomb-scroll-wrapper {
+        margin-top: 16px;
+    }
+
+    .usps-section .section-header {
+        padding-bottom: 0;
+    }
 }
 
 /* =============================================
