@@ -3050,8 +3050,8 @@ button {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--color-white);
-    /* Weißer Hintergrund */
+    background: var(--color-primary);
+    /* Orange Hintergrund */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3063,8 +3063,8 @@ button {
 .gewinn-card-icon i {
     width: 40px;
     height: 40px;
-    color: var(--color-primary) !important;
-    /* Orange icon matching CTA buttons - !important ensures no overrides */
+    color: var(--color-white) !important;
+    /* Weiße Icons auf orangem Hintergrund */
 }
 
 .gewinn-card h3 {
@@ -4237,7 +4237,7 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .kaskade-image {
-    width: 350px;
+    width: 700px;
     height: auto;
     border-radius: var(--radius-md);
 }
