@@ -2376,18 +2376,18 @@ button {
     background: white;
     transition: all var(--transition-normal);
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.toggle-switch input:checked + .toggle-slider {
+.toggle-switch input:checked+.toggle-slider {
     background: var(--color-primary);
 }
 
-.toggle-switch input:checked + .toggle-slider:before {
+.toggle-switch input:checked+.toggle-slider:before {
     transform: translateX(24px);
 }
 
-.toggle-switch input:focus + .toggle-slider {
+.toggle-switch input:focus+.toggle-slider {
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
 }
 
@@ -3970,6 +3970,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     padding: 80px 0;
     transform: translateY(0);
 }
+
 /* =============================================
    ICEBERG SECTION (New Layout)
    ============================================= */
@@ -4002,8 +4003,9 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 @media (max-width: 991px) {
     .iceberg-content-left {
-         text-align: center;
+        text-align: center;
     }
+
     .iceberg-content-left .section-header {
         text-align: center !important;
     }
@@ -4068,13 +4070,16 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* Added separation spacing as requested */
 #eisberg {
-    margin-top: 100px; /* Restore distance to previous section */
+    margin-top: 100px;
+    /* Restore distance to previous section */
 }
 
 /* Fix for Calculator Bar Visibility & Color */
 .bar-fill {
-    background-color: #0ea5e9 !important; /* Workwear Blue / Shimmer Color */
-    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5); /* Add faint glow */
+    background-color: #0ea5e9 !important;
+    /* Workwear Blue / Shimmer Color */
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+    /* Add faint glow */
 }
 
 /* Ensure bar wrapper has height */
@@ -4088,11 +4093,14 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* Close Calculator Button - Dark Blue */
 .btn-dark-blue {
-    background-color: #0f172a; /* Dark Blue / Slate 950 */
+    background-color: #0f172a;
+    /* Dark Blue / Slate 950 */
     color: white;
 }
+
 .btn-dark-blue:hover {
-    background-color: #1e293b; /* Slightly lighter on hover */
+    background-color: #1e293b;
+    /* Slightly lighter on hover */
 }
 
 /* =========================================
@@ -4101,38 +4109,45 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* Dark Blue Background for Calculator Section */
 #calculator {
-    background-color: #0f172a; /* Slate 950 */
+    background-color: #0f172a;
+    /* Slate 950 */
     color: white;
 }
 
 .calculator-card {
-    background: transparent; /* Remove white card bg to show dark section */
+    background: transparent;
+    /* Remove white card bg to show dark section */
     box-shadow: none;
 }
 
 /* Make inputs and results blend in or stand out correctly on dark bg */
 .calc-inputs {
-    background: #1e293b; /* Slate 800 */
+    background: #1e293b;
+    /* Slate 800 */
     color: white;
     border-right: 1px solid #334155;
     border-radius: 12px 0 0 12px;
 }
 
 .calc-results {
-    background: #0f172a; /* Slate 950 */
+    background: #0f172a;
+    /* Slate 950 */
     color: white;
     border-radius: 0 12px 12px 0;
-    border: 1px solid #334155; /* Subtle border */
+    border: 1px solid #334155;
+    /* Subtle border */
 }
 
 /* Update text colors for dark mode */
 .label-text {
-    color: #94a3b8; /* Slate 400 */
+    color: #94a3b8;
+    /* Slate 400 */
 }
 
 .input-display {
     background: rgba(255, 255, 255, 0.1);
-    color: #f97316; /* Orange */
+    color: #f97316;
+    /* Orange */
 }
 
 .res-label {
@@ -4144,12 +4159,14 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .res-value.highlight {
-    color: #f97316; /* Orange */
+    color: #f97316;
+    /* Orange */
 }
 
 .savings-badge {
     background: rgba(249, 115, 22, 0.2);
-    color: #ffd700; /* Gold/Yellow for visibility */
+    color: #ffd700;
+    /* Gold/Yellow for visibility */
 }
 
 .savings-badge span {
@@ -4159,7 +4176,8 @@ input[type=range]::-webkit-slider-thumb:hover {
 /* Specific Close Button Style (Gray X, Bottom Right) */
 .calculator-close-container {
     display: flex;
-    justify-content: flex-end; /* Align right */
+    justify-content: flex-end;
+    /* Align right */
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #334155;
@@ -4180,7 +4198,8 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .btn-close-text {
-    color: #94a3b8; /* Gray text */
+    color: #94a3b8;
+    /* Gray text */
     font-size: 1.25rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -4193,8 +4212,10 @@ input[type=range]::-webkit-slider-thumb:hover {
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: #475569; /* Gray background for X */
-    border-radius: 50%; /* Circle */
+    background: #475569;
+    /* Gray background for X */
+    border-radius: 50%;
+    /* Circle */
     color: white;
 }
 
@@ -4209,6 +4230,7 @@ input[type=range]::-webkit-slider-thumb:hover {
         border-radius: 12px 12px 0 0;
         border-right: none;
     }
+
     .calc-results {
         border-radius: 0 0 12px 12px;
     }
@@ -4263,28 +4285,34 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* Calculator Card - Light Theme */
 .calculator-card {
-    background: #fff; /* White background */
+    background: #fff;
+    /* White background */
     border-radius: 12px;
-    overflow: hidden; /* Contain children */
+    overflow: hidden;
+    /* Contain children */
 }
 
 /* Inputs Side */
 .calc-inputs {
-    background: #fff; /* White */
-    color: var(--color-dark); /* Dark Text */
+    background: #fff;
+    /* White */
+    color: var(--color-dark);
+    /* Dark Text */
     border-right: 1px solid #e2e8f0;
 }
 
 /* Results Side */
 .calc-results {
-    background: #f8fafc; /* Slate 50 */
+    background: #f8fafc;
+    /* Slate 50 */
     color: var(--color-dark);
     border: none;
 }
 
 /* Restore Text Colors */
 .label-text {
-    color: var(--color-primary); /* Orange */
+    color: var(--color-primary);
+    /* Orange */
 }
 
 .input-display {
@@ -4314,7 +4342,8 @@ input[type=range]::-webkit-slider-thumb:hover {
    ========================================= */
 .time-efficiency-section {
     padding: var(--section-padding) 0;
-    background: #f8fafc; /* Very light slate */
+    background: #f8fafc;
+    /* Very light slate */
 }
 
 .time-comparison-grid {
@@ -4347,31 +4376,36 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 /* Orange Marker Centered on Edge */
-.step-marker {
+.timeline-step .step-marker {
     position: relative;
     width: 60px;
     height: 60px;
     background: #fff;
-    border: 3px solid var(--color-primary); /* Orange Border */
+    border: 3px solid var(--color-primary);
+    /* Orange Border */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--color-primary); /* Orange Text */
+    color: var(--color-primary);
+    /* Orange Text */
     z-index: 5;
     flex-shrink: 0;
-    margin-right: -30px; /* Pull halfway into box */
+    margin-right: -30px;
+    /* Pull halfway into box */
 }
 
 /* Content Box with Orange Border */
-.step-content {
+.timeline-step .step-content {
     background: #fff;
-    padding: 20px 20px 20px 50px; /* Left padding for marker overlap */
+    padding: 20px 20px 20px 50px;
+    /* Left padding for marker overlap */
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    border: 2px solid var(--color-primary); /* Orange Border */
+    border: 2px solid var(--color-primary);
+    /* Orange Border */
     width: 100%;
     transition: transform 0.3s;
 }
@@ -4381,22 +4415,24 @@ input[type=range]::-webkit-slider-thumb:hover {
     box-shadow: var(--shadow-md);
 }
 
-.step-time {
+.timeline-step .step-time {
     display: inline-block;
     font-size: 0.9rem;
     font-weight: 700;
-    font-style: italic; /* Italic as requested */
-    color: var(--color-primary); /* Orange as requested */
+    font-style: italic;
+    /* Italic as requested */
+    color: var(--color-primary);
+    /* Orange as requested */
     margin-bottom: 5px;
 }
 
-.step-content h4 {
+.timeline-step .step-content h4 {
     margin: 0;
     font-size: 1rem;
     color: var(--color-dark);
 }
 
-.step-content p {
+.timeline-step .step-content p {
     margin: 5px 0 0;
     font-size: 0.9rem;
     color: var(--color-gray);
@@ -4491,7 +4527,8 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .solution-promise {
-    background: #fff7ed; /* Light orange bg */
+    background: #fff7ed;
+    /* Light orange bg */
     border-radius: var(--radius-md);
     padding: 24px;
     border-left: 4px solid var(--color-primary);
@@ -4546,13 +4583,16 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 /* 2. "Kaskade" Layout Improvements */
 .problem-header-flex {
-    max-width: 100% !important; /* Allow full width */
-    margin: 0 0 60px 0 !important; /* Remove auto margins */
+    max-width: 100% !important;
+    /* Allow full width */
+    margin: 0 0 60px 0 !important;
+    /* Remove auto margins */
     gap: 20px;
 }
 
 .header-image-container {
-    justify-content: flex-end !important; /* Push image to right */
+    justify-content: flex-end !important;
+    /* Push image to right */
 }
 
 /* Ensure mobile stacking works */
@@ -4560,6 +4600,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     .problem-header-flex {
         flex-direction: column;
     }
+
     .header-image-container {
         justify-content: center !important;
     }
@@ -4654,15 +4695,19 @@ input[type=range]::-webkit-slider-thumb:hover {
     .step {
         grid-template-columns: 60px 1fr;
     }
+
     .steps-container {
         gap: 80px;
     }
+
     .step-visual {
         display: none;
     }
+
     .steps-line {
         left: 30px;
     }
+
     .step-marker {
         width: 60px;
         height: 60px;
