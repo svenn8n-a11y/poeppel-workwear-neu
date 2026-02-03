@@ -348,3 +348,10 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] Gefundene Partner gesichert: Precitool, HoBaTool, E/D/E, Mafell, Walter
 - [x] "Blue Shimmer" (Agent Glow) implementiert (.screen-glow)
 - [x] Style.css und Index.html aktualisiert
+
+### 03.02.2026 - Layout-Anpassung
+- [x] **Korrektur Sektionen-Placement**:
+  - "Partner statt Plattform" wieder an ursprüngliche Position (Sektion 7) verschoben.
+  - "Unsere Marken" (Marquee) direkt danach platziert (Sektion 8).
+  - "Team / Mitarbeiter" dafür nach unten verschoben (Sektion 16, nach "Ihr Gewinn").
+  - Hintergrund: Logischer Flow: Partner -> Vetted Brands -> ... -> Team als Abschluss.

@@ -27,7 +27,7 @@ Die Landingpage ist live unter:
 
 ## Features / Sections
 
-Die Landingpage besteht aus **17 Sektionen**, die den Besucher durch die Customer Journey fuehren:
+Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Customer Journey fuehren:
 
 | Nr. | Sektion | Beschreibung |
 |-----|---------|--------------|
@@ -38,16 +38,18 @@ Die Landingpage besteht aus **17 Sektionen**, die den Besucher durch die Custome
 | 5 | **CTA Whitepaper** | Download Call-to-Action |
 | 6 | **Loesungsweg** | 3 Steps mit verbindender Linie |
 | 7 | **Partner** | "Partner statt Plattform" - 3 Cards mit Eye-Catcher-Zahlen |
-| 8 | **Testimonials** | Auto-scrolling Carousel (Dark Theme) |
-| 9 | **CTA Beratungstermin** | Terminvereinbarung |
-| 10 | **Modularer Ansatz** | 3 expandierbare Cards (Professional, Expert, Enterprise) |
-| 11 | **USPs** | 8 Benefits Carousel mit Auto-Scroll beim Scrollen |
-| 12 | **CTA Potentialanalyse** | Analyse-Anfrage |
-| 13 | **Onboarding** | Diagonale Treppen-Animation |
-| 14 | **Gewinn** | 3 Benefit Cards |
-| 15 | **CTA Beratungsgespraech** | Finale Beratungs-CTA |
-| 16 | **FAQ** | Accordion mit haeufigen Fragen |
-| 17 | **Finale CTA** | Abschliessender Call-to-Action mit Kontaktdaten |
+| 8 | **Unsere Marken** | Marquee-Carousel mit Markenlogos |
+| 9 | **Testimonials** | Auto-scrolling Carousel (Dark Theme) |
+| 10 | **CTA Beratungstermin** | Terminvereinbarung |
+| 11 | **Modularer Ansatz** | 3 expandierbare Cards (Professional, Expert, Enterprise) |
+| 12 | **USPs** | 8 Benefits Carousel mit Auto-Scroll beim Scrollen |
+| 13 | **CTA Potentialanalyse** | Analyse-Anfrage |
+| 14 | **Onboarding** | Diagonale Treppen-Animation |
+| 15 | **Gewinn** | 3 Benefit Cards |
+| 16 | **Team** | "Ihr Expertenteam" - Ansprechpartner mit Kontakt |
+| 17 | **CTA Beratungsgespraech** | Finale Beratungs-CTA |
+| 18 | **FAQ** | Accordion mit haeufigen Fragen |
+| 19 | **Finale CTA** | Abschliessender Call-to-Action mit Kontaktdaten |
 
 ## Project Structure
 
