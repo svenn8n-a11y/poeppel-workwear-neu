@@ -418,16 +418,16 @@ function initStepAnimations() {
         })
             .from(content, {
                 opacity: 0,
-                x: -50,
-                duration: 0.6,
+                x: 50, // Changed from -50 (Left) to 50 (Right) to "fly in from right"
+                duration: 0.8,
                 ease: 'power2.out'
             }, '-=0.2')
             .from(visual, {
                 opacity: 0,
-                x: 50,
-                duration: 0.6,
+                x: 50, // Image also from right
+                duration: 0.8,
                 ease: 'power2.out'
-            }, '-=0.4');
+            }, '-=0.6');
     });
 }
 
