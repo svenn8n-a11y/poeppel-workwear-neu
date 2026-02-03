@@ -1244,3 +1244,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* =========================================
+   TIME EFFICIENCY TIMELINE ANIMATION
+   ========================================= */
+function initTimeTimeline() {
+    // Check if section exists
+    const timeSection = document.querySelector('.time-efficiency-section');
+    if (!timeSection) return;
+
+    // Animate Timeline Steps (Staggered)
+    const steps = document.querySelectorAll('.timeline-step');
+    gsap.from(steps, {
+        scrollTrigger: {
+            trigger: '.timeline-vertical',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.6,
+        x: -30,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power2.out'
+    });
+
+    // Animate Result Box (Scale Up)
+    gsap.from('.time-result-box', {
+        scrollTrigger: {
+            trigger: '.time-result-box',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.8,
+        scale: 0.9,
+        opacity: 0,
+        ease: 'back.out(1.7)'
+    });
+
+    // Animate Solution Side (Fade In Right)
+    gsap.from('.time-solution', {
+        scrollTrigger: {
+            trigger: '.time-solution',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 1,
+        x: 30,
+        opacity: 0,
+        ease: 'power2.out',
+        delay: 0.3 // Wait for timeline slightly
+    });
+}
+
+// Init on Load
+document.addEventListener('DOMContentLoaded', initTimeTimeline);
