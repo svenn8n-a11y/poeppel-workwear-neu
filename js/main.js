@@ -672,94 +672,157 @@ function initScrollProgress() {
 }
 
 // ========================================
-// PACKAGE BUILDER (Section 13) - Interaktiver Paket-Konfigurator
+// MODULE CONFIGURATOR (Section 13) - Option B: Toggle-Liste / Option C: Paket-Builder
 // ========================================
 function initModularCards() {
-    const builder = document.querySelector('.package-builder');
-    if (!builder) return;
+    // Option B: Vertical Configurator with Toggle Switches
+    const configurator = document.querySelector('.module-configurator');
+    if (configurator) {
+        const rows = configurator.querySelectorAll('.module-row:not(.base)');
 
-    const modules = builder.querySelectorAll('.package-module:not(.base)');
-    const totalBarFill = builder.querySelector('.total-bar-fill');
-    const totalPercent = builder.querySelector('.total-percent');
+        rows.forEach(row => {
+            const toggle = row.querySelector('.toggle-switch input');
 
-    // Calculate and update total progress
-    function updateTotal() {
-        const activeModules = builder.querySelectorAll('.package-module.active');
-        let total = 0;
-        activeModules.forEach(m => {
-            total += parseInt(m.dataset.value) || 0;
+            // Click on row toggles the switch
+            row.addEventListener('click', (e) => {
+                if (e.target.closest('.toggle-switch')) return; // Let checkbox handle itself
+                toggle.checked = !toggle.checked;
+                toggle.dispatchEvent(new Event('change'));
+            });
+
+            // Toggle change handler
+            toggle.addEventListener('change', () => {
+                if (toggle.checked) {
+                    row.classList.add('active');
+                    gsap.from(row, {
+                        x: -10,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    row.classList.remove('active');
+                }
+            });
         });
 
-        // Animate total bar
-        gsap.to(totalBarFill, {
-            width: total + '%',
-            duration: 0.5,
-            ease: 'power2.out'
+        // Animate section
+        gsap.from('.modular-section .section-header', {
+            scrollTrigger: {
+                trigger: '.modular-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
         });
 
-        // Update percentage text
-        totalPercent.textContent = total + '%';
+        gsap.from('.module-configurator', {
+            scrollTrigger: {
+                trigger: '.module-configurator',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8
+        });
+
+        gsap.from('.module-row', {
+            scrollTrigger: {
+                trigger: '.module-configurator',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            x: -20,
+            stagger: 0.1,
+            duration: 0.5
+        });
+
+        return;
     }
 
-    // Click handler for modules
-    modules.forEach(module => {
-        module.addEventListener('click', () => {
-            module.classList.toggle('active');
+    // Option C: Package Builder with Progress Bars
+    const builder = document.querySelector('.package-builder');
+    if (builder) {
+        const modules = builder.querySelectorAll('.package-module:not(.base)');
+        const totalBarFill = builder.querySelector('.total-bar-fill');
+        const totalPercent = builder.querySelector('.total-percent');
 
-            // Animate the module bar
-            const barFill = module.querySelector('.module-bar-fill');
-            if (module.classList.contains('active')) {
-                gsap.to(barFill, {
-                    width: '100%',
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
-            } else {
-                gsap.to(barFill, {
-                    width: '0%',
-                    duration: 0.3,
-                    ease: 'power2.in'
-                });
-            }
+        function updateTotal() {
+            const activeModules = builder.querySelectorAll('.package-module.active');
+            let total = 0;
+            activeModules.forEach(m => {
+                total += parseInt(m.dataset.value) || 0;
+            });
 
-            updateTotal();
+            gsap.to(totalBarFill, {
+                width: total + '%',
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+
+            totalPercent.textContent = total + '%';
+        }
+
+        modules.forEach(module => {
+            module.addEventListener('click', () => {
+                module.classList.toggle('active');
+
+                const barFill = module.querySelector('.module-bar-fill');
+                if (module.classList.contains('active')) {
+                    gsap.to(barFill, {
+                        width: '100%',
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    gsap.to(barFill, {
+                        width: '0%',
+                        duration: 0.3,
+                        ease: 'power2.in'
+                    });
+                }
+
+                updateTotal();
+            });
         });
-    });
 
-    // Animate section on scroll
-    gsap.from('.modular-section .section-header', {
-        scrollTrigger: {
-            trigger: '.modular-section',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1
-    });
+        gsap.from('.modular-section .section-header', {
+            scrollTrigger: {
+                trigger: '.modular-section',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
 
-    gsap.from('.package-builder', {
-        scrollTrigger: {
-            trigger: '.package-builder',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.8
-    });
+        gsap.from('.package-builder', {
+            scrollTrigger: {
+                trigger: '.package-builder',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8
+        });
 
-    gsap.from('.package-module', {
-        scrollTrigger: {
-            trigger: '.package-modules',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        opacity: 0,
-        x: -30,
-        stagger: 0.1,
-        duration: 0.6
-    });
+        gsap.from('.package-module', {
+            scrollTrigger: {
+                trigger: '.package-modules',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            x: -30,
+            stagger: 0.1,
+            duration: 0.6
+        });
+    }
 }
 
 // ========================================
