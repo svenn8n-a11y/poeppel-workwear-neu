@@ -4564,3 +4564,108 @@ input[type=range]::-webkit-slider-thumb:hover {
         justify-content: center !important;
     }
 }
+
+/* =========================================
+   SEKTION 8: LÖSUNGSWEG (RESTORED CLEAN)
+   ========================================= */
+.loesung-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-light);
+}
+
+.steps-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.steps-line {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-gray-light);
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+}
+
+.step-marker {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.step-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+}
+
+.step-content p {
+    color: var(--color-gray);
+    line-height: 1.7;
+}
+
+.step-visual {
+    height: 250px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+.step-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    opacity: 0.77;
+}
+
+.step-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, var(--color-light) 100%);
+    pointer-events: none;
+}
+
+@media (max-width: 968px) {
+    .step {
+        grid-template-columns: 60px 1fr;
+    }
+    .steps-container {
+        gap: 80px;
+    }
+    .step-visual {
+        display: none;
+    }
+    .steps-line {
+        left: 30px;
+    }
+    .step-marker {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
