@@ -814,8 +814,8 @@ function initModularCards() {
         gsap.from('.package-module', {
             scrollTrigger: {
                 trigger: '.package-modules',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
+                start: 'top 85%',
+                toggleActions: 'play none none none'
             },
             opacity: 0,
             x: -30,

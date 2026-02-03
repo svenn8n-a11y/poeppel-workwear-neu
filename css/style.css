@@ -2041,6 +2041,9 @@ button {
     cursor: pointer;
     transition: all var(--transition-normal);
     border: 2px solid transparent;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
 }
 
 .package-module:not(.base):hover {
