@@ -111,7 +111,8 @@
                             <span class="highlight-italic">Ineffizienz</span>
                         </h2>
                         <p class="section-subtitle" style="text-align: left; margin-left: 0;">
-                            Warum traditionelle Beschaffung Sie mehr kostet, als auf der Rechnung steht.
+                            <strong>Warum der Artikelpreis die falsche Kennzahl ist</strong><br>
+                            Studien zeigen ein gefährliches Missverhältnis in der Beschaffung von Arbeitskleidung (C-Teile). Während Unternehmen um Cent-Beträge beim Artikelpreis feilschen, explodieren im Hintergrund die versteckten Kosten.
                         </p>
                     </div>
                     <div class="header-image-container">
@@ -877,129 +878,94 @@
                     </p>
                 </header>
 
-                <!-- Package Builder -->
-                <div class="package-builder">
-                    <div class="package-builder-header">
-                        <h3>Ihr individuelles Paket</h3>
-                        <p>Klicken Sie auf die Module, um sie hinzuzufügen</p>
-                    </div>
-
-                    <div class="package-modules">
-                        <!-- Basis-Setup (immer aktiv) -->
-                        <div class="package-module base active" data-value="20">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="package"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Basis-Setup</h4>
-                                    <p>Onlineshop, Kernsortiment, Ansprechpartner, Freigaben, Kostenübersicht</p>
-                                </div>
-                                <div class="module-status">
-                                    <span class="included-badge">Inklusive</span>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 100%;"></div>
-                            </div>
+                <!-- Module Configurator (Option B) -->
+                <div class="module-configurator">
+                    <!-- Basis-Setup (immer aktiv) -->
+                    <div class="module-row base">
+                        <div class="module-row-icon">
+                            <i data-lucide="check-circle"></i>
                         </div>
-
-                        <!-- Modul: Kostenkontrolle -->
-                        <div class="package-module" data-value="20">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="pie-chart"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Kostenkontrolle</h4>
-                                    <p>Kostenstellenverwaltung, Budget-Limits, automatische Reports</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
-                            </div>
+                        <div class="module-row-content">
+                            <h4>Basis-Setup</h4>
+                            <p>Onlineshop · Kernsortiment · Ansprechpartner · Freigaben · Kostenübersicht</p>
                         </div>
-
-                        <!-- Modul: Systemintegration -->
-                        <div class="package-module" data-value="20">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="plug"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Systemintegration</h4>
-                                    <p>OCI Punchout, ERP-Anbindung, API-Zugang</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
-                            </div>
-                        </div>
-
-                        <!-- Modul: Multi-Standort -->
-                        <div class="package-module" data-value="20">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="map-pin"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Multi-Standort</h4>
-                                    <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
-                            </div>
-                        </div>
-
-                        <!-- Modul: Service Plus -->
-                        <div class="package-module" data-value="20">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="star"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Service Plus</h4>
-                                    <p>Popup-Stores, Fitness Days, Premium Support, Vollautomatisierung</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
-                            </div>
+                        <div class="module-row-status">
+                            <span class="always-included">Immer dabei</span>
                         </div>
                     </div>
 
-                    <!-- Gesamtfortschritt -->
-                    <div class="package-total">
-                        <div class="total-label">
-                            <span>Ihr Leistungsumfang</span>
-                            <span class="total-percent">20%</span>
+                    <!-- Modul: Kostenkontrolle -->
+                    <div class="module-row" data-module="kostenkontrolle">
+                        <div class="module-row-icon">
+                            <i data-lucide="pie-chart"></i>
                         </div>
-                        <div class="total-bar">
-                            <div class="total-bar-fill" style="width: 20%;"></div>
+                        <div class="module-row-content">
+                            <h4>Kostenkontrolle</h4>
+                            <p>Kostenstellenverwaltung, Budget-Limits, automatische Reports</p>
+                        </div>
+                        <div class="module-row-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Modul: Systemintegration -->
+                    <div class="module-row" data-module="systemintegration">
+                        <div class="module-row-icon">
+                            <i data-lucide="plug"></i>
+                        </div>
+                        <div class="module-row-content">
+                            <h4>Systemintegration</h4>
+                            <p>OCI Punchout, ERP-Anbindung, API-Zugang</p>
+                        </div>
+                        <div class="module-row-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Modul: Multi-Standort -->
+                    <div class="module-row" data-module="multistandort">
+                        <div class="module-row-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="module-row-content">
+                            <h4>Multi-Standort</h4>
+                            <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
+                        </div>
+                        <div class="module-row-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Modul: Service Plus -->
+                    <div class="module-row" data-module="serviceplus">
+                        <div class="module-row-icon">
+                            <i data-lucide="star"></i>
+                        </div>
+                        <div class="module-row-content">
+                            <h4>Service Plus</h4>
+                            <p>Popup-Stores, Fitness Days, Premium Support, Vollautomatisierung</p>
+                        </div>
+                        <div class="module-row-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
 
                     <!-- CTA -->
-                    <div class="package-cta">
+                    <div class="module-configurator-cta">
                         <a href="#kontakt" class="btn btn-primary btn-large">
-                            Individuelles Paket anfragen
+                            Individuelle Beratung anfordern
                         </a>
                     </div>
                 </div>
