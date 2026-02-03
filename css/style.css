@@ -4227,17 +4227,18 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 .header-text-content {
     flex: 1;
-    max-width: 550px;
+    max-width: 700px;
 }
 
 .header-image-container {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     display: flex;
     justify-content: flex-end;
+    margin-right: -80px;
 }
 
 .kaskade-image {
-    width: 700px;
+    width: 1400px;
     height: auto;
     border-radius: var(--radius-md);
 }
