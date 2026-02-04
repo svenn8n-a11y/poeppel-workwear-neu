@@ -121,91 +121,97 @@
                 Prozesskosten & Zeit-Effizienz
             </div>
         </header>
-        <main>        <section id="eisberg" class="iceberg-section">
-            <div class="container">
-                <div class="iceberg-grid-layout">
+        <main>
+            <section id="eisberg" class="iceberg-section">
+                <div class="container">
+                    <div class="iceberg-grid-layout">
 
-                    <!-- Left: Text Content -->
-                    <div class="iceberg-content-left">
-                        <header class="section-header">
-                            <span class="section-badge">Versteckte Kosten</span>
-                            <h2 class="section-title">Einkaufspreis vs. <br><span
-                                    class="highlight-italic">Prozesskosten</span></h2>
-                            <p class="section-subtitle">Das Kompetenzzentrum innovative Beschaffung (gefördert vom BMWK)
-                                liefert
-                                genau das Szenario, das Sie kennen sollten.</p>
-                        </header>
+                        <!-- Left: Text Content -->
+                        <div class="iceberg-content-left">
+                            <header class="section-header">
+                                <span class="section-badge">Versteckte Kosten</span>
+                                <h2 class="section-title">Einkaufspreis vs. <br><span
+                                        class="highlight-italic">Prozesskosten</span></h2>
+                                <p class="section-subtitle">Das Kompetenzzentrum innovative Beschaffung (gefördert vom
+                                    BMWK)
+                                    liefert
+                                    genau das Szenario, das Sie kennen sollten.</p>
+                            </header>
 
-                        <div class="introduction-text">
-                            <p>Die Studie verglich die Prozesskosten für ein <strong>"Gussgehäuse" (A-Teil)</strong> und
-                                eine
-                                <strong>"Schutzbrille" (C-Teil)</strong>. Der Beschaffungsaufwand war identisch – das
-                                Ergebnis schockierend.
+                            <div class="introduction-text">
+                                <p>Die Studie verglich die Prozesskosten für ein <strong>"Gussgehäuse" (A-Teil)</strong>
+                                    und
+                                    eine
+                                    <strong>"Schutzbrille" (C-Teil)</strong>. Der Beschaffungsaufwand war identisch –
+                                    das
+                                    Ergebnis schockierend.
+                                </p>
+                            </div>
+
+                            <div class="source-citation">
+                                Quelle: Basierend auf Daten des BMWK / Kompetenzzentrum innovative Beschaffung
+                            </div>
+                        </div>
+
+                        <!-- Right: Image -->
+                        <div class="iceberg-image-right" style="position: relative;">
+                            <!-- Using the requested image -->
+                            <img src="Code_schnipsel/Preise_vs_Kosten/Eisberg Bild.jpg"
+                                alt="Eisberg Modell Prozesskosten" style="width: 100%; height: auto; display: block;">
+
+                            <!-- Overlays can be added via CSS if needed, but keeping it clean as requested -->
+                        </div>
+                    </div>
+
+                    <!-- Calculator Reveal Trigger with BME Copy -->
+                    <div class="calculator-reveal-trigger"
+                        style="max-width: 900px; margin: 80px auto 0; text-align: center;">
+                        <div class="bme-facts"
+                            style="margin-bottom: 40px; text-align: left; background: var(--color-light); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--color-gray-light);">
+                            <h3 style="margin-bottom: 20px; color: var(--color-primary);">Fakten vom Bundesverband
+                                Materialwirtschaft (BME)</h3>
+                            <ul style="list-style: none; display: grid; gap: 15px;">
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Ein durchschnittlicher manueller Bestellvorgang kostet in Deutschland rund
+                                        <strong>100 €</strong>.</span>
+                                </li>
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Bei mittelständischen Unternehmen liegt dieser Wert oft sogar bei bis zu
+                                        <strong>300 €</strong> pro Vorgang.</span>
+                                </li>
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Fallbeispiel Witzenmann: Selbst bei 260 € Warenkorb lagen die Prozesskosten
+                                        noch
+                                        bei <strong>140 €</strong> pro Bestellung.</span>
+                                </li>
+                            </ul>
+                            <p
+                                style="margin-top: 30px; font-weight: 600; font-style: italic; border-left: 4px solid var(--color-primary); padding-left: 20px;">
+                                „Jedes Mal, wenn ein Mitarbeiter ‚einfach nur schnell‘ etwas bestellt, kostet allein der
+                                Vorgang Ihr Unternehmen über 100 € – völlig unabhängig vom Warenwert.“
                             </p>
                         </div>
 
-                        <div class="source-citation">
-                            Quelle: Basierend auf Daten des BMWK / Kompetenzzentrum innovative Beschaffung
-                        </div>
-                    </div>
-
-                    <!-- Right: Image -->
-                    <div class="iceberg-image-right" style="position: relative;">
-                        <!-- Using the requested image -->
-                        <img src="Code_schnipsel/Preise_vs_Kosten/Eisberg Bild.jpg" alt="Eisberg Modell Prozesskosten"
-                            style="width: 100%; height: auto; display: block;">
-
-                        <!-- Overlays can be added via CSS if needed, but keeping it clean as requested -->
+                        <button id="revealCalculatorBtn" class="btn btn-primary btn-large">
+                            Jetzt Ihr Sparpotenzial berechnen
+                            <i data-lucide="calculator"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Calculator Reveal Trigger with BME Copy -->
-                <div class="calculator-reveal-trigger"
-                    style="max-width: 900px; margin: 80px auto 0; text-align: center;">
-                    <div class="bme-facts"
-                        style="margin-bottom: 40px; text-align: left; background: var(--color-light); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--color-gray-light);">
-                        <h3 style="margin-bottom: 20px; color: var(--color-primary);">Fakten vom Bundesverband
-                            Materialwirtschaft (BME)</h3>
-                        <ul style="list-style: none; display: grid; gap: 15px;">
-                            <li style="display: flex; gap: 10px; align-items: flex-start;">
-                                <i data-lucide="alert-circle"
-                                    style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
-                                <span>Ein durchschnittlicher manueller Bestellvorgang kostet in Deutschland rund
-                                    <strong>100 €</strong>.</span>
-                            </li>
-                            <li style="display: flex; gap: 10px; align-items: flex-start;">
-                                <i data-lucide="alert-circle"
-                                    style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
-                                <span>Bei mittelständischen Unternehmen liegt dieser Wert oft sogar bei bis zu
-                                    <strong>300 €</strong> pro Vorgang.</span>
-                            </li>
-                            <li style="display: flex; gap: 10px; align-items: flex-start;">
-                                <i data-lucide="alert-circle"
-                                    style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
-                                <span>Fallbeispiel Witzenmann: Selbst bei 260 € Warenkorb lagen die Prozesskosten noch
-                                    bei <strong>140 €</strong> pro Bestellung.</span>
-                            </li>
-                        </ul>
-                        <p
-                            style="margin-top: 30px; font-weight: 600; font-style: italic; border-left: 4px solid var(--color-primary); padding-left: 20px;">
-                            „Jedes Mal, wenn ein Mitarbeiter ‚einfach nur schnell‘ etwas bestellt, kostet allein der
-                            Vorgang Ihr Unternehmen über 100 € – völlig unabhängig vom Warenwert.“
-                        </p>
-                    </div>
 
-                    <button id="revealCalculatorBtn" class="btn btn-primary btn-large">
-                        Jetzt Ihr Sparpotenzial berechnen
-                        <i data-lucide="calculator"></i>
-                    </button>
-                </div>
-            </div>
-
-
-            </div>
-        </section>
-</main>
-<div class="page-break"></div>
-<main>        <section id="time-efficiency" class="time-efficiency-section">
+    </div>
+    </section>
+    </main>
+    <div class="page-break"></div>
+    <main>
+        <section id="time-efficiency" class="time-efficiency-section">
             <div class="container">
                 <header class="section-header">
                     <h2 class="section-title">Die <span class="highlight-italic">75-Minuten Jacke</span></h2>
@@ -295,15 +301,15 @@
                 </div>
             </div>
         </section>
-</main>
-<footer class="print-footer">
-    <p>© 2026 Pöppel Workwear Management • www.poeppel-workwear.de • info@poeppel-workwear.de</p>
-</footer>
-</div>
-<script>
-    // Optional: Auto-print
-    // window.print();
-</script>
+    </main>
+    <footer class="print-footer">
+        <p>© 2026 Pöppel Workwear Management • www.poeppel-workwear.de • info@poeppel-workwear.de</p>
+    </footer>
+    </div>
+    <script>
+        // Optional: Auto-print
+        // window.print();
+    </script>
 </body>
 
 </html>
