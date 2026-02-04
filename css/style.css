@@ -30,7 +30,7 @@
 
     /* Spacing */
     --section-padding: 120px;
-    --container-max: 100%;
+    --container-max: 1280px;
     --container-padding: 24px;
     --section-spacing-large: 160px;
     /* Added for extra spacing between 4 and 5 */
