@@ -104,7 +104,6 @@
     </section>
 
     <script src="../../js/main.js"></script>
-    <script src="../../js/main.js"></script>
     <script>
         lucide.createIcons();
 
@@ -156,29 +155,8 @@
                     if (dispEmp) dispEmp.innerText = employees;
                     if (dispHours) dispHours.innerText = hours.toFixed(1) + " h";
 
-                    // Logic
-                    const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE; // Per person? No, formula in main.js was just hours * 52 * 50. 
-                    // Wait, looking at main.js logic: `const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;`
-                    // This formula DOES NOT include `employees`.
-                    // The main.js code I Read earlier:
-                    /* 
-                       1152: const employees = parseInt(rangeEmp.value);
-                       1153: const hours = parseFloat(rangeHours.value);
-                       ...
-                       1161: const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
-                    */
-                    // It seems the original logic IGNORES the employee count? 
-                    // Or maybe I misread it? Let me re-read lines 1160-1165.
-                    // If true, that's a logic bug in main.js too, or intentional (per employee cost?).
-                    // But `dispEmp` is updated. 
-                    // Let's assume the user wants "Per Company" cost?
-                    // The text says "Anzahl Mitarbeiter". Usually implies total cost.
-                    // If the formula in main.js is `hours * 52 * 50`, that is Cost PER ONE EMPLOYEE (assuming hours is per person/week).
-                    // Or is "Verwaltungsstunden / Woche" total for the company?
-                    // "Beinhaltet: Bedarfsermittlung... pro Vorgang."
-
-                    // IF I COPY logic, I must copy it EXACTLY as is in main.js to match current behavior.
-
+                    // Logic: exact replication of main.js formula
+                    // Cost = Hours/week * 52 weeks * 50 EUR
                     const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
                     const poeppelCost = currentCost * EFFICIENCY_FACTOR;
                     const savings = currentCost - poeppelCost;
