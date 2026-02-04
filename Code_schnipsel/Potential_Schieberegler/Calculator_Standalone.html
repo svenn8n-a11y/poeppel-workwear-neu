@@ -155,15 +155,35 @@
                     if (dispEmp) dispEmp.innerText = employees;
                     if (dispHours) dispHours.innerText = hours.toFixed(1) + " h";
 
-                    // Logic: exact replication of main.js formula
-                    // Cost = Hours/week * 52 weeks * 50 EUR
-                    const currentCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
+                    // Logic Update: Scale cost by employees relative to base 50
+                    // Base assumption: 3 hours/week allows managing 50 employees.
+                    // If employees increase, admin hours implicitly increase, or cost scales.
+                    // Formula: (Hours * 52 * 50) * (Employees / 50)
+                    const baseCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
+                    const scalingFactor = employees / 50;
+
+                    const currentCost = baseCost * scalingFactor;
                     const poeppelCost = currentCost * EFFICIENCY_FACTOR;
                     const savings = currentCost - poeppelCost;
 
                     if (resCurrent) resCurrent.innerText = formatEuro(currentCost);
                     if (resPoeppel) resPoeppel.innerText = formatEuro(poeppelCost);
                     if (resSavings) resSavings.innerText = formatEuro(savings);
+
+                    // Update Slider Fills (The "Balken" visual)
+                    updateSliderFill(rangeEmp);
+                    updateSliderFill(rangeHours);
+                }
+
+                function updateSliderFill(slider) {
+                    if (!slider) return;
+                    const val = slider.value;
+                    const min = slider.min ? slider.min : 0;
+                    const max = slider.max ? slider.max : 100;
+                    const percentage = ((val - min) / (max - min)) * 100;
+
+                    // Orange fill on left, grey on right
+                    slider.style.background = `linear-gradient(to right, var(--color-primary) ${percentage}%, #e2e8f0 ${percentage}%)`;
                 }
 
                 rangeEmp.addEventListener('input', calculate);
