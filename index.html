@@ -440,6 +440,100 @@
         </section>
 
         <!-- ========================================
+             SEKTION 5b: ZEIT EFFIZIENZ (Timeline)
+        ======================================== -->
+        <section id="time-efficiency" class="time-efficiency-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Die <span class="highlight-italic">75-Minuten Jacke</span></h2>
+                    <p class="section-subtitle">Warum 40€ Warenwert Sie in Wahrheit 75 Minuten kosten kann.</p>
+                </header>
+
+                <div class="time-comparison-grid">
+                    <!-- Left: The Problem (Timeline) -->
+                    <div class="time-problem">
+                        <h3>Rechnen wir kurz: "Ein Mitarbeiter braucht eine neue Jacke."</h3>
+                        <div class="timeline-vertical">
+                            <!-- Step 1 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">1</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Bedarfsmeldung</h4>
+                                    <p>Mitarbeiter meldet Bedarf beim Vorarbeiter.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">2</div>
+                                <div class="step-content">
+                                    <span class="step-time">15 Min</span>
+                                    <h4>Katalogsuche</h4>
+                                    <p>Vorarbeiter sucht das richtige Modell.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">3</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Bestellung schreiben</h4>
+                                    <p>Formulare ausfüllen und weiterleiten.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">4</div>
+                                <div class="step-content">
+                                    <span class="step-time">30 Min</span>
+                                    <h4>Retoure & Fehler</h4>
+                                    <p>Ware kommt an, ist falsch, muss zurück.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">5</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Rechnungsprüfung</h4>
+                                    <p>Buchhaltung muss Belege prüfen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time-result-box">
+                            <span class="result-label">Gesamtzeit</span>
+                            <span class="result-value">75 Minuten</span>
+                            <p class="result-sub">Das kostet Sie mehr als die Jacke selbst.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: The Solution -->
+                    <div class="time-solution">
+                        <div class="solution-content">
+                            <div class="solution-icon-large">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <h3>Stellen Sie sich vor...</h3>
+                            <p class="solution-text">Diese <strong>75 Minuten</strong> würden direkt in die
+                                Projektplanung fließen.</p>
+
+                            <div class="solution-promise">
+                                <h4>Unser System eliminiert Schritte 2 bis 5 komplett.</h4>
+                                <ul class="elimination-list">
+                                    <li><i data-lucide="check-circle"></i> Keine Katalogsuche – Digitales Sortiment</li>
+                                    <li><i data-lucide="check-circle"></i> Keine manuelle Bestellung – Self-Service</li>
+                                    <li><i data-lucide="check-circle"></i> Keine Retouren – Passgenau dank Datensätzen
+                                    </li>
+                                    <li><i data-lucide="check-circle"></i> Keine Rechnungsprüfung – Sammelrechnung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
              SEKTION 6: ROI CALCULATOR
         ======================================== -->
         <section id="calculator" class="calculator-section hidden-calculator">
@@ -627,6 +721,154 @@
                                 class="step-image">
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========================================
+             SEKTION 16: ONBOARDING - Treppe
+        ======================================== -->
+        <section id="onboarding" class="onboarding-section">
+            <div class="onboarding-viewport">
+                <div class="onboarding-bg-grid"></div>
+
+                <div class="onboarding-header">
+                    <h2>Der Pöppel Onboarding-Prozess</h2>
+                    <span class="onboarding-hint">Scroll für Prozess →</span>
+                </div>
+
+                <div class="onboarding-diagonal-wrapper" id="onboardingWrapper">
+                    <!-- Animated connecting path - Desktop -->
+                    <svg class="onboarding-path-svg onboarding-path-desktop" viewBox="0 0 300 300"
+                        preserveAspectRatio="none">
+                        <path id="onboardingPath" d="M 50 55 L 145 55 L 145 155 L 250 155 L 250 255" stroke="#ea580d"
+                            stroke-width="0.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <!-- Animated connecting path - Mobile (Treppenform vertikal) -->
+                    <svg class="onboarding-path-svg onboarding-path-mobile" viewBox="0 0 300 300"
+                        preserveAspectRatio="none">
+                        <path id="onboardingPathMobile" d="M 50 70 L 145 70 L 145 170 L 250 170" stroke="#ea580d"
+                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                    <!-- Separate dot element (not distorted by preserveAspectRatio="none") -->
+                    <div class="onboarding-path-dot" id="onboardingPathDot"></div>
+                    <!-- Step 1 -->
+                    <div class="onboarding-step-cell" data-step="1">
+                        <div class="onboarding-step-content">
+                            <div class="onboarding-step-image">
+                                <picture>
+                                    <source media="(min-width: 768px)"
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Kickoff_480x320.jpg 1x, 
+                                                images/12_onboarding/Sektion 12_onboarding_960x640/Kickoff_960x640.jpg 2x">
+                                    <source
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Kickoff_300x300.jpg">
+                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Kickoff_480x320.jpg"
+                                        alt="Kickoff Meeting" class="onboarding-step-bg">
+                                </picture>
+                                <div class="onboarding-step-label">Team Meeting</div>
+                            </div>
+                            <div class="onboarding-step-text">
+                                <div class="onboarding-step-badge"><span>01</span></div>
+                                <h3>Kickoff & Analyse</h3>
+                                <p>Wir analysieren Ihre Tragegewohnheiten, Budgets und bestehende Prozesse vor Ort.</p>
+                                <ul>
+                                    <li>Bedarfsanalyse direkt bei Ihren Teams</li>
+                                    <li>Budget-Mapping und Kostentransparenz</li>
+                                    <li>Prozess-Dokumentation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="onboarding-step-cell" data-step="2">
+                        <div class="onboarding-step-content">
+                            <div class="onboarding-step-image">
+                                <picture>
+                                    <source media="(min-width: 768px)"
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Konzept_480x320.jpg 1x, 
+                                                images/12_onboarding/Sektion 12_onboarding_960x640/Konzept_960x640.jpg 2x">
+                                    <source
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Konzept_300x300.jpg">
+                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Konzept_480x320.jpg"
+                                        alt="Konzept & Budget" class="onboarding-step-bg">
+                                </picture>
+                                <div class="onboarding-step-label">Planning Session</div>
+                            </div>
+                            <div class="onboarding-step-text">
+                                <div class="onboarding-step-badge"><span>02</span></div>
+                                <h3>Konzept & Budget</h3>
+                                <p>Gemeinsam entwickeln wir das passende Sortiment und definieren klare Budget-Rahmen.
+                                </p>
+                                <ul>
+                                    <li>Sortiments-Vorschläge basierend auf Analyse</li>
+                                    <li>Rollenbasierte Budget-Verteilung</li>
+                                    <li>Transparente Kalkulation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="onboarding-step-cell" data-step="3">
+                        <div class="onboarding-step-content">
+                            <div class="onboarding-step-image">
+                                <picture>
+                                    <source media="(min-width: 768px)"
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Anprobe_480x320.jpg 1x, 
+                                                images/12_onboarding/Sektion 12_onboarding_960x640/Anprobe_960x640.jpg 2x">
+                                    <source
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Anprobe_300x300.jpg">
+                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Anprobe_480x320.jpg"
+                                        alt="Anprobe Event" class="onboarding-step-bg">
+                                </picture>
+                                <div class="onboarding-step-label">Fitting Event</div>
+                            </div>
+                            <div class="onboarding-step-text">
+                                <div class="onboarding-step-badge"><span>03</span></div>
+                                <h3>Anprobe Event</h3>
+                                <p>Unser Team kommt zu Ihnen. Zero-Retouren-Strategie durch Anprobe vor Ort.</p>
+                                <ul>
+                                    <li>Mobile Anprobe direkt bei Ihnen</li>
+                                    <li>Größenerfassung für digitales System</li>
+                                    <li>Sofort-Feedback zu Passform</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="onboarding-step-cell" data-step="4">
+                        <div class="onboarding-step-content">
+                            <div class="onboarding-step-image">
+                                <picture>
+                                    <source media="(min-width: 768px)"
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Go_live_480x320.jpg 1x, 
+                                                images/12_onboarding/Sektion 12_onboarding_960x640/Go_live_960x640.jpg 2x">
+                                    <source
+                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Go_live_300x300.jpg">
+                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Go_live_480x320.jpg"
+                                        alt="Go-Live System" class="onboarding-step-bg">
+                                </picture>
+                                <div class="onboarding-step-label">Digital Platform</div>
+                            </div>
+                            <div class="onboarding-step-text">
+                                <div class="onboarding-step-badge"><span>04</span></div>
+                                <h3>Go-Live System</h3>
+                                <p>Mitarbeiter bestellen eigenständig über das rollenbasierte Bestellsystem.</p>
+                                <ul>
+                                    <li>Digitale Plattform für Selbstbestellung</li>
+                                    <li>Automatische Budget-Kontrolle</li>
+                                    <li>24/7 Verfügbarkeit</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="onboarding-progress">
+                    <div class="onboarding-progress-fill" id="onboardingProgress"></div>
                 </div>
             </div>
         </section>
@@ -1161,154 +1403,6 @@
             </div>
         </section>
 
-        <!-- ========================================
-             SEKTION 16: ONBOARDING - Treppe
-        ======================================== -->
-        <section id="onboarding" class="onboarding-section">
-            <div class="onboarding-viewport">
-                <div class="onboarding-bg-grid"></div>
-
-                <div class="onboarding-header">
-                    <h2>Der Pöppel Onboarding-Prozess</h2>
-                    <span class="onboarding-hint">Scroll für Prozess →</span>
-                </div>
-
-                <div class="onboarding-diagonal-wrapper" id="onboardingWrapper">
-                    <!-- Animated connecting path - Desktop -->
-                    <svg class="onboarding-path-svg onboarding-path-desktop" viewBox="0 0 300 300"
-                        preserveAspectRatio="none">
-                        <path id="onboardingPath" d="M 50 55 L 145 55 L 145 155 L 250 155 L 250 255" stroke="#ea580d"
-                            stroke-width="0.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                    <!-- Animated connecting path - Mobile (Treppenform vertikal) -->
-                    <svg class="onboarding-path-svg onboarding-path-mobile" viewBox="0 0 300 300"
-                        preserveAspectRatio="none">
-                        <path id="onboardingPathMobile" d="M 50 70 L 145 70 L 145 170 L 250 170" stroke="#ea580d"
-                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                    <!-- Separate dot element (not distorted by preserveAspectRatio="none") -->
-                    <div class="onboarding-path-dot" id="onboardingPathDot"></div>
-                    <!-- Step 1 -->
-                    <div class="onboarding-step-cell" data-step="1">
-                        <div class="onboarding-step-content">
-                            <div class="onboarding-step-image">
-                                <picture>
-                                    <source media="(min-width: 768px)"
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Kickoff_480x320.jpg 1x, 
-                                                images/12_onboarding/Sektion 12_onboarding_960x640/Kickoff_960x640.jpg 2x">
-                                    <source
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Kickoff_300x300.jpg">
-                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Kickoff_480x320.jpg"
-                                        alt="Kickoff Meeting" class="onboarding-step-bg">
-                                </picture>
-                                <div class="onboarding-step-label">Team Meeting</div>
-                            </div>
-                            <div class="onboarding-step-text">
-                                <div class="onboarding-step-badge"><span>01</span></div>
-                                <h3>Kickoff & Analyse</h3>
-                                <p>Wir analysieren Ihre Tragegewohnheiten, Budgets und bestehende Prozesse vor Ort.</p>
-                                <ul>
-                                    <li>Bedarfsanalyse direkt bei Ihren Teams</li>
-                                    <li>Budget-Mapping und Kostentransparenz</li>
-                                    <li>Prozess-Dokumentation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="onboarding-step-cell" data-step="2">
-                        <div class="onboarding-step-content">
-                            <div class="onboarding-step-image">
-                                <picture>
-                                    <source media="(min-width: 768px)"
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Konzept_480x320.jpg 1x, 
-                                                images/12_onboarding/Sektion 12_onboarding_960x640/Konzept_960x640.jpg 2x">
-                                    <source
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Konzept_300x300.jpg">
-                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Konzept_480x320.jpg"
-                                        alt="Konzept & Budget" class="onboarding-step-bg">
-                                </picture>
-                                <div class="onboarding-step-label">Planning Session</div>
-                            </div>
-                            <div class="onboarding-step-text">
-                                <div class="onboarding-step-badge"><span>02</span></div>
-                                <h3>Konzept & Budget</h3>
-                                <p>Gemeinsam entwickeln wir das passende Sortiment und definieren klare Budget-Rahmen.
-                                </p>
-                                <ul>
-                                    <li>Sortiments-Vorschläge basierend auf Analyse</li>
-                                    <li>Rollenbasierte Budget-Verteilung</li>
-                                    <li>Transparente Kalkulation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="onboarding-step-cell" data-step="3">
-                        <div class="onboarding-step-content">
-                            <div class="onboarding-step-image">
-                                <picture>
-                                    <source media="(min-width: 768px)"
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Anprobe_480x320.jpg 1x, 
-                                                images/12_onboarding/Sektion 12_onboarding_960x640/Anprobe_960x640.jpg 2x">
-                                    <source
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Anprobe_300x300.jpg">
-                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Anprobe_480x320.jpg"
-                                        alt="Anprobe Event" class="onboarding-step-bg">
-                                </picture>
-                                <div class="onboarding-step-label">Fitting Event</div>
-                            </div>
-                            <div class="onboarding-step-text">
-                                <div class="onboarding-step-badge"><span>03</span></div>
-                                <h3>Anprobe Event</h3>
-                                <p>Unser Team kommt zu Ihnen. Zero-Retouren-Strategie durch Anprobe vor Ort.</p>
-                                <ul>
-                                    <li>Mobile Anprobe direkt bei Ihnen</li>
-                                    <li>Größenerfassung für digitales System</li>
-                                    <li>Sofort-Feedback zu Passform</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="onboarding-step-cell" data-step="4">
-                        <div class="onboarding-step-content">
-                            <div class="onboarding-step-image">
-                                <picture>
-                                    <source media="(min-width: 768px)"
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_480x320 /Go_live_480x320.jpg 1x, 
-                                                images/12_onboarding/Sektion 12_onboarding_960x640/Go_live_960x640.jpg 2x">
-                                    <source
-                                        srcset="images/12_onboarding/Sektion 12_onboarding_300x300/Go_live_300x300.jpg">
-                                    <img src="images/12_onboarding/Sektion 12_onboarding_480x320 /Go_live_480x320.jpg"
-                                        alt="Go-Live System" class="onboarding-step-bg">
-                                </picture>
-                                <div class="onboarding-step-label">Digital Platform</div>
-                            </div>
-                            <div class="onboarding-step-text">
-                                <div class="onboarding-step-badge"><span>04</span></div>
-                                <h3>Go-Live System</h3>
-                                <p>Mitarbeiter bestellen eigenständig über das rollenbasierte Bestellsystem.</p>
-                                <ul>
-                                    <li>Digitale Plattform für Selbstbestellung</li>
-                                    <li>Automatische Budget-Kontrolle</li>
-                                    <li>24/7 Verfügbarkeit</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="onboarding-progress">
-                    <div class="onboarding-progress-fill" id="onboardingProgress"></div>
-                </div>
-            </div>
-        </section>
 
         <!-- ========================================
              SEKTION 17: GEWINN - Ihr Gewinn
