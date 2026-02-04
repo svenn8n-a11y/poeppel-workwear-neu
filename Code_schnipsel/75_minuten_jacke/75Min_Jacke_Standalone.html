@@ -116,8 +116,39 @@
     <script src="../../js/main.js"></script>
     <script>
         lucide.createIcons();
+
+        // Force animate-in or static visibility
+        document.addEventListener("DOMContentLoaded", function () {
+            // Kill ScrollTriggers for this section to prevent hiding
+            ScrollTrigger.getAll().forEach(st => st.kill());
+
+            // Force visible styles
+            const elements = document.querySelectorAll('.timeline-step, .time-result-box, .time-solution');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.style.visibility = 'visible';
+            });
+
+            // If we want to simulate the animation, we can do it manually, 
+            // but for a snippet/standalone, static visible is often safer/better.
+            // If the user wants to SEE it works, we can try running GSAP without ScrollTrigger?
+            // User complained "greyed out", which implies opacity < 1. 
+            // Setting opacity: 1 !important via CSS style block is safer.
+        });
         if (typeof initTimeTimeline === 'function') initTimeTimeline();
     </script>
+
+    <style>
+        /* Force override GSAP settings */
+        .timeline-step,
+        .time-result-box,
+        .time-solution {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+    </style>
 </body>
 
 </html>

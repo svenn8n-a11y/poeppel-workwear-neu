@@ -106,6 +106,29 @@
     <script src="../../js/main.js"></script>
     <script>
         lucide.createIcons();
+        // Force display immediately
+        document.addEventListener("DOMContentLoaded", function () {
+            const calc = document.querySelector('.hidden-calculator');
+            if (calc) {
+                calc.classList.remove('hidden-calculator');
+                calc.style.display = 'block';
+                calc.style.opacity = '1';
+                calc.style.visibility = 'visible';
+                calc.style.height = 'auto';
+            }
+
+            // Re-run calc logic if needed
+            // Assuming initCalculator is available globally or we rely on main.js event listeners
+            // If main.js hides it again, we might need a MutationObserver or timeout
+            setTimeout(() => {
+                const calc = document.querySelector('.calculator-section');
+                if (calc) {
+                    calc.style.display = 'block';
+                    calc.style.opacity = '1';
+                    calc.style.visibility = 'visible';
+                }
+            }, 100);
+        });
         if (typeof initCalculator === 'function') initCalculator();
     </script>
 </body>
