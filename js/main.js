@@ -678,152 +678,151 @@ function initScrollProgress() {
 // MODULE CONFIGURATOR (Section 13) - Option B: Toggle-Liste / Option C: Paket-Builder
 // ========================================
 function initModularCards() {
-    // Option B: Vertical Configurator with Toggle Switches
-    const configurator = document.querySelector('.module-configurator');
-    if (configurator) {
-        const rows = configurator.querySelectorAll('.module-row:not(.base)');
+    const cards = document.querySelectorAll('.addon-module-card');
+    const summaryList = document.getElementById('moduleSummaryList');
 
-        rows.forEach(row => {
-            const toggle = row.querySelector('.toggle-switch input');
+    // Animate Section Entry
+    gsap.from('.modular-section .section-header', {
+        scrollTrigger: {
+            trigger: '.modular-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+    });
 
-            // Click on row toggles the switch
-            row.addEventListener('click', (e) => {
-                if (e.target.closest('.toggle-switch')) return; // Let checkbox handle itself
-                toggle.checked = !toggle.checked;
-                toggle.dispatchEvent(new Event('change'));
-            });
+    gsap.from('.module-grid-container', {
+        scrollTrigger: {
+            trigger: '.module-grid-container',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8
+    });
 
-            // Toggle change handler
-            toggle.addEventListener('change', () => {
-                if (toggle.checked) {
-                    row.classList.add('active');
-                    gsap.from(row, {
-                        x: -10,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                } else {
-                    row.classList.remove('active');
-                }
-            });
+    if (!cards.length) return;
+
+    // Helper to update summary
+    function updateSummary() {
+        if (!summaryList) return;
+
+        // Keep Base Item
+        summaryList.innerHTML = `
+            <div class="summary-item base-item">
+                <i data-lucide="check" class="base-check"></i>
+                <span>Basis-Setup</span>
+            </div>`;
+
+        // Add selected items
+        const selectedCards = document.querySelectorAll('.addon-module-card.selected');
+        selectedCards.forEach(card => {
+            const title = card.querySelector('h4').textContent;
+
+            const item = document.createElement('div');
+            item.className = 'summary-item';
+            item.innerHTML = `
+                <i data-lucide="check"></i>
+                <span>${title}</span>
+            `;
+            summaryList.appendChild(item);
         });
 
-        // Animate section
-        gsap.from('.modular-section .section-header', {
-            scrollTrigger: {
-                trigger: '.modular-section',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1
-        });
-
-        gsap.from('.module-configurator', {
-            scrollTrigger: {
-                trigger: '.module-configurator',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8
-        });
-
-        gsap.from('.module-row', {
-            scrollTrigger: {
-                trigger: '.module-configurator',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            x: -20,
-            stagger: 0.1,
-            duration: 0.5
-        });
-
-        return;
+        // Re-init icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     }
 
-    // Option C: Package Builder with Progress Bars
-    const builder = document.querySelector('.package-builder');
-    if (builder) {
-        const modules = builder.querySelectorAll('.package-module:not(.base)');
-        const totalBarFill = builder.querySelector('.total-bar-fill');
-        const totalPercent = builder.querySelector('.total-percent');
+    // Add click listeners
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Prevent toggling if clicking on links or something interactive inside (if any)
+            card.classList.toggle('selected');
+            updateSummary();
+        });
+    });
 
-        function updateTotal() {
-            const activeModules = builder.querySelectorAll('.package-module.active');
-            let total = 0;
-            activeModules.forEach(m => {
-                total += parseInt(m.dataset.value) || 0;
-            });
+    // Initial update
+    updateSummary();
 
-            gsap.to(totalBarFill, {
-                width: total + '%',
-                duration: 0.5,
-                ease: 'power2.out'
-            });
+    // Init Modal functionality
+    initContactModal();
+}
 
-            totalPercent.textContent = total + '%';
+function initContactModal() {
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.getElementById('openContactModal');
+    const closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+
+    if (!modal || !openBtn) return;
+
+    // Open
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close Helper
+    const closeModal = () => {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    // Close Buttons
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    // Modal Outside Click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
         }
+    });
 
-        modules.forEach(module => {
-            module.addEventListener('click', () => {
-                module.classList.toggle('active');
+    // Escape Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
+        }
+    });
 
-                const barFill = module.querySelector('.module-bar-fill');
-                if (module.classList.contains('active')) {
-                    gsap.to(barFill, {
-                        width: '100%',
-                        duration: 0.5,
-                        ease: 'power2.out'
-                    });
-                } else {
-                    gsap.to(barFill, {
-                        width: '0%',
-                        duration: 0.3,
-                        ease: 'power2.in'
-                    });
-                }
+    // Step Navigation logic
+    const step1Form = document.getElementById('contactFormStep1');
+    const step2Form = document.getElementById('contactFormStep2');
 
-                updateTotal();
-            });
+    if (step1Form) {
+        step1Form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.querySelector('.modal-step[data-step="1"]').classList.add('hidden');
+            document.querySelector('.modal-step[data-step="2"]').classList.remove('hidden');
         });
+    }
 
-        gsap.from('.modular-section .section-header', {
-            scrollTrigger: {
-                trigger: '.modular-section',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1
-        });
+    if (step2Form) {
+        step2Form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.querySelector('.modal-step[data-step="2"]').classList.add('hidden');
+            document.querySelector('.modal-step[data-step="3"]').classList.remove('hidden');
 
-        gsap.from('.package-builder', {
-            scrollTrigger: {
-                trigger: '.package-builder',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.8
-        });
+            // Console Log Data
+            const selectedModules = Array.from(document.querySelectorAll('.addon-module-card.selected h4')).map(el => el.textContent);
+            selectedModules.unshift('Basis-Setup'); // Always included
 
-        gsap.from('.package-module', {
-            scrollTrigger: {
-                trigger: '.package-modules',
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            x: -30,
-            stagger: 0.1,
-            duration: 0.6
+            const formData = {
+                name: document.getElementById('modalName').value,
+                company: document.getElementById('modalCompany').value,
+                email: document.getElementById('modalEmail').value,
+                phone: document.getElementById('modalPhone').value,
+                time: document.querySelector('input[name="preferredTime"]:checked')?.value,
+                modules: selectedModules
+            };
+            console.log('--- Inquiry Submitted ---', formData);
         });
     }
 }

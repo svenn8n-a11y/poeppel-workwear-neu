@@ -835,7 +835,10 @@
                             <i data-lucide="package"></i>
                         </div>
                         <div class="base-module-content">
-                            <div class="base-module-badge">Immer inklusive</div>
+                            <div class="badges-wrapper">
+                                <div class="base-module-badge">Immer inklusive</div>
+                                <div class="badge-free">Kostenfrei</div>
+                            </div>
                             <h3>Basis-Setup</h3>
                             <p>Eigener Onlineshop zum Selbstbestellen, individuelles Kernsortiment, persönlicher
                                 Ansprechpartner, zentrale Freigabeprozesse, transparente Kostenübersicht</p>
@@ -859,11 +862,13 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="pie-chart"></i>
                             </div>
-                            <h4>Kostenkontrolle</h4>
-                            <p>Kostenstellenverwaltung, Budget-Limits pro Abteilung, automatische Reports</p>
+                            <div class="addon-module-content-wrapper">
+                                <div class="badge-free">Kostenfrei</div>
+                                <h4>Kostenkontrolle</h4>
+                                <p>Kostenstellenverwaltung, Budget-Limits pro Abteilung, automatische Reports</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
@@ -872,11 +877,13 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="plug"></i>
                             </div>
-                            <h4>Systemintegration</h4>
-                            <p>OCI Punchout, ERP-Anbindung, API-Zugang für nahtlose Integration</p>
+                            <div class="addon-module-content-wrapper">
+                                <div class="badge-free">Kostenfrei</div>
+                                <h4>Systemintegration</h4>
+                                <p>OCI Punchout, ERP-Anbindung, API-Zugang für nahtlose Integration</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
@@ -885,11 +892,13 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="smartphone"></i>
                             </div>
-                            <h4>Mitarbeiterapp</h4>
-                            <p>Bestellungen via App, mobiler Zugriff, Push-Benachrichtigungen</p>
+                            <div class="addon-module-content-wrapper">
+                                <div class="badge-free">Kostenfrei</div>
+                                <h4>Mitarbeiterapp</h4>
+                                <p>Bestellungen via App, mobiler Zugriff, Push-Benachrichtigungen</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
@@ -898,11 +907,13 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="map-pin"></i>
                             </div>
-                            <h4>Mehrere Standorte</h4>
-                            <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
+                            <div class="addon-module-content-wrapper">
+                                <div class="badge-free">Kostenfrei</div>
+                                <h4>Mehrere Standorte</h4>
+                                <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
@@ -911,11 +922,12 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="package-check"></i>
                             </div>
-                            <h4>Vorkommissionierung</h4>
-                            <p>Personalisierte Pakete, fertig sortiert pro Mitarbeiter</p>
+                            <div class="addon-module-content-wrapper">
+                                <h4>Vorkommissionierung</h4>
+                                <p>Personalisierte Pakete, fertig sortiert pro Mitarbeiter</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
@@ -924,25 +936,126 @@
                             <div class="addon-module-icon">
                                 <i data-lucide="star"></i>
                             </div>
-                            <h4>Service Plus</h4>
-                            <p>Popup-Stores vor Ort, Fitness Days, Premium Support</p>
+                            <div class="addon-module-content-wrapper">
+                                <h4>Service Plus</h4>
+                                <p>Popup-Stores vor Ort, Fitness Days, Premium Support</p>
+                            </div>
                             <div class="addon-module-toggle">
-                                <i data-lucide="plus" class="icon-plus"></i>
-                                <i data-lucide="check" class="icon-check"></i>
+                                <div class="addon-module-checkbox"></div>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- CTA -->
-                    <div class="module-grid-cta">
-                        <a href="#kontakt" class="btn btn-primary btn-large">
-                            Individuelles Paket anfragen
-                        </a>
+                    <!-- Summary Section -->
+                    <div class="module-summary-section">
+                        <h4>Ihre Wunschanforderungen:</h4>
+                        <div class="module-summary-list" id="moduleSummaryList">
+                            <!-- Dynamic items will be added here -->
+                            <div class="summary-item base-item">
+                                <i data-lucide="check" class="base-check"></i>
+                                <span>Basis-Setup</span>
+                            </div>
+                        </div>
+                        <div class="module-summary-cta">
+                            <button id="openContactModal" class="btn btn-primary btn-large">
+                                Kostenfreie Beratung anfordern
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Multi-step Contact Modal -->
+        <div id="contactModal" class="modal-overlay">
+            <div class="modal-container">
+                <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+
+                <!-- Step 1: Contact Form -->
+                <div class="modal-step" data-step="1">
+                    <div class="modal-header">
+                        <h3>Kostenfreie Beratung anfordern</h3>
+                        <p>Wir haben Ihre Auswahl gespeichert. Bitte ergänzen Sie ihre Kontaktdaten.</p>
+                    </div>
+                    <form id="contactFormStep1" class="modal-form">
+                        <div class="form-group">
+                            <label for="modalName">Name*</label>
+                            <input type="text" id="modalName" required placeholder="Ihr Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalCompany">Firma*</label>
+                            <input type="text" id="modalCompany" required placeholder="Firmenname">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalEmail">E-Mail*</label>
+                            <input type="email" id="modalEmail" required placeholder="ihre@email.de">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalPhone">Telefon</label>
+                            <input type="tel" id="modalPhone" placeholder="+49 ...">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="modalPrivacy" required>
+                            <label for="modalPrivacy">Ich stimme der <a href="#">Datenschutzerklärung</a> zu.</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Absenden</button>
+                    </form>
+                </div>
+
+                <!-- Step 2: Time Selection -->
+                <div class="modal-step hidden" data-step="2">
+                    <div class="modal-header">
+                        <h3>Wann erreichen wir Sie am besten?</h3>
+                        <p>Helfen Sie uns, den perfekten Zeitpunkt zu finden.</p>
+                    </div>
+                    <form id="contactFormStep2" class="modal-form">
+                        <div class="time-selection-grid">
+                            <label class="time-option">
+                                <input type="radio" name="preferredTime" value="Vormittags (8-12 Uhr)">
+                                <span class="time-card">
+                                    <i data-lucide="sun"></i>
+                                    <span>Vormittags</span>
+                                    <small>08:00 - 12:00</small>
+                                </span>
+                            </label>
+                            <label class="time-option">
+                                <input type="radio" name="preferredTime" value="Nachmittags (12-17 Uhr)">
+                                <span class="time-card">
+                                    <i data-lucide="sunset"></i>
+                                    <span>Nachmittags</span>
+                                    <small>12:00 - 17:00</small>
+                                </span>
+                            </label>
+                            <label class="time-option">
+                                <input type="radio" name="preferredTime" value="Jederzeit" checked>
+                                <span class="time-card">
+                                    <i data-lucide="clock"></i>
+                                    <span>Flexibel</span>
+                                    <small>Ganztägig</small>
+                                </span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Absenden</button>
+                    </form>
+                </div>
+
+                <!-- Step 3: Success -->
+                <div class="modal-step hidden" data-step="3">
+                    <div class="modal-success">
+                        <div class="success-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <h3>Vielen Dank für Ihre Anfrage!</h3>
+                        <p>Für die Wartezeit haben wir unseren Leitfaden als kleines Geschenk an Ihr Postfach gesandt.
+                        </p>
+                        <p class="success-note">Wir melden uns innerhalb von 24 Stunden bei Ihnen.<br>Ihr Pöppel-Team
+                        </p>
+                        <button class="btn btn-primary btn-full modal-close-btn">Schließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- ========================================
              SEKTION 14: USPs - 8 Vorteile
