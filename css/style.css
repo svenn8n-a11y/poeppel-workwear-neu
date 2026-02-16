@@ -2077,21 +2077,24 @@ button {
 }
 
 /* Selected State */
+/* Selected State - Deep Pressed Effect */
 .addon-module-card.selected {
     border-color: #38bdf8;
     /* Blue Accent */
     background: #f0f9ff;
     /* Light Blue BG */
-    box-shadow: inset 0 2px 6px rgba(56, 189, 248, 0.15);
+    /* Deeper Inset Shadow + Transform */
+    box-shadow: inset 0 6px 12px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(56, 189, 248, 0.15);
     /* Inset Depth */
-    transform: translateY(2px);
-    /* Slight press effect */
+    transform: translateY(4px);
+    /* Pushed down */
 }
 
 .addon-module-card.selected .addon-module-checkbox {
     background: #38bdf8;
     /* Solid Blue */
     border-color: #38bdf8;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .addon-module-card.selected .addon-module-checkbox::after {
