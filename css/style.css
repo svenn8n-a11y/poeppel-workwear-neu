@@ -2158,18 +2158,7 @@ button {
 }
 
 /* Selected State */
-.addon-module-card.selected {
-    border-color: #38bdf8;
-    /* Blue Accent */
-    background: rgba(56, 189, 248, 0.05);
-    /* Light Blue BG */
-}
 
-.addon-module-card.selected .addon-module-checkbox {
-    background: #38bdf8;
-    /* Solid Blue */
-    border-color: #38bdf8;
-}
 
 
 /* Summary Section Refinements */
@@ -2285,6 +2274,215 @@ button {
 }
 
 
+
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    /* Dark blur */
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: var(--radius-2xl);
+    padding: 40px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-2xl);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.open .modal-container {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray);
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--color-dark);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.modal-header h3 {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    color: var(--color-dark);
+}
+
+.modal-header p {
+    color: var(--color-gray);
+}
+
+.modal-step.hidden {
+    display: none;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 0.9375rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 0.875rem;
+    color: var(--color-gray);
+}
+
+.form-check input {
+    margin-top: 4px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Time Selection Grid */
+.time-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.time-option input {
+    display: none;
+}
+
+.time-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.time-card i {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+    color: var(--color-gray);
+}
+
+.time-card span {
+    font-weight: 600;
+    color: var(--color-dark);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.time-card small {
+    color: var(--color-gray);
+    font-size: 0.8125rem;
+}
+
+.time-option input:checked+.time-card {
+    border-color: var(--color-primary);
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.time-option input:checked+.time-card i {
+    color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+    .time-selection-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Success State */
+.modal-success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.success-icon i {
+    width: 40px;
+    height: 40px;
+}
+
+.success-note {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    font-weight: 600;
+    color: var(--color-dark);
+}
 
 /* Package Builder (Option C) */
 .package-builder {
