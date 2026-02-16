@@ -1995,63 +1995,118 @@ button {
     border-color: var(--color-primary);
 }
 
-/* Active State for Addons (simulated for now with hover or JS) */
-.addon-module-card.active,
-.addon-module-card:active {
-    border-color: var(--color-primary);
-    background: rgba(249, 115, 22, 0.05);
+/* --- New Interactive Styles --- */
+
+/* Header Refinements */
+.h2-style {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 8px;
 }
 
-.addon-module-icon {
-    width: 48px;
-    height: 48px;
+.large-text {
+    font-size: 1.125rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Badges */
+.badges-wrapper {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.badge-free {
+    display: inline-block;
+    background: #f97316;
+    /* Orange */
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Position badge absolute in top right for addon cards */
+.addon-module-card .badge-free {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+}
+
+/* Addon Card Content Wrapper */
+.addon-module-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+/* Checkbox Toggle */
+.addon-module-checkbox {
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: rgba(249, 115, 22, 0.1);
+    border: 2px solid #f97316;
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.addon-module-icon i {
-    width: 24px;
-    height: 24px;
-    color: var(--color-primary);
+/* Checkmark Icon (initially hidden) */
+.addon-module-checkbox::after {
+    content: '';
+    width: 14px;
+    height: 10px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg) scale(0);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: -2px;
 }
 
-.addon-module-card h4 {
-    font-size: 1.125rem;
-    color: var(--color-dark);
+/* Selected State */
+.addon-module-card.selected {
+    border-color: #38bdf8;
+    /* Blue Accent */
+    background: #f0f9ff;
+    /* Light Blue BG */
+    box-shadow: inset 0 2px 6px rgba(56, 189, 248, 0.15);
+    /* Inset Depth */
+    transform: translateY(2px);
+    /* Slight press effect */
 }
 
-.addon-module-card p {
-    font-size: 0.875rem;
-    color: var(--color-gray);
-    line-height: 1.5;
-    flex-grow: 1;
+.addon-module-card.selected .addon-module-checkbox {
+    background: #38bdf8;
+    /* Solid Blue */
+    border-color: #38bdf8;
 }
 
-.addon-module-toggle {
-    display: flex;
-    justify-content: flex-end;
+.addon-module-card.selected .addon-module-checkbox::after {
+    transform: rotate(-45deg) scale(1);
+    opacity: 1;
 }
 
-.addon-module-toggle i.icon-plus {
-    width: 24px;
-    height: 24px;
-    color: var(--color-gray-light);
-    transition: color 0.3s ease;
+/* Card Depth Improvements */
+.addon-module-card {
+    border: 2px solid transparent;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* ... existing styles ... */
 }
 
-.addon-module-card:hover .addon-module-toggle i.icon-plus {
-    color: var(--color-primary);
-}
-
-.addon-module-toggle i.icon-check {
-    display: none;
-    width: 24px;
-    height: 24px;
-    color: var(--color-primary);
-}
 
 .module-grid-cta {
     text-align: center;
