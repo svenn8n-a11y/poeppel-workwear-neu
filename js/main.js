@@ -172,6 +172,8 @@ function initVideoPlayer() {
     const videoSection = document.querySelector('.video-section');
     if (!videoSection) return;
 
+    /* 
+    // Video Player Logic removed - replaced by YouTube iframe
     const video = videoSection.querySelector('video');
     const playBtn = videoSection.querySelector('.video-play-btn');
 
@@ -190,6 +192,7 @@ function initVideoPlayer() {
             playBtn.classList.remove('video-playing');
         });
     }
+    */
 
     // Fade in video section on scroll
     gsap.from('.video-wrapper', {

@@ -551,7 +551,7 @@ button {
 }
 
 .video-wrapper {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     text-align: center;
 }
@@ -560,7 +560,9 @@ button {
     position: relative;
     border-radius: var(--radius-2xl);
     overflow: hidden;
-    box-shadow: var(--shadow-2xl);
+    /* Orange Glow Effect */
+    box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.4),
+        0 0 20px rgba(249, 115, 22, 0.2);
     aspect-ratio: 16 / 9;
     background: var(--color-dark);
 }
@@ -946,7 +948,7 @@ button {
    CTA WHITEPAPER SECTION (Special Design)
    ============================================= */
 .cta-whitepaper-section {
-    padding: var(--section-padding) 0;
+    padding: 80px 0;
     background: var(--color-white);
 }
 
@@ -974,6 +976,7 @@ button {
         0 4px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 .cta-whitepaper-image-card::before {
     content: '';
@@ -1113,7 +1116,7 @@ button {
    CTA SECTIONS (General)
    ============================================= */
 .cta-section {
-    padding: var(--section-padding) 0;
+    padding: 80px 0;
 }
 
 .cta-light {

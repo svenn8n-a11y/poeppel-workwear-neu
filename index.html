@@ -86,12 +86,12 @@
             <div class="container">
                 <div class="video-wrapper">
                     <div class="video-player">
-                        <video id="elevatorPitch" poster="images/video-poster.jpg" playsinline>
-                            <source src="videos/elevator-pitch.mp4" type="video/mp4">
-                        </video>
-                        <button class="video-play-btn" aria-label="Video abspielen">
-                            <i data-lucide="play"></i>
-                        </button>
+                        <iframe width="100%" height="100%"
+                            src="https://www.youtube-nocookie.com/embed/0TYDBEcNtro?autoplay=1&mute=1&rel=0"
+                            title="Pöppel Workwear Management" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"></iframe>
                     </div>
                     <p class="video-caption">Elevator Pitch – In 90 Sekunden zur Lösung</p>
                 </div>
@@ -819,167 +819,116 @@
                     </p>
                 </header>
 
-                <!-- Package Builder (Option C) -->
-                <div class="package-builder">
-                    <div class="package-builder-header">
-                        <h3>Ihr individuelles Paket</h3>
-                        <p>Klicken Sie auf die Module, um sie hinzuzufügen</p>
+                <!-- Module Grid Layout -->
+                <div class="module-grid-container">
+
+                    <!-- Basis-Setup (immer inklusive - hervorgehoben) -->
+                    <div class="base-module-card">
+                        <div class="base-module-icon">
+                            <i data-lucide="package"></i>
+                        </div>
+                        <div class="base-module-content">
+                            <div class="base-module-badge">Immer inklusive</div>
+                            <h3>Basis-Setup</h3>
+                            <p>Eigener Onlineshop zum Selbstbestellen, individuelles Kernsortiment, persönlicher
+                                Ansprechpartner, zentrale Freigabeprozesse, transparente Kostenübersicht</p>
+                        </div>
+                        <div class="base-module-check">
+                            <i data-lucide="check-circle"></i>
+                        </div>
                     </div>
 
-                    <div class="package-modules">
-                        <!-- Basis-Setup (immer aktiv) -->
-                        <div class="package-module base active" data-value="14">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="package"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Basis-Setup</h4>
-                                    <p>Onlineshop, Kernsortiment, Ansprechpartner, Freigaben, Kostenübersicht</p>
-                                </div>
-                                <div class="module-status">
-                                    <span class="included-badge">Inklusive</span>
-                                </div>
-                            </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill" style="width: 100%;"></div>
-                            </div>
-                        </div>
+                    <!-- Zusätzliche Module Header -->
+                    <div class="addon-modules-header">
+                        <h4>Erweitern Sie Ihr Paket</h4>
+                        <p>Wählen Sie die Module, die zu Ihren Anforderungen passen</p>
+                    </div>
+
+                    <!-- 3x2 Grid für Zusatzmodule -->
+                    <div class="addon-modules-grid">
 
                         <!-- Modul: Kostenkontrolle -->
-                        <div class="package-module" data-value="14">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="pie-chart"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Kostenkontrolle</h4>
-                                    <p>Kostenstellenverwaltung, Budget-Limits, automatische Reports</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="kostenkontrolle">
+                            <div class="addon-module-icon">
+                                <i data-lucide="pie-chart"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Kostenkontrolle</h4>
+                            <p>Kostenstellenverwaltung, Budget-Limits pro Abteilung, automatische Reports</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
 
                         <!-- Modul: Systemintegration -->
-                        <div class="package-module" data-value="14">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="plug"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Systemintegration</h4>
-                                    <p>OCI Punchout, ERP-Anbindung, API-Zugang</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="systemintegration">
+                            <div class="addon-module-icon">
+                                <i data-lucide="plug"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Systemintegration</h4>
+                            <p>OCI Punchout, ERP-Anbindung, API-Zugang für nahtlose Integration</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
 
                         <!-- Modul: Mitarbeiterapp -->
-                        <div class="package-module" data-value="14">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="smartphone"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Mitarbeiterapp</h4>
-                                    <p>Bestellungen via App, mobiler Zugriff, Push-Benachrichtigungen</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="mitarbeiterapp">
+                            <div class="addon-module-icon">
+                                <i data-lucide="smartphone"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Mitarbeiterapp</h4>
+                            <p>Bestellungen via App, mobiler Zugriff, Push-Benachrichtigungen</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
 
                         <!-- Modul: Multi-Standort -->
-                        <div class="package-module" data-value="15">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="map-pin"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Mehrere Lieferstandorte</h4>
-                                    <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="multistandort">
+                            <div class="addon-module-icon">
+                                <i data-lucide="map-pin"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Mehrere Standorte</h4>
+                            <p>Standortübergreifende Verwaltung, dezentrale Freigaben</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
 
                         <!-- Modul: Vorkommissionierung -->
-                        <div class="package-module" data-value="15">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="package-check"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Individuelle Vorkommissionierung</h4>
-                                    <p>Personalisierte Pakete, fertig sortiert pro Mitarbeiter</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="vorkommissionierung">
+                            <div class="addon-module-icon">
+                                <i data-lucide="package-check"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Vorkommissionierung</h4>
+                            <p>Personalisierte Pakete, fertig sortiert pro Mitarbeiter</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
 
                         <!-- Modul: Service Plus -->
-                        <div class="package-module" data-value="14">
-                            <div class="module-info">
-                                <div class="module-icon">
-                                    <i data-lucide="star"></i>
-                                </div>
-                                <div class="module-text">
-                                    <h4>Service Plus</h4>
-                                    <p>Popup-Stores, Fitness Days, Premium Support, Vollautomatisierung</p>
-                                </div>
-                                <div class="module-status">
-                                    <i data-lucide="plus-circle" class="add-icon"></i>
-                                    <i data-lucide="check-circle" class="check-icon"></i>
-                                </div>
+                        <div class="addon-module-card" data-module="serviceplus">
+                            <div class="addon-module-icon">
+                                <i data-lucide="star"></i>
                             </div>
-                            <div class="module-bar">
-                                <div class="module-bar-fill"></div>
+                            <h4>Service Plus</h4>
+                            <p>Popup-Stores vor Ort, Fitness Days, Premium Support</p>
+                            <div class="addon-module-toggle">
+                                <i data-lucide="plus" class="icon-plus"></i>
+                                <i data-lucide="check" class="icon-check"></i>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Gesamtfortschritt -->
-                    <div class="package-total">
-                        <div class="total-label">
-                            <span>Ihr Leistungsumfang</span>
-                            <span class="total-percent">12%</span>
-                        </div>
-                        <div class="total-bar">
-                            <div class="total-bar-fill" style="width: 12%;"></div>
-                        </div>
                     </div>
 
                     <!-- CTA -->
-                    <div class="package-cta">
+                    <div class="module-grid-cta">
                         <a href="#kontakt" class="btn btn-primary btn-large">
                             Individuelles Paket anfragen
                         </a>
