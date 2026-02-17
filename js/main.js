@@ -755,16 +755,18 @@ function initModularCards() {
 
 function initContactModal() {
     const modal = document.getElementById('contactModal');
-    const openBtn = document.getElementById('openContactModal');
+    const openBtns = document.querySelectorAll('.js-open-modal');
     const closeBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
 
-    if (!modal || !openBtn) return;
+    if (!modal) return;
 
-    // Open
-    openBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+    // Open - Iterate over all buttons
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
     });
 
     // Close Helper
