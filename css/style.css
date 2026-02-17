@@ -1869,6 +1869,58 @@ button {
     background: var(--color-light);
 }
 
+/* Modular Header Grid Layout */
+.modular-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 64px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modular-header-content {
+    text-align: left;
+}
+
+.modular-header-image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modular-header-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+@media (max-width: 968px) {
+    .modular-header-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .modular-header-content {
+        text-align: center;
+        order: 2;
+    }
+
+    .modular-header-image {
+        justify-content: center;
+        order: 1;
+        margin-bottom: 16px;
+    }
+
+    .modular-header-image img {
+        max-height: 250px;
+    }
+}
+
 .module-grid-container {
     max-width: 1000px;
     margin: 0 auto;
