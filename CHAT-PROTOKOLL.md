@@ -414,3 +414,9 @@ Dieses Dokument protokolliert alle wichtigen Entscheidungen, Anweisungen und For
 - [x] **Design**: Rechner-Karte wieder hell (`#fff`), Sektions-Hintergrund bleibt Dunkelblau (`#0f172a`).
 - [x] **Animation**: "Kostenreduktion"-Balken animiert jetzt beim Öffnen (0% -> 80%).
 - [x] **Close-Button**: Design (Graues X) passt zum neuen hellen Karten-Hintergrund.
+
+### 03.02.2026 - Feature: Time Efficiency Section
+- [x] **New Section**: "Die teuerste Jacke der Welt" (Timeline) eingefügt.
+- [x] **Layout**: Links die 5 Schritte der Zeitverschwendung (75 Min), rechts die Lösung (Steps 2-5 eliminiert).
+- [x] **Design**: Timeline-Optik mit "Waste Steps" (Rot/Warnung) vs. normalem Prozess.
+- [x] **Animation**: Staggered Fade-In der Schritte und Result-Box Animation.

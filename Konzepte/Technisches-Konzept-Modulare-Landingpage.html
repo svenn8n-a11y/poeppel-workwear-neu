@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technisches Konzept – Modulare DISG-Landingpage + n8n Tracking</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a1628;--navy-light:#132038;--navy-card:#1a2a44;
+  --orange:#FF6600;--orange-light:#FF8533;
+  --white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#64748b;--gray-800:#1e293b;
+  --green:#10b981;--green-bg:#d1fae5;--green-text:#065f46;
+  --blue:#3b82f6;--blue-bg:#dbeafe;--blue-text:#1e40af;
+  --purple:#8b5cf6;--purple-bg:#ede9fe;--purple-text:#5b21b6;
+  --red:#ef4444;--red-bg:#fee2e2;--red-text:#991b1b;
+  --font:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--gray-800);line-height:1.7;background:var(--gray-50);max-width:900px;margin:0 auto;padding:20px}
+@page{size:A4;margin:12mm}
+@media print{body{font-size:10pt;max-width:100%}}
+
+/* Cover */
+.cover{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);padding:60px 50px;border-radius:16px;margin-bottom:40px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;right:-60px;top:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,102,0,0.15) 0%,transparent 70%);border-radius:50%}
+.cover .badge{display:inline-block;font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(255,255,255,0.3);padding:5px 14px;border-radius:4px;margin-bottom:20px;color:rgba(255,255,255,0.7)}
+.cover h1{font-size:2rem;font-weight:900;line-height:1.15;margin-bottom:10px}
+.cover h1 span{color:var(--orange)}
+.cover .sub{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:30px}
+.cover .meta{font-size:0.75rem;color:rgba(255,255,255,0.4);border-top:1px solid rgba(255,255,255,0.1);padding-top:15px;display:flex;gap:30px}
+
+/* TOC */
+.toc{background:var(--white);border-radius:12px;padding:30px 35px;margin-bottom:35px;border:1px solid var(--gray-200)}
+.toc h3{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:15px}
+.toc ol{padding-left:20px}
+.toc li{padding:6px 0;font-size:0.9rem}
+.toc li a{color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gray-200)}
+.toc li a:hover{color:var(--orange);border-color:var(--orange)}
+
+/* Sections */
+section{background:var(--white);border-radius:12px;padding:35px;margin-bottom:30px;border:1px solid var(--gray-200)}
+section h2{font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:5px}
+section h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-top:25px;margin-bottom:8px}
+section h4{font-size:0.95rem;font-weight:700;color:var(--gray-800);margin-top:18px;margin-bottom:6px}
+.section-num{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:4px}
+p{margin-bottom:12px;font-size:0.92rem}
+
+/* Tags / Badges */
+.tag{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:4px;margin-right:6px;margin-bottom:4px}
+.tag-green{background:var(--green-bg);color:var(--green-text)}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text)}
+.tag-purple{background:var(--purple-bg);color:var(--purple-text)}
+.tag-orange{background:rgba(255,102,0,0.1);color:var(--orange)}
+.tag-red{background:var(--red-bg);color:var(--red-text)}
+
+/* Code */
+pre{background:var(--navy);color:#e2e8f0;padding:20px;border-radius:10px;overflow-x:auto;font-size:0.8rem;line-height:1.6;margin:15px 0}
+code{font-family:'Fira Code','Consolas',monospace}
+.inline-code{background:var(--gray-100);color:var(--navy);padding:2px 7px;border-radius:4px;font-size:0.85rem;font-family:'Fira Code','Consolas',monospace}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:0.85rem}
+th{background:var(--navy);color:var(--white);padding:10px 14px;text-align:left;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
+td{padding:10px 14px;border-bottom:1px solid var(--gray-200)}
+tr:nth-child(even) td{background:var(--gray-50)}
+
+/* Boxes */
+.info-box{background:var(--blue-bg);border-left:4px solid var(--blue);padding:15px 20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:0.88rem}
+.warn-box{background:rgba(255,102,0,0.08);border-left:4px solid var(--orange);padding:15px 20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:0.88rem}
+.success-box{background:var(--green-bg);border-left:4px solid var(--green);padding:15px 20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:0.88rem}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:15px 0}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin:15px 0}
+@media(max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:20px}
+.card h4{margin-top:0}
+.card-orange{border-color:var(--orange);border-width:2px}
+
+/* Flow */
+.flow{display:flex;align-items:center;gap:12px;margin:15px 0;flex-wrap:wrap}
+.flow-step{background:var(--navy);color:var(--white);padding:8px 16px;border-radius:8px;font-size:0.8rem;font-weight:600}
+.flow-arrow{color:var(--orange);font-size:1.2rem;font-weight:bold}
+
+/* Lists */
+ul,ol{margin-bottom:12px;padding-left:20px}
+li{margin-bottom:6px;font-size:0.92rem}
+
+/* Diagram */
+.arch-diagram{background:var(--navy);border-radius:12px;padding:30px;color:var(--white);margin:20px 0;text-align:center}
+.arch-row{display:flex;justify-content:center;gap:15px;margin:10px 0;flex-wrap:wrap}
+.arch-box{padding:12px 18px;border-radius:8px;font-size:0.78rem;font-weight:700;text-align:center;min-width:120px}
+.arch-box.navy{background:var(--navy-card);border:1px solid rgba(255,255,255,0.15)}
+.arch-box.orange{background:var(--orange);color:var(--white)}
+.arch-box.green{background:var(--green);color:var(--white)}
+.arch-box.blue{background:var(--blue);color:var(--white)}
+.arch-box.gray{background:var(--gray-600);color:var(--white)}
+.arch-arrow{color:var(--orange);font-size:1.5rem;margin:5px 0}
+.arch-label{font-size:0.65rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.1em;margin:8px 0 4px}
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<div class="cover">
+  <div class="badge">Technisches Konzept v1.0</div>
+  <h1>Modulare DISG-Landingpage<br>+ <span>n8n Tracking-System</span></h1>
+  <p class="sub">Wie Sektionen dynamisch ausgetauscht werden, wie wir jeden Klick tracken und wie n8n als Orchestrator alles verbindet.</p>
+  <div class="meta">
+    <span>Erstellt: Februar 2026</span>
+    <span>Projekt: Pöppel Powersales Tool</span>
+    <span>Status: Konzeptphase</span>
+  </div>
+</div>
+
+<!-- ========== TOC ========== -->
+<nav class="toc">
+  <h3>Inhalt</h3>
+  <ol>
+    <li><a href="#s1">Ausgangslage & Zielsetzung</a></li>
+    <li><a href="#s2">Architektur-Überblick</a></li>
+    <li><a href="#s3">Modularer Sektionsaustausch – Technische Umsetzung</a></li>
+    <li><a href="#s4">DISG-Sektionsmapping (Welche Sektion wann)</a></li>
+    <li><a href="#s5">n8n Tracking-System</a></li>
+    <li><a href="#s6">Whitepaper-Tracking (URL-Shortener via n8n)</a></li>
+    <li><a href="#s7">Analytics-Dashboard & Reporting</a></li>
+    <li><a href="#s8">Implementierungsplan & Aufwand</a></li>
+  </ol>
+</nav>
+
+<!-- ========== 1. AUSGANGSLAGE ========== -->
+<section id="s1">
+  <div class="section-num">01 // Ausgangslage</div>
+  <h2>Ausgangslage & Zielsetzung</h2>
+
+  <h3>Ist-Zustand</h3>
+  <p>Die aktuelle Landingpage (<span class="inline-code">index.html</span>) ist eine <strong>statische Single-Page-Anwendung</strong> mit 17 Sektionen, GSAP-Scroll-Animationen und einem kontaktformularbasierten CTA. Es existiert <strong>kein Tracking</strong> (kein Google Analytics, kein Pixel, keine Event-Messung).</p>
+
+  <h3>Ziel</h3>
+  <div class="grid-2">
+    <div class="card card-orange">
+      <h4>Modulare DISG-Steuerung</h4>
+      <p>Dieselbe URL, 4 verschiedene Erlebnisse. Je nach DISG-Typ werden Sektionen umgeordnet, getauscht oder ergänzt – ohne separates Hosting.</p>
+    </div>
+    <div class="card card-orange">
+      <h4>Lückenloses Tracking</h4>
+      <p>Jeder Seitenaufruf, jede Sektion, jeder CTA-Klick und jedes Whitepaper-Download wird erfasst – ohne externe Analytics-Tools, alles via n8n.</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Kernfrage:</strong> Was ist der einfachste und effektivste Weg, um die vorhandene Landingpage DISG-modular zu machen und gleichzeitig alles zu tracken?
+  </div>
+</section>
+
+<!-- ========== 2. ARCHITEKTUR ========== -->
+<section id="s2">
+  <div class="section-num">02 // Architektur</div>
+  <h2>Architektur-Überblick</h2>
+
+  <div class="arch-diagram">
+    <div class="arch-label">Eingang</div>
+    <div class="arch-row">
+      <div class="arch-box orange">E-Mail Link<br><small>go.poeppel-wkz.de/lp/d/abc123</small></div>
+      <div class="arch-box orange">QR-Code<br><small>?disg=i&src=messe</small></div>
+      <div class="arch-box orange">Direct<br><small>poeppel-workwear.de</small></div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-label">Routing & Tracking</div>
+    <div class="arch-row">
+      <div class="arch-box green">n8n Webhook<br><small>Logging + 302 Redirect</small></div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-label">Landingpage</div>
+    <div class="arch-row">
+      <div class="arch-box navy">index.html<br><small>Liest ?disg=X Parameter</small></div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-label">Client-Side Orchestrierung</div>
+    <div class="arch-row">
+      <div class="arch-box blue">disg-config.js<br><small>JSON-Mapping pro Typ</small></div>
+      <div class="arch-box blue">disg-tracker.js<br><small>Event-Tracking → n8n</small></div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-label">Ausgabe / Sektionssteuerung</div>
+    <div class="arch-row">
+      <div class="arch-box navy">D-Typ<br><small>ROI → Eisberg → CTA</small></div>
+      <div class="arch-box navy">I-Typ<br><small>Story → Vision → Social</small></div>
+      <div class="arch-box navy">S-Typ<br><small>Sicherheit → Schritte</small></div>
+      <div class="arch-box navy">G-Typ<br><small>Daten → Methodik</small></div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-label">Datensenke</div>
+    <div class="arch-row">
+      <div class="arch-box gray">Google Sheets<br><small>Einfach + Teilbar</small></div>
+      <div class="arch-box gray">Slack Report<br><small>Echtzeit-Alerts</small></div>
+    </div>
+  </div>
+
+  <h3>Warum Client-Side statt Server-Side?</h3>
+  <table>
+    <tr><th>Kriterium</th><th>Client-Side (empfohlen)</th><th>Server-Side (n8n rendert)</th></tr>
+    <tr><td>Komplexität</td><td><span class="tag tag-green">Niedrig</span> 1 JS-Datei</td><td><span class="tag tag-red">Hoch</span> n8n + Template Engine</td></tr>
+    <tr><td>Hosting</td><td>Statisch (wie bisher)</td><td>Braucht n8n-Server + Proxy</td></tr>
+    <tr><td>Performance</td><td>Sofort, kein Roundtrip</td><td>+200-500ms Latenz pro Request</td></tr>
+    <tr><td>SEO</td><td>Basis-Inhalt immer da</td><td>Dynamisch = schwieriger</td></tr>
+    <tr><td>Wartung</td><td>HTML + JSON editieren</td><td>n8n-Workflows pflegen</td></tr>
+    <tr><td>Tracking</td><td>Via JS Beacon/fetch</td><td>Server-seitig (genauer)</td></tr>
+  </table>
+
+  <div class="success-box">
+    <strong>Empfehlung:</strong> Client-Side Ansatz mit n8n als reinem Tracking-Backend. Das hält die Landingpage schnell, einfach hostbar und unabhängig vom n8n-Server.
+  </div>
+</section>
+
+<!-- ========== 3. SEKTIONSAUSTAUSCH ========== -->
+<section id="s3">
+  <div class="section-num">03 // Modularer Austausch</div>
+  <h2>Modularer Sektionsaustausch</h2>
+
+  <h3>Prinzip: Eine HTML-Datei, 4 Erlebnisse</h3>
+  <p>Alle Sektionen bleiben in einer einzigen <span class="inline-code">index.html</span>. Ein kleines JavaScript liest den URL-Parameter <span class="inline-code">?disg=d</span> und:</p>
+  <ol>
+    <li><strong>Blendet Sektionen ein/aus</strong> (CSS-Klasse <span class="inline-code">.disg-hidden</span>)</li>
+    <li><strong>Ordnet Sektionen um</strong> (DOM-Manipulation mit <span class="inline-code">insertBefore</span>)</li>
+    <li><strong>Tauscht Textvarianten</strong> (Headlines, CTAs, Badges per <span class="inline-code">data-disg-*</span> Attribute)</li>
+  </ol>
+
+  <h3>Schritt 1: HTML-Sektionen markieren</h3>
+  <p>Jede Sektion bekommt ein <span class="inline-code">data-disg</span> Attribut:</p>
+  <pre><code>&lt;!-- Immer sichtbar für alle --&gt;
+&lt;section id="hero" data-disg="all"&gt;...&lt;/section&gt;
+
+&lt;!-- Nur für D und G sichtbar --&gt;
+&lt;section id="eisberg" data-disg="d,g"&gt;...&lt;/section&gt;
+
+&lt;!-- Nur für I sichtbar --&gt;
+&lt;section id="story-vision" data-disg="i"&gt;...&lt;/section&gt;
+
+&lt;!-- Reihenfolge wird per Config gesteuert --&gt;
+&lt;section id="potentiale" data-disg="all" data-disg-order="3"&gt;...&lt;/section&gt;</code></pre>
+
+  <h3>Schritt 2: JSON-Konfigurationsdatei</h3>
+  <pre><code>// js/disg-config.js
+const DISG_CONFIG = {
+  // Standard-Reihenfolge (kein Parameter = Default)
+  default: {
+    order: ["hero","video","problem","potentiale","loesung",
+            "onboarding","partner","testimonials","modular",
+            "cta-whitepaper","faq","kontakt"],
+    textSwaps: {}
+  },
+
+  d: {
+    label: "Dominant",
+    order: [
+      "hero",           // Hook: Zahlen sofort
+      "eisberg",        // Versteckte Kosten = Schock
+      "75min-jacke",    // Rechenbeispiel
+      "potentiale",     // ROI-Fokus
+      "loesung",        // 3 Schritte
+      "partner",        // Vertrauensanker
+      "cta-beratung",   // Direkter CTA
+      "faq",
+      "kontakt"
+    ],
+    textSwaps: {
+      "hero-headline": "Workwear-Kosten um 80% senken.",
+      "hero-subline": "Keine Theorie. Nur Zahlen, Fakten, Ergebnisse.",
+      "hero-cta": "Einsparpotenzial berechnen",
+      "cta-heading": "ROI in 30 Tagen sehen →"
+    }
+  },
+
+  i: {
+    label: "Initiativ",
+    order: [
+      "hero",           // Hook: Vision
+      "video",          // Emotionales Video
+      "75min-jacke",    // Story-Format
+      "potentiale",     // Begeisterung
+      "testimonials",   // Social Proof
+      "onboarding",     // "So einfach geht's"
+      "modular",        // Gestaltungsmöglichkeiten
+      "cta-beratung",
+      "kontakt"
+    ],
+    textSwaps: {
+      "hero-headline": "Montag, 7 Uhr. Alles liegt bereit.",
+      "hero-subline": "So fühlt sich modernes Workwear Management an.",
+      "hero-cta": "Erleben Sie den Unterschied",
+      "cta-heading": "Lassen Sie uns gemeinsam starten!"
+    }
+  },
+
+  s: {
+    label: "Stetig",
+    order: [
+      "hero",           // Hook: Sicherheit
+      "partner",        // Vertrauensanker zuerst
+      "testimonials",   // Andere machen es auch
+      "onboarding",     // Schritt für Schritt
+      "loesung",        // Strukturierter Weg
+      "potentiale",     // Ergebnis = Ruhe
+      "eisberg",        // Verstehen warum
+      "faq",            // Alle Fragen beantwortet
+      "cta-beratung",
+      "kontakt"
+    ],
+    textSwaps: {
+      "hero-headline": "Workwear Management. Sicher. Planbar.",
+      "hero-subline": "Schritt für Schritt zum System – ohne Risiko.",
+      "hero-cta": "Unverbindlich kennenlernen",
+      "cta-heading": "Persönliches Gespräch vereinbaren"
+    }
+  },
+
+  g: {
+    label: "Gewissenhaft",
+    order: [
+      "hero",           // Hook: Daten & Methodik
+      "eisberg",        // Datenvisualisierung
+      "problem",        // Systematische Analyse
+      "75min-jacke",    // Kalkulationsbeispiel
+      "potentiale",     // Quantifizierte Ergebnisse
+      "loesung",        // Methodischer 3-Schritt
+      "modular",        // Konfigurationsdetails
+      "faq",            // Alle technischen Fragen
+      "cta-beratung",
+      "kontakt"
+    ],
+    textSwaps: {
+      "hero-headline": "Prozesskosten: Eine systematische Analyse.",
+      "hero-subline": "Basierend auf BME-Daten und 200+ Implementierungen.",
+      "hero-cta": "Kostenlose Prozessanalyse anfordern",
+      "cta-heading": "Detaillierte Ist-Analyse starten"
+    }
+  }
+};</code></pre>
+
+  <h3>Schritt 3: Steuerungsscript</h3>
+  <pre><code>// js/disg-engine.js
+(function() {
+  'use strict';
+
+  // 1. DISG-Typ aus URL lesen
+  const params = new URLSearchParams(window.location.search);
+  const disgType = (params.get('disg') || 'default').toLowerCase();
+  const config = DISG_CONFIG[disgType] || DISG_CONFIG.default;
+
+  // 2. Visitor-ID setzen (für Tracking)
+  let visitorId = localStorage.getItem('poe_vid');
+  if (!visitorId) {
+    visitorId = 'v_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
+    localStorage.setItem('poe_vid', visitorId);
+  }
+
+  // 3. Sektionen umordnen
+  const main = document.querySelector('main') || document.body;
+  const container = document.getElementById('disg-content') || main;
+
+  config.order.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      container.appendChild(section); // Verschiebt ans Ende → Reihenfolge
+    }
+  });
+
+  // 4. Nicht gelistete Sektionen ausblenden
+  document.querySelectorAll('section[data-disg]').forEach(el => {
+    if (!config.order.includes(el.id)) {
+      el.style.display = 'none';
+      el.classList.add('disg-hidden');
+    }
+  });
+
+  // 5. Texte tauschen
+  Object.entries(config.textSwaps || {}).forEach(([key, value]) => {
+    const el = document.querySelector(`[data-disg-text="${key}"]`);
+    if (el) el.textContent = value;
+  });
+
+  // 6. Body-Klasse setzen (für CSS-Varianten)
+  document.body.classList.add(`disg-${disgType}`);
+
+  // 7. Tracking-Init (siehe Tracking-Sektion)
+  if (typeof DisgTracker !== 'undefined') {
+    DisgTracker.init(disgType, visitorId);
+  }
+
+  console.log(`[DISG] Typ: ${disgType} | Sektionen: ${config.order.length}`);
+})();</code></pre>
+
+  <h3>Schritt 4: Text-Austausch im HTML</h3>
+  <pre><code>&lt;!-- Im Hero: --&gt;
+&lt;h1 data-disg-text="hero-headline"&gt;
+  Workwear Management mit System.
+&lt;/h1&gt;
+&lt;p data-disg-text="hero-subline"&gt;
+  Vom Kostentreiber zum Effizienzfaktor.
+&lt;/p&gt;
+&lt;a href="#kontakt" data-disg-text="hero-cta" class="btn btn-primary"&gt;
+  Jetzt Potenzial entdecken
+&lt;/a&gt;</code></pre>
+
+  <div class="warn-box">
+    <strong>Wichtig:</strong> Der Standard-Text im HTML bleibt immer als Fallback stehen. Nur wenn <span class="inline-code">?disg=X</span> gesetzt ist, wird getauscht. So funktioniert die Seite auch ohne Parameter – perfekt für SEO und organischen Traffic.
+  </div>
+</section>
+
+<!-- ========== 4. SEKTIONSMAPPING ========== -->
+<section id="s4">
+  <div class="section-num">04 // DISG-Mapping</div>
+  <h2>DISG-Sektionsmapping</h2>
+
+  <p>Übersicht: Welche Sektion erscheint bei welchem Typ, in welcher Reihenfolge:</p>
+
+  <table>
+    <tr>
+      <th>Sektion</th>
+      <th>D <span class="tag tag-red">Dominant</span></th>
+      <th>I <span class="tag tag-orange">Initiativ</span></th>
+      <th>S <span class="tag tag-green">Stetig</span></th>
+      <th>G <span class="tag tag-blue">Gewissenhaft</span></th>
+    </tr>
+    <tr><td>Hero</td><td>1 – Zahlen</td><td>1 – Vision</td><td>1 – Sicherheit</td><td>1 – Daten</td></tr>
+    <tr><td>Video</td><td>—</td><td>2</td><td>—</td><td>—</td></tr>
+    <tr><td>Eisberg</td><td>2</td><td>—</td><td>7</td><td>2</td></tr>
+    <tr><td>75-Min-Jacke</td><td>3</td><td>3</td><td>—</td><td>4</td></tr>
+    <tr><td>Problem</td><td>—</td><td>—</td><td>—</td><td>3</td></tr>
+    <tr><td>Potentiale</td><td>4</td><td>4</td><td>6</td><td>5</td></tr>
+    <tr><td>Lösung</td><td>5</td><td>—</td><td>5</td><td>6</td></tr>
+    <tr><td>Onboarding</td><td>—</td><td>6</td><td>4</td><td>—</td></tr>
+    <tr><td>Partner</td><td>6</td><td>—</td><td>2</td><td>—</td></tr>
+    <tr><td>Testimonials</td><td>—</td><td>5</td><td>3</td><td>—</td></tr>
+    <tr><td>Modular</td><td>—</td><td>7</td><td>—</td><td>7</td></tr>
+    <tr><td>FAQ</td><td>7</td><td>—</td><td>8</td><td>8</td></tr>
+    <tr><td>CTA</td><td>8</td><td>8</td><td>9</td><td>9</td></tr>
+    <tr><td>Kontakt</td><td>9</td><td>9</td><td>10</td><td>10</td></tr>
+  </table>
+
+  <h3>Logik hinter dem Mapping</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4><span class="tag tag-red">D</span> Dominant</h4>
+      <p><strong>Prinzip:</strong> Zahlen zuerst, dann Lösung.<br>
+      Beginnt mit Eisberg (Schock), direkt ROI-Kalkulation, dann klare 3-Schritte-Lösung. Kein Video, keine Stories – nur Ergebnisse.</p>
+    </div>
+    <div class="card">
+      <h4><span class="tag tag-orange">I</span> Initiativ</h4>
+      <p><strong>Prinzip:</strong> Emotion + Vision + Social Proof.<br>
+      Video und Story zuerst, dann Testimonials als Bestätigung. Modularer Ansatz zum Entdecken. Begeisterung erzeugen.</p>
+    </div>
+    <div class="card">
+      <h4><span class="tag tag-green">S</span> Stetig</h4>
+      <p><strong>Prinzip:</strong> Vertrauen aufbauen, dann erklären.<br>
+      Partner + Testimonials als Sicherheitsanker, dann Schritt-für-Schritt Onboarding. Eisberg erst spät (nicht erschrecken).</p>
+    </div>
+    <div class="card">
+      <h4><span class="tag tag-blue">G</span> Gewissenhaft</h4>
+      <p><strong>Prinzip:</strong> Daten → Analyse → Methodik.<br>
+      Eisberg mit Quellenangabe, detailliertes Problem-Statement, Kalkulation, dann systematische Lösung. FAQ wichtig.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. TRACKING ========== -->
+<section id="s5">
+  <div class="section-num">05 // Tracking-System</div>
+  <h2>n8n Tracking-System</h2>
+
+  <h3>Architektur: Beacon API → n8n Webhook → Google Sheets</h3>
+  <p>Wir nutzen die <strong>Beacon API</strong> (navigator.sendBeacon) für nicht-blockierendes Tracking. Kein Einfluss auf Ladezeit, kein Cookie-Banner nötig (da First-Party und keine persönlichen Daten).</p>
+
+  <div class="flow">
+    <div class="flow-step">Browser Event</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">sendBeacon()</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">n8n Webhook</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Google Sheets</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Slack Alert</div>
+  </div>
+
+  <h3>Tracking-Script</h3>
+  <pre><code>// js/disg-tracker.js
+const DisgTracker = {
+  WEBHOOK_URL: 'https://n8n.poeppel-wkz.de/webhook/lp-track',
+  disgType: null,
+  visitorId: null,
+  sessionStart: Date.now(),
+  sectionTimes: {},
+
+  init(disgType, visitorId) {
+    this.disgType = disgType;
+    this.visitorId = visitorId;
+
+    // Pageview tracken
+    this.track('pageview', {
+      referrer: document.referrer,
+      utm_source: new URLSearchParams(location.search).get('src') || '',
+      utm_campaign: new URLSearchParams(location.search).get('cam') || '',
+    });
+
+    // Section-Tracking via IntersectionObserver
+    this.initSectionObserver();
+
+    // CTA-Click-Tracking
+    this.initClickTracking();
+
+    // Exit-Tracking (Zeit auf Seite)
+    window.addEventListener('beforeunload', () => {
+      this.track('exit', {
+        time_on_page: Math.round((Date.now() - this.sessionStart) / 1000),
+        sections_viewed: Object.keys(this.sectionTimes).length,
+        deepest_section: this.getDeepestSection()
+      });
+    });
+  },
+
+  track(event, data = {}) {
+    const payload = {
+      event,
+      visitor_id: this.visitorId,
+      disg_type: this.disgType,
+      timestamp: new Date().toISOString(),
+      page_url: location.href,
+      ...data
+    };
+
+    // Beacon API (non-blocking, works even on page close)
+    navigator.sendBeacon(
+      this.WEBHOOK_URL,
+      new Blob([JSON.stringify(payload)], { type: 'application/json' })
+    );
+  },
+
+  initSectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (!this.sectionTimes[id]) {
+            this.sectionTimes[id] = Date.now();
+            this.track('section_view', {
+              section_id: id,
+              section_index: this.getSectionIndex(id),
+              time_to_section: Math.round(
+                (Date.now() - this.sessionStart) / 1000
+              )
+            });
+          }
+        }
+      });
+    }, { threshold: 0.3 }); // 30% sichtbar = gezählt
+
+    document.querySelectorAll('section[id]').forEach(el => {
+      observer.observe(el);
+    });
+  },
+
+  initClickTracking() {
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        this.track('cta_click', {
+          cta_id: el.dataset.track,
+          cta_text: el.textContent.trim().substring(0, 50),
+          section_context: el.closest('section')?.id || 'unknown'
+        });
+      });
+    });
+  },
+
+  getSectionIndex(id) {
+    const sections = [...document.querySelectorAll('section[id]')];
+    return sections.findIndex(s => s.id === id);
+  },
+
+  getDeepestSection() {
+    const entries = Object.entries(this.sectionTimes);
+    if (!entries.length) return 'none';
+    return entries.sort((a, b) => b[1] - a[1])[0][0];
+  }
+};</code></pre>
+
+  <h3>Welche Events werden getrackt?</h3>
+  <table>
+    <tr><th>Event</th><th>Trigger</th><th>Daten</th></tr>
+    <tr>
+      <td><span class="tag tag-green">pageview</span></td>
+      <td>Seitenaufruf</td>
+      <td>DISG-Typ, Referrer, UTM-Parameter, Visitor-ID</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-blue">section_view</span></td>
+      <td>Sektion 30% sichtbar</td>
+      <td>Section-ID, Index, Sekunden bis hierhin</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-orange">cta_click</span></td>
+      <td>Klick auf CTA-Button</td>
+      <td>CTA-ID, Button-Text, Kontext-Sektion</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-purple">form_submit</span></td>
+      <td>Kontaktformular abgeschickt</td>
+      <td>Schritt, Formular-Daten (anonymisiert)</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-red">exit</span></td>
+      <td>Seite verlassen</td>
+      <td>Verweildauer, Anzahl Sektionen, tiefste Sektion</td>
+    </tr>
+  </table>
+
+  <h3>CTA-Tracking im HTML</h3>
+  <pre><code>&lt;!-- Jeder trackbare Button bekommt data-track --&gt;
+&lt;a href="#kontakt" class="btn btn-primary"
+   data-track="hero-cta"&gt;
+  Jetzt Potenzial berechnen
+&lt;/a&gt;
+
+&lt;button class="btn btn-primary"
+   data-track="whitepaper-download"&gt;
+  Whitepaper herunterladen
+&lt;/button&gt;
+
+&lt;a href="tel:+49833195590"
+   data-track="phone-call"&gt;
+  Jetzt anrufen
+&lt;/a&gt;</code></pre>
+</section>
+
+<!-- ========== 6. WHITEPAPER TRACKING ========== -->
+<section id="s6">
+  <div class="section-num">06 // Whitepaper-Tracking</div>
+  <h2>Whitepaper-Tracking (URL-Shortener)</h2>
+
+  <h3>Konzept: Kurz-URL → n8n → Redirect</h3>
+  <p>Statt den Whitepaper-Link direkt zu versenden, nutzen wir eine Kurz-URL über n8n als Proxy. So wissen wir genau: <strong>Wer hat wann welche Version geöffnet?</strong></p>
+
+  <div class="flow">
+    <div class="flow-step">Vertrieb sendet Link</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">go.poeppel-wkz.de/wp/d/abc123</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">n8n loggt Zugriff</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">302 Redirect → HTML-Whitepaper</div>
+  </div>
+
+  <h3>URL-Schema</h3>
+  <pre><code>Struktur:  go.poeppel-wkz.de/wp/{disg-type}/{contact-hash}
+Beispiel:  go.poeppel-wkz.de/wp/d/müller-bau-gmbh
+
+Parameter:
+  {disg-type}    = d | i | s | g
+  {contact-hash} = Firmenname-Kurzform (vom Vertrieb vergeben)</code></pre>
+
+  <h3>n8n Workflow: Whitepaper-Redirect</h3>
+  <pre><code>Workflow: "Whitepaper Tracking & Redirect"
+
+1. WEBHOOK (GET)
+   Path: /webhook/wp/:type/:hash
+   Response: Redirect (302)
+
+2. SET NODE
+   - timestamp: {{$now}}
+   - disg_type: {{$params.type}}
+   - contact_hash: {{$params.hash}}
+   - ip: {{$request.headers['x-forwarded-for']}}
+   - user_agent: {{$request.headers['user-agent']}}
+
+3. GOOGLE SHEETS (Append Row)
+   Sheet: "Whitepaper-Tracking"
+   Columns: Timestamp | DISG-Typ | Kontakt | IP | User-Agent | Öffnungen
+
+4. IF (Erste Öffnung?)
+   → JA: SLACK MESSAGE
+     "🔥 {contact_hash} hat Whitepaper-{type} zum ersten Mal geöffnet!"
+   → NEIN: Counter +1 in Sheets
+
+5. RESPOND TO WEBHOOK
+   Status: 302
+   Headers: { Location: "https://poeppel-workwear.de/whitepaper/wp-{type}.html" }</code></pre>
+
+  <div class="info-box">
+    <strong>Bonus:</strong> Durch den Hash können wir auch sehen, wie oft ein bestimmter Kontakt das Whitepaper öffnet – ein starkes Signal für Kaufinteresse, das der Vertrieb direkt nutzen kann.
+  </div>
+
+  <h3>Tracking-Pixel im HTML-Whitepaper (Fallback)</h3>
+  <p>Falls der Link direkt geteilt wird (ohne Kurz-URL), enthält jedes HTML-Whitepaper einen unsichtbaren Tracking-Pixel:</p>
+  <pre><code>&lt;!-- Am Ende jedes Whitepapers --&gt;
+&lt;img src="https://n8n.poeppel-wkz.de/webhook/wp-open?v=D&amp;t={{timestamp}}"
+     width="1" height="1" style="opacity:0;position:absolute"
+     alt="" /&gt;</code></pre>
+</section>
+
+<!-- ========== 7. DASHBOARD ========== -->
+<section id="s7">
+  <div class="section-num">07 // Analytics & Reporting</div>
+  <h2>Analytics-Dashboard & Reporting</h2>
+
+  <h3>Datenstruktur in Google Sheets</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Sheet 1: Landingpage Events</h4>
+      <table>
+        <tr><th>Spalte</th><th>Inhalt</th></tr>
+        <tr><td>A</td><td>Timestamp</td></tr>
+        <tr><td>B</td><td>Visitor ID</td></tr>
+        <tr><td>C</td><td>DISG-Typ</td></tr>
+        <tr><td>D</td><td>Event (pageview/section/cta/exit)</td></tr>
+        <tr><td>E</td><td>Detail (Section-ID, CTA-ID etc.)</td></tr>
+        <tr><td>F</td><td>Verweildauer (Sek.)</td></tr>
+        <tr><td>G</td><td>Referrer</td></tr>
+        <tr><td>H</td><td>UTM Source</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Sheet 2: Whitepaper Opens</h4>
+      <table>
+        <tr><th>Spalte</th><th>Inhalt</th></tr>
+        <tr><td>A</td><td>Timestamp</td></tr>
+        <tr><td>B</td><td>Kontakt (Hash)</td></tr>
+        <tr><td>C</td><td>DISG-Typ</td></tr>
+        <tr><td>D</td><td>Öffnung Nr.</td></tr>
+        <tr><td>E</td><td>User-Agent</td></tr>
+        <tr><td>F</td><td>IP (anonymisiert)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Automatisierte Slack-Reports (n8n Cron)</h3>
+  <pre><code>Workflow: "Wöchentlicher Sales-Report"
+
+1. CRON TRIGGER: Jeden Montag, 8:00 Uhr
+
+2. GOOGLE SHEETS (Read)
+   → Alle Events der letzten 7 Tage
+
+3. CODE NODE (JavaScript)
+   → Aggregation:
+     - Pageviews pro DISG-Typ
+     - Top-3 Sektionen (meistgesehen)
+     - CTA-Klickrate pro Typ
+     - Durchschnittliche Verweildauer
+     - Whitepaper-Öffnungen
+
+4. SLACK MESSAGE
+   📊 *Wöchentlicher Sales Report*
+
+   *Landingpage:*
+   • Besucher gesamt: 142
+   • D-Typ: 38 (27%) | I-Typ: 45 (32%) | S: 31 (22%) | G: 28 (20%)
+   • Ø Verweildauer: 2:45 Min
+   • CTA-Klickrate: 12,3%
+
+   *Whitepaper:*
+   • Geöffnet: 23 (davon 8 Erstöffnungen)
+   • Heißeste Leads: müller-bau (5x), schmidt-technik (3x)
+
+   *Top-Sektionen:*
+   1. Eisberg (89% gesehen)
+   2. 75-Min-Jacke (76%)
+   3. Lösung (71%)</code></pre>
+
+  <h3>Echtzeit-Alerts</h3>
+  <div class="grid-3">
+    <div class="card">
+      <h4>Lead-Alert</h4>
+      <p>Wenn ein Kontakt das Whitepaper 3+ Mal öffnet → sofortige Slack-Nachricht an Vertrieb.</p>
+    </div>
+    <div class="card">
+      <h4>Formular-Alert</h4>
+      <p>Jede Kontaktanfrage → sofortige Nachricht mit DISG-Typ und gesehenen Sektionen.</p>
+    </div>
+    <div class="card">
+      <h4>Anomalie-Alert</h4>
+      <p>Traffic-Spitze (+200% vs. Ø) → Benachrichtigung mit möglicher Ursache (Kampagne?).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. IMPLEMENTIERUNG ========== -->
+<section id="s8">
+  <div class="section-num">08 // Implementierung</div>
+  <h2>Implementierungsplan & Aufwand</h2>
+
+  <h3>Phasen-Übersicht</h3>
+  <table>
+    <tr><th>Phase</th><th>Aufgabe</th><th>Aufwand</th><th>Abhängigkeit</th></tr>
+    <tr>
+      <td><span class="tag tag-green">1</span></td>
+      <td><strong>HTML vorbereiten</strong><br><span class="inline-code">data-disg</span> Attribute + <span class="inline-code">data-disg-text</span> + <span class="inline-code">data-track</span> an alle Sektionen/CTAs</td>
+      <td>2–3 Std.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-blue">2</span></td>
+      <td><strong>disg-config.js erstellen</strong><br>JSON-Mapping für alle 4 Typen + Default</td>
+      <td>1–2 Std.</td>
+      <td>Phase 1</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-blue">3</span></td>
+      <td><strong>disg-engine.js erstellen</strong><br>Sektions-Reorder + Text-Swap + Body-Class</td>
+      <td>2–3 Std.</td>
+      <td>Phase 1+2</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-purple">4</span></td>
+      <td><strong>n8n Webhook einrichten</strong><br>Landingpage-Tracking Webhook + Google Sheets</td>
+      <td>1–2 Std.</td>
+      <td>n8n Instanz</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-purple">5</span></td>
+      <td><strong>disg-tracker.js erstellen</strong><br>Beacon-API + IntersectionObserver + Click-Tracking</td>
+      <td>2–3 Std.</td>
+      <td>Phase 4</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-orange">6</span></td>
+      <td><strong>Whitepaper-Redirect Workflow</strong><br>n8n Webhook + Sheets + Slack-Alert</td>
+      <td>1–2 Std.</td>
+      <td>Phase 4</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-orange">7</span></td>
+      <td><strong>Report-Workflow</strong><br>Wöchentlicher Slack-Report via Cron</td>
+      <td>2 Std.</td>
+      <td>Phase 4+5+6</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-red">8</span></td>
+      <td><strong>DISG-spezifische Sektionen erstellen</strong><br>Eisberg, 75-Min-Jacke als eigenständige Sektionen in index.html integrieren</td>
+      <td>3–4 Std.</td>
+      <td>Phase 1</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-green">9</span></td>
+      <td><strong>Testing & QA</strong><br>Alle 4 Typen testen, Tracking verifizieren</td>
+      <td>2 Std.</td>
+      <td>Alles</td>
+    </tr>
+  </table>
+
+  <div class="success-box">
+    <strong>Gesamtaufwand:</strong> ca. 16–22 Stunden<br>
+    <strong>Keine externen Kosten</strong> (kein Analytics-Tool, kein Cookie-Banner, kein zusätzliches Hosting)<br>
+    <strong>Voraussetzung:</strong> Laufende n8n-Instanz (self-hosted oder n8n Cloud)
+  </div>
+
+  <h3>Benötigte neue Dateien</h3>
+  <table>
+    <tr><th>Datei</th><th>Zweck</th><th>Größe (ca.)</th></tr>
+    <tr><td><span class="inline-code">js/disg-config.js</span></td><td>JSON-Konfiguration für 4+1 Typen</td><td>~3 KB</td></tr>
+    <tr><td><span class="inline-code">js/disg-engine.js</span></td><td>Sektions-Steuerung + Text-Swap</td><td>~2 KB</td></tr>
+    <tr><td><span class="inline-code">js/disg-tracker.js</span></td><td>Event-Tracking via Beacon API</td><td>~3 KB</td></tr>
+  </table>
+  <p>Insgesamt ~8 KB zusätzlicher JavaScript-Code. Kein Framework, keine Dependencies, reines Vanilla JS.</p>
+
+  <h3>Einbindung in index.html</h3>
+  <pre><code>&lt;!-- Vor &lt;/body&gt; einfügen (nach GSAP + main.js) --&gt;
+&lt;script src="js/disg-config.js"&gt;&lt;/script&gt;
+&lt;script src="js/disg-tracker.js"&gt;&lt;/script&gt;
+&lt;script src="js/disg-engine.js"&gt;&lt;/script&gt;</code></pre>
+
+  <h3>DNS-Einrichtung für Kurz-URLs</h3>
+  <pre><code>Subdomain:   go.poeppel-wkz.de
+Typ:         CNAME → n8n-server.poeppel-wkz.de
+SSL:         Let's Encrypt (automatisch via n8n/Traefik)
+
+Webhook-URL: https://go.poeppel-wkz.de/webhook/wp/:type/:hash
+             https://go.poeppel-wkz.de/webhook/lp-track</code></pre>
+
+  <div class="warn-box">
+    <strong>Nächster Schritt:</strong> Sobald Du grünes Licht gibst, kann ich mit Phase 1–3 (HTML-Vorbereitung + JS-Dateien) direkt starten und die fertigen Dateien in den Projektordner legen. Die n8n-Workflows (Phase 4–7) kann ich als JSON-Export vorbereiten, die dann nur noch importiert werden müssen.
+  </div>
+</section>
+
+<!-- Footer -->
+<div style="text-align:center;padding:30px;color:var(--gray-400);font-size:0.75rem">
+  © 2026 R. Pöppel GmbH & Co. KG – Technisches Konzept – Nicht zur Weitergabe bestimmt
+</div>
+
+</body>
+</html>

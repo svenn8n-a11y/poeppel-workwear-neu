@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workwear Management mit System – Leitfaden für Entscheider | R. Pöppel Workwear</title>
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a1628;--navy-light:#132038;--navy-card:#1a2a44;
+  --orange:#FF6600;--orange-light:#FF8533;--orange-bg:rgba(255,102,0,0.08);
+  --white:#ffffff;--gray-100:#f8fafc;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-600:#64748b;
+  --green-bg:#d1fae5;--green-text:#065f46;
+  --radius:12px;--radius-lg:16px;
+  --shadow:0 4px 24px rgba(10,22,40,0.12);
+  --font:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:#1e293b;line-height:1.7;background:var(--white);max-width:794px;margin:0 auto}
+@page{size:A4;margin:15mm}
+
+/* ========== PRINT STYLES ========== */
+@media print{
+  body{font-size:11pt;line-height:1.5}
+  .no-print{display:none!important}
+  .page-break{page-break-before:always}
+  section{page-break-inside:avoid}
+  .cover{min-height:100vh}
+  .interactive-note{display:block!important}
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em}
+h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;line-height:1.2;letter-spacing:-0.01em}
+h3{font-size:1.3rem;font-weight:700;line-height:1.3}
+h4{font-size:1.05rem;font-weight:700}
+p{margin-bottom:1rem}
+.highlight{color:var(--orange)}
+.highlight-italic{color:var(--orange);font-style:italic}
+.text-sm{font-size:0.875rem;color:var(--gray-600)}
+.text-xs{font-size:0.75rem;color:var(--gray-400)}
+.uppercase{text-transform:uppercase;letter-spacing:0.05em}
+
+/* ========== LAYOUT ========== */
+.container{max-width:720px;margin:0 auto;padding:0 30px}
+section{padding:45px 0}
+.section-badge{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);border:1px solid var(--orange);padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:700px){.grid-2{grid-template-columns:1fr}}
+
+/* ========== COVER ========== */
+.cover{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);min-height:90vh;display:flex;align-items:center;padding:80px 0}
+.cover .logo-img{height:50px;margin-bottom:50px}
+.cover .logo{font-weight:900;font-size:1.1rem;letter-spacing:0.15em;margin-bottom:60px}
+.cover .logo span{color:var(--orange)}
+.cover .badge{display:inline-block;font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:4px;margin-bottom:30px;color:rgba(255,255,255,0.7)}
+.cover h1 span{color:var(--orange)}
+.cover .subtitle{font-size:1.15rem;color:rgba(255,255,255,0.7);margin-top:20px;max-width:550px}
+.cover .kpi-row{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap}
+.cover .kpi{text-align:center}
+.cover .kpi-value{font-size:2rem;font-weight:900;color:var(--orange)}
+.cover .kpi-label{font-size:0.75rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em}
+.cover .disg-tag{position:absolute;top:30px;right:30px;background:var(--orange);color:var(--white);font-size:0.7rem;font-weight:800;padding:6px 14px;border-radius:4px;letter-spacing:0.1em}
+
+/* ========== CARDS ========== */
+.card{background:var(--gray-100);border-radius:var(--radius);padding:30px;border:1px solid var(--gray-200)}
+.card-dark{background:var(--navy);color:var(--white);border:none}
+.card-dark .text-sm{color:rgba(255,255,255,0.6)}
+.card-orange{border-left:4px solid var(--orange)}
+
+/* ========== EISBERG ========== */
+.eisberg-visual{position:relative;background:linear-gradient(180deg,#e8f4f8 0%,#e8f4f8 35%,#1a3a5c 35%,#0d2137 100%);border-radius:var(--radius-lg);padding:40px;min-height:500px;overflow:hidden}
+.eisberg-top{position:relative;z-index:2;text-align:center;padding-bottom:20px}
+.eisberg-top .cost-box{display:inline-block;background:var(--white);border:2px solid var(--orange);border-radius:var(--radius);padding:15px 25px;text-align:center}
+.eisberg-top .cost-value{font-size:2rem;font-weight:900;color:var(--orange)}
+.eisberg-top .cost-label{font-size:0.75rem;color:var(--gray-600);text-transform:uppercase}
+.waterline{height:3px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);margin:20px 0}
+.eisberg-bottom{color:var(--white);padding-top:20px}
+.eisberg-bottom .cost-item{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:0.95rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+.eisberg-bottom .cost-item:last-child{border:none}
+.eisberg-bottom .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0}
+.hidden-cost-box{background:var(--orange);border-radius:var(--radius);padding:20px;text-align:center;margin-top:25px}
+.hidden-cost-box .cost-value{font-size:2.5rem;font-weight:900;color:var(--white)}
+.hidden-cost-box .cost-label{font-size:0.8rem;color:rgba(255,255,255,0.8)}
+
+/* ========== TIMELINE ========== */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:var(--gray-200)}
+.timeline-step{position:relative;padding-bottom:25px}
+.timeline-step:last-child{padding-bottom:0}
+.timeline-marker{position:absolute;left:-40px;width:30px;height:30px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800}
+.timeline-time{display:inline-block;background:var(--orange-bg);color:var(--orange);font-weight:700;font-size:0.85rem;padding:2px 10px;border-radius:4px;margin-bottom:4px}
+
+/* ========== CALCULATOR ========== */
+.calculator{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--gray-200)}
+.calc-header{background:var(--navy);padding:25px 30px;color:var(--white);text-align:center}
+.calc-header h3{margin-bottom:4px}
+.calc-header p{opacity:0.7;font-size:0.9rem;margin:0}
+.calc-body{display:flex;flex-wrap:wrap}
+.calc-inputs{flex:1;min-width:280px;padding:30px;border-right:1px solid var(--gray-200)}
+.calc-results{flex:1;min-width:280px;padding:30px;background:var(--gray-100);display:flex;flex-direction:column;justify-content:center}
+.input-group{margin-bottom:30px}
+.label-row{display:flex;justify-content:space-between;margin-bottom:10px;align-items:center}
+.label-text{font-weight:700;color:var(--navy);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px}
+.input-display{color:var(--orange);font-weight:800;font-size:1.1rem;background:var(--orange-bg);padding:3px 10px;border-radius:6px}
+input[type=range]{-webkit-appearance:none;width:100%;background:transparent;margin:8px 0}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--gray-200);border-radius:3px}
+input[type=range]::-webkit-slider-thumb{height:22px;width:22px;border-radius:50%;background:var(--orange);-webkit-appearance:none;margin-top:-8px;box-shadow:0 2px 6px rgba(255,102,0,0.4);border:3px solid var(--white);cursor:pointer}
+.result-item{margin-bottom:20px;text-align:center}
+.res-label{font-size:0.7rem;text-transform:uppercase;color:var(--gray-400);letter-spacing:1px;margin-bottom:4px}
+.res-value{font-size:1.6rem;font-weight:700;color:#1e293b}
+.res-value.hl{color:var(--orange);font-size:2.2rem;font-weight:800}
+.savings-badge{display:inline-block;background:var(--green-bg);color:var(--green-text);font-size:0.75rem;font-weight:700;padding:5px 12px;border-radius:20px;margin-top:4px}
+.bar-wrap{height:20px;background:var(--gray-200);border-radius:10px;overflow:hidden;margin-top:15px;position:relative}
+.bar-fill{height:100%;background:var(--orange);border-radius:10px;transition:width 0.6s ease;width:20%}
+
+/* ========== SOLUTION CARDS ========== */
+.solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:700px){.solution-grid{grid-template-columns:1fr}}
+.sol-card{background:var(--navy);color:var(--white);border-radius:var(--radius);padding:25px;text-align:center}
+.sol-card .sol-num{font-size:2rem;font-weight:900;color:var(--orange);margin-bottom:8px}
+.sol-card h4{margin-bottom:8px}
+.sol-card p{font-size:0.85rem;color:rgba(255,255,255,0.7);margin:0}
+
+/* ========== STATS ROW ========== */
+.stats-row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:40px 0}
+.stat-box{text-align:center;flex:1;min-width:140px}
+.stat-value{font-size:1.8rem;font-weight:900;color:var(--orange)}
+.stat-label{font-size:0.7rem;color:var(--gray-600);text-transform:uppercase}
+
+/* ========== CHECKLIST ========== */
+.checklist{list-style:none}
+.checklist li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--gray-200)}
+.checklist li:last-child{border:none}
+.check-icon{width:22px;height:22px;border-radius:50%;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;margin-top:2px}
+
+/* ========== CTA ========== */
+.cta-section{background:var(--navy);color:var(--white);text-align:center;padding:80px 30px;border-radius:var(--radius-lg);margin:40px 0}
+.cta-section h2{margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,0.7);margin-bottom:30px}
+.btn{display:inline-block;background:var(--orange);color:var(--white);font-weight:700;font-size:1rem;padding:14px 36px;border-radius:8px;text-decoration:none;transition:background 0.2s}
+.btn:hover{background:var(--orange-light)}
+.contact-info{margin-top:25px;font-size:0.9rem;color:rgba(255,255,255,0.6)}
+.contact-info a{color:var(--orange);text-decoration:none}
+
+/* ========== FOOTER ========== */
+footer{text-align:center;padding:30px;font-size:0.75rem;color:var(--gray-400);border-top:1px solid var(--gray-200)}
+
+/* ========== FACT BOX ========== */
+.fact-box{background:var(--gray-100);border-left:4px solid var(--orange);padding:20px 25px;border-radius:0 var(--radius) var(--radius) 0;margin:20px 0}
+.fact-box .fact-source{font-size:0.7rem;color:var(--gray-400);margin-top:8px;font-style:italic}
+
+/* ========== TOC ========== */
+.toc{background:var(--gray-100);border-radius:var(--radius);padding:30px}
+.toc h3{margin-bottom:15px}
+.toc ol{padding-left:20px}
+.toc li{padding:6px 0;border-bottom:1px solid var(--gray-200)}
+.toc li:last-child{border:none}
+.toc a{color:var(--navy);text-decoration:none;font-weight:600}
+.toc a:hover{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- ========== TRACKING PIXEL (n8n Webhook) ========== -->
+<img src="https://n8n.poeppel-wkz.de/webhook/whitepaper-open?version=D&t=${Date.now()}" width="1" height="1" style="position:absolute;opacity:0" class="no-print" alt="">
+
+<!-- ==========================================
+     COVER
+========================================== -->
+<section class="cover" style="position:relative">
+  <span class="disg-tag no-print">VERSION D</span>
+  <div class="container">
+    <!-- Logo als inline SVG -->
+    <img class="logo-img" src="data:image/png;base64,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" alt="R.Pöppel Workwear Logo">
+    <div class="badge">Leitfaden für Industrie &amp; Bau</div>
+    <h1>WORKWEAR<br>MANAGEMENT<br><span>MIT SYSTEM.</span></h1>
+    <p class="subtitle">Vom Kostentreiber zum Effizienzfaktor.<br>Wie Sie den Verwaltungsaufwand um 80% senken und Ihr Budget messbar entlasten.</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-value">80%</div><div class="kpi-label">Kostenreduktion</div></div>
+      <div class="kpi"><div class="kpi-value">75 Min</div><div class="kpi-label">Eingespart / Vorgang</div></div>
+      <div class="kpi"><div class="kpi-value">100%</div><div class="kpi-label">Transparenz</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     MANAGEMENT SUMMARY (D-spezifisch: Zahlen & ROI zuerst)
+========================================== -->
+<section>
+  <div class="container">
+    <span class="section-badge">Management Summary</span>
+    <h2>Die Fakten auf einen Blick</h2>
+    <p>Sie möchten keine langen Einleitungen – Sie wollen wissen, was es bringt. Hier sind die Kernzahlen:</p>
+
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-value">165 €</div><div class="stat-label">Versteckte Kosten pro Bestellvorgang</div></div>
+      <div class="stat-box"><div class="stat-value">100 €</div><div class="stat-label">Ø Prozesskosten laut BME</div></div>
+      <div class="stat-box"><div class="stat-value">25%</div><div class="stat-label">Sofortige Kostenreduktion</div></div>
+    </div>
+
+    <div class="fact-box">
+      <strong>Bundesverband Materialwirtschaft (BME):</strong> Ein durchschnittlicher manueller Bestellvorgang kostet in Deutschland rund 100 €. Bei mittelständischen Unternehmen liegt dieser Wert bei bis zu 300 € pro Vorgang.
+      <div class="fact-source">Quelle: BME e.V. / Kompetenzzentrum innovative Beschaffung (BMWK)</div>
+    </div>
+
+    <div class="toc" style="margin-top:30px">
+      <h3>Inhalt</h3>
+      <ol>
+        <li><a href="#problem">Das Problem: Versteckte Prozesskosten</a></li>
+        <li><a href="#eisberg">Der Eisberg: Was Sie wirklich zahlen</a></li>
+        <li><a href="#jacke">Die 75-Minuten-Jacke: Ein Rechenbeispiel</a></li>
+        <li><a href="#calculator">Ihr Sparpotenzial berechnen</a></li>
+        <li><a href="#loesung">Die Lösung: 3 Schritte zum System</a></li>
+        <li><a href="#oekosystem">Das Pöppel Ökosystem</a></li>
+        <li><a href="#commitment">Commitment schafft Ruhe</a></li>
+        <li><a href="#cta">Nächster Schritt</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     PROBLEM: STATUS QUO
+========================================== -->
+<section id="problem" class="page-break">
+  <div class="container">
+    <span class="section-badge">01 // Status Quo</span>
+    <h2>Wie wird bisher bestellt?</h2>
+    <p>Im Vordergrund steht bei vielen oft nur der Artikelpreis. Doch die wahren Kosten verstecken sich in der Verwaltung: Excel-Listen, Retouren, Intransparenz. Um die Kosten dauerhaft zu senken, müssen wir die manuellen Tätigkeiten identifizieren.</p>
+
+    <div class="grid-2" style="margin-top:30px">
+      <div class="card">
+        <h4>🔍 Administration</h4>
+        <ul class="text-sm" style="margin-top:10px;padding-left:18px">
+          <li>Wer prüft Angebote und aktualisiert Preise?</li>
+          <li>Wer prüft die Verfügbarkeit der Artikel?</li>
+          <li>Wer verwaltet Mitarbeiterlisten & Größentabellen?</li>
+          <li>Wer pflegt die Bestände?</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🔒 Berechtigung & Budget</h4>
+        <ul class="text-sm" style="margin-top:10px;padding-left:18px">
+          <li>Wer darf eigentlich wann was bestellen?</li>
+          <li>Wer ist für die Budgets verantwortlich?</li>
+          <li>Wie können diese transparent verwaltet werden?</li>
+          <li>Wie wird das alles nachvollziehbar gebucht?</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>📦 Logistik & Produkt</h4>
+        <ul class="text-sm" style="margin-top:10px;padding-left:18px">
+          <li>Wie wird die Kleidung veredelt (CI)?</li>
+          <li>Wie viele Retouren haben Sie im Jahr?</li>
+          <li>Wie stellen Sie sicher, dass alles rechtzeitig ankommt?</li>
+          <li>Wie funktionieren Reklamationen?</li>
+        </ul>
+      </div>
+      <div class="card card-orange">
+        <p style="font-style:italic;font-weight:600;color:var(--navy);margin:0">„Nur wenn Sie diese Antworten kennen, können Sie Prozesskosten reduzieren."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     EISBERG: VERSTECKTE KOSTEN
+========================================== -->
+<section id="eisberg" class="page-break" style="background:var(--gray-100)">
+  <div class="container">
+    <span class="section-badge">02 // Versteckte Kosten</span>
+    <h2>Einkaufspreis vs. <span class="highlight-italic">Prozesskosten</span></h2>
+    <p>Das Kompetenzzentrum innovative Beschaffung (gefördert vom BMWK) liefert genau das Szenario, das Sie als Entscheider kennen müssen: Der Beschaffungsaufwand für ein C-Teil (Schutzbrille, 10 €) ist identisch mit dem eines A-Teils (Gussgehäuse).</p>
+
+    <div class="eisberg-visual" style="margin-top:30px">
+      <div class="eisberg-top">
+        <p style="font-size:0.8rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Sichtbare Kosten (Warenwert)</p>
+        <div class="cost-box">
+          <div class="cost-value">10,00 €</div>
+          <div class="cost-label">Nur ca. 5% der Gesamtkosten</div>
+        </div>
+      </div>
+      <div class="waterline"></div>
+      <div class="eisberg-bottom">
+        <p style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:15px">Versteckte Prozesskosten</p>
+        <div class="cost-item"><span class="dot"></span> Recherche & Auswahl</div>
+        <div class="cost-item"><span class="dot"></span> Bestellung & Genehmigung</div>
+        <div class="cost-item"><span class="dot"></span> Wareneingang & Prüfung</div>
+        <div class="cost-item"><span class="dot"></span> Einlagerung & Verteilung</div>
+        <div class="cost-item"><span class="dot"></span> Rechnungsprüfung & Zahlung</div>
+        <div class="cost-item"><span class="dot"></span> Retourenmanagement</div>
+        <div class="cost-item"><span class="dot"></span> Interne Kommunikation</div>
+        <div class="hidden-cost-box">
+          <div class="cost-value">165,00 €</div>
+          <div class="cost-label">ca. 95% der Gesamtkosten – reine Bürokratie</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fact-box" style="margin-top:30px">
+      <strong>Fallbeispiel Witzenmann:</strong> Selbst bei einem Warenkorb von 260 € lagen die reinen Prozesskosten noch bei 140 € pro Bestellung. Bei Ihren C-Teilen (Workwear) ist das Verhältnis noch dramatischer.
+      <div class="fact-source">Quelle: BME e.V. / Kompetenzzentrum innovative Beschaffung</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     75-MINUTEN-JACKE
+========================================== -->
+<section id="jacke" class="page-break">
+  <div class="container">
+    <span class="section-badge">03 // Rechenbeispiel</span>
+    <h2>Die <span class="highlight-italic">75-Minuten Jacke</span></h2>
+    <p>Warum ein Warenwert von 40 € Sie in Wahrheit 75 Minuten kostet. Ein Mitarbeiter braucht eine neue Jacke – rechnen wir kurz:</p>
+
+    <div class="grid-2" style="margin-top:30px">
+      <div>
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-marker">1</div>
+            <div><span class="timeline-time">10 Min</span><h4>Bedarfsmeldung</h4><p class="text-sm">Mitarbeiter meldet Bedarf beim Vorarbeiter.</p></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker">2</div>
+            <div><span class="timeline-time">15 Min</span><h4>Katalogsuche</h4><p class="text-sm">Vorarbeiter sucht das richtige Modell im Katalog oder per Telefon.</p></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker">3</div>
+            <div><span class="timeline-time">10 Min</span><h4>Bestellung schreiben</h4><p class="text-sm">Formulare ausfüllen, Genehmigung einholen, weiterleiten.</p></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker">4</div>
+            <div><span class="timeline-time">30 Min</span><h4>Retoure & Fehler</h4><p class="text-sm">Ware kommt an, ist falsch, Retoure einleiten, neu bestellen.</p></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-marker">5</div>
+            <div><span class="timeline-time">10 Min</span><h4>Rechnungsprüfung</h4><p class="text-sm">Buchhaltung muss Belege zuordnen und prüfen.</p></div>
+          </div>
+        </div>
+        <div class="card card-orange" style="margin-top:20px;text-align:center">
+          <div style="font-size:0.75rem;text-transform:uppercase;color:var(--gray-600)">Gesamtzeit</div>
+          <div style="font-size:2.5rem;font-weight:900;color:var(--orange)">75 Minuten</div>
+          <p class="text-sm" style="margin:0">Das kostet Sie mehr als die Jacke selbst.</p>
+        </div>
+      </div>
+
+      <div class="card card-dark" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="margin-bottom:15px">Unser System eliminiert Schritte 2–5 komplett.</h3>
+        <ul class="checklist" style="border-color:rgba(255,255,255,0.1)">
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Keine Katalogsuche – Digitales Sortiment pro Mitarbeiter</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Keine manuelle Bestellung – Self-Service im Online-Shop</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Keine Retouren – Passgenau dank hinterlegter Größen</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Keine Rechnungsprüfung – Automatische Sammelrechnung</span></li>
+        </ul>
+        <div style="margin-top:25px;padding:15px;background:rgba(255,102,0,0.15);border-radius:8px;text-align:center">
+          <div style="font-size:0.75rem;text-transform:uppercase;color:rgba(255,255,255,0.6)">Neuer Zeitaufwand</div>
+          <div style="font-size:2rem;font-weight:900;color:var(--orange)">5 Minuten</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     ROI CALCULATOR (interaktiv)
+========================================== -->
+<section id="calculator" class="page-break" style="background:var(--gray-100)">
+  <div class="container">
+    <span class="section-badge">04 // Ihr Potenzial</span>
+    <h2>Berechnen Sie Ihr Sparpotenzial</h2>
+    <p>Stellen Sie die Schieberegler auf Ihre Unternehmensgröße ein und sehen Sie sofort, was Sie mit dem Pöppel System einsparen können.</p>
+
+    <div class="calculator" style="margin-top:30px">
+      <div class="calc-header">
+        <h3>ROI-Rechner</h3>
+        <p>Was manuelle Prozesse Sie wirklich kosten.</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <div class="label-row">
+              <span class="label-text">Anzahl Mitarbeiter</span>
+              <span class="input-display" id="disp-emp">50</span>
+            </div>
+            <input type="range" id="range-emp" min="10" max="500" value="50" step="10">
+          </div>
+          <div class="input-group">
+            <div class="label-row">
+              <span class="label-text">Admin-Aufwand (Std./Woche)</span>
+              <span class="input-display" id="disp-hours">3.0 h</span>
+            </div>
+            <input type="range" id="range-hours" min="1" max="40" value="3" step="0.5">
+            <p class="text-xs" style="margin-top:8px">Beinhaltet: Bedarfsermittlung, Katalogsuche, Bestellung, Verteilung, Retouren, Rechnungsprüfung.</p>
+          </div>
+          <p class="text-xs">Berechnungsgrundlage: Interner Verrechnungssatz 50 €/Std. (inkl. Lohnnebenkosten)</p>
+        </div>
+        <div class="calc-results">
+          <div class="result-item">
+            <div class="res-label">Status Quo (Jährliche Kosten)</div>
+            <div class="res-value" id="res-current">7.800 €</div>
+          </div>
+          <div class="result-item">
+            <div class="res-label">Mit Pöppel System</div>
+            <div class="res-value hl" id="res-poeppel">1.560 €</div>
+            <div class="savings-badge">Sie sparen <span id="res-savings">6.240 €</span> pro Jahr</div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--gray-600)"><span>Kostenreduktion</span><span id="pct-label">-80%</span></div>
+            <div class="bar-wrap"><div class="bar-fill" id="bar-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="interactive-note text-xs" style="display:none;margin-top:15px;text-align:center">Hinweis: In der gedruckten Version sind die Standardwerte dargestellt. Besuchen Sie die Online-Version für den interaktiven Rechner.</p>
+  </div>
+</section>
+
+<!-- ==========================================
+     LÖSUNG: 3 SCHRITTE
+========================================== -->
+<section id="loesung" class="page-break">
+  <div class="container">
+    <span class="section-badge">05 // Die Lösung</span>
+    <h2>In 3 Schritten zur Lösung</h2>
+    <p>Kein monatelanges Projekt – ein strukturierter Prozess mit klaren Ergebnissen in jeder Phase.</p>
+
+    <div class="solution-grid" style="margin-top:30px">
+      <div class="sol-card">
+        <div class="sol-num">01</div>
+        <h4>Analyse</h4>
+        <p>Potenzialanalyse Ihrer aktuellen Prozesse. Identifikation von Engpässen, versteckten Kosten und Entwicklung eines klaren SOLL-Konzepts.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">02</div>
+        <h4>Standardisierung</h4>
+        <p>Entwicklung eines durchdachten Kernsortiments. Festlegung von Standards für Produkte als Fundament für den digitalen Prozess.</p>
+      </div>
+      <div class="sol-card" style="background:var(--orange)">
+        <div class="sol-num" style="color:var(--white)">03</div>
+        <h4>Digitalisierung</h4>
+        <p style="color:rgba(255,255,255,0.9)">Implementierung des internen Online-Shops mit Kostenstellen, Budgets und vollautomatisiertem Bestellablauf.</p>
+      </div>
+    </div>
+
+    <div class="fact-box" style="margin-top:30px">
+      <strong>Ergebnis:</strong> Ein Prozess, der flexibel ist, aber in festen Leitplanken (Sortiment & Budget) läuft. Ihre Mitarbeiter bestellen eigenständig – Sie behalten jederzeit die volle Kontrolle über Kosten und Compliance.
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     KERNSORTIMENT
+========================================== -->
+<section style="background:var(--gray-100)">
+  <div class="container">
+    <span class="section-badge">06 // Kernsortiment</span>
+    <h2>Der Gamechanger: <span class="highlight">Das Kernsortiment</span></h2>
+    <p>Ein günstiger Artikel nützt nichts, wenn der Prozess dahinter teuer ist. Ein festes Kernsortiment bietet drei entscheidende Vorteile:</p>
+
+    <div class="grid-2" style="margin-top:25px">
+      <div>
+        <div class="card" style="margin-bottom:15px">
+          <h4 style="color:var(--orange)">1. Versorgungssicherheit</h4>
+          <p class="text-sm" style="margin:8px 0 0">Es kann nur bestellt werden, was vorher definiert wurde. Das verhindert Wildwuchs und garantiert Verfügbarkeit.</p>
+        </div>
+        <div class="card" style="margin-bottom:15px">
+          <h4 style="color:var(--orange)">2. Mitarbeiter-Commitment</h4>
+          <p class="text-sm" style="margin:8px 0 0">Die Auswahl wird gemeinsam festgelegt. Das eliminiert späteres Lamentieren und steigert die Akzeptanz.</p>
+        </div>
+        <div class="card">
+          <h4 style="color:var(--orange)">3. Planbarkeit</h4>
+          <p class="text-sm" style="margin:8px 0 0">Budgets werden auf Basis des Sortiments gemappt. Sie wissen vorher genau, was das Jahr kosten wird.</p>
+        </div>
+      </div>
+      <div class="card card-dark" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="color:var(--orange);margin-bottom:15px">Wie bestimmen wir das Sortiment?</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:15px">100 Jahre Erfahrung als Großhändler. Wir prüfen anhand von 4 Kriterien:</p>
+        <ul class="checklist" style="border-color:rgba(255,255,255,0.1)">
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Sicherheit & Normen</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Bewegungsfreiheit & Komfort</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Witterung & Material</span></li>
+          <li style="border-color:rgba(255,255,255,0.1)"><span class="check-icon">✓</span><span>Budget & Veredelung (CI)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     ÖKOSYSTEM
+========================================== -->
+<section id="oekosystem" class="page-break">
+  <div class="container">
+    <span class="section-badge">07 // Ökosystem</span>
+    <h2>Das Pöppel Ökosystem</h2>
+    <p>Vom Händler zum Systempartner – drei Säulen, die ineinandergreifen:</p>
+
+    <div class="solution-grid" style="margin-top:30px">
+      <div class="card" style="text-align:center">
+        <h4 style="color:var(--orange);margin-bottom:12px">💻 Digital & Prozess</h4>
+        <ul style="list-style:none;text-align:left;font-size:0.9rem">
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Personalisierter Shop</strong> – Jeder MA sieht nur sein Sortiment</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Budgetverwaltung</strong> – Echtzeit-Kontrolle pro Kopf/Abteilung</li>
+          <li style="padding:6px 0"><strong>OCI / API Integration</strong> – Nahtlos in Ihr ERP (SAP, Datev, etc.)</li>
+        </ul>
+      </div>
+      <div class="card" style="text-align:center">
+        <h4 style="color:var(--orange);margin-bottom:12px">👔 Produkt & Veredelung</h4>
+        <ul style="list-style:none;text-align:left;font-size:0.9rem">
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Riesiges Portfolio</strong> – Zugriff auf alle Top-Marken</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Eigene Veredelung</strong> – CI-konform (Stick & Druck) in-house</li>
+          <li style="padding:6px 0"><strong>Kernsortiment</strong> – Standardisierung für Konsistenz</li>
+        </ul>
+      </div>
+      <div class="card" style="text-align:center">
+        <h4 style="color:var(--orange);margin-bottom:12px">🚚 Logistik & Service</h4>
+        <ul style="list-style:none;text-align:left;font-size:0.9rem">
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Vorkommissionierung</strong> – Pakete pro Mitarbeiter gepackt</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--gray-200)"><strong>Persönliche Betreuung</strong> – Ein Ansprechpartner, kein Callcenter</li>
+          <li style="padding:6px 0"><strong>Kurze Lieferzeiten</strong> – Durch optimierte Lagerhaltung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     COMMITMENT
+========================================== -->
+<section id="commitment" style="background:var(--gray-100)">
+  <div class="container">
+    <span class="section-badge">08 // Psychologie</span>
+    <h2>Commitment <span class="highlight">schafft Ruhe</span></h2>
+    <p>Durch die Einbindung der Mitarbeiter bei der Sortimentsauswahl (Anprobe) und das eigene Budget passiert etwas Wichtiges:</p>
+
+    <div class="solution-grid" style="margin-top:25px">
+      <div class="card">
+        <h4 style="color:var(--orange)">Kein Lamentieren</h4>
+        <p class="text-sm" style="margin-top:8px">Da das Sortiment vorab festgelegt und probiert wurde, gibt es später keine Diskussionen über "Gefallen".</p>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--orange)">Besitztums-Effekt</h4>
+        <p class="text-sm" style="margin-top:8px">"Mein Budget, meine Jacke." Mitarbeiter gehen sorgsamer mit der Ware um, weil sie "ihnen gehört".</p>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--orange)">Professionalität</h4>
+        <p class="text-sm" style="margin-top:8px">Einheitliches Auftreten stärkt das "Wir-Gefühl" im Team und die Außenwirkung beim Kunden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     CTA
+========================================== -->
+<section id="cta" class="page-break">
+  <div class="container">
+    <div class="cta-section">
+      <h2>Bereit, die Kontrolle zu übernehmen?</h2>
+      <p>Wir analysieren unverbindlich Ihren Status Quo und zeigen Ihnen in 30 Minuten, wo Ihr größtes Einsparpotenzial liegt.</p>
+
+      <ul class="checklist" style="display:inline-block;text-align:left;margin-bottom:30px">
+        <li style="border-color:rgba(255,255,255,0.15);color:var(--white)"><span class="check-icon">✓</span><span>Prozesskosten statt Artikelpreise senken</span></li>
+        <li style="border-color:rgba(255,255,255,0.15);color:var(--white)"><span class="check-icon">✓</span><span>Planbarkeit für Ihre Budgets</span></li>
+        <li style="border-color:rgba(255,255,255,0.15);color:var(--white)"><span class="check-icon">✓</span><span>Retourenquote messbar minimieren</span></li>
+      </ul>
+
+      <br>
+      <a href="https://poeppel-wkz.de/kontakt" class="btn">Jetzt Potenzial ausschöpfen →</a>
+      <div class="contact-info">
+        📞 <a href="tel:+4983319559-0">+49 8331 / 9559 - 0</a> &nbsp;|&nbsp; ✉ <a href="mailto:info@poeppel-wkz.de">info@poeppel-wkz.de</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>R. Pöppel Workwear</strong> – 100 Jahre Innovation<br>
+    © 2026 R. Pöppel GmbH & Co. KG. Alle Rechte vorbehalten.
+  </div>
+</footer>
+
+<!-- ========== CALCULATOR JS ========== -->
+<script>
+(function(){
+  const rE=document.getElementById('range-emp'),rH=document.getElementById('range-hours');
+  if(!rE||!rH)return;
+  const dE=document.getElementById('disp-emp'),dH=document.getElementById('disp-hours');
+  const rC=document.getElementById('res-current'),rP=document.getElementById('res-poeppel');
+  const rS=document.getElementById('res-savings'),pL=document.getElementById('pct-label');
+  const bF=document.getElementById('bar-fill');
+  const HR=50,WK=52,EF=0.20;
+  function fmt(n){return n.toLocaleString('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0})}
+  function fill(s){const v=s.value,mn=s.min||0,mx=s.max||100,p=((v-mn)/(mx-mn))*100;s.style.background=`linear-gradient(to right,#FF6600 ${p}%,#e2e8f0 ${p}%)`}
+  function calc(){
+    const e=parseInt(rE.value),h=parseFloat(rH.value);
+    dE.textContent=e;dH.textContent=h.toFixed(1)+' h';
+    const base=h*WK*HR,scale=e/50,cur=base*scale,poe=cur*EF,sav=cur-poe;
+    rC.textContent=fmt(cur);rP.textContent=fmt(poe);rS.textContent=fmt(sav);
+    const pct=Math.round((1-EF)*100);
+    pL.textContent='-'+pct+'%';
+    bF.style.width=EF*100+'%';
+    fill(rE);fill(rH);
+  }
+  rE.addEventListener('input',calc);rH.addEventListener('input',calc);calc();
+})();
+</script>
+
+</body>
+</html>

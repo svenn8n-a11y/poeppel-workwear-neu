@@ -624,7 +624,10 @@ button {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    /* Increased gap to allow more scroll time before overlap */
+    gap: 320px;
+    padding-bottom: 120px;
+    /* Extra padding at bottom */
 }
 
 .sticky-card {
@@ -634,17 +637,17 @@ button {
 
 
 .sticky-card-1 {
-    top: 120px;
+    top: 140px;
     z-index: 10;
 }
 
 .sticky-card-2 {
-    top: 160px;
+    top: 180px;
     z-index: 20;
 }
 
 .sticky-card-3 {
-    top: 200px;
+    top: 220px;
     z-index: 30;
 }
 
@@ -2167,9 +2170,30 @@ button {
 }
 
 
+/* Partner Card Fix - Prevent first card from shifting up */
+.partner-grid {
+    align-items: start;
+    /* Ensure consistent alignment */
+}
+
+.partner-card:first-child {
+    margin-top: 0;
+    transform: none !important;
+    /* Reset any potential transform on load */
+}
+
+/* Module Summary CTA Center */
 .module-grid-cta {
     text-align: center;
     margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.module-summary-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
 }
 
 /* --- New Interactive Styles --- */
@@ -3305,11 +3329,166 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    width: 300vw;
-    height: 300vh;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    opacity: 0.6;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Individual Step Cell */
+.onboarding-step-cell {
+    position: absolute;
+    /* Reduced dimensions for compactness */
+    width: 380px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* 
+   Positioning the 4 Steps diagonally 
+   (Adjusted for shorter height)
+*/
+.onboarding-step-cell[data-step="1"] {
+    top: 5%;
+    left: 0;
+}
+
+.onboarding-step-cell[data-step="2"] {
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.onboarding-step-cell[data-step="3"] {
+    top: 51%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.onboarding-step-cell[data-step="4"] {
+    top: 74%;
+    right: 0;
+}
+
+/* Step Content Layout */
+.onboarding-step-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    /* Reduced gap */
+    background: var(--color-white);
+    padding: 16px;
+    /* Reduced padding */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-light);
+    transition: all var(--transition-normal);
+    width: 100%;
+    height: 100%;
+}
+
+.onboarding-step-content:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+/* Step Image Area */
+.onboarding-step-image {
+    position: relative;
+    width: 140px;
+    /* Reduced width */
+    height: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.onboarding-step-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.onboarding-step-content:hover .onboarding-step-bg {
+    transform: scale(1.1);
+}
+
+.onboarding-step-label {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+}
+
+/* Step Text Area */
+.onboarding-step-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.onboarding-step-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), #ea580c);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 12px;
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+.onboarding-step-text h3 {
+    font-size: 1.125rem;
+    /* Reduced size */
+    color: var(--color-dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.onboarding-step-text p {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.onboarding-step-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.onboarding-step-text ul li {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    margin-bottom: 2px;
+    padding-left: 12px;
+    position: relative;
+}
+
+.onboarding-step-text ul li::before {
+    content: '•';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
 }
 
 .onboarding-path-dot {
@@ -3333,72 +3512,6 @@ button {
     display: block;
 }
 
-.onboarding-step-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px;
-    position: relative;
-    z-index: 3;
-}
-
-.onboarding-step-cell[data-step="1"] {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.onboarding-step-cell[data-step="2"] {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.onboarding-step-cell[data-step="3"] {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.onboarding-step-cell[data-step="4"] {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.onboarding-step-content {
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-}
-
-@media (max-width: 768px) {
-    .onboarding-step-content {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-}
-
-.onboarding-step-image {
-    position: relative;
-    height: 320px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-radius: var(--radius-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-2xl);
-    overflow: hidden;
-    border: 2px solid var(--color-primary);
-}
-
-.onboarding-step-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
 .onboarding-step-overlay {
     position: absolute;
     inset: 0;
@@ -3412,72 +3525,6 @@ button {
     font-size: 8rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.6);
-}
-
-.onboarding-step-label {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.9);
-    z-index: 2;
-}
-
-.onboarding-step-text {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.onboarding-step-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    background: rgba(249, 115, 22, 0.2);
-    border: 1px solid rgba(249, 115, 22, 0.3);
-    border-radius: var(--radius-full);
-    width: fit-content;
-}
-
-.onboarding-step-badge span {
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-
-.onboarding-step-text h3 {
-    font-size: 2.25rem;
-    color: var(--color-white);
-}
-
-.onboarding-step-text p {
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.onboarding-step-text ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.onboarding-step-text ul li {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.875rem;
-    padding-left: 20px;
-    position: relative;
-}
-
-.onboarding-step-text ul li::before {
-    content: "•";
-    color: var(--color-primary);
-    position: absolute;
-    left: 0;
 }
 
 .onboarding-progress {
