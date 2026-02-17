@@ -3327,7 +3327,41 @@ button {
 .onboarding-section {
     position: relative;
     height: 400vh;
+    /* Restore height for scrolling */
     background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background1.jpg') center center / cover no-repeat fixed;
+}
+
+/* ... (rest of onboarding styles) ... */
+
+/* =============================================
+   SEKTION 13: GEWINN
+   ============================================= */
+.gewinn-section {
+    padding: var(--section-padding) 0;
+    background: var(--color-white);
+}
+
+/* ... (grid layout) ... */
+
+.gewinn-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gewinn-card-icon i,
+.gewinn-card-icon svg {
+    /* Added svg selector for Lucide */
+    width: 32px;
+    /* Fixed size */
+    height: 32px;
+    color: var(--color-white) !important;
 }
 
 /* Dark blue overlay with 77% opacity over background image */
@@ -3740,8 +3774,8 @@ button {
 }
 
 .gewinn-card-icon i {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     color: var(--color-white) !important;
     /* Weiße Icons auf orangem Hintergrund */
 }
