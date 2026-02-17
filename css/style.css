@@ -624,8 +624,8 @@ button {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    /* Increased gap to allow more scroll time before overlap */
-    gap: 320px;
+    /* Reduced gap from 320px to 80px based on user feedback "viel zu spät" */
+    gap: 80px;
     padding-bottom: 120px;
     /* Extra padding at bottom */
 }
@@ -637,12 +637,12 @@ button {
 
 
 .sticky-card-1 {
-    top: 80px;
+    top: 100px;
     z-index: 10;
 }
 
 .sticky-card-2 {
-    top: 120px;
+    top: 130px;
     z-index: 20;
 }
 
@@ -786,7 +786,8 @@ button {
     color: var(--color-primary);
 }
 
-.sticky-card-icon i {
+.sticky-card-icon i,
+.sticky-card-icon svg {
     width: 24px;
     height: 24px;
 }
@@ -3415,11 +3416,16 @@ button {
 
 /* Wrapper for Diagonal Layout */
 .onboarding-diagonal-wrapper {
-    position: relative;
-    width: 100%;
-    height: 1200px;
-    margin: 0 auto;
-    max-width: 1000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300vw;
+    height: 300vh;
+    display: grid;
+    grid-template-columns: repeat(3, 100vw);
+    grid-template-rows: repeat(3, 100vh);
+    margin: 0;
+    max-width: none;
 }
 
 /* SVG Path Container */
@@ -3434,41 +3440,42 @@ button {
     overflow: visible;
 }
 
-/* Individual Step Cell */
+/* Individual Step Cell - Grid Positioned */
 .onboarding-step-cell {
-    position: absolute;
+    position: relative;
+    /* Changed from absolute to allow grid placement */
     width: 450px;
     height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
+    margin: auto;
+    /* Centers in grid cell */
 }
 
 /* 
-   Positioning the 4 Steps diagonally 
-   (coordinates match SVG path nodes approximately)
+   Positioning the 4 Steps diagonally in the 3x3 Grid
+   Path: (1,1) -> (2,1) -> (2,2) -> (3,2)
 */
 .onboarding-step-cell[data-step="1"] {
-    top: 50px;
-    left: 0;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .onboarding-step-cell[data-step="2"] {
-    top: 350px;
-    left: 50%;
-    transform: translateX(-50%);
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .onboarding-step-cell[data-step="3"] {
-    top: 650px;
-    left: 50%;
-    transform: translateX(-50%);
+    grid-column: 2;
+    grid-row: 2;
 }
 
 .onboarding-step-cell[data-step="4"] {
-    top: 950px;
-    right: 0;
+    grid-column: 3;
+    grid-row: 2;
 }
 
 /* Step Content Layout */
@@ -3773,11 +3780,11 @@ button {
     /* Leichter Schatten */
 }
 
-.gewinn-card-icon i {
+.gewinn-card-icon i,
+.gewinn-card-icon svg {
     width: 32px;
     height: 32px;
     color: var(--color-white) !important;
-    /* Weiße Icons auf orangem Hintergrund */
 }
 
 .gewinn-card h3 {
