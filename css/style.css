@@ -3519,19 +3519,16 @@ button {
 }
 
 /* Individual Step Cell - Grid Positioned */
+/* Individual Step Cell - Grid Positioned */
 .onboarding-step-cell {
     position: relative;
-    /* Changed from absolute to allow grid placement */
-    width: 600px;
-    /* Increased from 450px */
-    height: 280px;
-    /* Increased from 220px */
+    width: 400px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
     margin: auto;
-    /* Centers in grid cell */
 }
 
 /* 
@@ -3561,32 +3558,32 @@ button {
 /* Step Content Layout */
 .onboarding-step-content {
     display: flex;
-    align-items: center;
-    gap: 32px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 24px;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    background: #ffffff;
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--color-primary);
     transition: all var(--transition-normal);
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .onboarding-step-content:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
+    box-shadow: 0 12px 24px rgba(249, 115, 22, 0.15);
 }
 
 /* Step Image Area */
 .onboarding-step-image {
     position: relative;
-    width: 160px;
-    height: 100%;
-    border-radius: var(--radius-md);
+    width: 100%;
+    height: 180px;
+    border-radius: 0;
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -3602,43 +3599,19 @@ button {
     transform: scale(1.1);
 }
 
-.onboarding-step-label {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    backdrop-filter: blur(4px);
-}
-
-/* Step Text Area */
 .onboarding-step-text {
+    padding: 0 24px 24px 24px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.onboarding-step-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--color-primary), #ea580c);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 12px;
-    width: fit-content;
-    margin-bottom: 8px;
 }
 
 .onboarding-step-text h3 {
-    font-size: 1.25rem;
-    color: var(--color-dark);
-    margin-bottom: 4px;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
     line-height: 1.2;
+    font-weight: 700;
 }
 
 .onboarding-step-text p {
@@ -3647,8 +3620,8 @@ button {
     margin-bottom: 12px;
     line-height: 1.5;
     display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -3705,9 +3678,13 @@ button {
 .onboarding-step-number {
     position: relative;
     z-index: 2;
-    font-size: 8rem;
+    font-size: 6rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .onboarding-progress {
@@ -3726,18 +3703,20 @@ button {
     width: 0%;
 }
 
-/* Mobile Onboarding Optimizations - KORRIGIERT */
+/* Mobile Onboarding Optimizations */
 @media (max-width: 768px) {
 
     /* Header-Anpassungen */
     .onboarding-header {
         padding: 20px;
         text-align: center;
-        top: 100px;
+        top: 80px;
+        width: 100%;
+        left: 0;
     }
 
     .onboarding-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .onboarding-hint {
@@ -3747,40 +3726,40 @@ button {
     /* WICHTIG: Grid-Layout NICHT ändern - benötigt für GSAP! */
     /* .onboarding-diagonal-wrapper bleibt unverändert */
 
-    /* Step Cells: Nur Padding anpassen */
+    /* Step Cells: Skalieren */
     .onboarding-step-cell {
-        padding: 40px 20px;
-    }
-
-    /* Step Content: Kleinere Gaps */
-    .onboarding-step-content {
-        gap: 24px;
-        max-width: 90vw;
-    }
-
-    /* Bildcontainer: QUADRATISCH für Mobile */
-    .onboarding-step-image {
         width: 320px;
-        height: 320px;
-        /* Quadratisch statt 320px hoch */
+        height: 380px;
+        padding: 0;
     }
 
-    /* Badge-Nummerierung ausblenden */
+    /* Step Content */
+    .onboarding-step-content {
+        gap: 16px;
+    }
+
+    /* Bildcontainer */
+    .onboarding-step-image {
+        width: 100%;
+        height: 160px;
+    }
+
+    /* Badge-Nummerierung ausblenden (falls noch vorhanden) */
     .onboarding-step-badge {
         display: none;
     }
 
     /* Text-Größen anpassen */
     .onboarding-step-text h3 {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
 
     .onboarding-step-text p {
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
     }
 
     .onboarding-step-text ul li {
-        font-size: 0.8125rem;
+        font-size: 0.75rem;
     }
 
     /* SVG-Pfad: Mobile Version anzeigen */
