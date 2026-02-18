@@ -3654,8 +3654,9 @@ margin-top: 16px;
 }
 
 .onboarding-step-text h3 {
-    font-size: 1.75rem;
-    color: var(--color-primary);
+    font-size: 28px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #0F172A;
     margin-bottom: 8px;
     line-height: 1.2;
     font-weight: 700;
@@ -3680,7 +3681,7 @@ margin-top: 16px;
 }
 
 .onboarding-step-text ul li {
-    font-size: 1rem;
+    font-size: 14px;
     color: var(--color-gray);
     margin-bottom: 4px;
     padding-left: 16px;
