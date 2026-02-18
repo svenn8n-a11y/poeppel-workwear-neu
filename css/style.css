@@ -618,16 +618,54 @@ button {
     background: var(--color-light);
 }
 
+/* Sticky Cards Container - Restored Gap */
 .sticky-cards-container {
     padding: 0 var(--container-padding);
     max-width: var(--container-max);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    /* Reduced gap from 320px to 80px based on user feedback "viel zu spät" */
-    gap: 80px;
+    gap: 240px;
+    /* Restored from 80px to 240px for better scroll timing */
     padding-bottom: 120px;
-    /* Extra padding at bottom */
+}
+
+/* ... */
+
+/* Sticky Card Icons - SVG Support */
+.sticky-card-icon i,
+.sticky-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ... */
+
+/* Partner Icons - SVG Support */
+.partner-icon i,
+.partner-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+    stroke: var(--color-primary);
+}
+
+/* ... */
+
+/* Onboarding Step Content - Restore Transparency */
+.onboarding-step-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: rgba(255, 255, 255, 0.95);
+    /* Restored transparency */
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-light);
+    transition: all var(--transition-normal);
+    width: 100%;
+    height: 100%;
 }
 
 .sticky-card {
@@ -981,6 +1019,14 @@ button {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+.potential-cta.hero-scroll-indicator i,
+.hero-scroll-indicator svg {
+    font-size: 2rem;
+    width: 32px;
+    height: 32px;
+    color: var(--color-white);
 }
 
 .potential-cta-content h3 {
@@ -2047,8 +2093,11 @@ button {
     width: fit-content;
 }
 
-.base-module-content h3 {
+.nav-mobile-toggle i,
+.nav-mobile-toggle svg {
     font-size: 1.5rem;
+    width: 24px;
+    height: 24px;
     color: var(--color-dark);
 }
 
@@ -2242,10 +2291,9 @@ button {
     /* Ensure consistent alignment */
 }
 
+/* Explicitly reset margin for first card to prevent shift */
 .partner-card:first-child {
-    margin-top: 0;
-    transform: none !important;
-    /* Reset any potential transform on load */
+    margin-top: 0 !important;
 }
 
 /* Module Summary CTA Center */
@@ -2802,6 +2850,36 @@ button {
     width: 28px;
     height: 28px;
     transition: all var(--transition-normal);
+}
+
+/* Button Icons */
+.btn i,
+.btn svg {
+    margin-right: 8px;
+    transition: transform var(--transition-normal);
+    width: 20px;
+    /* Explicit size for svg */
+    height: 20px;
+}
+
+/* Scroll Indicator Icon */
+.hero-scroll-indicator i,
+.hero-scroll-indicator svg {
+    font-size: 2rem;
+    /* Kept for fallback i */
+    width: 32px;
+    /* For SVG */
+    height: 32px;
+    color: var(--color-white);
+}
+
+/* Mobile Toggle Icon */
+.nav-mobile-toggle i,
+.nav-mobile-toggle svg {
+    font-size: 1.5rem;
+    width: 24px;
+    height: 24px;
+    color: var(--color-dark);
 }
 
 .module-status .add-icon {
@@ -3444,8 +3522,10 @@ button {
 .onboarding-step-cell {
     position: relative;
     /* Changed from absolute to allow grid placement */
-    width: 450px;
-    height: 220px;
+    width: 600px;
+    /* Increased from 450px */
+    height: 280px;
+    /* Increased from 220px */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3483,7 +3563,7 @@ button {
     display: flex;
     align-items: center;
     gap: 32px;
-    background: var(--color-white);
+    background: rgba(255, 255, 255, 0.95);
     padding: 24px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
