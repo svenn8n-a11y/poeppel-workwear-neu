@@ -1,0 +1,17 @@
+Sektion,Element,CSS-Klasse,Bilddatei,Desktop Breite,Desktop Höhe,Retina (2x) Breite,Retina (2x) Höhe,Empfohlenes Format,Mobile Breite,Mobile Höhe,Anmerkungen
+Nav,Logo,.nav-logo img,images/allgemein/Poeppel_Workwear Logo.png,auto,40px,auto,80px,PNG (transparent),auto,40px,Transparenter Hintergrund nötig
+Footer,Logo,.footer-logo,images/allgemein/Poeppel_Workwear Logo.png,auto,32px,auto,64px,PNG (transparent),auto,32px,Gleiche Datei wie Nav
+1 - Hero,Hintergrundbild,.hero-background,images/hero/Hero_Hintergrund.jpg,100vw (1920px),100vh (1080px),2560px,1440px,JPG 80%,768px,1024px,object-fit: cover - Fokus auf Bildmitte
+2 - Video,Video Poster,.video-player,images/video-poster.jpg,900px,506px (16:9),1800px,1012px,JPG 80%,768px,432px,aspect-ratio 16/9
+4 - Potentiale,Karte 01 Bild,.potential-card-image,images/loesung/Prozesse optimieren .png,420px,180px,840px,360px,JPG 80-85%,420px,180px,object-fit: cover
+4 - Potentiale,Karte 02 Bild,.potential-card-image,images/loesung/Kosten_reduzieren.png,420px,180px,840px,360px,JPG 80-85%,420px,180px,object-fit: cover
+4 - Potentiale,Karte 03 Bild,.potential-card-image,images/loesung/Transparenz.png,420px,180px,840px,360px,JPG 80-85%,420px,180px,object-fit: cover
+4 - Potentiale,Karte 04 Bild,.potential-card-image,images/loesung/Skalierbarkeit.png,420px,180px,840px,360px,JPG 80-85%,420px,180px,object-fit: cover
+5 - Whitepaper,Cover,.cta-whitepaper-image,images/whitepaper/Whitepaper_cover.jpg,~480px,~600px (4:5),960px,1200px,JPG 85%,768px,960px,aspect-ratio 4/5 - object-position: center top
+6 - Lösungsweg,Step Visual (x3),.step-visual,.step-image-placeholder (nur Gradient),~560px,250px,1120px,500px,JPG 80%,HIDDEN,HIDDEN,Mobile: display none (ab 968px)
+7 - Testimonials,Profilbild (x4),.testimonial-image,(noch Placeholder),80px,80px,160px,160px,JPG/WebP,80px,80px,border-radius: 50% - Kreisförmig
+12 - Onboarding,Sektions-Hintergrund,.onboarding-section,images/onboarding/Onboarding-Background.png,100vw (1920px),100vh (1080px),2560px,1440px,JPG 80%,768px,1024px,"background-attachment: fixed, object-fit: cover"
+12 - Onboarding,Step 1 Bild,.onboarding-step-image,images/onboarding/Kick_off.png,~480px,320px,960px,640px,JPG 80-85%,320px,320px,object-fit: cover + orange Overlay 60% - Mobile: quadratisch
+12 - Onboarding,Step 2 Bild,.onboarding-step-image,images/onboarding/Konzept_Budget.png,~480px,320px,960px,640px,JPG 80-85%,320px,320px,object-fit: cover + orange Overlay 60% - Mobile: quadratisch
+12 - Onboarding,Step 3 Bild,.onboarding-step-image,images/onboarding/Anproben.png,~480px,320px,960px,640px,JPG 80-85%,320px,320px,object-fit: cover + orange Overlay 60% - Mobile: quadratisch
+12 - Onboarding,Step 4 Bild,.onboarding-step-image,images/onboarding/Golive.png,~480px,320px,960px,640px,JPG 80-85%,320px,320px,object-fit: cover + orange Overlay 60% - Mobile: quadratisch

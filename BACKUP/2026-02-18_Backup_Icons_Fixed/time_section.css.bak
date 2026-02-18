@@ -1,0 +1,151 @@
+   SEKTION 5b: ZEIT EFFIZIENZ (Timeline)
+   ========================================= */
+.time-efficiency-section {
+    padding: var(--section-padding) 0;
+    background: #f8fafc;
+    /* Very light slate */
+}
+
+.time-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    /* Center comparison */
+}
+
+/* LEFT: PROBLEM TIMELINE */
+.time-problem h3 {
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+}
+
+.timeline-vertical {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px dashed #cbd5e0;
+    margin-bottom: 40px;
+}
+
+.timeline-step {
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.timeline-step:last-child {
+    padding-bottom: 0;
+}
+
+.step-marker {
+    position: absolute;
+    left: -46px;
+    /* Center on line (30pl + 2border + half icon) */
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: 2px solid #cbd5e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #94a3b8;
+    z-index: 1;
+}
+
+.waste-step .step-marker {
+    background: #fff1f2;
+    /* Light red */
+    border-color: #fda4af;
+    color: #e11d48;
+}
+
+.step-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s;
+}
+
+.waste-step .step-content {
+    border-left: 4px solid #e11d48;
+    /* Red indicator */
+}
+
+.timeline-step:hover .step-content {
+    transform: translateX(10px);
+}
+
+.step-time {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 5px;
+}
+
+.waste-step .step-time {
+    color: #e11d48;
+}
+
+.step-content h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-dark);
+}
+
+.step-content p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+}
+
+.time-result-box {
+    background: #0f172a;
+    color: #fff;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-result-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e11d48, #f97316);
+}
+
+.result-label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.result-value {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #f97316;
+    /* Orange */
+    margin-bottom: 10px;
+}
+
+.result-sub {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* RIGHT: SOLUTION PROMISE */
+.time-solution {

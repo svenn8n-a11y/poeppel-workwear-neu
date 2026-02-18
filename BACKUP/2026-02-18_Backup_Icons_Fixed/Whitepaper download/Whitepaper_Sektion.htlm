@@ -1,0 +1,401 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Download, 
+  ArrowRight, 
+  CheckCircle2, 
+  AlertTriangle, 
+  FileText, 
+  ShieldCheck, 
+  BarChart3,
+  Unlock,
+  Users,
+  Menu,
+  X,
+  ChevronDown
+} from 'lucide-react';
+
+const App = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Scroll Effekt für Header
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    // Simulierte Ladezeit
+    setTimeout(() => setIsSubmitted(true), 800);
+  };
+
+  return (
+    <div className="bg-slate-950 text-white font-sans selection:bg-orange-500 selection:text-white min-h-screen overflow-x-hidden">
+      
+      {/* --- HEADER / NAV --- */}
+      <nav className={`fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-orange-600 rounded-sm flex items-center justify-center font-bold text-lg">P</div>
+            <div className="text-xl font-bold tracking-tighter">PÖPPEL <span className="text-orange-500">SYSTEMS</span></div>
+          </div>
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <span className="text-slate-400">Whitepaper Edition 2024</span>
+            <a href="#download" className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white text-xs uppercase tracking-widest font-bold">
+              Zum Download
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden min-h-screen flex items-center">
+        {/* Background Atmosphere */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-600/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+        
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          
+          {/* Text Content */}
+          <div className="space-y-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-orange-500/30 bg-orange-500/10 rounded-full text-xs uppercase tracking-widest text-orange-400">
+              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.5)]"></span>
+              Kostenfreier Leitfaden
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.0] text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-500">
+              Schluss mit dem <br/>
+              Verwaltungs-Irrsinn.
+            </h1>
+            
+            <p className="text-xl text-slate-400 max-w-lg leading-relaxed border-l-2 border-orange-500/50 pl-6">
+              <strong className="text-white">Workwear Management 4.0:</strong> Wie Sie den administrativen Aufwand um 80% senken und Prozesse automatisieren.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+               <a href="#download" className="px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white rounded-lg font-bold transition-all flex items-center justify-center gap-2 shadow-[0_20px_40px_-10px_rgba(234,88,12,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(234,88,12,0.5)] group transform hover:-translate-y-1">
+                <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                Jetzt Leitfaden sichern
+              </a>
+              <div className="flex items-center gap-4 px-4 py-2 text-sm text-slate-500">
+                <div className="flex -space-x-3">
+                  {[1,2,3].map(i => (
+                    <div key={i} className="w-10 h-10 rounded-full bg-slate-800 border-2 border-slate-950 flex items-center justify-center text-xs overflow-hidden">
+                       <img src={`https://randomuser.me/api/portraits/men/${20+i}.jpg`} alt="User" className="w-full h-full object-cover opacity-80" />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col text-xs">
+                    <span className="text-white font-bold">Bereits 150+ Downloads</span>
+                    <span>von Bau- & Industriekunden</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual: 3D PDF Cover Simulation */}
+          <div className="relative z-10 flex justify-center lg:justify-end perspective-1000">
+            {/* 3D Book Container */}
+            <div className="relative w-[320px] md:w-[400px] aspect-[1/1.4] transform rotate-y-[-15deg] rotate-x-[5deg] hover:rotate-y-[0deg] hover:rotate-x-[0deg] transition-all duration-700 ease-out preserve-3d group cursor-pointer shadow-2xl">
+              
+              {/* Spine (Buchrücken) */}
+              <div className="absolute top-0 left-0 w-[40px] h-full bg-slate-800 transform -translate-x-full origin-right skew-y-[-15deg] group-hover:skew-y-0 transition-all duration-700 border-r border-white/10 flex items-center justify-center">
+                 <span className="text-white/30 text-xs tracking-[0.5em] -rotate-90 whitespace-nowrap font-bold">PÖPPEL SYSTEMS</span>
+              </div>
+
+              {/* Front Cover */}
+              <div className="absolute inset-0 bg-slate-900 rounded-r-lg overflow-hidden border border-white/10 shadow-[20px_20px_60px_rgba(0,0,0,0.5)]">
+                 {/* Cover Design - Das hier ist das "Titelbild" aus CSS */}
+                 
+                 {/* 1. Background Texture */}
+                 <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950"></div>
+                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+                 
+                 {/* 2. Orange Accent Line (Graphic Element) */}
+                 <div className="absolute top-0 right-12 w-1 h-full bg-orange-600/50"></div>
+                 <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-orange-900/20 to-transparent"></div>
+
+                 {/* 3. Content on Cover */}
+                 <div className="relative h-full p-8 flex flex-col justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 mb-6">
+                            <div className="w-6 h-6 bg-orange-600 rounded-sm flex items-center justify-center text-xs font-bold text-white">P</div>
+                            <span className="text-orange-500 text-[10px] font-bold tracking-[0.3em] uppercase">Systempartner</span>
+                        </div>
+                        <h2 className="text-4xl font-black text-white leading-[0.9] tracking-tighter mb-4">
+                           WORKWEAR<br/>
+                           MANAGEMENT<br/>
+                           <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">4.0</span>
+                        </h2>
+                        <div className="w-12 h-1 bg-white/20"></div>
+                    </div>
+
+                    <div>
+                        <div className="text-xs text-slate-400 font-mono mb-2 uppercase tracking-widest">Leitfaden für Industrie</div>
+                        <p className="text-sm text-slate-300 leading-snug border-l-2 border-orange-600 pl-3">
+                           Vom Kostentreiber zum<br/>Effizienzfaktor.
+                        </p>
+                    </div>
+                 </div>
+
+                 {/* Glare Effect */}
+                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Shadow/Glow behind */}
+              <div className="absolute inset-0 bg-orange-600 blur-[80px] -z-10 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-slate-600">
+           <ChevronDown className="w-6 h-6" />
+        </div>
+      </section>
+
+
+      {/* --- PROBLEM SECTION (The Pain) --- */}
+      <section className="py-24 bg-slate-900 border-y border-white/5 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">Die Kaskade der <span className="text-orange-500 font-serif italic">Ineffizienz</span></h2>
+            <p className="text-slate-400 text-lg">Warum traditionelle Beschaffung Sie mehr kostet, als auf der Rechnung steht.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-slate-950 p-10 rounded-2xl border border-white/5 hover:border-orange-500/50 transition-all group hover:-translate-y-2 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                <FileText className="w-32 h-32 rotate-12" />
+              </div>
+              <div className="w-14 h-14 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-orange-500 mb-8 shadow-inner">
+                <FileText className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">1. Das Excel-Chaos</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Manuelle Listen. Veraltete Größen. Keine Budgetkontrolle. Ihr Einkauf wird zum Sekretariat für Kleidung degradiert, statt strategisch zu arbeiten.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-slate-950 p-10 rounded-2xl border border-white/5 hover:border-orange-500/50 transition-all group hover:-translate-y-2 relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                <AlertTriangle className="w-32 h-32 rotate-12" />
+              </div>
+              <div className="w-14 h-14 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-orange-500 mb-8 shadow-inner">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">2. Die Retouren-Falle</h3>
+              <p className="text-slate-400 leading-relaxed">
+                "Passt nicht, schick ich zurück." Jede Retoure kostet internes Prozessgeld. Im B2B-Umfeld ein teurer Zeitdieb für HR und Lager.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-slate-950 p-10 rounded-2xl border border-white/5 hover:border-orange-500/50 transition-all group hover:-translate-y-2 relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Unlock className="w-32 h-32 rotate-12" />
+              </div>
+              <div className="w-14 h-14 bg-slate-900 rounded-xl border border-white/10 flex items-center justify-center text-orange-500 mb-8 shadow-inner">
+                <Unlock className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">3. Admin-Flaschenhals</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Wenn der Einkauf jede Sicherheitsschuh-Bestellung einzeln freigeben muss, fehlen Ressourcen für strategische Aufgaben.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* --- INSIDE THE WHITEPAPER (Sneak Peek) --- */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          
+          <div className="order-2 lg:order-1 relative group">
+             {/* Abstract Decor */}
+             <div className="absolute -inset-4 bg-gradient-to-r from-orange-600 to-purple-600 rounded-2xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+             
+             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+                {/* Simulated iPad/Tablet View */}
+                <div className="h-8 bg-slate-800 flex items-center px-4 space-x-2 border-b border-white/5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                </div>
+                <div className="p-8 md:p-12 relative">
+                    <div className="text-xs font-bold text-orange-500 tracking-widest mb-4">KAPITEL 4: DER PROZESS</div>
+                    <h3 className="text-3xl font-bold mb-6">Wie die Einführung gelingt.</h3>
+                    <div className="space-y-4">
+                        <div className="flex items-start gap-4 p-4 bg-slate-950/50 rounded-lg border border-white/5">
+                            <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                            <div>
+                                <div className="font-bold text-sm">Analyse & Sortiment</div>
+                                <div className="text-xs text-slate-500 mt-1">Definition von Sicherheitsklassen & CI.</div>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4 p-4 bg-slate-950/50 rounded-lg border border-white/5">
+                            <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                            <div>
+                                <div className="font-bold text-sm">Benutzeranlage (Import/SSO)</div>
+                                <div className="text-xs text-slate-500 mt-1">Vollautomatische Schnittstelle zum HR-System.</div>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4 p-4 bg-slate-800 rounded-lg border border-orange-500/50 shadow-lg transform translate-x-4">
+                            <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-xs font-bold text-white">3</div>
+                            <div>
+                                <div className="font-bold text-sm text-white">Das Erlebnis (Anprobe)</div>
+                                <div className="text-xs text-slate-400 mt-1">Wir kommen zu Ihnen. Jeder probiert an.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+
+          <div className="order-1 lg:order-2 space-y-8">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Ein Blick ins <br/>Inhaltsverzeichnis.</h2>
+            <p className="text-slate-400 text-lg">
+              Wir zeigen Ihnen nicht nur das "Warum", sondern vor allem das "Wie". Dieser Leitfaden ist eine Blaupause für die Digitalisierung Ihrer Ausrüstung.
+            </p>
+
+            <div className="space-y-6 pt-6">
+              {[
+                { title: "Vom Händler zum Systempartner", desc: "Warum Dezentralisierung der Schlüssel ist." },
+                { title: "Zero-Retouren-Strategie", desc: "Wie digitale Datenerfassung die Quote drückt." },
+                { title: "Psychologie & Wertschätzung", desc: "Mitarbeiterbindung durch 'Besitztums-Effekt'." },
+                { title: "Self-Audit Checkliste", desc: "Ist Ihr Unternehmen bereit für den Wechsel?" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex gap-4 group cursor-default">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-slate-800 border border-slate-700 group-hover:border-orange-500 group-hover:text-orange-500 transition-colors flex items-center justify-center mt-1">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-lg group-hover:text-orange-500 transition-colors">{item.title}</h4>
+                    <p className="text-sm text-slate-500 mt-1">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* --- DOWNLOAD SECTION (CTA) --- */}
+      <section id="download" className="py-32 px-6 bg-orange-600 relative overflow-hidden">
+        {/* Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-600 to-orange-700"></div>
+        
+        {/* Decorative Circles */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-block px-4 py-1 bg-orange-700/50 rounded-full text-orange-100 text-xs font-bold tracking-widest uppercase mb-6 border border-orange-400/30">
+            Kostenfreier Download
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+            Starten Sie die <br/>Transformation.
+          </h2>
+          <p className="text-orange-100 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light">
+            Holen Sie sich jetzt den Leitfaden und erfahren Sie, wie Sie Workwear vom Kostentreiber zum Effizienzfaktor machen.
+          </p>
+
+          {!isSubmitted ? (
+            <div className="bg-white p-3 rounded-2xl shadow-2xl max-w-lg mx-auto transform transition-all hover:scale-105">
+              <form onSubmit={handleDownload} className="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Ihre geschäftliche E-Mail-Adresse" 
+                  className="flex-1 px-6 py-4 bg-slate-50 rounded-xl text-slate-900 outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-orange-500/20 border-transparent focus:bg-white transition-all"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button type="submit" className="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-lg">
+                  <span className="whitespace-nowrap">Jetzt laden</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+              <div className="pt-3 pb-1 flex items-center justify-center gap-2 text-[10px] text-slate-400 uppercase tracking-wider font-medium">
+                <ShieldCheck className="w-3 h-3 text-green-500" /> 100% Sicher & Spamfrei
+              </div>
+            </div>
+          ) : (
+            <div className="bg-white text-slate-900 p-10 rounded-2xl shadow-2xl max-w-lg mx-auto animate-fade-in-up border-4 border-white/20">
+              <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <CheckCircle2 className="w-10 h-10" />
+              </div>
+              <h3 className="text-3xl font-bold mb-3">Vielen Dank!</h3>
+              <p className="text-slate-600 mb-6">
+                Wir haben Ihnen den Link zum PDF an <strong>{email}</strong> gesendet.
+              </p>
+              <button onClick={() => setIsSubmitted(false)} className="text-sm text-orange-600 font-bold hover:underline">
+                Andere E-Mail verwenden
+              </button>
+            </div>
+          )}
+
+          <div className="mt-16 grid grid-cols-3 gap-8 text-center border-t border-orange-500/30 pt-8 opacity-70">
+             <div>
+                <div className="text-2xl font-bold text-white">80%</div>
+                <div className="text-xs text-orange-200 uppercase tracking-wider mt-1">Weniger Aufwand</div>
+             </div>
+             <div>
+                 <div className="text-2xl font-bold text-white">0%</div>
+                 <div className="text-xs text-orange-200 uppercase tracking-wider mt-1">Retourenrisiko</div>
+             </div>
+             <div>
+                 <div className="text-2xl font-bold text-white">24/7</div>
+                 <div className="text-xs text-orange-200 uppercase tracking-wider mt-1">Verfügbarkeit</div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="bg-slate-950 py-12 px-6 border-t border-white/5 text-center text-slate-600 text-sm">
+        <div className="flex justify-center items-center gap-2 mb-8 opacity-50 grayscale hover:grayscale-0 transition-all">
+             <span className="font-bold tracking-widest text-white">PÖPPEL SYSTEMS</span>
+        </div>
+        <p>&copy; 2024 Pöppel Workwear Management. Alle Rechte vorbehalten.</p>
+        <div className="mt-4 flex justify-center gap-6">
+          <a href="#" className="hover:text-white transition-colors">Impressum</a>
+          <a href="#" className="hover:text-white transition-colors">Datenschutz</a>
+          <a href="#" className="hover:text-white transition-colors">Kontakt</a>
+        </div>
+      </footer>
+
+      {/* --- GLOBAL STYLES & ANIMATIONS --- */}
+      <style>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        
+        /* 3D Perspective Utilities */
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;

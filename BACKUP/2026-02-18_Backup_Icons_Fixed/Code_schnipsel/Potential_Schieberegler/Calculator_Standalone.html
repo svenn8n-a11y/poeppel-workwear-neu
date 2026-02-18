@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - Schieberegler</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background: #fff;
+            padding: 40px 0;
+        }
+
+        /* Ensure Calculator is visible in standalone */
+        .hidden-calculator {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            height: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         SEKTION 6: ROI CALCULATOR
+    ======================================== -->
+    <section id="calculator" class="calculator-section hidden-calculator" style="display: block;">
+        <div class="container">
+            <div class="calculator-card">
+                <div class="calc-header">
+                    <h2>Ihr Sparpotenzial</h2>
+                    <p>Berechnen Sie, was manuelle Workwear-Prozesse Sie wirklich kosten.</p>
+                </div>
+
+                <div class="calc-body">
+                    <!-- EINGABE -->
+                    <div class="calc-inputs">
+
+                        <!-- Slider 1: Mitarbeiter -->
+                        <div class="input-group">
+                            <div class="label-row">
+                                <span class="label-text">Anzahl Mitarbeiter</span>
+                                <span class="input-display" id="disp-emp">50</span>
+                            </div>
+                            <input type="range" id="range-emp" min="10" max="500" value="50" step="10">
+                        </div>
+
+                        <!-- Slider 2: Stunden -->
+                        <div class="input-group">
+                            <div class="label-row">
+                                <span class="label-text">Verwaltungsstunden / Woche</span>
+                                <span class="input-display" id="disp-hours">3.0 h</span>
+                            </div>
+                            <input type="range" id="range-hours" min="1" max="40" value="3" step="0.5">
+                            <div style="font-size: 11px; color: #94a3b8; margin-top: 10px; line-height: 1.4;">
+                                Beinhaltet: Bedarfsermittlung, Katalogsuche, Bestellung, Verteilung,
+                                Retourenabwicklung und Rechnungsprüfung.
+                            </div>
+                        </div>
+
+                        <div style="font-size: 10px; color: #cbd5e0; margin-top: 40px;">
+                            Berechnungsgrundlage: Interner Verrechnungssatz von 50,00 € / Std. (inkl.
+                            Lohnnebenkosten).
+                        </div>
+                    </div>
+
+                    <!-- ERGEBNISSE -->
+                    <div class="calc-results">
+
+                        <div class="result-item">
+                            <div class="res-label">Status Quo (Jährliche Kosten)</div>
+                            <div class="res-value" id="res-current">7.800 €</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="res-label">Mit Pöppel System</div>
+                            <div class="res-value highlight" id="res-poeppel">1.560 €</div>
+                            <div class="savings-badge">Sie sparen <span id="res-savings">6.240 €</span> pro Jahr
+                            </div>
+                        </div>
+
+                        <!-- Chart Removed per user request -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Force Visibility
+            const calc = document.querySelector('.hidden-calculator');
+            if (calc) {
+                calc.classList.remove('hidden-calculator');
+                calc.style.display = 'block';
+                calc.style.opacity = '1';
+                calc.style.visibility = 'visible';
+                calc.style.height = 'auto';
+            }
+
+            // 2. Fix Bar Width (Static 80% because logic is fixed factor)
+            setTimeout(() => {
+                const barFill = document.querySelector('.bar-fill');
+                if (barFill) {
+                    barFill.style.width = '80%'; // Force fill
+                    barFill.style.transition = 'width 1s ease-out';
+                }
+            }, 500);
+
+            // 3. Inline Calculation Logic (to ensure it works even if main.js listeners fail)
+            const rangeEmp = document.getElementById('range-emp');
+            const rangeHours = document.getElementById('range-hours');
+
+            if (rangeEmp && rangeHours) {
+                const dispEmp = document.getElementById('disp-emp');
+                const dispHours = document.getElementById('disp-hours');
+                const resCurrent = document.getElementById('res-current');
+                const resPoeppel = document.getElementById('res-poeppel');
+                const resSavings = document.getElementById('res-savings');
+
+                // Constants
+                const HOURLY_RATE = 50;
+                const WEEKS_PER_YEAR = 52;
+                const EFFICIENCY_FACTOR = 0.20;
+
+                function formatEuro(num) {
+                    return num.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+                }
+
+                function calculate() {
+                    const employees = parseInt(rangeEmp.value);
+                    const hours = parseFloat(rangeHours.value);
+
+                    // Update Displays
+                    if (dispEmp) dispEmp.innerText = employees;
+                    if (dispHours) dispHours.innerText = hours.toFixed(1) + " h";
+
+                    // Logic Update: Scale cost by employees relative to base 50
+                    // Base assumption: 3 hours/week allows managing 50 employees.
+                    // If employees increase, admin hours implicitly increase, or cost scales.
+                    // Formula: (Hours * 52 * 50) * (Employees / 50)
+                    const baseCost = hours * WEEKS_PER_YEAR * HOURLY_RATE;
+                    const scalingFactor = employees / 50;
+
+                    const currentCost = baseCost * scalingFactor;
+                    const poeppelCost = currentCost * EFFICIENCY_FACTOR;
+                    const savings = currentCost - poeppelCost;
+
+                    if (resCurrent) resCurrent.innerText = formatEuro(currentCost);
+                    if (resPoeppel) resPoeppel.innerText = formatEuro(poeppelCost);
+                    if (resSavings) resSavings.innerText = formatEuro(savings);
+
+                    // Update Slider Fills (The "Balken" visual)
+                    updateSliderFill(rangeEmp);
+                    updateSliderFill(rangeHours);
+                }
+
+                function updateSliderFill(slider) {
+                    if (!slider) return;
+                    const val = slider.value;
+                    const min = slider.min ? slider.min : 0;
+                    const max = slider.max ? slider.max : 100;
+                    const percentage = ((val - min) / (max - min)) * 100;
+
+                    // Orange fill on left, grey on right
+                    slider.style.background = `linear-gradient(to right, var(--color-primary) ${percentage}%, #e2e8f0 ${percentage}%)`;
+                }
+
+                rangeEmp.addEventListener('input', calculate);
+                rangeHours.addEventListener('input', calculate);
+
+                // Init
+                calculate();
+            }
+        });
+    </script>
+</body>
+
+</html>

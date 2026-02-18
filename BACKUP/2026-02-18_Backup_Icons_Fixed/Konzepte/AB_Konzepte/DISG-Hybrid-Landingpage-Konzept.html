@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISG-Hybrid-Landingpage-Konzept – Pöppel Workwear</title>
+<style>
+  :root {
+    --rot: #E53935;
+    --gelb: #FBC02D;
+    --gruen: #43A047;
+    --blau: #1E88E5;
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --muted: #6c757d;
+    --border: #dee2e6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.4rem; margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1.15rem; margin: 1.5rem 0 0.6rem; }
+  h4 { font-size: 1rem; margin: 1.2rem 0 0.4rem; }
+  p { margin-bottom: 0.8rem; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .meta span { margin-right: 1.5rem; }
+  .summary {
+    background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+  .summary h2 { color: white; border: none; margin-top: 0; }
+  .summary strong { color: #BBDEFB; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.92rem;
+  }
+  th, td {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #f1f3f5; font-weight: 600; }
+  .typ-rot { border-left: 4px solid var(--rot); }
+  .typ-gelb { border-left: 4px solid var(--gelb); }
+  .typ-gruen { border-left: 4px solid var(--gruen); }
+  .typ-blau { border-left: 4px solid var(--blau); }
+  .typ-badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .badge-rot { background: var(--rot); }
+  .badge-gelb { background: var(--gelb); color: #333; }
+  .badge-gruen { background: var(--gruen); }
+  .badge-blau { background: var(--blau); }
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .score-card {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .score-card .score {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .score-card .label { font-weight: 600; margin-bottom: 0.3rem; }
+  .score-card p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 700px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero-card {
+    padding: 1.2rem;
+    border-radius: 10px;
+    background: var(--card);
+  }
+  .hero-card h4 { margin-top: 0; }
+  .hero-card .field { margin-bottom: 0.5rem; }
+  .hero-card .field-label { font-size: 0.78rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; }
+  blockquote {
+    border-left: 3px solid var(--border);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0 1rem;
+    background: #f8f9fa;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+  .roadmap-phase {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .phase-num {
+    min-width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--blau);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .phase-content { flex: 1; }
+  .phase-content .time { font-size: 0.85rem; color: var(--muted); }
+  code {
+    background: #e9ecef;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+  }
+  pre {
+    background: #212529;
+    color: #e9ecef;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .fix-list { list-style: none; padding: 0; }
+  .fix-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .fix-list li:last-child { border: none; }
+  .fix-num {
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    text-align: center;
+    line-height: 1.6rem;
+    border-radius: 50%;
+    background: #e53935;
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; }
+  .toc ol { padding-left: 1.2rem; }
+  .toc li { margin-bottom: 0.3rem; }
+  .toc a { color: var(--blau); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>DISG-Hybrid-Landingpage-Konzept</h1>
+<p style="font-size:1.1rem; color: var(--muted); margin-bottom: 0.2rem;">Pöppel Workwear Management – Typspezifische Conversion-Optimierung</p>
+<div class="meta">
+  <span><strong>Version:</strong> 1.0</span>
+  <span><strong>Datum:</strong> 12.02.2026</span>
+  <span><strong>Status:</strong> Konzeptphase</span>
+</div>
+
+<div class="toc">
+  <strong>Inhalt</strong>
+  <ol>
+    <li><a href="#summary">Executive Summary</a></li>
+    <li><a href="#analyse">Ist-Analyse der aktuellen Seite</a></li>
+    <li><a href="#architektur">Hybrid-Strategie: Architektur</a></li>
+    <li><a href="#content">Content-Matrix: Die 4 Varianten</a></li>
+    <li><a href="#testimonials">Testimonial-Priorisierung</a></li>
+    <li><a href="#technik">Technische Umsetzung</a></li>
+    <li><a href="#kanal">Kanal-Zuordnung</a></li>
+    <li><a href="#roadmap">Umsetzungs-Roadmap</a></li>
+    <li><a href="#kpi">Erfolgsmessung (KPIs)</a></li>
+    <li><a href="#fixes">Zusätzliche Optimierungen</a></li>
+  </ol>
+</div>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<div class="summary" id="summary">
+  <h2>1. Executive Summary</h2>
+  <p>Die aktuelle Landingpage spricht primär den <strong>blauen (gewissenhaften)</strong> und teilweise den <strong>grünen (stetigen)</strong> DISG-Typ an. Rote (dominante) und gelbe (initiative) Typen werden unzureichend abgeholt, was zu vermeidbaren Bounce-Raten führt.</p>
+  <p><strong>Lösung:</strong> Eine Hybrid-Strategie mit einer Basis-Seite und 4 typspezifischen Varianten der konversionsrelevanten Elemente. Steuerung über UTM-Parameter aus den Werbekanälen.</p>
+  <p><strong>Erwarteter Effekt:</strong> +20–40% Conversion-Rate durch psychologisch präzisere Ansprache in den ersten 5 Sekunden (Hero) und an den Entscheidungspunkten (CTAs).</p>
+</div>
+
+<!-- 2. IST-ANALYSE -->
+<h2 id="analyse">2. Ist-Analyse der aktuellen Seite</h2>
+
+<h3>2.1 Seitenstruktur (17 Sektionen)</h3>
+<table>
+  <tr><th>#</th><th>Sektion</th><th>Funktion</th></tr>
+  <tr><td>1</td><td>Hero</td><td>Einstieg + Primär-CTA</td></tr>
+  <tr><td>2</td><td>Video</td><td>Elevator Pitch (90 Sek.)</td></tr>
+  <tr><td>3</td><td>Problem (Sticky Cards)</td><td>12 Herausforderungen in 3 Karten</td></tr>
+  <tr><td>4</td><td>Potentiale (Horizontal Scroll)</td><td>4 Potentiale + CTA-Card</td></tr>
+  <tr><td>5</td><td>Lösungsweg</td><td>3 Schritte: Analyse → Standardisierung → Digitalisierung</td></tr>
+  <tr><td>6</td><td>Onboarding-Treppe</td><td>4-Schritte-Prozess (Kickoff → Go-Live)</td></tr>
+  <tr><td>7</td><td>CTA: Beratungstermin</td><td>Zwischen-CTA</td></tr>
+  <tr><td>8</td><td>Partner (Warum Pöppel?)</td><td>3 Karten: Erfahrung, Netzwerk, Service</td></tr>
+  <tr><td>9</td><td>Marken-Marquee</td><td>Herstellerlogos (18 Marken)</td></tr>
+  <tr><td>10</td><td>Testimonials</td><td>3 Zitate (Slider)</td></tr>
+  <tr><td>11</td><td>Modularer Ansatz</td><td>Basis + 6 Zusatzmodule</td></tr>
+  <tr><td>12</td><td>USPs (Honeycomb)</td><td>8 Vorteile</td></tr>
+  <tr><td>13</td><td>CTA: Whitepaper</td><td>PDF-Download</td></tr>
+  <tr><td>14</td><td>CTA: Potentialanalyse</td><td>Zwischen-CTA</td></tr>
+  <tr><td>15</td><td>Ihr Gewinn</td><td>3 Ergebnis-Karten</td></tr>
+  <tr><td>16</td><td>Team</td><td>6 Ansprechpartner</td></tr>
+  <tr><td>17</td><td>FAQ + Finale CTA</td><td>5 Fragen + Kontakt</td></tr>
+</table>
+
+<h3>2.2 DISG-Score der aktuellen Seite</h3>
+<div class="score-grid">
+  <div class="score-card typ-blau">
+    <div class="label"><span class="typ-badge badge-blau">BLAU</span> Gewissenhaft</div>
+    <div class="score" style="color:var(--blau)">7/10</div>
+    <p>✅ Prozessfokus, FAQ, Whitepaper, Module<br>❌ Fehlende harte KPIs, keine Case Studies mit Zahlen</p>
+  </div>
+  <div class="score-card typ-gruen">
+    <div class="label"><span class="typ-badge badge-gruen">GRÜN</span> Stetig</div>
+    <div class="score" style="color:var(--gruen)">6/10</div>
+    <p>✅ Team-Sektion, persönlicher Ansprechpartner<br>❌ Testimonials generisch, kein Beziehungsaufbau im Hero</p>
+  </div>
+  <div class="score-card typ-rot">
+    <div class="label"><span class="typ-badge badge-rot">ROT</span> Dominant</div>
+    <div class="score" style="color:var(--rot)">4/10</div>
+    <p>✅ Lösungsweg strukturiert<br>❌ Seite zu lang, Hero-CTA zu weich, kein sofortiger ROI</p>
+  </div>
+  <div class="score-card typ-gelb">
+    <div class="label"><span class="typ-badge badge-gelb">GELB</span> Initiativ</div>
+    <div class="score" style="color:var(--gelb)">3/10</div>
+    <p>✅ Video vorhanden<br>❌ Kein Storytelling, keine emotionalen Bilder, kühl</p>
+  </div>
+</div>
+
+<!-- 3. ARCHITEKTUR -->
+<h2 id="architektur">3. Hybrid-Strategie: Architektur</h2>
+
+<h3>3.1 Grundprinzip</h3>
+<pre>Ad (typspezifisch) → poeppel-workwear.de/?typ=rot   → Hero ROT + angepasste CTAs
+Ad (typspezifisch) → poeppel-workwear.de/?typ=blau  → Hero BLAU + angepasste CTAs
+                     poeppel-workwear.de/ (ohne Param) → Standard-Version (Allrounder)</pre>
+
+<h3>3.2 Was sich ändert (5 Touchpoints)</h3>
+<table>
+  <tr><th>#</th><th>Element</th><th>Beschreibung</th><th>Aufwand</th></tr>
+  <tr><td>1</td><td><strong>Hero-Sektion</strong></td><td>Headline, Subline, Badge, CTA-Buttons</td><td>Hoch</td></tr>
+  <tr><td>2</td><td><strong>Problem-Header</strong></td><td>Einleitungstext der Sticky-Cards-Sektion</td><td>Niedrig</td></tr>
+  <tr><td>3</td><td><strong>Alle CTA-Sektionen</strong> (4×)</td><td>Button-Texte, Überschriften, Micro-Copy</td><td>Mittel</td></tr>
+  <tr><td>4</td><td><strong>Testimonial-Reihenfolge</strong></td><td>Priorisierung des typ-relevantesten Zitats</td><td>Niedrig</td></tr>
+  <tr><td>5</td><td><strong>"Ihr Gewinn"-Sektion</strong></td><td>3 Karten: Texte + Überschrift</td><td>Mittel</td></tr>
+</table>
+
+<h3>3.3 Was identisch bleibt</h3>
+<p>Video-Sektion, Sticky Cards (12 Probleme), Lösungsweg (3 Schritte), Onboarding-Treppe, Modularer Ansatz, Marken-Marquee, Team-Sektion, FAQ, Footer</p>
+<p><strong>Geschätzter Pflegeaufwand vs. 4 separate Seiten: ~30%</strong></p>
+
+<!-- 4. CONTENT-MATRIX -->
+<h2 id="content">4. Content-Matrix: Die 4 Varianten</h2>
+
+<h3>4.1 Hero-Sektion</h3>
+<div class="hero-grid">
+  <div class="hero-card typ-rot">
+    <h4><span class="typ-badge badge-rot">ROT</span> Dominant – <code>?typ=rot</code></h4>
+    <div class="field"><div class="field-label">Badge</div>ROI in 90 Tagen</div>
+    <div class="field"><div class="field-label">Headline</div>Workwear-Verwaltung automatisiert.<br><strong>In 30 Tagen live.</strong></div>
+    <div class="field"><div class="field-label">Subline</div>Schluss mit Zeitverschwendung. Ein System, das funktioniert – ohne Ihr Zutun.</div>
+    <div class="field"><div class="field-label">CTA primär</div>Demo in 15 Minuten buchen</div>
+    <div class="field"><div class="field-label">CTA sekundär</div>ROI-Rechner starten</div>
+    <div class="field"><div class="field-label">Tonalität</div>Direkt, ergebnisorientiert, schnell, keine Floskeln</div>
+  </div>
+  <div class="hero-card typ-gelb">
+    <h4><span class="typ-badge badge-gelb">GELB</span> Initiativ – <code>?typ=gelb</code></h4>
+    <div class="field"><div class="field-label">Badge</div>Von Unternehmen geliebt</div>
+    <div class="field"><div class="field-label">Headline</div>Arbeitskleidung, auf die<br><strong>Ihr Team stolz ist.</strong></div>
+    <div class="field"><div class="field-label">Subline</div>Erleben Sie, wie innovative Unternehmen Workwear zum Team-Erlebnis machen.</div>
+    <div class="field"><div class="field-label">CTA primär</div>Erfolgsgeschichten entdecken</div>
+    <div class="field"><div class="field-label">CTA sekundär</div>Film ansehen</div>
+    <div class="field"><div class="field-label">Tonalität</div>Begeisternd, persönlich, Story-driven, emotional</div>
+  </div>
+  <div class="hero-card typ-gruen">
+    <h4><span class="typ-badge badge-gruen">GRÜN</span> Stetig – <code>?typ=gruen</code></h4>
+    <div class="field"><div class="field-label">Badge</div>Vertraut von 300+ Unternehmen</div>
+    <div class="field"><div class="field-label">Headline</div>Arbeitskleidung ohne Stress –<br><strong>für Sie und Ihr Team.</strong></div>
+    <div class="field"><div class="field-label">Subline</div>Wir begleiten Sie persönlich bei jedem Schritt. Kein Risiko, kein Druck – nur Entlastung.</div>
+    <div class="field"><div class="field-label">CTA primär</div>Unverbindlich kennenlernen</div>
+    <div class="field"><div class="field-label">CTA sekundär</div>So funktioniert der Wechsel</div>
+    <div class="field"><div class="field-label">Tonalität</div>Warmherzig, sicherheitgebend, teamorientiert, kein Druck</div>
+  </div>
+  <div class="hero-card typ-blau">
+    <h4><span class="typ-badge badge-blau">BLAU</span> Gewissenhaft – <code>?typ=blau</code></h4>
+    <div class="field"><div class="field-label">Badge</div>87% weniger manuelle Prozesse</div>
+    <div class="field"><div class="field-label">Headline</div>Workwear-Beschaffung<br><strong>systematisiert und messbar.</strong></div>
+    <div class="field"><div class="field-label">Subline</div>Standardisierte Prozesse. Vollständige Datentransparenz. Nachweisbare Kostensenkung.</div>
+    <div class="field"><div class="field-label">CTA primär</div>Whitepaper mit ROI-Daten laden</div>
+    <div class="field"><div class="field-label">CTA sekundär</div>Prozessanalyse anfordern</div>
+    <div class="field"><div class="field-label">Tonalität</div>Sachlich, datengetrieben, präzise, fachsprachlich</div>
+  </div>
+</div>
+
+<h3>4.2 Problem-Sektion: Header-Texte</h3>
+<div class="card typ-rot">
+  <h4><span class="typ-badge badge-rot">ROT</span></h4>
+  <blockquote><strong>Das kostet Sie Zeit und Geld.</strong><br>Jede Stunde, die Ihr Team mit Excel-Listen, Rückfragen und Fehlbestellungen verbringt, fehlt für das Kerngeschäft. Hier die drei größten Kostentreiber.</blockquote>
+</div>
+<div class="card typ-gelb">
+  <h4><span class="typ-badge badge-gelb">GELB</span></h4>
+  <blockquote><strong>Warum beschweren sich Ihre Mitarbeiter?</strong><br>Schlecht sitzende Kleidung, komplizierte Bestellprozesse und lange Wartezeiten frustrieren Ihr Team. Das geht besser.</blockquote>
+</div>
+<div class="card typ-gruen">
+  <h4><span class="typ-badge badge-gruen">GRÜN</span></h4>
+  <blockquote><strong>Die Herausforderungen, die Sie kennen.</strong><br>Viele unserer Kunden standen vor den gleichen Problemen, bevor sie zu uns kamen. Hier die häufigsten – kommt Ihnen etwas davon bekannt vor?</blockquote>
+</div>
+<div class="card typ-blau">
+  <h4><span class="typ-badge badge-blau">BLAU</span> (≈ aktuelle Version)</h4>
+  <blockquote><strong>Warum der Artikelpreis die falsche Kennzahl ist.</strong><br>Studien zeigen ein gefährliches Missverhältnis in der C-Teile-Beschaffung. Während Unternehmen um Cent-Beträge feilschen, explodieren im Hintergrund die Prozesskosten.</blockquote>
+</div>
+
+<h3>4.3 CTA-Texte (alle 4 Stellen)</h3>
+<table>
+  <tr><th>Position</th><th><span class="typ-badge badge-rot">ROT</span></th><th><span class="typ-badge badge-gelb">GELB</span></th><th><span class="typ-badge badge-gruen">GRÜN</span></th><th><span class="typ-badge badge-blau">BLAU</span></th></tr>
+  <tr><td><strong>CTA 1</strong><br><small>nach Potentiale</small></td><td>Jetzt Demo buchen – 15 Min.</td><td>Lassen Sie sich inspirieren</td><td>Wir beraten Sie gerne – ganz in Ruhe</td><td>Potentialanalyse mit Daten starten</td></tr>
+  <tr><td><strong>CTA 2</strong><br><small>Beratungstermin</small></td><td>Direkt-Termin: 15 Min. Analyse</td><td>Kostenlos: Ihre individuelle Story</td><td>Persönliches Kennenlernen vereinbaren</td><td>Kostenfreie Prozessanalyse anfordern</td></tr>
+  <tr><td><strong>CTA 3</strong><br><small>Whitepaper</small></td><td>Quick-Check: Ihr Einsparpotential</td><td>Best Practices: Was andere begeistert</td><td>Schritt-für-Schritt-Guide downloaden</td><td>Whitepaper: Daten, KPIs, Fallstudien</td></tr>
+  <tr><td><strong>CTA 4</strong><br><small>Finale</small></td><td>Starten. Jetzt.</td><td>Werden Sie Teil der Erfolgsgeschichte</td><td>Lassen Sie uns gemeinsam den ersten Schritt gehen</td><td>Vereinbaren Sie eine faktenbasierte Erstanalyse</td></tr>
+</table>
+
+<h3>4.4 "Ihr Gewinn"-Sektion</h3>
+<div class="hero-grid">
+  <div class="card typ-rot">
+    <h4><span class="typ-badge badge-rot">ROT</span></h4>
+    <table>
+      <tr><th>Karte</th><th>Headline</th><th>Text</th></tr>
+      <tr><td>1</td><td><strong>Zeitgewinn ab Tag 1</strong></td><td>Automatisierte Bestellprozesse eliminieren manuellen Aufwand. Ihre Zeit gehört wieder dem Kerngeschäft.</td></tr>
+      <tr><td>2</td><td><strong>Volle Kontrolle</strong></td><td>Ein Dashboard, alle Daten. Sie entscheiden – das System liefert.</td></tr>
+      <tr><td>3</td><td><strong>Sofort skalierbar</strong></td><td>Neuer Standort? 50 neue Mitarbeiter? Das System wächst mit, ohne Mehraufwand.</td></tr>
+    </table>
+  </div>
+  <div class="card typ-gelb">
+    <h4><span class="typ-badge badge-gelb">GELB</span></h4>
+    <table>
+      <tr><th>Karte</th><th>Headline</th><th>Text</th></tr>
+      <tr><td>1</td><td><strong>Ein Team, das strahlt</strong></td><td>Arbeitskleidung, die Ihre Mitarbeiter gerne tragen – professionell, modern und mit CI-Veredelung.</td></tr>
+      <tr><td>2</td><td><strong>Innovation, die man sieht</strong></td><td>Zeigen Sie Bewerbern und Kunden, dass Sie ein moderner Arbeitgeber sind.</td></tr>
+      <tr><td>3</td><td><strong>Null Stress</strong></td><td>Kein Papierkram, keine Rückfragen. Alles läuft – und Sie haben Zeit für die spannenden Projekte.</td></tr>
+    </table>
+  </div>
+  <div class="card typ-gruen">
+    <h4><span class="typ-badge badge-gruen">GRÜN</span></h4>
+    <table>
+      <tr><th>Karte</th><th>Headline</th><th>Text</th></tr>
+      <tr><td>1</td><td><strong>Entlastung für Ihr Team</strong></td><td>Weniger Verwaltung bedeutet weniger Stress – für Sie und für jeden einzelnen Mitarbeiter.</td></tr>
+      <tr><td>2</td><td><strong>Sichere Umstellung</strong></td><td>Wir begleiten Sie persönlich. Kein Risiko, kein Big-Bang – sondern ein sanfter, begleiteter Übergang.</td></tr>
+      <tr><td>3</td><td><strong>Bewährte Lösung</strong></td><td>Über 300 Unternehmen vertrauen bereits auf unser System. Sie sind in guter Gesellschaft.</td></tr>
+    </table>
+  </div>
+  <div class="card typ-blau">
+    <h4><span class="typ-badge badge-blau">BLAU</span></h4>
+    <table>
+      <tr><th>Karte</th><th>Headline</th><th>Text</th></tr>
+      <tr><td>1</td><td><strong>Messbare Prozessoptimierung</strong></td><td>Reduktion manueller Eingaben um 87%. Fehlerquote nachweislich unter 1%. Dokumentiert und auditierbar.</td></tr>
+      <tr><td>2</td><td><strong>Bilanzwirksame Kostensenkung</strong></td><td>Durchschnittlich 14,3 Stunden Zeitersparnis pro Monat. ROI typischerweise innerhalb von 4 Monaten erreicht.</td></tr>
+      <tr><td>3</td><td><strong>Vollständige Datentransparenz</strong></td><td>Echtzeit-Reporting über Kostenstellen, Budgets und Verbräuche. Lückenlose Nachvollziehbarkeit aller Transaktionen.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 5. TESTIMONIALS -->
+<h2 id="testimonials">5. Testimonial-Priorisierung</h2>
+<p>Die aktuelle Seite hat 3 Testimonials. Empfehlung: <strong>Für jeden Typ das passendste Zitat als erstes anzeigen.</strong></p>
+<table>
+  <tr><th>Typ</th><th>Priorisiertes Testimonial</th><th>Begründung</th></tr>
+  <tr><td><span class="typ-badge badge-rot">ROT</span></td><td>Thomas Müller, GF → "revolutioniert"</td><td>GF-Ebene, Ergebnis-Sprache</td></tr>
+  <tr><td><span class="typ-badge badge-gelb">GELB</span></td><td>Julia Schmidt, HR → "Gamechanger, begeistert"</td><td>Emotionale Sprache, Team-Fokus</td></tr>
+  <tr><td><span class="typ-badge badge-gruen">GRÜN</span></td><td>Michael Weber, Einkauf → "Mitarbeiter begeistert"</td><td>Team-Zufriedenheit, Entlastung</td></tr>
+  <tr><td><span class="typ-badge badge-blau">BLAU</span></td><td>Thomas Müller → "transparent, nachvollziehbar"</td><td>Prozess-Sprache, Kontrolle</td></tr>
+</table>
+<p><strong>Empfehlung mittel-/langfristig:</strong> Echte, typ-spezifische Testimonials einsammeln – Rot: GF mit ROI, Gelb: HR mit Team-Story (Video), Grün: Langjähriger Kunde über den Wechsel, Blau: Controller mit Vorher/Nachher-Zahlen.</p>
+
+<!-- 6. TECHNIK -->
+<h2 id="technik">6. Technische Umsetzung</h2>
+
+<h3>6.1 UTM-Routing</h3>
+<pre>poeppel-workwear.de/?typ=rot
+poeppel-workwear.de/?typ=gelb
+poeppel-workwear.de/?typ=gruen
+poeppel-workwear.de/?typ=blau
+poeppel-workwear.de/          → Standard/Allrounder</pre>
+
+<h3>6.2 Logik</h3>
+<ol style="margin: 0.5rem 0 1rem 1.5rem;">
+  <li>JS liest den <code>typ</code>-Parameter aus der URL</li>
+  <li>Blendet die entsprechende Hero-Variante ein (<code>display: block</code>)</li>
+  <li>Ersetzt CTA-Texte über <code>data-typ</code>-Attribute</li>
+  <li>Setzt die Testimonial-Reihenfolge</li>
+  <li>Tauscht die "Ihr Gewinn"-Karten</li>
+  <li>Speichert den Typ in <code>sessionStorage</code> für Konsistenz</li>
+</ol>
+<p><strong>Fallback:</strong> Ohne Parameter → Standard-Version (aktuelle Seite, leicht optimiert als Allrounder)</p>
+
+<h3>6.3 HTML-Struktur (Prinzip)</h3>
+<pre>&lt;!-- Hero: 4 Varianten + 1 Default --&gt;
+&lt;div class="hero-variant" data-typ="rot" style="display:none"&gt;...&lt;/div&gt;
+&lt;div class="hero-variant" data-typ="gelb" style="display:none"&gt;...&lt;/div&gt;
+&lt;div class="hero-variant" data-typ="gruen" style="display:none"&gt;...&lt;/div&gt;
+&lt;div class="hero-variant" data-typ="blau" style="display:none"&gt;...&lt;/div&gt;
+&lt;div class="hero-variant hero-default"&gt;...&lt;/div&gt;
+
+&lt;!-- CTA-Texte: data-Attribute --&gt;
+&lt;a class="btn"
+   data-cta-rot="Demo in 15 Min."
+   data-cta-default="Beratung starten"&gt;
+   Beratung starten
+&lt;/a&gt;</pre>
+
+<h3>6.4 Tracking (GA4)</h3>
+<table>
+  <tr><th>Event</th><th>Parameter</th></tr>
+  <tr><td><code>page_variant</code></td><td>rot | gelb | gruen | blau | default</td></tr>
+  <tr><td><code>cta_click</code></td><td>{position, variant, text}</td></tr>
+  <tr><td><code>scroll_depth</code></td><td>{variant, percentage}</td></tr>
+</table>
+
+<!-- 7. KANAL-ZUORDNUNG -->
+<h2 id="kanal">7. Kanal-Zuordnung</h2>
+<table>
+  <tr><th>Kanal</th><th>Zielgruppe</th><th>Typ</th><th>Ad-Hook</th></tr>
+  <tr><td><strong>LinkedIn</strong> (C-Level)</td><td>GF, Geschäftsleitung</td><td><span class="typ-badge badge-rot">ROT</span></td><td>"87% weniger Verwaltungsaufwand. In 30 Tagen."</td></tr>
+  <tr><td><strong>LinkedIn</strong> (HR)</td><td>Personalleiter</td><td><span class="typ-badge badge-gruen">GRÜN</span></td><td>"Wie zufrieden ist Ihr Team mit der Arbeitskleidung?"</td></tr>
+  <tr><td><strong>LinkedIn</strong> (Einkauf)</td><td>Einkaufsleiter, Controller</td><td><span class="typ-badge badge-blau">BLAU</span></td><td>"Ihre Excel-Liste hat mehr als 20 Spalten? Es geht besser."</td></tr>
+  <tr><td><strong>Facebook/Instagram</strong></td><td>Breit, emotional</td><td><span class="typ-badge badge-gelb">GELB</span></td><td>"So sieht modernes Workwear-Management aus."</td></tr>
+  <tr><td><strong>Google Ads</strong></td><td>Intent-basiert</td><td><span class="typ-badge badge-blau">BLAU</span>/<span class="typ-badge badge-rot">ROT</span></td><td>Keywords: "Workwear digitalisieren"</td></tr>
+  <tr><td><strong>E-Mail</strong></td><td>Kaltakquise</td><td>nach Jobtitel</td><td>Personalisiert nach Empfänger-Rolle</td></tr>
+</table>
+
+<!-- 8. ROADMAP -->
+<h2 id="roadmap">8. Umsetzungs-Roadmap</h2>
+<div class="roadmap-phase">
+  <div class="phase-num">1</div>
+  <div class="phase-content">
+    <strong>Content-Erstellung</strong> – 4 Hero-Varianten + CTA-Texte + Gewinn-Texte
+    <div class="time">1 Woche · Priorität: Hoch</div>
+  </div>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-num">2</div>
+  <div class="phase-content">
+    <strong>HTML/JS-Implementierung</strong> – UTM-Routing + Varianten-Logik
+    <div class="time">2–3 Tage · Priorität: Hoch</div>
+  </div>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-num">3</div>
+  <div class="phase-content">
+    <strong>Tracking-Setup</strong> – GA4-Events für Varianten
+    <div class="time">1 Tag · Priorität: Hoch</div>
+  </div>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-num">4</div>
+  <div class="phase-content">
+    <strong>Ad-Erstellung</strong> – 4 typspezifische Ad-Sets (LinkedIn, Meta)
+    <div class="time">1 Woche · Priorität: Mittel</div>
+  </div>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-num">5</div>
+  <div class="phase-content">
+    <strong>Launch + A/B-Test</strong> – Datensammlung
+    <div class="time">6 Wochen</div>
+  </div>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-num">6</div>
+  <div class="phase-content">
+    <strong>Auswertung + Iteration</strong> – Welche Variante konvertiert wo am besten?
+    <div class="time">Nach Phase 5 · Priorität: Hoch</div>
+  </div>
+</div>
+
+<!-- 9. KPIs -->
+<h2 id="kpi">9. Erfolgsmessung (KPIs)</h2>
+<table>
+  <tr><th>KPI</th><th>Messmethode</th><th>Ziel</th></tr>
+  <tr><td><strong>Bounce Rate je Variante</strong></td><td>GA4</td><td>&lt;40% (aktuell geschätzt: ~55%)</td></tr>
+  <tr><td><strong>Scroll Depth</strong></td><td>GA4 ScrollTrigger</td><td>&gt;60% erreichen CTA-Zone</td></tr>
+  <tr><td><strong>CTA-Klickrate</strong></td><td>Event-Tracking</td><td>&gt;5% der Besucher</td></tr>
+  <tr><td><strong>Whitepaper-Downloads</strong></td><td>Download-Event</td><td>+30% vs. aktuell</td></tr>
+  <tr><td><strong>Kontaktanfragen</strong></td><td>Formular/Mail-Event</td><td>+25% vs. aktuell</td></tr>
+  <tr><td><strong>Verweildauer</strong></td><td>GA4</td><td>&gt;2:30 Min.</td></tr>
+</table>
+
+<!-- 10. FIXES -->
+<h2 id="fixes">10. Zusätzliche Optimierungen (unabhängig von DISG)</h2>
+<ul class="fix-list">
+  <li><span class="fix-num">1</span><strong>Testimonials:</strong> Aktuell generisch wirkend. Echte Kundenzitate mit Firmennamen und Fotos würden die Glaubwürdigkeit massiv steigern.</li>
+  <li><span class="fix-num">2</span><strong>Team-Bilder:</strong> Alle 6 Teammitglieder haben <code>placeholder-team.svg</code> – echte Fotos sind essenziell für Vertrauen (besonders Grün).</li>
+  <li><span class="fix-num">3</span><strong>Video:</strong> Kein funktionierendes Poster-Bild und keine Videodatei → höchste Priorität (stärkster Conversion-Hebel, besonders Gelb).</li>
+  <li><span class="fix-num">4</span><strong>HTML-Fehler:</strong> Zeile 947 hat einen ungeschlossenen <code>&lt;span&gt;</code> → Darstellungsfehler.</li>
+  <li><span class="fix-num">5</span><strong>Whitepaper-Download:</strong> Direkter Download ohne Lead-Capture. Formular-Gate wäre sinnvoll (Lead-Magnet für Blau).</li>
+  <li><span class="fix-num">6</span><strong>Mobile:</strong> Viele GSAP-Scroll-Animationen – Mobile Performance separat testen.</li>
+</ul>
+
+<hr>
+<p style="color: var(--muted); font-size: 0.85rem;">Quellen: William M. Marston (DISG), Paul Ekman (FACS), Bandler/Grinder (NLP), Kahneman (Verhaltensökonomie), Cialdini (Persuasion)<br>Erstellt als Teil des Powersales-Tool-Projekts. DISG-Profiling-Dashboard verfügbar als interaktives HTML-Artifact.</p>
+
+</body>
+</html>

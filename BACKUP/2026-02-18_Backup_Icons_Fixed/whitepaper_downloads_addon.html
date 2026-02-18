@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pöppel Workwear - Prozesskosten & Effizienz</title>
+    <!-- Link to main styles for fonts/colors -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #fff !important;
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .print-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .print-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #ea580c;
+            padding-bottom: 20px;
+        }
+
+        .print-logo {
+            height: 40px;
+        }
+
+        .print-meta {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .print-footer {
+            margin-top: 50px;
+            font-size: 10px;
+            color: #94a3b8;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        /* Force Section Styles for Print */
+        section {
+            padding: 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
+        }
+
+        .container {
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Hide web-only elements */
+        .calculator-reveal-trigger,
+        .btn,
+        .video-play-btn,
+        .nav,
+        .hero-scroll-indicator {
+            display: none !important;
+        }
+
+        /* Adjust Layouts */
+        .iceberg-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .iceberg-image-right img {
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .time-comparison-grid {
+            display: flex;
+            /* Stack on print or side-by-side? Side-by-side fits A4 landscape better, but A4 portrait is narrow */
+            /* Let's force vertical stack for better readability on portrait A4, OR scale down */
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            .print-container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            @page {
+                margin: 20mm;
+                size: A4 portrait;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print-container">
+        <header class="print-header">
+            <img src="images/00_allgemein/Poeppel_Workwear Logo.png" alt="Pöppel Workwear" class="print-logo">
+            <div class="print-meta">
+                <strong>Ergänzung zum Whitepaper</strong><br>
+                Prozesskosten & Zeit-Effizienz
+            </div>
+        </header>
+        <main>
+            <section id="eisberg" class="iceberg-section">
+                <div class="container">
+                    <div class="iceberg-grid-layout">
+
+                        <!-- Left: Text Content -->
+                        <div class="iceberg-content-left">
+                            <header class="section-header">
+                                <span class="section-badge">Versteckte Kosten</span>
+                                <h2 class="section-title">Einkaufspreis vs. <br><span
+                                        class="highlight-italic">Prozesskosten</span></h2>
+                                <p class="section-subtitle">Das Kompetenzzentrum innovative Beschaffung (gefördert vom
+                                    BMWK)
+                                    liefert
+                                    genau das Szenario, das Sie kennen sollten.</p>
+                            </header>
+
+                            <div class="introduction-text">
+                                <p>Die Studie verglich die Prozesskosten für ein <strong>"Gussgehäuse" (A-Teil)</strong>
+                                    und
+                                    eine
+                                    <strong>"Schutzbrille" (C-Teil)</strong>. Der Beschaffungsaufwand war identisch –
+                                    das
+                                    Ergebnis schockierend.
+                                </p>
+                            </div>
+
+                            <div class="source-citation">
+                                Quelle: Basierend auf Daten des BMWK / Kompetenzzentrum innovative Beschaffung
+                            </div>
+                        </div>
+
+                        <!-- Right: Image -->
+                        <div class="iceberg-image-right" style="position: relative;">
+                            <!-- Using the requested image -->
+                            <img src="Code_schnipsel/Preise_vs_Kosten/Eisberg Bild.jpg"
+                                alt="Eisberg Modell Prozesskosten" style="width: 100%; height: auto; display: block;">
+
+                            <!-- Overlays can be added via CSS if needed, but keeping it clean as requested -->
+                        </div>
+                    </div>
+
+                    <!-- Calculator Reveal Trigger with BME Copy -->
+                    <div class="calculator-reveal-trigger"
+                        style="max-width: 900px; margin: 80px auto 0; text-align: center;">
+                        <div class="bme-facts"
+                            style="margin-bottom: 40px; text-align: left; background: var(--color-light); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--color-gray-light);">
+                            <h3 style="margin-bottom: 20px; color: var(--color-primary);">Fakten vom Bundesverband
+                                Materialwirtschaft (BME)</h3>
+                            <ul style="list-style: none; display: grid; gap: 15px;">
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Ein durchschnittlicher manueller Bestellvorgang kostet in Deutschland rund
+                                        <strong>100 €</strong>.</span>
+                                </li>
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Bei mittelständischen Unternehmen liegt dieser Wert oft sogar bei bis zu
+                                        <strong>300 €</strong> pro Vorgang.</span>
+                                </li>
+                                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                                    <i data-lucide="alert-circle"
+                                        style="color: var(--color-primary); flex-shrink: 0; margin-top: 4px;"></i>
+                                    <span>Fallbeispiel Witzenmann: Selbst bei 260 € Warenkorb lagen die Prozesskosten
+                                        noch
+                                        bei <strong>140 €</strong> pro Bestellung.</span>
+                                </li>
+                            </ul>
+                            <p
+                                style="margin-top: 30px; font-weight: 600; font-style: italic; border-left: 4px solid var(--color-primary); padding-left: 20px;">
+                                „Jedes Mal, wenn ein Mitarbeiter ‚einfach nur schnell‘ etwas bestellt, kostet allein der
+                                Vorgang Ihr Unternehmen über 100 € – völlig unabhängig vom Warenwert.“
+                            </p>
+                        </div>
+
+                        <button id="revealCalculatorBtn" class="btn btn-primary btn-large">
+                            Jetzt Ihr Sparpotenzial berechnen
+                            <i data-lucide="calculator"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+    </div>
+    </section>
+    </main>
+    <div class="page-break"></div>
+    <main>
+        <section id="time-efficiency" class="time-efficiency-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Die <span class="highlight-italic">75-Minuten Jacke</span></h2>
+                    <p class="section-subtitle">Warum 40€ Warenwert Sie in Wahrheit 75 Minuten kosten kann.</p>
+                </header>
+
+                <div class="time-comparison-grid">
+                    <!-- Left: The Problem (Timeline) -->
+                    <div class="time-problem">
+                        <h3>Rechnen wir kurz: "Ein Mitarbeiter braucht eine neue Jacke."</h3>
+                        <div class="timeline-vertical">
+                            <!-- Step 1 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">1</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Bedarfsmeldung</h4>
+                                    <p>Mitarbeiter meldet Bedarf beim Vorarbeiter.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">2</div>
+                                <div class="step-content">
+                                    <span class="step-time">15 Min</span>
+                                    <h4>Katalogsuche</h4>
+                                    <p>Vorarbeiter sucht das richtige Modell.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">3</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Bestellung schreiben</h4>
+                                    <p>Formulare ausfüllen und weiterleiten.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">4</div>
+                                <div class="step-content">
+                                    <span class="step-time">30 Min</span>
+                                    <h4>Retoure & Fehler</h4>
+                                    <p>Ware kommt an, ist falsch, muss zurück.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5 -->
+                            <div class="timeline-step">
+                                <div class="step-marker">5</div>
+                                <div class="step-content">
+                                    <span class="step-time">10 Min</span>
+                                    <h4>Rechnungsprüfung</h4>
+                                    <p>Buchhaltung muss Belege prüfen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time-result-box">
+                            <span class="result-label">Gesamtzeit</span>
+                            <span class="result-value">75 Minuten</span>
+                            <p class="result-sub">Das kostet Sie mehr als die Jacke selbst.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: The Solution -->
+                    <div class="time-solution">
+                        <div class="solution-content">
+                            <div class="solution-icon-large">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <h3>Stellen Sie sich vor...</h3>
+                            <p class="solution-text">Diese <strong>75 Minuten</strong> würden direkt in die
+                                Projektplanung fließen.</p>
+
+                            <div class="solution-promise">
+                                <h4>Unser System eliminiert Schritte 2 bis 5 komplett.</h4>
+                                <ul class="elimination-list">
+                                    <li><i data-lucide="check-circle"></i> Keine Katalogsuche – Digitales Sortiment</li>
+                                    <li><i data-lucide="check-circle"></i> Keine manuelle Bestellung – Self-Service</li>
+                                    <li><i data-lucide="check-circle"></i> Keine Retouren – Passgenau dank Datensätzen
+                                    </li>
+                                    <li><i data-lucide="check-circle"></i> Keine Rechnungsprüfung – Sammelrechnung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="print-footer">
+        <p>© 2026 Pöppel Workwear Management • www.poeppel-workwear.de • info@poeppel-workwear.de</p>
+    </footer>
+    </div>
+    <script>
+        // Optional: Auto-print
+        // window.print();
+    </script>
+</body>
+
+</html>

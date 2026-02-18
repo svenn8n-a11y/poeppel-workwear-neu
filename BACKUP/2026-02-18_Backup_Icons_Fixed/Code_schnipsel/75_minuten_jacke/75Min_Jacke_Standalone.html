@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>75-Minuten Jacke - Zeit Effizienz</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background: #fff;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================
+         SEKTION 5b: ZEIT EFFIZIENZ (Timeline)
+    ======================================== -->
+    <section id="time-efficiency" class="time-efficiency-section">
+        <div class="container">
+            <header class="section-header">
+                <h2 class="section-title">Die <span class="highlight-italic">75-Minuten Jacke</span></h2>
+                <p class="section-subtitle">Warum 40€ Warenwert Sie in Wahrheit 75 Minuten kosten kann.</p>
+            </header>
+
+            <div class="time-comparison-grid">
+                <!-- Left: The Problem (Timeline) -->
+                <div class="time-problem">
+                    <h3>Rechnen wir kurz: "Ein Mitarbeiter braucht eine neue Jacke."</h3>
+                    <div class="timeline-vertical">
+                        <!-- Step 1 -->
+                        <div class="timeline-step">
+                            <div class="step-marker">1</div>
+                            <div class="step-content">
+                                <span class="step-time">10 Min</span>
+                                <h4>Bedarfsmeldung</h4>
+                                <p>Mitarbeiter meldet Bedarf beim Vorarbeiter.</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="timeline-step">
+                            <div class="step-marker">2</div>
+                            <div class="step-content">
+                                <span class="step-time">15 Min</span>
+                                <h4>Katalogsuche</h4>
+                                <p>Vorarbeiter sucht das richtige Modell.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="timeline-step">
+                            <div class="step-marker">3</div>
+                            <div class="step-content">
+                                <span class="step-time">10 Min</span>
+                                <h4>Bestellung schreiben</h4>
+                                <p>Formulare ausfüllen und weiterleiten.</p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="timeline-step">
+                            <div class="step-marker">4</div>
+                            <div class="step-content">
+                                <span class="step-time">30 Min</span>
+                                <h4>Retoure & Fehler</h4>
+                                <p>Ware kommt an, ist falsch, muss zurück.</p>
+                            </div>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="timeline-step">
+                            <div class="step-marker">5</div>
+                            <div class="step-content">
+                                <span class="step-time">10 Min</span>
+                                <h4>Rechnungsprüfung</h4>
+                                <p>Buchhaltung muss Belege prüfen.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-result-box">
+                        <span class="result-label">Gesamtzeit</span>
+                        <span class="result-value">75 Minuten</span>
+                        <p class="result-sub">Das kostet Sie mehr als die Jacke selbst.</p>
+                    </div>
+                </div>
+
+                <!-- Right: The Solution -->
+                <div class="time-solution">
+                    <div class="solution-content">
+                        <div class="solution-icon-large">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3>Stellen Sie sich vor...</h3>
+                        <p class="solution-text">Diese <strong>75 Minuten</strong> würden direkt in die
+                            Projektplanung fließen.</p>
+
+                        <div class="solution-promise">
+                            <h4>Unser System eliminiert Schritte 2 bis 5 komplett.</h4>
+                            <ul class="elimination-list">
+                                <li><i data-lucide="check-circle"></i> Keine Katalogsuche – Digitales Sortiment</li>
+                                <li><i data-lucide="check-circle"></i> Keine manuelle Bestellung – Self-Service</li>
+                                <li><i data-lucide="check-circle"></i> Keine Retouren – Passgenau dank Datensätzen
+                                </li>
+                                <li><i data-lucide="check-circle"></i> Keine Rechnungsprüfung – Sammelrechnung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Force animate-in or static visibility
+        document.addEventListener("DOMContentLoaded", function () {
+            // Kill ScrollTriggers for this section to prevent hiding
+            ScrollTrigger.getAll().forEach(st => st.kill());
+
+            // Force visible styles
+            const elements = document.querySelectorAll('.timeline-step, .time-result-box, .time-solution');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.style.visibility = 'visible';
+            });
+
+            // If we want to simulate the animation, we can do it manually, 
+            // but for a snippet/standalone, static visible is often safer/better.
+            // If the user wants to SEE it works, we can try running GSAP without ScrollTrigger?
+            // User complained "greyed out", which implies opacity < 1. 
+            // Setting opacity: 1 !important via CSS style block is safer.
+        });
+        if (typeof initTimeTimeline === 'function') initTimeTimeline();
+    </script>
+
+    <style>
+        /* Force override GSAP settings */
+        .timeline-step,
+        .time-result-box,
+        .time-solution {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+    </style>
+</body>
+
+</html>
