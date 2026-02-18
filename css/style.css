@@ -1610,7 +1610,7 @@ margin-top: 16px;
 }
 
 /* Partner Section - Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 640px) {
     .partner-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
