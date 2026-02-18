@@ -4300,15 +4300,13 @@ margin-top: 16px;
 }
 
 .team-contact-details a {
-    color: var(--text-color-light);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.9rem;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .team-contact-details a:hover {
-    opacity: 1;
-    color: white;
+    color: var(--color-primary);
 }
 
 /* =========================================
