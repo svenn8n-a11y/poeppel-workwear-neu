@@ -7,9 +7,19 @@
 // INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide Icons
+    // Initialize Lucide Icons with Retry Logic
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
+        console.log('Lucide icons initialized');
+    } else {
+        console.error('Lucide library not found!');
+        // Retry once after a short delay in case of loading race
+        setTimeout(() => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide icons initialized (retry)');
+            }
+        }, 500);
     }
 
     // Register GSAP ScrollTrigger
