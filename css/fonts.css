@@ -1,19 +1,43 @@
 /* Local Fonts - GDPR Compliant */
 
 @font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Outfit-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/Outfit-Bold.woff2') format('woff2');
+}
+
+@font-face {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 100 900;
+    font-weight: 400;
     font-display: swap;
-    src: url('../fonts/Inter-Variable.woff2') format('woff2');
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/Inter-Bold.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Playfair Display';
     font-style: normal;
-    font-weight: 400 900;
+    font-weight: 400;
     font-display: swap;
-    src: url('../fonts/PlayfairDisplay-Variable.woff2') format('woff2');
+    src: url('../fonts/PlayfairDisplay-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -22,4 +46,12 @@
     font-weight: 400;
     font-display: swap;
     src: url('../fonts/PlayfairDisplay-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/PlayfairDisplay-Bold.woff2') format('woff2');
 }
