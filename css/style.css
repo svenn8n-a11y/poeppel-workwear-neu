@@ -1974,6 +1974,29 @@ button {
 }
 
 /* =============================================
+   YOUTUBE 2-KLICK DATENSCHUTZ-HINWEIS
+   ============================================= */
+.yt-consent-hint {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+    width: 90%;
+    max-width: 560px;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+.yt-consent-hint a {
+    color: var(--color-primary);
+    pointer-events: all;
+    text-decoration: underline;
+}
+
+/* =============================================
    MOBILE NAVIGATION
    ============================================= */
 /* =============================================
