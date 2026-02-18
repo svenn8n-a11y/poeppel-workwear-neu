@@ -866,7 +866,8 @@ button {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 60px;
     overflow: hidden;
 }
 
@@ -1610,7 +1611,13 @@ margin-top: 16px;
 }
 
 /* Partner Section - Responsive */
-@media (max-width: 640px) {
+@media (min-width: 769px) {
+    .partner-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
     .partner-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
@@ -3655,7 +3662,7 @@ margin-top: 16px;
 }
 
 .onboarding-step-text h3 {
-    font-size: 20px;
+    font-size: 1.75rem;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #0F172A;
     margin-bottom: 6px;
@@ -3800,7 +3807,7 @@ margin-top: 16px;
 
     /* Text-Größen anpassen */
     .onboarding-step-text h3 {
-        font-size: 1.35rem;
+        font-size: 1.1rem;
     }
 
     .onboarding-step-text p {
