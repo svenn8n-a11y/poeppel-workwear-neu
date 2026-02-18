@@ -80,6 +80,8 @@ body {
     color: var(--color-dark);
     background-color: var(--color-white);
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 h1,
@@ -616,6 +618,8 @@ button {
 .problem-section {
     padding: var(--section-padding) 0;
     background: var(--color-light);
+    position: relative;
+    z-index: 5;
 }
 
 /* Sticky Cards Container - Optimized Spacing */
@@ -767,8 +771,10 @@ button {
 @media (max-width: 968px) {
     .gewinn-header-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
         text-align: center;
+        margin-bottom: 32px;
+        /* Reduced from 64px */
     }
 
     .gewinn-header-content {
@@ -1412,8 +1418,19 @@ button {
 
 .partner-section .section-subtitle {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 1.125rem;
-    margin-top: 16px;
+}
+
+.team-contact-details a {
+    color: var(--color-white);
+    transition: color var(--transition-fast);
+}
+
+.team-contact-details a:hover {
+    color: var(--color-primary);
+}
+
+font-size: 1.125rem;
+margin-top: 16px;
 }
 
 .partner-grid {
@@ -3272,14 +3289,16 @@ button {
 }
 
 /* Active Glow beim Scrollen - Sattes Orange ohne Grauschleier */
+/* Active Glow beim Scrollen - Sattes Orange ohne Grauschleier */
+/* Active Glow beim Scrollen - Sattes Orange ohne Grauschleier */
 .honeycomb-cell-wrap.honeycomb-cell-active {
     filter:
-        drop-shadow(0 0 20px rgba(234, 88, 12, 0.9)) drop-shadow(0 0 40px rgba(234, 88, 12, 0.6)) drop-shadow(0 0 60px rgba(234, 88, 12, 0.4));
+        drop-shadow(0 0 20px rgba(249, 115, 21, 0.9)) drop-shadow(0 0 40px rgba(249, 115, 21, 0.6)) drop-shadow(0 0 60px rgba(249, 115, 21, 0.4));
     z-index: 10;
 }
 
 .honeycomb-cell-wrap.honeycomb-cell-active .honeycomb-cell {
-    background: rgba(234, 88, 12, 0.95);
+    background: rgba(249, 115, 21, 0.95);
     /* Sattes Button-Orange */
 }
 
@@ -3318,7 +3337,7 @@ button {
     margin-bottom: 15px;
     /* war 12px, +25% */
     border-radius: 50%;
-    background: rgba(249, 115, 22, 0.2);
+    background: rgba(249, 115, 21, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3550,8 +3569,8 @@ button {
 /* Individual Step Cell - Grid Positioned */
 .onboarding-step-cell {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3635,7 +3654,7 @@ button {
 }
 
 .onboarding-step-text h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: var(--color-primary);
     margin-bottom: 8px;
     line-height: 1.2;
@@ -3643,7 +3662,7 @@ button {
 }
 
 .onboarding-step-text p {
-    font-size: 0.9375rem;
+    font-size: 1.125rem;
     color: var(--color-gray);
     margin-bottom: 12px;
     line-height: 1.5;
@@ -3661,7 +3680,7 @@ button {
 }
 
 .onboarding-step-text ul li {
-    font-size: 0.8125rem;
+    font-size: 1rem;
     color: var(--color-gray);
     margin-bottom: 4px;
     padding-left: 16px;
@@ -4195,9 +4214,17 @@ button {
 .team-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: all 0.5s ease;
-    filter: grayscale(100%);
+    object-fit: contain;
+    object-position: bottom center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    /* Modern Depth Effect for Cutouts + Sharpening */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+
+    /* Sharpening attempt for low-res images + Hardware Accel */
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .team-card:hover .team-image {
@@ -5522,5 +5549,262 @@ input[type=range]::-webkit-slider-thumb:hover {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
+    }
+}
+/* =========================================
+   MODULE GRID LAYOUT (Modulare Sektion)
+   ========================================= */
+
+.module-grid-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- Basis-Setup Karte (breites Rechteck oben) --- */
+.base-module-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 40px 48px;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%);
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.base-module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at top left, rgba(249,115,22,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.base-module-icon {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.base-module-icon i {
+    width: 36px;
+    height: 36px;
+    color: #fff;
+}
+
+.base-module-content {
+    flex: 1;
+}
+
+.base-module-badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.base-module-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0 0 8px;
+}
+
+.base-module-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.base-module-check {
+    flex: 0 0 auto;
+}
+
+.base-module-check i {
+    width: 48px;
+    height: 48px;
+    color: var(--color-primary);
+}
+
+/* --- Add-on Module Header --- */
+.addon-modules-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.addon-modules-header h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0 0 6px;
+}
+
+.addon-modules-header p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* --- 3x2 Grid für Zusatz-Module --- */
+.addon-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.addon-module-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    position: relative;
+}
+
+.addon-module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.addon-module-card.selected {
+    background: rgba(249, 115, 22, 0.12);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 24px rgba(249, 115, 22, 0.25);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.addon-module-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: background 0.25s ease;
+}
+
+.addon-module-card.selected .addon-module-icon {
+    background: var(--color-primary);
+}
+
+.addon-module-icon i {
+    width: 28px;
+    height: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.25s ease;
+}
+
+.addon-module-card.selected .addon-module-icon i {
+    color: #fff;
+}
+
+.addon-module-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0 0 10px;
+}
+
+.addon-module-card p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.55;
+    margin: 0 0 20px;
+    flex: 1;
+}
+
+.addon-module-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    transition: background 0.25s ease, transform 0.3s ease;
+}
+
+.addon-module-card.selected .addon-module-toggle {
+    background: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.addon-module-toggle .icon-plus {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+}
+
+.addon-module-toggle .icon-check {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    display: none;
+}
+
+.addon-module-card.selected .addon-module-toggle .icon-plus {
+    display: none;
+}
+
+.addon-module-card.selected .addon-module-toggle .icon-check {
+    display: block;
+}
+
+/* --- CTA --- */
+.module-grid-cta {
+    text-align: center;
+}
+
+/* --- Responsive Mobile --- */
+@media (max-width: 768px) {
+    .base-module-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 24px;
+        gap: 20px;
+    }
+
+    .base-module-check {
+        display: none;
+    }
+
+    .addon-modules-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .addon-module-card {
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .addon-modules-grid {
+        grid-template-columns: 1fr;
     }
 }

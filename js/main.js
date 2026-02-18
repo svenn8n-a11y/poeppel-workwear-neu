@@ -703,15 +703,31 @@ function initModularCards() {
         duration: 1
     });
 
-    gsap.from('.module-grid-container', {
+    // Basis-Karte einblenden
+    gsap.from('.base-module-card', {
         scrollTrigger: {
-            trigger: '.module-grid-container',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
+            trigger: '.base-module-card',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
         },
         opacity: 0,
-        y: 40,
-        duration: 0.8
+        y: 30,
+        duration: 0.7,
+        ease: 'power2.out'
+    });
+
+    // Addon-Karten gestaffelt einblenden
+    gsap.to('.addon-module-card', {
+        scrollTrigger: {
+            trigger: '.addon-modules-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out'
     });
 
     if (!cards.length) return;
