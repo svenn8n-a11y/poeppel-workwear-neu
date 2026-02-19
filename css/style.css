@@ -463,7 +463,7 @@ button {
     position: relative;
     z-index: 10;
     text-align: center;
-    padding: 0 var(--container-padding);
+    padding: 80px var(--container-padding) 0;
     max-width: 900px;
 }
 
@@ -3615,21 +3615,20 @@ button {
 .onboarding-step-cell[data-step="3"] {
     grid-column: 2;
     grid-row: 2;
+    transform: translateY(60px);
 }
 
 .onboarding-step-cell[data-step="4"] {
     grid-column: 3;
     grid-row: 2;
+    transform: translateY(60px);
 }
 
 .onboarding-step-cell[data-step="5"] {
     grid-column: 3;
     grid-row: 3;
-}
-
-/* Step 5: kleineres Bild + kompaktere Bullets (5 Punkte statt 3) */
-.onboarding-step-cell[data-step="5"] .onboarding-step-image {
-    height: 160px;
+    height: 600px;
+    transform: translateY(60px);
 }
 
 .onboarding-step-cell[data-step="5"] .onboarding-step-text ul li {
@@ -3805,10 +3804,11 @@ button {
     /* WICHTIG: Grid-Layout NICHT ändern - benötigt für GSAP! */
     /* .onboarding-diagonal-wrapper bleibt unverändert */
 
-    /* Step Cells: Skalieren */
+    /* Step Cells: Skalieren – kein festes Quadrat auf Mobile */
     .onboarding-step-cell {
         width: 340px;
-        height: 340px;
+        height: auto;
+        min-height: 340px;
         padding: 0;
     }
 
@@ -3839,6 +3839,10 @@ button {
 
     .onboarding-step-text ul li {
         font-size: 0.75rem;
+    }
+
+    .onboarding-step-text ul {
+        padding-bottom: 20px;
     }
 
     /* SVG-Pfad: Mobile Version anzeigen */
