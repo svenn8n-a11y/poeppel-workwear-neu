@@ -865,6 +865,7 @@ button {
    ============================================= */
 .potentiale-section {
     position: relative;
+    z-index: 6; /* Above problem-section (z-index:5) so header badge is not covered */
     background: var(--color-dark);
     /* No overflow:hidden – GSAP pin uses position:fixed which needs unclipped parent */
 }
