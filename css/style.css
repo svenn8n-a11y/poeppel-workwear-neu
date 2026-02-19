@@ -570,7 +570,7 @@ button {
     box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.4),
         0 0 20px rgba(249, 115, 22, 0.2);
     aspect-ratio: 16 / 9;
-    background: var(--color-dark);
+    background: var(--color-dark) url('../images/02_video/video-thumbnail.jpg') center / cover no-repeat;
 }
 
 .video-player video {
