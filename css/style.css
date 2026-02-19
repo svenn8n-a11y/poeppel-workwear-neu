@@ -4259,8 +4259,8 @@ button {
     object-position: bottom center;
     transition: transform 0.3s ease, filter 0.3s ease;
 
-    /* Modern Depth Effect for Cutouts + Sharpening */
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    /* Graustufen default, Farbe on hover */
+    filter: grayscale(100%) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
 
     /* Sharpening attempt for low-res images + Hardware Accel */
     image-rendering: -webkit-optimize-contrast;
@@ -4269,7 +4269,7 @@ button {
 }
 
 .team-card:hover .team-image {
-    filter: grayscale(0%);
+    filter: grayscale(0%) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
     transform: scale(1.05);
 }
 
