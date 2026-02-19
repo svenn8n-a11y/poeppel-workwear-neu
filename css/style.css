@@ -1420,6 +1420,9 @@ button {
 
 .partner-section .section-subtitle {
     color: rgba(255, 255, 255, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .team-contact-details a {
