@@ -29,27 +29,29 @@ Die Landingpage ist live unter:
 
 Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Customer Journey fuehren:
 
-| Nr. | ID | Titel |
-|-----|----|-------|
-| 1 | `#hero` | Workwear Management mit System |
-| 2 | `#video` | Digitale Beschaffungslösung |
-| 3 | `#problem` | Die Kaskade der Ineffizienz |
-| 4 | `#potentiale` | Der Pöppel Kreislauf – Vom Chaos zum System |
-| 5 | `#loesung` | In 3 Schritten zum Ziel |
-| 6 | `#onboarding` | Der Pöppel Onboarding-Prozess |
-| 7 | `#cta-beratung` | CTA – Bereit für den nächsten Schritt? |
-| 8 | `#partner` | Partner statt Plattform |
-| 9 | `#marken` | Unsere Marken – Laufband |
-| 10 | `#testimonials` | Kundenstimmen |
-| 11 | `#modular` | Für jeden die passende Lösung |
-| 12 | `#usps` | 8 Gründe für Pöppel |
-| 13 | `#cta-potential` | CTA – Ungenutzte Potentiale |
-| 14 | `#cta-whitepaper` | CTA – Whitepaper Download |
-| 15 | `#gewinn` | Ihr Gewinn mit System |
-| 16 | `#team` | Ihr Expertenteam |
-| 17 | `#cta-beratung-2` | CTA – Lassen Sie uns sprechen |
-| 18 | `#faq` | Häufig gestellte Fragen |
-| 19 | `#kontakt` | Final CTA – Bereit für Workwear Management mit System? |
+| Nr. | ID | Titel | H1/H2 |
+|-----|----|-------|-------|
+| 1 | `#hero` | Digitales Workwear Management für Bau & Handwerk | H1 |
+| 2 | `#video` | Digitale Beschaffung von Arbeitskleidung: Schluss mit dem Zettel-Chaos. | H2 |
+| 3 | `#problem` | Die Kaskade der Ineffizienz | H2 |
+| 4 | `#potentiale` | Vom Chaos zum System. | H2 |
+| 5 | `#loesung` | In 3 Schritten zum Ziel | H2 |
+| 6 | `#onboarding` | Der Pöppel Onboarding-Prozess | H2 |
+| 7 | `#cta-beratung` | CTA – Bereit für den nächsten Schritt? | H2 |
+| 8 | `#partner` | Partner statt Plattform | H2 |
+| 9 | `#marken` | Qualität, der wir vertrauen | H2 |
+| 10 | `#testimonials` | Was unsere Partner sagen | H2 |
+| 11 | `#modular` | Für jeden die passende Lösung | H2 |
+| 12 | `#cta-potential` | CTA – Ungenutzte Potentiale sichtbar machen | H2 |
+| 13 | `#cta-whitepaper` | Digitalisierung von Workwear-Management | H2 |
+| 14 | `#usps` | 8 Gründe für Pöppel *(verschoben: nach Whitepaper)* | H2 |
+| 15 | `#gewinn` | Ihr Gewinn mit System | H2 |
+| 16 | `#team` | Wir sind für Sie da | H2 |
+| 17 | `#cta-beratung-2` | CTA – Lassen Sie uns sprechen | H2 |
+| 18 | `#faq` | Häufig gestellte Fragen | H2 |
+| 19 | `#kontakt` | Bereit für Workwear Management mit System? | H2 |
+
+> SEO-Mapping vollständig: siehe [`Konzepte/SEO_Heading_Mapping.md`](Konzepte/SEO_Heading_Mapping.md)
 
 ## Project Structure
 
