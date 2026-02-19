@@ -877,8 +877,9 @@ button {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 96px; /* 24px nav-padding-top + ~40px logo + 24px nav-padding-bottom + 8px buffer */
+    padding-bottom: 64px; /* breathing room: cards stay above progress bar */
+    position: relative; /* progress bar positions relative to viewport */
     overflow: hidden;
-    /* No z-index: overflow:clip on .problem-section clips sticky cards cleanly */
 }
 
 .potentiale-header {
@@ -905,14 +906,14 @@ button {
 .horizontal-track {
     display: flex;
     gap: 32px;
-    padding: 0 var(--container-padding) 0 calc(50vw - 210px);
-    /* Start first card centered */
+    padding: 0 var(--container-padding) 0 calc(50vw - 230px);
+    /* Start first card (460px wide) centered */
     will-change: transform;
 }
 
 .potential-card {
     flex-shrink: 0;
-    width: 420px;
+    width: 460px;
     background: var(--color-dark-light);
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -952,7 +953,7 @@ button {
 }
 
 .potential-card-image {
-    height: 180px;
+    height: 160px;
     position: relative;
     overflow: hidden;
 }
@@ -1000,7 +1001,7 @@ button {
 
 .horizontal-progress {
     position: absolute;
-    bottom: 40px;
+    bottom: 20px; /* sits in the 64px padding-bottom breathing zone */
     left: var(--container-padding);
     right: var(--container-padding);
     height: 3px;
@@ -3633,7 +3634,7 @@ button {
     grid-column: 3;
     grid-row: 3;
     width: 576px; /* 20% breiter als Standard 480px → Inhalt reflows, kein Overlap mit Header */
-    height: 600px;
+    height: 520px; /* Reduziert von 600px: passt auf 768px ohne Progressbar-Overlap */
     transform: translateY(60px);
 }
 
@@ -3773,7 +3774,7 @@ button {
 
 .onboarding-progress {
     position: absolute;
-    bottom: 40px;
+    bottom: 60px; /* Mehr Abstand: Karten enden nicht mehr in der Progressbar */
     left: 40px;
     right: 40px;
     height: 2px;
