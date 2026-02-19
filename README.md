@@ -39,7 +39,7 @@ Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Custome
 | 6 | `#onboarding` | Der Pöppel Onboarding-Prozess |
 | 7 | `#cta-beratung` | CTA – Bereit für den nächsten Schritt? |
 | 8 | `#partner` | Partner statt Plattform |
-| 9 | *(kein ID)* | Unsere Marken – Laufband |
+| 9 | `#marken` | Unsere Marken – Laufband |
 | 10 | `#testimonials` | Kundenstimmen |
 | 11 | `#modular` | Für jeden die passende Lösung |
 | 12 | `#usps` | 8 Gründe für Pöppel |
