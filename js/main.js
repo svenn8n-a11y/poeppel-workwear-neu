@@ -316,12 +316,12 @@ function initHorizontalScroll() {
     const getScrollDistance = () => {
         const viewportWidth = window.innerWidth;
         const cardCount = cards.length;
-        const cardWidth = 420;
+        const cardWidth = 460; // must match .potential-card width in CSS
         const gap = 32;
-        const leftPad = Math.max(viewportWidth / 2 - 210, 80);
+        const leftPad = Math.max(viewportWidth / 2 - 230, 80); // center 460px card: 460/2 = 230
         const totalTrackWidth = (cardCount * cardWidth) + ((cardCount - 1) * gap) + leftPad;
-        // Mobile: weniger Excess, damit 5. Karte vollständig sichtbar ist
-        const excess = viewportWidth <= 768 ? 0 : 100;
+        // excess = desired gap from last card's right edge to viewport right edge
+        const excess = viewportWidth <= 768 ? 0 : 80;
         return totalTrackWidth - viewportWidth + excess;
     };
 
