@@ -3526,7 +3526,10 @@ button {
 .onboarding-header {
     position: absolute;
     top: 120px;
-    left: 40px;
+    left: 0;
+    right: 0;
+    /* Gleicher Einzug wie .container in anderen Sektionen */
+    padding-left: max(var(--container-padding), calc((100% - var(--container-max)) / 2 + var(--container-padding)));
     z-index: 50;
 }
 
@@ -3589,6 +3592,7 @@ button {
 .onboarding-step-cell[data-step="1"] {
     grid-column: 1;
     grid-row: 1;
+    transform: translateY(60px); /* Abstand zur Überschrift vergrößern */
 }
 
 .onboarding-step-cell[data-step="2"] {
