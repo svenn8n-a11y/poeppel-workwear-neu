@@ -3456,8 +3456,8 @@ button {
    ============================================= */
 .onboarding-section {
     position: relative;
-    height: 400vh;
-    /* Restore height for scrolling */
+    height: 500vh; /* Pin-Dauer 400vh + 100vh Puffer: verhindert Overlap mit nächster Sektion */
+    overflow: hidden; /* Verhindert dass bg-grid (300vw×300vh) in nachfolgende Sektionen blutet */
     background: var(--color-dark) url('../images/12_onboarding/Onboarding-Background1.jpg') center center / cover no-repeat fixed;
 }
 

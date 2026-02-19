@@ -25,30 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Non-ScrollTrigger inits (sofort)
+    // Non-ScrollTrigger inits (sofort – kein Layout-Bezug)
     initNavigation();
     initScrollToTop();
     initVideoPlayer();
     initModularCards();
     initFAQAccordion();
-
-    // ALL ScrollTrigger inits nach Layout-Ready (deferred)
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            initHeroAnimations();
-            initStickyCards();
-            initHorizontalScroll();    // Sektion 4 (pin)
-            initStepAnimations();      // Sektion 6
-            initPartnerSection();      // Sektion 7 (Partner)
-            initTestimonialsScroll();  // Sektion 8 (Testimonials)
-            initCTAAnimations();
-            initScrollProgress();
-            initUSPsHoneycomb();       // Sektion 10 (Wabenstruktur)
-            initOnboardingTreppe();    // Sektion 12 (pin)
-            initGewinnCards();
-            ScrollTrigger.refresh();
-        });
-    });
+    // ScrollTrigger-Inits werden in window.load + fonts.ready gestartet
 });
 
 // ========================================
@@ -1120,17 +1103,42 @@ function debounce(func, wait) {
 }
 
 // ========================================
-// REFRESH SCROLL TRIGGER ON LOAD
+// SCROLLTRIGGER INIT – nach window.load + fonts.ready
+// Grund: Hard-Refresh löscht Font-Cache → Fonts laden async parallel zu DOMContentLoaded.
+// RAF-Init (≈16ms) rechnet mit Fallback-Schrift-Dimensionen → falsche Sticky-Offsets.
+// window.load + document.fonts.ready garantiert stabiles Layout bevor ScrollTrigger rechnet.
 // ========================================
 window.addEventListener('load', () => {
-    // Clear cached scroll positions and refresh after full load
-    ScrollTrigger.clearScrollMemory();
-    ScrollTrigger.refresh();
-    // Second refresh with delay for late-loading assets (fonts, images)
-    setTimeout(() => {
-        ScrollTrigger.clearScrollMemory();
-        ScrollTrigger.refresh();
-    }, 1000);
+    const initAllScrollTriggers = () => {
+        requestAnimationFrame(() => {
+            initHeroAnimations();
+            initStickyCards();
+            initHorizontalScroll();    // Sektion 4 (pin)
+            initStepAnimations();      // Sektion 6
+            initPartnerSection();      // Sektion 7 (Partner)
+            initTestimonialsScroll();  // Sektion 8 (Testimonials)
+            initCTAAnimations();
+            initScrollProgress();
+            initUSPsHoneycomb();       // Sektion 10 (Wabenstruktur)
+            initOnboardingTreppe();    // Sektion 12 (pin)
+            initGewinnCards();
+            ScrollTrigger.refresh();
+            // Sicherheits-Refresh nach kurzer Verzögerung (Bilder, Late-Assets)
+            setTimeout(() => {
+                ScrollTrigger.clearScrollMemory();
+                ScrollTrigger.refresh();
+            }, 400);
+        });
+    };
+
+    // Warte auf vollständiges Font-Rendering (verhindert Font-Race-Condition)
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready
+            .then(initAllScrollTriggers)
+            .catch(() => setTimeout(initAllScrollTriggers, 800));
+    } else {
+        setTimeout(initAllScrollTriggers, 800); // Fallback für ältere Browser
+    }
 });
 
 /* =========================================
