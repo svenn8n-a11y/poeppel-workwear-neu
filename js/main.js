@@ -298,7 +298,7 @@ function initStickyCards() {
             scrollTrigger: {
                 trigger: card,
                 start: 'top 90%', // Früher für flüssigeren Scroll
-                toggleActions: 'play none none none'
+                toggleActions: 'play none none reverse'
             },
             opacity: 0,
             y: 20, // Reduced from 30
@@ -351,7 +351,8 @@ function initHorizontalScroll() {
             start: 'top top',
             end: () => `+=${getScrollDistance()}`,
             pin: viewport,
-            scrub: 1,
+            scrub: 0.5,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
                 if (progressBar) {
@@ -1121,10 +1122,14 @@ function debounce(func, wait) {
 // REFRESH SCROLL TRIGGER ON LOAD
 // ========================================
 window.addEventListener('load', () => {
-    // Refresh after full load to recalculate all pin spacings
+    // Clear cached scroll positions and refresh after full load
+    ScrollTrigger.clearScrollMemory();
     ScrollTrigger.refresh();
-    // Second refresh after short delay for any late-loading assets
-    setTimeout(() => ScrollTrigger.refresh(), 500);
+    // Second refresh with delay for late-loading assets (fonts, images)
+    setTimeout(() => {
+        ScrollTrigger.clearScrollMemory();
+        ScrollTrigger.refresh();
+    }, 1000);
 });
 
 /* =========================================

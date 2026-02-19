@@ -620,6 +620,7 @@ button {
     background: var(--color-light);
     position: relative;
     z-index: 5;
+    overflow: clip; /* Clips sticky cards to section bounds without breaking position:sticky */
 }
 
 /* Sticky Cards Container - Optimized Spacing */
@@ -630,8 +631,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 80px;
-    padding-bottom: 0px;
-    /* Removed padding to eliminate gap to next section */
+    padding-bottom: 200px; /* Transition buffer: sticky cards release before potentiale pins */
     margin-bottom: 0px;
 }
 
@@ -869,7 +869,7 @@ button {
     justify-content: flex-start;
     padding-top: 60px;
     overflow: hidden;
-    z-index: 50; /* Renders above problem-section sticky cards (max z-index: 30) */
+    /* No z-index: overflow:clip on .problem-section clips sticky cards cleanly */
 }
 
 .potentiale-header {
