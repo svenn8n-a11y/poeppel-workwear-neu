@@ -900,8 +900,9 @@ button {
 .horizontal-scroll-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    padding-bottom: 24px; /* clip boundary below cards: shadow + rounded corners visible */
+    overflow-x: clip; /* clips off-screen cards horizontally, but allows vertical overflow */
+    /* overflow-y: visible (default) – card shadows and rounded corners are not clipped */
+    padding-bottom: 32px; /* visual breathing room between cards and progress bar area */
 }
 
 .horizontal-track {
