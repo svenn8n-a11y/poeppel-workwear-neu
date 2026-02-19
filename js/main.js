@@ -941,7 +941,7 @@ function initOnboardingTreppe() {
         scrollTrigger: {
             trigger: section,
             start: 'top top',  // Start when section top meets viewport top - ensures heading is fully visible
-            end: '+=300%',
+            end: '+=400%',
             scrub: 1,
             pin: viewport,
             anticipatePin: 1,
@@ -953,10 +953,11 @@ function initOnboardingTreppe() {
         }
     });
 
-    // Diagonal staircase animation: x → y → x
+    // Diagonal staircase animation: x → y → x → y
     tl.to(wrapper, { x: '-100vw', duration: 1, ease: 'power2.inOut' })
         .to(wrapper, { y: '-100vh', duration: 1, ease: 'power2.inOut' })
-        .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' });
+        .to(wrapper, { x: '-200vw', duration: 1, ease: 'power2.inOut' })
+        .to(wrapper, { y: '-200vh', duration: 1, ease: 'power2.inOut' });
 
 
     // Animated SVG path (draws along with scroll) - Desktop ODER Mobile
@@ -973,7 +974,7 @@ function initOnboardingTreppe() {
         });
         tl.to(path, {
             strokeDashoffset: 0,
-            duration: 3,
+            duration: 4,
             ease: 'none'
         }, 0); // start at time 0, synced with full timeline
 
@@ -992,7 +993,7 @@ function initOnboardingTreppe() {
             // Animate dot position along path synced with scroll
             tl.to({ progress: 0 }, {
                 progress: 1,
-                duration: 3,
+                duration: 4,
                 ease: 'none',
                 onUpdate: function () {
                     const p = this.targets()[0].progress;
@@ -1010,7 +1011,7 @@ function initOnboardingTreppe() {
             scrollTrigger: {
                 trigger: section,
                 start: 'top top',
-                end: '+=300%',
+                end: '+=400%',
                 scrub: 1
             },
             x: -300,

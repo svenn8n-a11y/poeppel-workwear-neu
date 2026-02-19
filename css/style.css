@@ -3606,6 +3606,21 @@ button {
     grid-row: 2;
 }
 
+.onboarding-step-cell[data-step="5"] {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+/* Step 5: kleineres Bild + kompaktere Bullets (5 Punkte statt 3) */
+.onboarding-step-cell[data-step="5"] .onboarding-step-image {
+    height: 160px;
+}
+
+.onboarding-step-cell[data-step="5"] .onboarding-step-text ul li {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
 /* Step Content Layout */
 .onboarding-step-content {
     display: flex;
