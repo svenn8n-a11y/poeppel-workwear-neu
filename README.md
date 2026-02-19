@@ -27,31 +27,29 @@ Die Landingpage ist live unter:
 
 ## Features / Sections
 
-Die Landingpage besteht aus **21 Sektionen**, die den Besucher durch die Customer Journey fuehren:
+Die Landingpage besteht aus **19 Sektionen**, die den Besucher durch die Customer Journey fuehren:
 
-| Nr. | Sektion | Beschreibung |
-|-----|---------|--------------|
-| 1 | **Hero** | "Workwear Management mit System" - Erste visuelle Ansprache |
-| 2 | **Videoplayer** | Elevator Pitch Video |
-| 3 | **Problem** | 12 Herausforderungen dargestellt als 3 Sticky Stacking Cards |
-| 4 | **Potentiale** | Horizontal Scroll Animation (GSAP pinned) |
-| 5 | **Die wahren Kosten** | Visuelles Eisberg-Modell (95% versteckte Kosten) |
-| 6 | **ROI Calculator** | Interaktiver Spar-Rechner (Slider & Ergebnis) |
-| 7 | **CTA Whitepaper** | Download Call-to-Action |
-| 8 | **Loesungsweg** | 3 Steps mit verbindender Linie |
-| 9 | **Partner** | "Partner statt Plattform" - 3 Cards mit Eye-Catcher-Zahlen |
-| 10 | **Unsere Marken** | Marquee-Carousel mit Markenlogos |
-| 11 | **Testimonials** | Auto-scrolling Carousel (Dark Theme) |
-| 12 | **CTA Beratungstermin** | Terminvereinbarung |
-| 13 | **Modularer Ansatz** | 3 expandierbare Cards (Professional, Expert, Enterprise) |
-| 14 | **USPs** | 8 Benefits Carousel mit Auto-Scroll beim Scrollen |
-| 15 | **CTA Potentialanalyse** | Analyse-Anfrage |
-| 16 | **Onboarding** | Diagonale Treppen-Animation |
-| 17 | **Gewinn** | 3 Benefit Cards |
-| 18 | **Team** | "Ihr Expertenteam" - Ansprechpartner mit Kontakt |
-| 19 | **CTA Beratungsgespraech** | Finale Beratungs-CTA |
-| 20 | **FAQ** | Accordion mit haeufigen Fragen |
-| 21 | **Finale CTA** | Abschliessender Call-to-Action mit Kontaktdaten |
+| Nr. | ID | Titel |
+|-----|----|-------|
+| 1 | `#hero` | Workwear Management mit System |
+| 2 | `#video` | Digitale Beschaffungslösung |
+| 3 | `#problem` | Die Kaskade der Ineffizienz |
+| 4 | `#potentiale` | Der Pöppel Kreislauf – Vom Chaos zum System |
+| 5 | `#loesung` | In 3 Schritten zum Ziel |
+| 6 | `#onboarding` | Der Pöppel Onboarding-Prozess |
+| 7 | `#cta-beratung` | CTA – Bereit für den nächsten Schritt? |
+| 8 | `#partner` | Partner statt Plattform |
+| 9 | *(kein ID)* | Unsere Marken – Laufband |
+| 10 | `#testimonials` | Kundenstimmen |
+| 11 | `#modular` | Für jeden die passende Lösung |
+| 12 | `#usps` | 8 Gründe für Pöppel |
+| 13 | `#cta-potential` | CTA – Ungenutzte Potentiale |
+| 14 | `#cta-whitepaper` | CTA – Whitepaper Download |
+| 15 | `#gewinn` | Ihr Gewinn mit System |
+| 16 | `#team` | Ihr Expertenteam |
+| 17 | `#cta-beratung-2` | CTA – Lassen Sie uns sprechen |
+| 18 | `#faq` | Häufig gestellte Fragen |
+| 19 | `#kontakt` | Final CTA – Bereit für Workwear Management mit System? |
 
 ## Project Structure
 
