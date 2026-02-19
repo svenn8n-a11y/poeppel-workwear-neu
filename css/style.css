@@ -3449,6 +3449,10 @@ button {
     color: var(--color-white);
 }
 
+.cta-accent .section-badge {
+    color: var(--color-white);
+}
+
 .cta-accent .cta-content p {
     color: rgba(255, 255, 255, 0.9);
 }
@@ -3627,6 +3631,7 @@ button {
 .onboarding-step-cell[data-step="5"] {
     grid-column: 3;
     grid-row: 3;
+    width: 576px; /* 20% breiter als Standard 480px → Inhalt reflows, kein Overlap mit Header */
     height: 600px;
     transform: translateY(60px);
 }
@@ -3697,7 +3702,7 @@ button {
 
 .onboarding-step-text p {
     font-size: 0.9rem;
-    color: #0F172A;
+    color: var(--color-primary);
     font-weight: 700;
     margin-bottom: 8px;
     line-height: 1.4;
