@@ -876,7 +876,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 60px;
+    padding-top: 96px; /* 24px nav-padding-top + ~40px logo + 24px nav-padding-bottom + 8px buffer */
     overflow: hidden;
     /* No z-index: overflow:clip on .problem-section clips sticky cards cleanly */
 }
