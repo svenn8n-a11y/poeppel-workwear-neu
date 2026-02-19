@@ -3249,20 +3249,26 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 96px; /* nav clearance: badge starts below fixed nav */
     overflow: hidden;
+}
+
+.usps-section .section-header {
+    margin-bottom: 16px; /* reduce gap: headline closer to Waben */
 }
 
 .honeycomb-scroll-wrapper {
     position: relative;
     width: 100%;
     overflow: visible;
-    margin-top: 48px;
+    margin-top: 0;
 }
 
 .honeycomb-track {
     display: flex;
     align-items: center;
-    padding: 120px var(--container-padding) 120px calc(50vw - 134px);
+    padding: 88px var(--container-padding) 120px calc(50vw - 134px);
+    /* top 88px: enough for odd-cell zigzag (-75px) with ~13px clearance above nav */
     will-change: transform;
 }
 
