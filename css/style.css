@@ -865,7 +865,7 @@ button {
    ============================================= */
 .potentiale-section {
     position: relative;
-    z-index: 6; /* Above problem-section (z-index:5) so header badge is not covered */
+    /* z-index entfernt: kein Stacking Context – GSAP Pin-Spacer funktioniert stabil */
     background: var(--color-dark);
     /* No overflow:hidden – GSAP pin uses position:fixed which needs unclipped parent */
 }
@@ -879,6 +879,7 @@ button {
     padding-top: 96px; /* 24px nav-padding-top + ~40px logo + 24px nav-padding-bottom + 8px buffer */
     padding-bottom: 64px; /* breathing room: cards stay above progress bar */
     position: relative; /* progress bar positions relative to viewport */
+    z-index: 7; /* Wenn GSAP auf position:fixed setzt: liegt über problem-section (z-index:5) */
     overflow: hidden;
 }
 

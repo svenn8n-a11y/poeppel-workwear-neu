@@ -335,7 +335,7 @@ function initHorizontalScroll() {
             end: () => `+=${getScrollDistance()}`,
             pin: viewport,
             scrub: 0.5,
-            anticipatePin: 1,
+            // anticipatePin entfernt: verursacht Jitter mit dynamischem end() bei Hard Refresh
             invalidateOnRefresh: true,
             onUpdate: (self) => {
                 if (progressBar) {
@@ -1109,7 +1109,15 @@ function debounce(func, wait) {
 // window.load + document.fonts.ready garantiert stabiles Layout bevor ScrollTrigger rechnet.
 // ========================================
 window.addEventListener('load', () => {
+    // Verhindert Browser-Scroll-Restoration: Hauptursache für GSAP-Fehler bei Hard Refresh.
+    // Ohne dies initialisiert GSAP mitten im Pin-Bereich statt bei Position 0.
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+
     const initAllScrollTriggers = () => {
+        // Alten GSAP-Scroll-Zustand löschen BEVOR requestAnimationFrame – kein staler State
+        ScrollTrigger.clearScrollMemory();
         requestAnimationFrame(() => {
             initHeroAnimations();
             initStickyCards();
@@ -1123,11 +1131,10 @@ window.addEventListener('load', () => {
             initOnboardingTreppe();    // Sektion 12 (pin)
             initGewinnCards();
             ScrollTrigger.refresh();
-            // Sicherheits-Refresh nach kurzer Verzögerung (Bilder, Late-Assets)
+            // Sicherheits-Refresh für spät ladende Bilder (1200ms statt 400ms)
             setTimeout(() => {
-                ScrollTrigger.clearScrollMemory();
                 ScrollTrigger.refresh();
-            }, 400);
+            }, 1200);
         });
     };
 
